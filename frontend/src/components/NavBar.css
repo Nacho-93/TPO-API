@@ -1,5 +1,6 @@
 
 
-.nav-item dropdown:hover, .dropdown-menu {
+.nav-link dropdown-toggle:hover {
     display: block;
+    
 }
