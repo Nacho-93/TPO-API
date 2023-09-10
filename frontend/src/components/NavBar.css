@@ -1,6 +1,12 @@
+.login {
+    width: 130px;
+}
 
 
-.nav-link dropdown-toggle:hover {
-    display: block;
-    
+@media(max-width: 991px) {
+    .sidebar {
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px); 
+    }
+
 }
