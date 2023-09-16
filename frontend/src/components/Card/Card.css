@@ -1,0 +1,19 @@
+.card {
+    padding: 20px;
+}
+
+img {
+    
+}
+
+
+@media (max-width: 991px) {
+    .card-image {
+        width: 90px;
+        height: 90px;
+    }
+    .card {
+        max-width: 100%;
+      
+    }
+}

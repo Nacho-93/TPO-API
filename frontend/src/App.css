@@ -1,5 +1,4 @@
 
-body {
-    background: url(assets/geometry-1023846_1920.jpg) rgba(0, 0, 0, 0.5);
-    background-blend-mode: multiply;
+* { 
+    box-sizing: border-box;
 }

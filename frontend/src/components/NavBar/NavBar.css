@@ -1,7 +1,9 @@
-.login {
-    width: 130px;
-}
 
+.login-icon {
+
+    font-size: 30px;
+
+}
 
 @media(max-width: 991px) {
     .sidebar {
