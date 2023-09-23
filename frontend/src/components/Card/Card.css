@@ -1,19 +1,98 @@
 .card {
-    padding: 20px;
+    padding: 15px;
+    max-width: 730px;
+    max-height: 330px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    background-color: #fff;
 }
 
-img {
-    
+div {
+    display: block;
+}
+.round-photo img {
+    max-width: 60px;
+    max-height: 75px;
+    border-radius: 10px;
 }
 
+.profesor-course .clase {
+    font-weight: 700;
+} 
+
+.profesor-course .name {
+    font-size: 18px;
+}
+
+.profesor-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Lineas a mostrar */
+    overflow: hidden;
+    position: relative;
+
+
+}
+
+.profesor-description a {
+    position: absolute;
+    margin-left: 10px;  
+    right: 0;
+    bottom: 0;
+    background-color: white; /* Fondo blanco para cubrir las elipsis */
+}
+
+.profesor-stats .card-title {
+    font-weight: 600;
+}
+
+.profesor-stats i {
+    font-size: 16px;
+    color: #0dcaf0;
+}
+
+.profesor-stats button {
+    width: 100%;
+}
+
+.line {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro del div .line */
+  }
+  
+  .line::before {
+    content: ""; /* Agrega un elemento pseudo ::before para crear la línea vertical */
+    flex: 1; /* Hace que la línea ocupe todo el espacio restante verticalmente */
+    border-left: 1px solid #ccc; /* Establece el estilo, el ancho y el color de la línea */
+    height: 100%; /* Ajusta la altura de la línea según tus necesidades */
+    margin: 0 15px; /* Espaciado horizontal para separar la línea del contenido */
+  }
+
+
+
+.comment {
+    background-color:#eaeaeb;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Lineas a mostrar */
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 6px;
+}
+
+.comment i {
+    font-size: 18px;
+    color: #0dcaf0;
+}
+
+.reviews {
+    margin: auto auto;
+    align-items: center;
+    justify-content: center;
+
+}
 
 @media (max-width: 991px) {
-    .card-image {
-        width: 90px;
-        height: 90px;
-    }
-    .card {
-        max-width: 100%;
-      
-    }
+
 }
