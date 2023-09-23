@@ -2,7 +2,7 @@
     padding: 15px;
     max-width: 730px;
     max-height: 330px;
-    margin: 20px auto;
+    margin: 30px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
     background-color: #fff;
@@ -16,6 +16,8 @@ div {
     max-height: 75px;
     border-radius: 10px;
 }
+
+/* COURSE  */
 
 .profesor-course .clase {
     font-weight: 700;
@@ -43,8 +45,14 @@ div {
     background-color: white; /* Fondo blanco para cubrir las elipsis */
 }
 
+ /* STATS */
+
 .profesor-stats .card-title {
     font-weight: 600;
+}
+
+.hours {
+    font-size: 15px;
 }
 
 .profesor-stats i {
