@@ -1,25 +1,28 @@
 import React from "react"
 import "./Card.css"
-import pict from "../../assets/tutor1.jpg"
+
 export default function Card(props) {
+
+    // props.info_course == [individual, group, in_person, online]
+
     return (
 
         <div className="card">
-            <div className="card-body row profesor-content">
+            <div className="card-body row professor-content">
                 <div className="col-md-1 g-0">
-                    <div className="profesor-img">
+                    <div className="professor-img">
                         <span className="round-photo">
-                            <img src={props.image_profile} alt="profesor" className="img-fluid" />
+                            <img src={props.image_profile} alt="professor" className="img-fluid" />
                         </span>
                     </div>
                 </div>
                 <div className="col-md-7">
-                    <div className="profesor-course">
+                    <div className="professor-course">
                         <a href="#profile" className="card-title name">{props.name} {props.lastName}</a>
-                        <h3 className="card-title clase">Clase de Algrebra</h3>
-                        <p className="card-text text-muted profesor-description">
+                        <h3 className="card-title clase">Clase de {props.title}</h3>
+                        <p className="card-text text-muted professor-description">
                             {props.description}
-                            <a href="#profile" className="text-muted profesor-profile">...ver perfil</a>
+                            <a href="#profile" className="text-muted professor-profile">...ver perfil</a>
                         </p>
 
                     </div>
@@ -28,29 +31,32 @@ export default function Card(props) {
                 <div className="col-md-1 line"></div>
 
                 <div className="col-md-3">
-                    <div className="profesor-stats">
+                    <div className="professor-stats">
                         <h6 className="card-title hours">
                             <i>$</i>
                             {" "}
-                            50/hora
+                            {props.price_hour}/hora
                         </h6>
                         <h6 className="card-text text-muted hours">
                             <i class="fa-solid fa-hourglass-end"></i>
                             {" "}
                             {props.hours_experience} horas dictadas
                         </h6>
-                        <h6 className="card-title"><i>#</i> Presencial/Online</h6>
-                        <h6 className="card-title"><i>#</i> Individual/Grupal</h6>
-                        <button className="btn btn-primary">Contratar</button>
+
+                        <h6 className="card-title"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
+                        <h6 className="card-title"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
+                        <a href="#contractForm" className="btn btn-primary">Contratar</a>
                     </div>
                 </div>
             </div>
-            <div className="card-body row profesor-lastrow">
+            <div className="card-body row professor-lastrow">
                 <div className="col-md-10 comment">
-                    <p className="card-text"><i class="fa-solid fa-quote-left"></i>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente, aliquid architecto est numquam omnis cumque sunt maiores velit atque quae rem, rerum repellat accusantium. Architecto, unde saepe eligendi sit quaerat quisquam! Dolor.</p>
+                    {props.last_review ? <p className="card-text"><i class="fa-solid fa-quote-left"></i>{" "}
+                        {props.last_review}</p>
+                        : <p className="card-text text-muted">{" "}No existen reseñas para este curso... ¡Sé el primero en dejar una!</p>}
                 </div>
                 <div className="col-md-2 reviews">
-                    <button className="btn btn-outline-secondary">Opiniones</button>
+                    {<a href={props.last_review ? "#opinions" : "#newReview"} className="btn btn-outline-secondary">{props.last_review ? "Opiniones" : "Agregar"}</a>}
                 </div>
             </div>
         </div>

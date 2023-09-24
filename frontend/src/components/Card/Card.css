@@ -19,15 +19,15 @@ div {
 
 /* COURSE  */
 
-.profesor-course .clase {
+.professor-course .clase {
     font-weight: 700;
 } 
 
-.profesor-course .name {
+.professor-course .name {
     font-size: 18px;
 }
 
-.profesor-description {
+.professor-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; /* Lineas a mostrar */
@@ -37,7 +37,7 @@ div {
 
 }
 
-.profesor-description a {
+.professor-description a {
     position: absolute;
     margin-left: 10px;  
     right: 0;
@@ -47,7 +47,7 @@ div {
 
  /* STATS */
 
-.profesor-stats .card-title {
+.professor-stats .card-title {
     font-weight: 600;
 }
 
@@ -55,12 +55,12 @@ div {
     font-size: 15px;
 }
 
-.profesor-stats i {
+.professor-stats i {
     font-size: 16px;
     color: #0dcaf0;
 }
 
-.profesor-stats button {
+.professor-stats a {
     width: 100%;
 }
 
@@ -98,8 +98,8 @@ div {
     margin: auto auto;
     align-items: center;
     justify-content: center;
-
 }
+
 
 @media (max-width: 991px) {
 
