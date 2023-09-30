@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "image_profile": "pict",
+        "image_profile": "images/tutor1.jpg",
         "name": "Juan",
         "lastName": "Perez",
         "description": "¡Hola! Soy un tutor dedicado y experimentado en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
@@ -25,7 +25,7 @@
       },
       {
         "id": "2",
-        "image_profile": "../assets/tutor1.jpg",
+        "image_profile": "",
         "name": "Maria",
         "lastName": "Gonzalez",
         "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur odio odit id repellendus corporis magni officiis corrupti culpa dicta totam dolorem, nihil, ratione reprehenderit consequatur, voluptas quia officia! Reiciendis tempore nostrum ipsum ab, corporis voluptatum velit eius incidunt labore quisquam hic possimus atque id veniam nisi sequi, corrupti molestiae eos soluta suscipit architecto! Placeat alias animi consequuntur soluta nemo. Accusantium, vero. Quos non nulla aperiam consectetur laboriosam eligendi, explicabo dolore quibusdam.",
@@ -39,7 +39,7 @@
             "info_course": [true, false, true, false], 
             "reviews": [
               {
-                "comment": "Excelente tutora",
+                "comment": "Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
                 "user_name": "Ana",
                 "date": "2021-05-15"
               }

@@ -37,28 +37,28 @@ export default function NavBar() {
           <div class="offcanvas-body">
             {/* NavITEMS */}
             <ul class="navbar-nav justify-content-center fs-5 flex-grow-1 pe-0">
-              <li class="nav-item mx-3">
+              <li class="nav-item mx-2">
                 <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
               </li>
-              <li class="nav-item dropdown mx-3">
+              <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle" href="#categorias"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  role="button">
                   Categorias
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="#fisica">Física</a></li>
-                  <li><a class="dropdown-item" href="#ingles">Inglés</a></li>
+                  <li><a class="dropdown-item" href="#idioma">Idiomas</a></li>
                   <li><a class="dropdown-item" href="#matematica">Matemática</a></li>
+                  <li><a class="dropdown-item" href="#matematica">Musica</a></li>
                   <li><a class="dropdown-item" href="#programacion">Programación</a></li>
-                  <li><a class="dropdown-item" href="#portugues">Portugués</a></li>
                   <li><a class="dropdown-item" href="#quimica">Química</a></li>
                 </ul>
               </li>
 
-              <li class="nav-item mx-3">
+              <li class="nav-item mx-md-2">
                 <a class="nav-link" href="#nosotros">Sobre nosotros</a>
               </li>
-              <li class="nav-item mx-3">
+              <li class="nav-item mx-md-2">
                 <a class="nav-link" href="#contacto">Contacto</a>
               </li>
 
@@ -71,7 +71,7 @@ export default function NavBar() {
 
           </div>
         </div>
-      </div>
-    </nav>
+      </div >
+    </nav >
   );
 }

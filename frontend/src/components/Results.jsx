@@ -2,7 +2,7 @@ import React from 'react'
 import Card from './Card/Card'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import data from './data.json'
+import data from '../DATA/data.json'
 function Results() {
     const [proffesors, setProffessors] = useState([]);
 

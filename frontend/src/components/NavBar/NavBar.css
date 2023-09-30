@@ -5,10 +5,29 @@
 
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
+}
+
+/* @media (max-width: 1200px) {
+    .nav-item {
+        font-size: 17px;
+    }
+} */
+
+
 @media(max-width: 991px) {
     .sidebar {
         background-color: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px); 
     }
 
+    .nav-item {
+        font-size: 20px;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: none;
+    }
 }
