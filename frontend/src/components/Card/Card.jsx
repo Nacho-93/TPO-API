@@ -22,34 +22,44 @@ export default function Card(props) {
                     </div>
                 </div>
 
+
+
                 {/* MOBILE PROFESSOR IMAGE NAME AND RATING */}
 
-                <div className="row d-lg-none d-md-none d-sm-flex mb-2">
+                <div className="row d-lg-none d-md-none d-sm-flex mb-2 p-1 pt-0">
                     <div className="mobile-line">
-                        <div className="professor-img col-2">
+                        <div className="col-2 professor-img">
                             <span className="round-photo">
                                 <img src={props.image_profile} alt="professor" className="img-fluid" />
                             </span>
                         </div>
-                        <h4 className="card-title clase col-6">Clase de {props.title}</h4>
 
-                        <div className="col-4">
-                            <section className="name-rating justify-content-end align-items-end">
-                                <Link to="Perfil-profesor-NombreApellido" className="card-title name">
-                                    {props.name}{" "}{props.lastName}
-                                </Link>
-                                {props.rating_amount && (
-                                    <h6 className="card-title rating">
-                                        <i class="fa-solid fa-star"></i>{" "}
-                                        <span className="card-text font-weight-bold">
-                                            {props.rating_amount[0]}
-                                        </span>{" "}
-                                        <span className="card-text text-muted amount-reviews">
-                                            ({props.rating_amount[1]})
-                                        </span>
-                                    </h6>
-                                )}
-                            </section>
+                        <h4 className="card-title clase col-5 font-weight-600">
+                            Clase:<br /> {props.title}
+                        </h4>
+
+                        <div className="col-5">
+                            <div className="name-rating">
+                                <section className="name d-flex justify-content-end">
+
+                                    <Link to="Perfil-profesor-NombreApellido" className="card-title name">
+                                        {props.name}{" "}{props.lastName}
+                                    </Link>
+                                </section>
+                                <section className="rating d-flex justify-content-end">
+                                    {props.rating_amount && (
+                                        <h7 className="card-title rating">
+                                            <i class="fa-solid fa-star"></i>{" "}
+                                            <span className="card-text font-weight-bold">
+                                                {props.rating_amount[0]}
+                                            </span>{" "}
+                                            <span className="card-text text-muted amount-reviews">
+                                                ({props.rating_amount[1]})
+                                            </span>
+                                        </h7>
+                                    )}
+                                </section>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +85,7 @@ export default function Card(props) {
                             </h6>)}
 
                         </section>
-                        <h3 className="card-title clase d-none d-md-block">Clase de {props.title}</h3>
+                        <h3 className="card-title clase d-none d-md-block">Clase:{" "}{props.title}</h3>
                         <p className="card-text text-muted professor-description">
                             {props.course_description}
                             {/* <a href="#profile" className="text-muted professor-profile">...ver perfil</a> */}
@@ -90,13 +100,13 @@ export default function Card(props) {
                 {/* STATS and INFO */}
 
                 <div className="col-md-3">
-                    <div className="professor-stats">
+                    <div className="professor-stats d-none d-lg-block d-md-block">
                         <h6 className="card-title hours text-stats">
                             <i>$</i>
                             {" "}
                             {props.price_hour}/hora
                         </h6>
-                        <h6 className="card-text text-muted hours text-stats">
+                        <h6 className="card-text text-muted frequency text-stats">
                             <i class="fa-regular fa-calendar-days"></i>
                             {" "}
                             {props.frequency[0]}/{props.frequency[1]}
@@ -104,17 +114,53 @@ export default function Card(props) {
 
                         <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
                         <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
-                        <div className="row">
-                            <div className="col-md-12 col-6">
-                                <a href="#contractForm" className="btn btn-primary">Contratar</a>
-                            </div>
-                            <div className="col-6 d-lg-none d-md-none d-sm-block">
-                                <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary">Opiniones</Link>
+
+                        <div className="d-none d-md-block">
+                            <a href="#contractForm" className="btn btn-primary">Contratar</a>
+                        </div>
+                    </div>
+
+
+
+                    {/* MOBILE STATS */}
+                    <div className="row professor-stats d-lg-none d-md-none d-sm-flex mt-3 mb-2">
+                        <div className="col-6 d-flex justify-content-start align-items-start">
+                            <div className="priceHour-frequency">
+                                <h6 className="card-title hours text-stats">
+                                    <i>$</i>
+                                    {" "}
+                                    {props.price_hour}/hora
+                                </h6>
+                                <h6 className="card-text text-muted frequency text-stats">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    {" "}
+                                    {props.frequency[0]}/{props.frequency[1]}
+                                </h6>
                             </div>
                         </div>
+
+                        <div className="col-6 d-flex justify-content-end align-items-end">
+                            <section className="modality-format">
+                                <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
+                                <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
+                            </section>
+                        </div>
+                    </div>
+
+
+                    {/* MOBILE BUTTONS */}
+                    <div className="row">
+                        <div className="col-6 d-lg-none d-md-none  d-sm-block">
+                            <a href="#contractForm" className="btn btn-primary w-100">Contratar</a>
+                        </div>
+                        <div className="col-6 d-lg-none d-md-none d-sm-block">
+                            <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary w-100">Opiniones</Link>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
 
             {/* REVIEWS */}
 
@@ -130,6 +176,6 @@ export default function Card(props) {
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

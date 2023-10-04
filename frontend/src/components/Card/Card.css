@@ -63,7 +63,7 @@ div {
 }
 
 
-.hours {
+.frequency, .hours {
     font-size: 15px;
 }
 
@@ -72,7 +72,7 @@ div {
     color: #0dcaf0;
 }
 
-.professor-stats a {
+.professor-stats a, .professor-stats Link {
     width: 100%;
 }
 
@@ -114,10 +114,13 @@ div {
     justify-content: center;
 }
 
+.modality-format {
+    padding-right: 2px;
+}
 
 @media (max-width: 996px) {
     .text-stats {
-        font-size: 15px;
+        font-size: 14px;
     }
 
 }
@@ -141,4 +144,12 @@ div {
         display: flex;
     }
 
+    .professor-description {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5; /* Lineas a mostrar */
+        overflow: hidden;
+        padding: 0;
+    }
 }
