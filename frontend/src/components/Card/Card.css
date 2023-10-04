@@ -137,4 +137,8 @@ div {
         display: none;
     }
 
+    .mobile-line {
+        display: flex;
+    }
+
 }

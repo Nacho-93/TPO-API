@@ -26,8 +26,10 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/recuperarContraseña" element={<RecuperarContraseña />} />
-        <Route path="/categorias" element={<Results />} />
-        <Route path="/categorias/:id" element={<Results />} />
+        <Route path="/categorias">
+          <Route index element={<Results />} />
+          <Route path=":id" element={<Results />} />
+        </Route>
         <Route path="/sobreNosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="*" element={<h1>404</h1>} />

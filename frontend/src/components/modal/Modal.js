@@ -12,8 +12,8 @@ export default class Modal extends Component {
       <Portal>
         active && {
             <div style= {StyleSheet.wrapper}>
-                <div style={style.window}>
-                    <button style={styles-closeBtn} onClick={toggle}> X </button>
+                <div style={styles.window}>
+                    <button style={styles.closeBtn} onClick={toggle}> X </button>
                 </div>
                 <div>{children}</div>
 
