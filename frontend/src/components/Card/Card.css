@@ -72,7 +72,7 @@ div {
     color: #0dcaf0;
 }
 
-.professor-stats a, .professor-stats Link {
+.professor-stats a, .professor-stats Link, .professor-stats button {
     width: 100%;
 }
 

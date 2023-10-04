@@ -1,7 +1,7 @@
 import React from "react"
 import "./Card.css"
 import { Link } from "react-router-dom"
-import Modal from "../modal/Modal"
+import ModalContact from "../modal/ModalContact"
 
 export default function Card(props) {
 
@@ -75,7 +75,7 @@ export default function Card(props) {
                     <div className="professor-course">
                         <section className="name-rating d-none d-md-flex justify-content-between align-items-center">
 
-                            <Link to="Perfil-profesor-NombreApellido" className="card-title name">
+                            <Link to="/Perfil-profesor-NombreApellido" className="card-title name">
                                 {props.name}{" "}{props.lastName}
                             </Link>
 
@@ -118,9 +118,14 @@ export default function Card(props) {
                         <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
 
                         <div className="d-none d-md-block">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Contratar</button>
-
-                        
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                data-bs-whatever="@getbootstrap">
+                                Contratar</button>
+                            <ModalContact />
                         </div>
                     </div>
 
@@ -155,7 +160,12 @@ export default function Card(props) {
                     {/* MOBILE BUTTONS */}
                     <div className="row">
                         <div className="col-6 d-lg-none d-md-none  d-sm-block">
-                            <a href="#contractForm" className="btn btn-primary w-100">Contratar</a>
+                            <a href="#contractForm" className="btn btn-primary w-100"
+                                type="button"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"
+                                data-bs-whatever="@getbootstrap">Contratar</a>
+
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
                             <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary w-100">Opiniones</Link>

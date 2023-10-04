@@ -11,6 +11,7 @@ import AboutUs from "./views/AboutUs";
 
 import { Routes, Switch, Route } from "react-router-dom";
 import Contact from "./views/Contact";
+import Profile from "./components/Profile/Profile";
 
 
 
@@ -32,7 +33,11 @@ export default function App() {
         </Route>
         <Route path="/sobreNosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="/perfil-nombreApellido" element={<Profile />}></Route>
+
+
+
+        {/* <Route path="*" element={<h1>404</h1>} /> */}
 
       </Routes>
 

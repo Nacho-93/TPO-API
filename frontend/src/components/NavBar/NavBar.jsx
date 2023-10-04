@@ -3,8 +3,13 @@ import React from "react";
 import logo from "../../assets/logo.png"
 import "./NavBar.css"
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function NavBar() {
+  const [isLogged, setIsLogged] = useState(false);
+
+  const [iconProffesor, setIconProffesor] = useState(<i class="login-icon bi bi-person-circle"></i>)
+
 
   const closeSideBar = () => { // Sirve para apagar el offcanvas luego de ir a alguna pagina en Mobile.
     // Obtén una referencia al offcanvas
@@ -46,8 +51,8 @@ export default function NavBar() {
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
 
-            <Link to="/login" className="log nav-item text-primary mb-0" onClick={closeSideBar}>
-              <i class="login-icon bi bi-person-circle"></i></Link>
+            <Link to="/perfil-nombreApellido" className="log nav-item text-primary mb-0" onClick={closeSideBar}>
+              {isLogged && iconProffesor} </Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -56,14 +61,16 @@ export default function NavBar() {
             {/* NavITEMS */}
             <ul class="navbar-nav justify-content-center fs-5 flex-grow-1 pe-0">
               <li class="nav-item mx-md-2">
-                <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
+                <Link class="nav-link activeNOT" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item dropdown mx-md-2">
-                <Link class="nav-link dropdown-toggle" to="/categorias"
+                <Link class="nav-link dropdown-toggleNOT" to="/categorias"
                   role="button">
                   Categorias
                 </Link>
-                <ul class="dropdown-menu dropdown-menu-dark">
+              </li>
+
+              {/* <ul class="dropdown-menu dropdown-menu-dark">
                   <li><Link class="dropdown-item" to="/categorias/fisica" >Física</Link></li>
                   <li><Link class="dropdown-item" to="/categorias/idiomas">Idiomas</Link></li>
                   <li><Link class="dropdown-item" to="/categorias/matematica">Matemática</Link></li>
@@ -71,7 +78,7 @@ export default function NavBar() {
                   <li><Link class="dropdown-item" to="/categorias/programacion">Programación</Link></li>
                   <li><Link class="dropdown-item" to="/categorias/quimica">Química</Link></li>
                 </ul>
-              </li>
+              </li> */}
 
               <li class="nav-item mx-md-2">
                 <Link class="nav-link" to="/sobreNosotros" onClick={closeSideBar}>Sobre nosotros</Link>
@@ -84,7 +91,7 @@ export default function NavBar() {
             {/* Login / Sign Up */}
             <div className="div-login d-none d-lg-block mt-1">
               <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>
-              <Link role="button" to="/registro" className="login register btn btn-outline-info text-white">Registrarse</Link>
+              <Link role="button" to="/perfil-nombreApellido" className="login register btn btn-outline-info text-white">Registrarse</Link>
             </div>
 
           </div>

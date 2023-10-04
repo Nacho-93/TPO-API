@@ -1,0 +1,12 @@
+
+.profile-nav {
+    max-width: 60%;
+    display: inline-block ;
+}
+
+
+@media (max-width: 776px) {
+    .profile-nav {
+        max-width: 100%;
+    }
+}

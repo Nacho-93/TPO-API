@@ -4,15 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import data from '../DATA/data.json'
 function Results() {
-    const [proffesors, setProffessors] = useState([]);
 
-
-    // useEffect(() => {
-    //     fetch("./data.json")
-    //         .then((response) => response.json())
-    //         .then((data) => setProffessors(data))
-
-    // }, [])
 
     const professors_list = data.map((professor) => {
         return (

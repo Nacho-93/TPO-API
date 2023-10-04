@@ -4,28 +4,35 @@
 
 }
 
-.dropdown:hover .dropdown-menu {
+.nav-link:hover {
+    color: #0dcaf0;
+}
+
+/* .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0; /* remove the gap so it doesn't close */
-}
+
 
 
 
 @media(max-width: 991px) {
     .sidebar {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px); 
     }
 
     .nav-item {
         font-size: 22px;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
         margin-left: 10px;
+        
+    }
+    .nav-link {
+        color: white;
     }
 
-    .dropdown-menu {
-        display: none;
-    }
+
+
     
 
 }
