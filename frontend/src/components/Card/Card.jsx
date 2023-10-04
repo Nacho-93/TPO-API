@@ -1,6 +1,7 @@
 import React from "react"
 import "./Card.css"
 import { Link } from "react-router-dom"
+import Modal from "../modal/Modal"
 
 export default function Card(props) {
 
@@ -8,6 +9,7 @@ export default function Card(props) {
     // props.info_course == [individual, group, in_person, online]
 
     return (
+
 
         <div className="card">
 
@@ -116,7 +118,9 @@ export default function Card(props) {
                         <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
 
                         <div className="d-none d-md-block">
-                            <a href="#contractForm" className="btn btn-primary">Contratar</a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Contratar</button>
+
+                        
                         </div>
                     </div>
 
