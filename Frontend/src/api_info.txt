@@ -1,0 +1,121 @@
+
+Logo Nombre
+
+Categorias >
+		Fisica
+		Idiomas	
+		Matematica
+		Musica
+		Programacion
+		Quimica
+		
+Sobre de nosotros >
+		Bananeadas
+		
+Log IN / Log OUT
+Sign UP
+
+
+Mi perfil >			(POV: Profesor) (Esto y todo lo que lo compone debe ser lo unico distinto que ve el profesor.)
+	
+	Nav > 
+		Mis cursos >
+				Pagina con la Card de los cursos > 				(Aplicar paginacion bootstrap)
+										Agregar -> POP UP con formulario necesario para agregar un curso todos los campos obligatorios -> Debe haber un campo desplegable: 																						Categoria -> Si se selecciona 
+																				idioma o musica se muestra otra opcion obligatoria y ademas 
+																				debe agregar la Frecuencia Ejemplo: (cantidad: 1 y unidad: Semana)
+																				este menu debe ser desplegable.
+
+						Al lado de cada curso (esquina derecha superior por fuera del card) debe haber un lapiz para poder modificarlo (Todos los campos menos el tipo de clase)
+						Ademas debe haber abajo del lapiz una cruz roja para eliminar el curso (debe preguntar si estas seguro de eliminarlo)
+		
+
+		Solicitudes >
+			
+			Otro NAV >
+				
+				Cursos > 			(Se abre aca solicitudes)
+						Reutilizar Card de comentarios (sin rating obvio) + Horario de preferencia, telefono. -> El comentario/mensaje del estudiante es obligatorio
+						Estados: [Pendiente, Aceptada, Finalizada, Rechazada] -> Todos los maneja el profesor con un boton al lado del Card. Misma ubicacion que el Lapiz en anteriores 																									ocasiones.
+				
+				Comentarios >
+						Pagina con Card sobre una solicitud > 				(Una solicitud tiene 3 estados [])
+							Contiene: Titulo (Nombre del curso), Nombre (del estudiante), Mail (del estudiante), Comentario (debe aparacer aunque este vacio "Ninguno") o Rating en 																									ese orden.
+				
+								
+	Imagen del profesor > Izquierda arriba redondeada -> Editable
+	Nombre -> Editable
+	Apellido -> Editable
+	Mail contacto -> Editable
+	Contraseña -> Editable
+	Descripcion -> Editable
+	Titulos -> Editable
+	Experiencia -> Editable
+
+
+
+
+
+
+
+
+Perfil de X >		(POV: Estudiante)
+	Imagen
+	Nombre
+	Apellido
+	Descripcion
+	Cursos >
+		Pagina con todas las Cards -> IGUAL QUE LA DEL PROFESOR (sin la parte de editar obvio)
+	
+	
+POP UPs >
+	
+	Contratar >
+			Formulario que pide > (Obligatorios)
+					Nombre
+					Apellido
+					Telefono
+					Mail
+					Horario de preferencia
+					Mensaje 
+	
+	Agregar >  (Comentarios)
+		Formulario que pide >
+				Nombre -> Obligatorio
+				Mail -> Obligatorio
+				Comentario -> Opcional
+				Rating -> Opcional
+
+
+Pagina de OPINIONES sobre 1 curso >
+				Card simple con el nombre del Pibe como titulo, al lado del nombre el rating si existe fondo gris y el comentario entre quotes celestes iguales que los del Card de curso.
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Los usuarios no se registran, pero pueden dejar comentarios. El docente puede permitir mostrar o no un comentario ya que cualquiera puede comentar.
+Cuando un usuario escribe algo no se muestra automaticamente, es el profesor quien permite mostrarlo.
+Los profesores no tienen calificacion.
+
+
+Hacer un card para el profesor y un profile. En el card hacer un boton para Contratar, y hacer que el card sea un link al profile.
+
+
+22/09/2023
+Mostrar vistas y se juzga el diseño en general.
+Podemos manejar estados con context o con redux.
+Contratar con libreria NodeMailer
+
+El profesor tiene funcionalidades extra pero no deja de ser un usuario de la plataforma. (No pierde las funcionalidades normales). El estado de entre usuario comun y profesor se maneja con redux o context.
+Modal: Formulario en medio de la pantalla, hacer esto cuando toca contratar en la card.
+
+
+29/09
+Tiene que haber rating para el curso, Se puede calificar sin poner comentario y se puede poner comentario sin calificar o ambas cosas. Pedir nombre, mail, y comentario o rating
