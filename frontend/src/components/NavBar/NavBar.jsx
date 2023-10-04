@@ -2,6 +2,8 @@
 import React from "react";
 import logo from "../../assets/logo.png"
 import "./NavBar.css"
+import { Link } from "react-router-dom";
+
 export default function NavBar() {
 
   return (
@@ -9,11 +11,11 @@ export default function NavBar() {
       <div class="container">
 
         {/* LOGO */}
-        <a href="##" className="navbar-brand mb-0 h1">
+        <Link to="/" className="navbar-brand mb-0 h1">
           <img src={logo} alt="Logo"
             className="d-inline-block align-top"
             width="150" height="60" />
-        </a>
+        </Link>
 
 
         {/* TOGGLE BUTTON */}
@@ -30,7 +32,7 @@ export default function NavBar() {
         {/* SIDEBAR */}
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
-            <a href="#Login" className="log text-primary ms-3"><i class="login-icon bi bi-person-circle"></i></a>
+            <Link href="/login" className="log text-primary ms-3"><i class="login-icon bi bi-person-circle"></i></Link>
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
 
@@ -38,35 +40,35 @@ export default function NavBar() {
             {/* NavITEMS */}
             <ul class="navbar-nav justify-content-center fs-5 flex-grow-1 pe-0">
               <li class="nav-item mx-2">
-                <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+                <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item dropdown mx-2">
-                <a class="nav-link dropdown-toggle" href="#categorias"
+                <Link class="nav-link dropdown-toggle" to="/categorias"
                   role="button">
                   Categorias
-                </a>
+                </Link>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="#fisica">Física</a></li>
-                  <li><a class="dropdown-item" href="#idioma">Idiomas</a></li>
-                  <li><a class="dropdown-item" href="#matematica">Matemática</a></li>
-                  <li><a class="dropdown-item" href="#matematica">Musica</a></li>
-                  <li><a class="dropdown-item" href="#programacion">Programación</a></li>
-                  <li><a class="dropdown-item" href="#quimica">Química</a></li>
+                  <li><Link class="dropdown-item" to="/categorias/fisica" >Física</Link></li>
+                  <li><Link class="dropdown-item" to="/categorias/idiomas">Idiomas</Link></li>
+                  <li><Link class="dropdown-item" to="/categorias/matematica">Matemática</Link></li>
+                  <li><Link class="dropdown-item" to="/categorias/musica">Musica</Link></li>
+                  <li><Link class="dropdown-item" to="/categorias/programacion">Programación</Link></li>
+                  <li><Link class="dropdown-item" to="/categorias/quimica">Química</Link></li>
                 </ul>
               </li>
 
               <li class="nav-item mx-md-2">
-                <a class="nav-link" href="#nosotros">Sobre nosotros</a>
+                <Link class="nav-link" to="/sobreNosotros">Sobre nosotros</Link>
               </li>
               <li class="nav-item mx-md-2">
-                <a class="nav-link" href="#contacto">Contacto</a>
+                <Link class="nav-link" to="/contacto">Contacto</Link>
               </li>
 
             </ul>
             {/* Login / Sign Up */}
             <div className="div-login d-none d-lg-block mt-1">
-              <button className="login log btn btn-link text-white">Iniciar sesión</button>
-              <button className="login register btn btn-outline-info text-white">Registrarse</button>
+              <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>
+              <Link role="button" to="/registro" className="login register btn btn-outline-info text-white">Registrarse</Link>
             </div>
 
           </div>
