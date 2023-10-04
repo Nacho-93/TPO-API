@@ -10,7 +10,7 @@ export default function Card(props) {
 
         <div className="card">
             <div className="card-body row professor-content">
-                <div className="col-md-1 g-0 row-sm">
+                <div className="col-md-1 g-0 row-lg">
                     <div className="professor-img">
                         <span className="round-photo">
                             <img src={props.image_profile} alt="professor" className="img-fluid" />
@@ -25,18 +25,17 @@ export default function Card(props) {
                                 {" "}{props.lastName}</a>
 
 
-                            <h6 className="card-title rating">
-                                <i class="fa-solid fa-star"></i>
-                                {" "}
-                                <span className="card-text font-weight-bold">5.0</span> {" "}
-                                <span className="card-text text-muted amount-reviews">(6)</span>
-                            </h6>
+                            {props.rating_amount && (<h6 className="card-title rating">
+                                <i class="fa-solid fa-star"></i> {" "}
+                                <span className="card-text font-weight-bold">{props.rating_amount[0]}</span> {" "}
+                                <span className="card-text text-muted amount-reviews">({props.rating_amount[1]})</span>
+                            </h6>)}
 
                         </section>
                         <h3 className="card-title clase">Clase de {props.title}</h3>
                         <p className="card-text text-muted professor-description">
-                            {props.description}
-                            <a href="#profile" className="text-muted professor-profile">...ver perfil</a>
+                            {props.course_description}
+                            {/* <a href="#profile" className="text-muted professor-profile">...ver perfil</a> */}
                         </p>
 
                     </div>
@@ -52,9 +51,9 @@ export default function Card(props) {
                             {props.price_hour}/hora
                         </h6>
                         <h6 className="card-text text-muted hours text-stats">
-                            <i class="fa-solid fa-hourglass-end text-stats"></i>
+                            <i class="fa-regular fa-calendar-days"></i>
                             {" "}
-                            {props.hours_experience} horas dictadas
+                            {props.frequency[0]}/{props.frequency[1]}
                         </h6>
 
                         <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>

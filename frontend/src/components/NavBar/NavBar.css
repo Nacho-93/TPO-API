@@ -27,7 +27,5 @@
         font-size: 20px;
     }
 
-    .dropdown:hover .dropdown-menu {
-        display: none;
-    }
+
 }
