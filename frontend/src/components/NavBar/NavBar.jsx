@@ -6,6 +6,19 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
 
+  const closeSideBar = () => {
+    // Obtén una referencia al offcanvas
+    const offcanvasNavbar = document.getElementById("offcanvasNavbar");
+    // Establece el atributo data-bs-dismiss en "offcanvas" para cerrar el offcanvas
+    offcanvasNavbar.setAttribute("data-bs-dismiss", "offcanvas");
+    // Simula un clic en el botón que cierra el offcanvas (si tienes uno)
+    const closeButton = offcanvasNavbar.querySelector(".btn-close");
+    if (closeButton) {
+      closeButton.click();
+    }
+
+  }
+
   return (
     <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgba(30,30,30, 0.7)" }}>
       <div class="container">
@@ -32,7 +45,10 @@ export default function NavBar() {
         {/* SIDEBAR */}
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
-            <Link href="/login" className="log text-primary ms-3"><i class="login-icon bi bi-person-circle"></i></Link>
+
+            <Link to="/login" className="log text-primary ms-3" onClick={closeSideBar}>
+              <i class="login-icon bi bi-person-circle"></i></Link>
+
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
 
@@ -58,10 +74,10 @@ export default function NavBar() {
               </li>
 
               <li class="nav-item mx-md-2">
-                <Link class="nav-link" to="/sobreNosotros">Sobre nosotros</Link>
+                <Link class="nav-link" to="/sobreNosotros" onClick={closeSideBar}>Sobre nosotros</Link>
               </li>
               <li class="nav-item mx-md-2">
-                <Link class="nav-link" to="/contacto">Contacto</Link>
+                <Link class="nav-link" to="/contacto" onClick={closeSideBar}>Contacto</Link>
               </li>
 
             </ul>
