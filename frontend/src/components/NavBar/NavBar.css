@@ -1,6 +1,5 @@
 
 .login-icon {
-
     font-size: 30px;
 
 }
@@ -10,22 +9,23 @@
     margin-top: 0; /* remove the gap so it doesn't close */
 }
 
-/* @media (max-width: 1200px) {
-    .nav-item {
-        font-size: 17px;
-    }
-} */
 
 
 @media(max-width: 991px) {
     .sidebar {
-        background-color: rgba(255, 255, 255, 0.15);
+        background-color: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px); 
     }
 
     .nav-item {
-        font-size: 20px;
+        font-size: 22px;
+        margin-bottom: 5px;
+        margin-left: 10px;
     }
 
+    .dropdown-menu {
+        display: none;
+    }
+    
 
 }

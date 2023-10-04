@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
 
-  const closeSideBar = () => {
+  const closeSideBar = () => { // Sirve para apagar el offcanvas luego de ir a alguna pagina en Mobile.
     // Obtén una referencia al offcanvas
     const offcanvasNavbar = document.getElementById("offcanvasNavbar");
     // Establece el atributo data-bs-dismiss en "offcanvas" para cerrar el offcanvas
@@ -20,7 +20,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgba(30,30,30, 0.7)" }}>
+    <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgba(30,30,30, 0.9)" }}>
       <div class="container">
 
         {/* LOGO */}
@@ -46,7 +46,7 @@ export default function NavBar() {
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
 
-            <Link to="/login" className="log text-primary ms-3" onClick={closeSideBar}>
+            <Link to="/login" className="log nav-item text-primary mb-0" onClick={closeSideBar}>
               <i class="login-icon bi bi-person-circle"></i></Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -55,10 +55,10 @@ export default function NavBar() {
           <div class="offcanvas-body">
             {/* NavITEMS */}
             <ul class="navbar-nav justify-content-center fs-5 flex-grow-1 pe-0">
-              <li class="nav-item mx-2">
+              <li class="nav-item mx-md-2">
                 <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
-              <li class="nav-item dropdown mx-2">
+              <li class="nav-item dropdown mx-md-2">
                 <Link class="nav-link dropdown-toggle" to="/categorias"
                   role="button">
                   Categorias

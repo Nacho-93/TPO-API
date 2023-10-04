@@ -131,7 +131,7 @@ export default function Card(props) {
                                     {" "}
                                     {props.price_hour}/hora
                                 </h6>
-                                <h6 className="card-text text-muted frequency text-stats">
+                                <h6 className="card-title frequency text-stats">
                                     <i class="fa-regular fa-calendar-days"></i>
                                     {" "}
                                     {props.frequency[0]}/{props.frequency[1]}
