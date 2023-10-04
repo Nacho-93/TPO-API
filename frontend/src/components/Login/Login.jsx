@@ -6,6 +6,7 @@ import password_icon from "../../assets/password-icon.svg"
 export default function Login() {
     return (
         <div class="bg-info d-flex justify-content-center align-items-center vh-100">
+            <form>
             <div
                 class="bg-white p-5 rounded-5 text-secondary shadow"
                 style={{ width: "25rem" }}
@@ -26,6 +27,7 @@ export default function Login() {
                             style={{ height: "1rem" }}
                         />
                     </div>
+                    <label htmlfor="usuario"></label>
                     <input
                         class="form-control bg-light"
                         type="text"
@@ -40,6 +42,7 @@ export default function Login() {
                             style={{ height: "1rem" }}
                         />
                     </div>
+                    <label htmlfor= "password"></label>
                     <input
                         class="form-control bg-light"
                         type="password"
@@ -49,6 +52,7 @@ export default function Login() {
                 <div class="d-flex justify-content-around mt-1">
                     <div class="d-flex align-items-center gap-1">
                         <input class="form-check-input" type="checkbox" />
+                        <label htmlfor="check" className='custom-input-label'></label>
                         <div class="pt-1" style={{ fontSize: "0.9rem" }}>Recordarme</div>
                     </div>
                     <div class="pt-1">
@@ -70,6 +74,7 @@ export default function Login() {
                     >
                 </div>
             </div>
+            </form>
         </div>
     )
 }
