@@ -38,29 +38,73 @@ function Contact() {
     // }
 
     return (
-        <div id="contenedor">
-
-            <div id="contacto">
-                <h1>Contacto</h1>
-                <form id="formulario">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required /><br />
-
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required /><br />
-
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" required /><br />
-
-                    <label for="mensaje">Mensaje:</label><br />
-                    <textarea id="mensaje" name="mensaje" rows="5" cols="66" required></textarea><br />
-                    <p>Caracteres restantes: <span id="charCount">50</span></p>
-
-                    <input type="submit" value="Enviar" />
-                </form>
-
+        <>
+            <div className="breadcrumbs" data-aos="fade-in">
+                <div className="container">
+                    <h2>Contacto</h2>
+                    <p>Estamos aquí para responder a tus preguntas y proporcionarte la información que necesitas. No dudes en ponerte en contacto con nosotros.</p>
+                </div>
             </div>
-        </div>
+            <section id="contact" className="contact-section">
+
+                <div className="container" data-aos="fade-up">
+
+                    <div className="row mt-5">
+
+                        <div className="col-lg-4">
+                            <div className="info">
+
+
+                                <div className="email">
+                                    <i className="bi bi-envelope"></i>
+                                    <h4>Email:</h4>
+                                    <p>somosazerty@gmail.com</p>
+                                </div>
+
+                                <div className="phone">
+                                    <i className="bi bi-phone"></i>
+                                    <h4>Teléfono:</h4>
+                                    <p>+54 11 5279 9760</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div className="col-lg-8 mt-5 mt-lg-0">
+
+                            <form action="" method="" role="form" className="php-email-form">
+                                <div className="row">
+                                    <div className="col-md-6 form-group">
+                                        <input type="text" name="name" className="form-control" id="name" placeholder="Nombre" required />
+                                    </div>
+                                    <div className="col-md-6 form-group mt-3 mt-md-0">
+                                        <input type="email" className="form-control" name="email" id="email" placeholder="Email" required />
+                                    </div>
+                                </div>
+                                <div className="form-group mt-3">
+                                    <input type="text" className="form-control" name="subject" id="subject" placeholder="Asunto" required />
+                                </div>
+                                <div className="form-group mt-3">
+                                    <textarea className="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                                </div>
+                                {/* <div className="my-3">
+                                    <div className="loading">Cargando</div>
+                                    <div className="error-message"></div>
+                                    <div className="sent-message">El mensaje ha sido enviado, gracias!</div>
+                                </div> */}
+                                <div className="text-center mt-5"><button type="submit"
+                                    className='btn btn-info text-dark px-4 mb-5'>
+                                    Enviar</button></div>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </>
 
 
     )

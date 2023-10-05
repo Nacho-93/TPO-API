@@ -1,50 +1,211 @@
-#contacto {
-    background: #f4f4f4;
-    font-family: Arial;
-    margin-top: 30px;
-}
-
-#contacto h1 {
-    text-align: center;
-}
-
-#contacto form {
-    max-width: 500px;
-    margin: 0 auto;
+.contact-section {
+    padding-top: 5px;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-}
-
-#contacto form label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-#contacto form input[type="text"], #contacto form input[type="email"], #contacto form input[type="tel"], #contacto form label textarea {
+  }
+  
+  .contact-section .info {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-}
-
-#contacto form textarea {
-    resize: none;
-}
-
-#contacto form input[type="submit"] {
-    background-color: #4CAF50;
+    background: #fff;
+  }
+  
+  .contact-section .info i {
+    font-size: 20px;
+    color: #0dcaf0;
+    float: left;
+    width: 44px;
+    height: 44px;
+    background: #e7f2f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .contact-section .info h4 {
+    padding: 0 0 0 60px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #37423b;
+  }
+  
+  .contact-section .info p {
+    padding: 0 0 0 60px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #65707a;
+  }
+  
+  .contact-section .info .email,
+  .contact-section .info .phone {
+    margin-top: 40px;
+  }
+  
+  .contact-section .info .email:hover i,
+  .contact-section .info .phone:hover i {
+    background: #0dcaf0;
     color: #fff;
-    padding: 10px 20px;
-    border: none;
+  }
+  
+  .contact-section .php-email-form {
+    width: 100%;
+    background: #fff;
+  }
+  
+  .contact-section .php-email-form .form-group {
+    padding-bottom: 8px;
+  }
+  
+  .contact-section .php-email-form .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+  }
+  
+  .contact-section .php-email-form .error-message br+br {
+    margin-top: 25px;
+  }
+  
+  .contact-section .php-email-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #0dcaf0;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+  }
+  
+  .contact-section .php-email-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .contact-section .php-email-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #0dcaf0;
+    border-top-color: #eee;
+    animation: animate-loading 1s linear infinite;
+  }
+  
+  .contact-section .php-email-form input,
+  .contact-section .php-email-form textarea {
     border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
+    box-shadow: none;
+    font-size: 14px;
+  }
+  
+  .contact-section .php-email-form input:focus,
+  .contact-section .php-email-form textarea:focus {
+    border-color: #0dcaf0;
+  }
+  
+  .contact-section .php-email-form input {
+    height: 44px;
+  }
+  
+  .contact-section .php-email-form textarea {
+    padding: 10px 12px;
+  }
+  
+  .contact-section .php-email-form button[type=submit] {
+    background: #0dcaf0;
+    border: 0;
+    padding: 10px 35px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+  }
+  
+  .contact-section .php-email-form button[type=submit]:hover {
+    background: #0dcaf0;
+  }
+  
+  @keyframes animate-loading {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-#contacto form input[type="submit"]:hover {
-    background-color: #3e8e41;
-}
+
+  .contact-section-section {
+    padding: 60px 0;
+    overflow: hidden;
+  }
+  
+  .section-bg {
+    background-color: #f6f7f6;
+  }
+  
+  .section-title {
+    padding-bottom: 40px;
+  }
+  
+  .section-title h2 {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #aaaaaa;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .section-title h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #66dcf4;
+    margin: 4px 10px;
+  }
+  
+  .section-title p {
+    margin: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #37423b;
+  }
+  
+  .breadcrumbs {
+    text-align: center;
+    background: #dbf8f9;
+    padding: 30px 0;
+    color: black;
+  }
+  
+  @media (max-width: 992px) {
+    .breadcrumbs {
+      margin-bottom: 0;
+    
+    }
+  }
+  
+  .breadcrumbs h2 {
+    font-size: 32px;
+    font-weight: 500;
+  }
+  
+  .breadcrumbs p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }

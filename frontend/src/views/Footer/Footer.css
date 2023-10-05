@@ -1,74 +1,167 @@
-footer {
-    margin-top: 70px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    padding: 2em 8%;
-    background-color: #444444;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+#footer {
+    color: #37423b;
     font-size: 14px;
-    color: #c0c0c0;
-}
-.footer-menu-container {
-    list-style-type: none;
-    font-size: 18px;
-
-}
-
-.footer-menu-container li {
-    display: inline-block;
+    background:#bbbfbe;
+  }
+  
+  #footer .footer-top {
+    padding: 60px 0 30px 0;
+    background: #d0d2d2;
+  }
+  
+  #footer .footer-top .footer-contact {
     margin-bottom: 30px;
-}
-
-.footer-menu-enlaces {
-    color: #f0f0f0;
-    margin: 0 10px;
-    cursor: pointer;
-
-}
-.footer-menu-enlaces:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-
-}
-
-
-.footer-mail {
-    border: none;
-    background-color: #444444;
-    cursor: pointer;
-}
-
-.footer-mail, .footer-tel {
-    text-decoration: underline;
-    color: #0dcaf0;
+  }
+  
+  #footer .footer-top .footer-contact h4 {
+    font-size: 22px;
+    margin: 0 0 30px 0;
+    padding: 2px 0 2px 0;
+    line-height: 1;
+    font-weight: 700;
+  }
+  
+  #footer .footer-top .footer-contact p {
     font-size: 14px;
-}
-
-.copyright{
-    opacity: 0.7;
-    text-align: center;
-}
-
-/* FLECHA SCROLL */
-#scroll-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #bbb;
-    text-align: center;
-    line-height: 40px;
+    line-height: 24px;
+    margin-bottom: 0;
+    font-family: "Raleway", sans-serif;
+    color: #3e3e3e;
+  }
+  
+  #footer .footer-top h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1f1f1f;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  
+  #footer .footer-top .footer-links {
+    margin-bottom: 30px;
+  }
+  
+  #footer .footer-top .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #footer .footer-top .footer-links ul i {
+    padding-right: 2px;
+    color: #0dcaf0;
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  #footer .footer-top .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  #footer .footer-top .footer-links ul li:first-child {
+    padding-top: 0;
+  }
+  
+  #footer .footer-top .footer-links ul a {
+    color: #3e3e3e;
+    transition: 0.3s;
+    display: inline-block;
+    line-height: 1;
+  }
+  
+  #footer .footer-top .footer-links ul a:hover {
+    text-decoration: none;
+    color: #0dcaf0;
+  }
+  
+  #footer .footer-newsletter {
+    font-size: 15px;
+  }
+  
+  #footer .footer-newsletter h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #1f1f1f;
+    position: relative;
+    padding-bottom: 12px;
+  }
+  
+  #footer .footer-newsletter form {
+    margin-top: 30px;
+    background: #fff;
+    padding: 6px 10px;
+    position: relative;
+    border-radius: 50px;
+    text-align: left;
+    border: 1px solid #e0e5e2;
+  }
+  
+  #footer .footer-newsletter form input[type=email] {
+    border: 0;
+    padding: 4px 8px;
+    width: calc(100% - 100px);
+  }
+  
+  #footer .footer-newsletter form input[type=submit] {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 20px 2px 20px;
+    background: #0dcaf0;
     color: #fff;
-    font-size: 20px;
-    cursor: pointer;
-}
+    transition: 0.3s;
+    border-radius: 50px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  #footer .footer-newsletter form input[type=submit]:hover {
+    background: #0dcaf0;
+  }
+  
+  #footer .credits {
+    padding-top: 5px;
+    font-size: 13px;
+  }
+  
+  #footer .credits a {
+    color: #0dcaf0;
+    transition: 0.3s;
+  }
+  
+  #footer .credits a:hover {
+    color: #0dcaf0;
+  }
+  
+  #footer .social-links a {
+    font-size: 18px;
+    display: inline-block;
+    background: #0dcaf0;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+  }
+  
+  #footer .social-links a:hover {
+    background: #0dcaf0;
+    color: #fff;
+    text-decoration: none;
+  }
 
-#scroll-to-top:hover {
-    background-color: #555;
-}
+
+
+  .logo-title {
+    color:#0dcaf0;
+    font-weight: 700;
+  }

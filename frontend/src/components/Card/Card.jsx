@@ -205,6 +205,7 @@ export default function Card(props) {
 
                 </div>
             </div>
+
             <ModalContact />
             <ModalComment />
 

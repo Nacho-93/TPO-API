@@ -34,11 +34,15 @@ export default function NavBar(props) {
       <div class="container">
 
         {/* LOGO */}
-        <Link to="/" className="navbar-brand mb-0 h1">
-          <img src={logo} alt="Logo"
+
+        <h1 className="logo me-auto">
+          <Link to="/" className="">
+            AZERTY</Link>
+        </h1>
+        {/* <img src={logo} alt="Logo"
             className="d-inline-block align-top"
-            width="150" height="60" />
-        </Link>
+            width="150" height="60" /> */}
+
 
 
         {/* TOGGLE BUTTON */}

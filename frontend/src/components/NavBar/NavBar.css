@@ -1,4 +1,25 @@
 
+.logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    
+  }
+  
+.logo a {
+    color: #12b4d4;
+    text-decoration: none;
+  }
+  
+.logo img {
+    max-height: 40px;
+  }
+
 .login-icon {
     font-size: 40px;
 
