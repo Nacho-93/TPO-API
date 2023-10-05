@@ -139,7 +139,7 @@ div {
 
 @media (max-width: 770px) {
     
-    .card {
+    .card-class {
         margin: 15px 0;
         width: 100%;
         border: none;

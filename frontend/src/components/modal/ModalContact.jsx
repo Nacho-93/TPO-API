@@ -1,18 +1,14 @@
 import React from 'react'
 
 function ModalContact() {
-    const style = {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-    }
+
     return (
         <div class="modal fade" id="exampleModalContact" tabindex="-1" aria-labelledby="exampleModalContactLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalContactLabel">Contactar</h5>
-                        <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style={{ width: "32px" }}></button>
                     </div>
                     <div class="modal-body">
                         <form>

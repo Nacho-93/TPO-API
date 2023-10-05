@@ -1,16 +1,16 @@
 import React from 'react'
-import "./Home.Css"
+import "./Home.css"
 import Fondo from "../assets/background-for-school.jpg"
 
 function Home() {
     return (
         <div className='Banner'>
             <h2>Aprendé y enseñá junto a nosotros</h2>
-        <img src={Fondo}> 
-        </img>
+            <img src={Fondo}>
+            </img>
 
-    
-    <p></p>
+
+            <p></p>
 
         </div>
     )

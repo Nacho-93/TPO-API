@@ -128,8 +128,9 @@ export default function Card(props) {
                                 data-bs-target="#exampleModalContact"
                                 data-bs-whatever="@getbootstrap">
                                 Contratar
-                                <ModalContact />
+
                             </button>
+                            <ModalContact />
 
                         </div>
                     </div>
@@ -170,7 +171,7 @@ export default function Card(props) {
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModalContact"
                                 data-bs-whatever="@getbootstrap">Contratar
-                                <ModalContact /></button>
+                            </button>
 
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
@@ -180,6 +181,7 @@ export default function Card(props) {
                     </div>
                 </div>
             </div>
+
 
 
             {/* REVIEWS */}
@@ -198,11 +200,15 @@ export default function Card(props) {
                             data-bs-target="#exampleModalComment"
                             data-bs-whatever="@getbootstrap">
                             Agregar
-                            <ModalComment />
+
                         </button>}
 
                 </div>
             </div>
+            <ModalContact />
+            <ModalComment />
+
+
         </div >
     )
 }

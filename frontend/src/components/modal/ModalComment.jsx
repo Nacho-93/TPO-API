@@ -12,15 +12,15 @@ function ModalComment() {
                     <div class="modal-body">
                         <form>
 
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label for="validationServer01" class="form-label">Nombre:</label>
                                 <input type="text" class="form-control" id="validationServer01" required></input>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label for="recipient-name" class="col-form-label">Email:</label>
                                 <input type="email" class="form-control" id="recipient-name" required></input>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label for="message-text" class="col-form-label">Comentario:</label>
                                 <textarea class="form-control" id="message-text"></textarea>
                             </div>
