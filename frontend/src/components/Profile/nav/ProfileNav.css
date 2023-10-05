@@ -1,12 +1,22 @@
 
-.profile-nav {
-    max-width: 60%;
-    display: inline-block ;
+.profile-nav  ul {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgba(30,30,30, 0.2);
+    border-bottom-left-radius:  10px;
+    border-bottom-right-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 
+
+
 @media (max-width: 776px) {
-    .profile-nav {
-        max-width: 100%;
+
+    .profile-nav-item-text, .profile-nav-item-text{
+        font-size: 15px;
+        color: black;
     }
 }

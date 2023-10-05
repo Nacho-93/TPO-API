@@ -1,12 +1,13 @@
 
 .login-icon {
-    font-size: 30px;
+    font-size: 40px;
 
 }
 
 .nav-link:hover {
     color: #0dcaf0;
 }
+
 
 /* .dropdown:hover .dropdown-menu {
     display: block;
@@ -21,15 +22,16 @@
         backdrop-filter: blur(10px); 
     }
 
-    .nav-item {
+    .item-changed {
         font-size: 22px;
         margin-bottom: 15px;
         margin-left: 10px;
         
     }
-    .nav-link {
+    .link-changed {
         color: white;
     }
+
 
 
 

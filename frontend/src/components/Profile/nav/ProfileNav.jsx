@@ -8,25 +8,14 @@ function ProfileNav() {
         <>
             <nav className='navbar navbar-expand-sm p-0'>
                 <div className="container profile-nav">
-                    <ul className='navbar-nav justify-content-center fs-5 flex-grow-1 pe-0 bg-secondary'>
+                    <ul className='navbar-nav'>
 
-                        <li className='nav-item'><Link to="/miperfil" className='nav-link mx-2'>Mi Perfil</Link></li>
-
-                        <li className='nav-item dropdown'>
-                            <button
-                                className='nav-link mx-2 dropdown-toggle'
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Solicitudes
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><Link class="dropdown-item" to="/perfil-nombreApellido/clases" >Clases</Link></li>
-                                <li><Link class="dropdown-item" to="/perfil-nombreApellido/reseñas">Reseñas</Link></li>
-                            </ul>
-
-                        </li>
+                        <li className='nav-item nav-profile-item'><Link to="/miperfil" className='nav-link mx-2 profile-nav-item-text'>Mi Perfil</Link></li>
+                        <li className='nav-item nav-profile-item'><Link to="/perfil-nombreApellido/clases" className='nav-link mx-2 profile-nav-item-text'>Clases</Link></li>
+                        <li className='nav-item nav-profile-item'><Link to="/perfil-nombreApellido/reseñas" className='nav-link mx-2 profile-nav-item-text'>Reseñas</Link></li>
 
                     </ul>
+
                 </div>
             </nav>
         </>
