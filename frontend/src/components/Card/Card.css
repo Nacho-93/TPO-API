@@ -8,6 +8,18 @@
     background-color: #fff;
 }
 
+.starwidget{
+    font-size: 20px;
+    color: #bbb;
+    transition: color 0.3%;
+    cursor: pointer;
+}
+
+.starwidget :hover{
+    color: gold;
+    
+}
+
 div {
     display: block;
 }
