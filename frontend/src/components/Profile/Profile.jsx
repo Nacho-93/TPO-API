@@ -1,5 +1,4 @@
 import React from 'react'
-import ProfileNav from './nav/ProfileNav'
 import "./Profile.css"
 
 function Profile() {

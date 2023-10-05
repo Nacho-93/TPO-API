@@ -73,7 +73,7 @@ function Contact() {
 
                         <div className="col-lg-8 mt-5 mt-lg-0">
 
-                            <form action="" method="" role="form" className="php-email-form">
+                            <form action="" method="" role="form" className="email-form">
                                 <div className="row">
                                     <div className="col-md-6 form-group">
                                         <input type="text" name="name" className="form-control" id="name" placeholder="Nombre" required />

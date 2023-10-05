@@ -6,7 +6,7 @@ import Login from "./components/Login-in_out/Login";
 import Registro from "./components/Login-in_out/Registro"
 import RecuperarContraseña from "./components/Login-in_out/RecuperarContraseña"
 import Home from "./views/Home";
-import AboutUs from "./views/AboutUs";
+import AboutUs from "./views/AboutUs/AboutUs";
 
 
 import { Routes, Switch, Route } from "react-router-dom";
