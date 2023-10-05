@@ -10,8 +10,9 @@ import AboutUs from "./views/AboutUs";
 
 
 import { Routes, Switch, Route } from "react-router-dom";
-import Contact from "./views/Contact";
+import Contact from "./views/Contact/Contact";
 import Profile from "./components/Profile/Profile";
+import Footer from "./views/Footer/Footer";
 
 
 
@@ -40,6 +41,7 @@ export default function App() {
         {/* <Route path="*" element={<h1>404</h1>} /> */}
 
       </Routes>
+      <Footer />
 
     </div>
   )

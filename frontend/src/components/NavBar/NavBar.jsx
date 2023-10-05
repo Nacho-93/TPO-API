@@ -31,7 +31,7 @@ export default function NavBar(props) {
 
   return (
     <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgba(30,30,30, 0.9)" }}>
-      <div class="container-fluid mx-5">
+      <div class="container">
 
         {/* LOGO */}
         <Link to="/" className="navbar-brand mb-0 h1">
@@ -95,7 +95,7 @@ export default function NavBar(props) {
 
             </ul>
             {/* Login / Sign Up */}
-            <div className="d-none d-md-block">
+            <div className="d-none d-lg-block">
               {isLogged ? (<Link to="/perfil-nombreApellido" className="log nav-item text-primary mb-0">
                 {professor_image} </Link>)
                 :

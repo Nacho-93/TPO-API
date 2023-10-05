@@ -4,88 +4,91 @@ import "./Profile.css"
 
 function Profile() {
     return (
-        <div class="container light-style flex-grow-1 container-p-y">
-            <h4 class="font-weight-bold py-3 mb-4">
+        <div className="container light-style flex-grow-1 container-p-y">
+            <h4 className="font-weight-bold py-3 mb-4">
                 Configurar Perfil
             </h4>
-            <div class="card overflow-hidden">
-                <div class="row no-gutters row-bordered row-border-light">
-                    <div class="col-md-3 pt-0">
-                        <div class="list-group list-group-flush account-settings-links">
-                            <a class="list-group-item list-group-item-action active" data-toggle="list"
+            <div className="card card-profile overflow-hidden">
+                <div className="row no-gutters row-bordered row-border-light">
+                    <div className="col-md-3 pt-0">
+                        <div className="list-group list-group-flush account-settings-links">
+                            <a className="list-group-item list-group-item-action active" data-toggle="list"
                                 href="#account-general">General</a>
-                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                            <a className="list-group-item list-group-item-action" data-toggle="list"
                                 href="#account-info">Información</a>
-                            <a class="list-group-item list-group-item-action" data-toggle="list"
+                            <a className="list-group-item list-group-item-action" data-toggle="list"
                                 href="#account-change-password">Cambiar contraseña</a>
 
                         </div>
                     </div>
-                    <div class="col-md-9">
-                        <div class="tab-content">
-                            <div class="tab-pane fade active show" id="account-general">
-                                <div class="card-body media align-items-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt
-                                        class="d-block ui-w-80" />
-                                    <div class="media-body ml-4">
-                                        <label class="btn btn-outline-primary">
+                    <div className="col-md-9">
+                        <div className="tab-content">
+                            <div className="tab-pane fade active show" id="account-general">
+                                <div className="card-body media align-items-center">
+                                    <img src="images/notperfil.png" alt
+                                        className="d-block ui-w-80" />
+                                    <div className="media-body ml-4">
+                                        <label className="btn btn-outline-primary">
                                             Subir foto de perfil
-                                            <input type="file" class="account-settings-fileinput" />
+                                            <input type="file" className="account-settings-fileinput" />
                                         </label> &nbsp;
-                                        <button type="button" class="btn btn-default md-btn-flat">Reset</button>
-                                        <div class="text-light small mt-1">JPG/PNG</div>
+                                        <button type="button" className="btn btn-default md-btn-flat">Reset</button>
+                                        <div className="text-light small mt-1">JPG/PNG</div>
                                     </div>
                                 </div>
-                                <hr class="border-light m-0" />
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" value="Nelle Maxwell" />
+                                <hr className="border-light m-0" />
+                                <div className="card-body">
+                                    <div className="form-group">
+                                        <label className="form-label">Nombre</label>
+                                        <input type="text" className="form-control" value="Nelle Maxwell" />
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Email</label>
-                                        <input type="text" class="form-control mb-1" value="nmaxwell@mail.com" />
-                                        {/* <div class="alert alert-warning mt-3">
-                                            Tu email no ha sido confirmado, chequea tu casilla de correo.<br />
-                                            <a href="javascript:void(0)">Reenviar confirmación</a>
-                                        </div> */}
+                                    <h4 className="my-3 font-weight-bold">Contacto</h4>
+                                    <div className="form-group">
+                                        <label className="form-label">Email</label>
+                                        <input type="text" className="form-control mb-1" value="nmaxwell@mail.com" />
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Titulo</label>
-                                        <input type="text" class="form-control" />
+                                    <div className="form-group">
+                                        <label className="form-label">Teléfono</label>
+                                        <input type="text" className="form-control" value="+54 2324 123254" />
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div className="tab-pane fade" id="account-change-password">
+                                <div className="card-body pb-2">
+                                    <div className="form-group">
+                                        <label className="form-label">Contraseña actual</label>
+                                        <input type="password" className="form-control" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="form-label">Nueva contraseña</label>
+                                        <input type="password" className="form-control" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label className="form-label">Repetir contraseña</label>
+                                        <input type="password" className="form-control" />
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="account-change-password">
-                                <div class="card-body pb-2">
-                                    <div class="form-group">
-                                        <label class="form-label">Contraseña actual</label>
-                                        <input type="password" class="form-control" />
+                            <div className="tab-pane fade" id="account-info">
+                                <div className="card-body pb-2">
+                                    <div className="form-group">
+                                        <label className="form-label">Titulo</label>
+                                        <input type="text" className="form-control" />
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Nueva contraseña</label>
-                                        <input type="password" class="form-control" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Repetir contraseña</label>
-                                        <input type="password" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="account-info">
-                                <div class="card-body pb-2">
-                                    <div class="form-group">
-                                        <label class="form-label">Experiencia</label>
-                                        <textarea class="form-control"
+                                    <div className="form-group">
+                                        <label className="form-label">Experiencia</label>
+                                        <textarea className="form-control"
                                             rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Nacimiento</label>
-                                        <input type="text" class="form-control" value="26/05/2003" />
+                                    <div className="form-group">
+                                        <label className="form-label">Nacimiento</label>
+                                        <input type="text" className="form-control" value="26/05/2003" />
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Country</label>
-                                        <select class="custom-select">
+                                    <div className="form-group">
+                                        <label className="form-label">Country</label>
+                                        <select className="custom-select">
                                             <option>USA</option>
                                             <option selected>Canada</option>
                                             <option>UK</option>
@@ -94,16 +97,12 @@ function Profile() {
                                         </select>
                                     </div>
                                 </div>
-                                <hr class="border-light m-0" />
-                                <div class="card-body pb-2">
-                                    <h6 class="mb-4 font-weight-bold">Contacto</h6>
-                                    <div class="form-group">
-                                        <label class="form-label">Phone</label>
-                                        <input type="text" class="form-control" value="+0 (123) 456 7891" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Website</label>
-                                        <input type="text" class="form-control" value />
+                                <hr className="border-light m-0" />
+                                <div className="card-body pb-2">
+
+                                    <div className="form-group">
+                                        <label className="form-label">Website</label>
+                                        <input type="text" className="form-control" value />
                                     </div>
                                 </div>
                             </div>
@@ -112,9 +111,9 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div class="text-right mt-3">
-                <button type="button" class="btn btn-primary">Aplicar cambios</button>&nbsp;
-                <button type="button" class="btn btn-default">Cancelar</button>
+            <div className="text-right mt-3">
+                <button type="button" className="btn btn-primary">Aplicar cambios</button>&nbsp;
+                <button type="button" className="btn btn-default">Cancelar</button>
             </div>
         </div>
     )

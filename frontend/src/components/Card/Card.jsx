@@ -1,6 +1,8 @@
 import React from "react"
 import "./Card.css"
 import { Link } from "react-router-dom"
+import ModalContact from "../modal/ModalContact"
+import ModalComment from "../modal/ModalComment"
 
 
 
@@ -12,7 +14,7 @@ export default function Card(props) {
     return (
 
 
-        <div className="card">
+        <div className="card card-class">
 
             {/* PROFESSOR IMAGE */}
 
@@ -123,52 +125,12 @@ export default function Card(props) {
                                 type="button"
                                 class="btn btn-primary"
                                 data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
+                                data-bs-target="#exampleModalContact"
                                 data-bs-whatever="@getbootstrap">
-                                Contratar</button>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                        <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Contratar</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                            <div class="modal-body">
-                                                <form>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Nombre:</label>
-                                                    <input type="text" class="form-control" id="recipient-name"></input>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Telefono:</label>
-                                                    <input type="tel" class="form-control" id="recipient-name"></input>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">email:</label>
-                                                    <input type="email" class="form-control" id="recipient-name"></input>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Rango de preferencia para comunicarse:</label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                    <option selected>Rango horario</option>
-                                                    <option value="1">08:00 - 12:00</option>
-                                                    <option value="2">13:00 - 16:00</option>
-                                                    <option value="3">17:00 - 21:00</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="message-text" class="col-form-label">Mensaje:</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
-                                                </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                <button type="button" class="btn btn-primary">Enviar</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                </div>
+                                Contratar
+                                <ModalContact />
+                            </button>
+
                         </div>
                     </div>
 
@@ -206,9 +168,9 @@ export default function Card(props) {
                             <button href="#contractForm" className="btn btn-primary w-100"
                                 type="button"
                                 data-bs-toggle="modal"
-                                data-bs-target="#exampleModal"
-                                data-bs-whatever="@getbootstrap">Contratar</button>
-                                
+                                data-bs-target="#exampleModalContact"
+                                data-bs-whatever="@getbootstrap">Contratar
+                                <ModalContact /></button>
 
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
@@ -230,44 +192,15 @@ export default function Card(props) {
                 </div>
                 <div className="col-md-2 reviews">
                     {props.last_review ? <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary">Opiniones</Link>
-                        :<button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalContact" data-bs-whatever="@getbootstrap">Agregar</button>}
-                                <div class="modal fade" id="exampleModalContact" tabindex="-1" aria-labelledby="exampleModalContactLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalContactLabel">Calificar</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                        <div class="starwidget">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        </div>
-                                        <div class="mb-3">
-                                        <label for="validationServer01" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="validationServer01" required></input>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label">Email:</label>
-                                            <input type="email" class="form-control" id="recipient-name" required></input>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="message-text" class="col-form-label">Comentario:</label>
-                                            <textarea class="form-control" id="message-text"></textarea>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary">Enviar</button>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
+                        : <button type="button"
+                            className="btn btn-outline-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModalComment"
+                            data-bs-whatever="@getbootstrap">
+                            Agregar
+                            <ModalComment />
+                        </button>}
+
                 </div>
             </div>
         </div >
