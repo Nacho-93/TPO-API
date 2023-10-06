@@ -167,6 +167,11 @@
           "name": "Juanito Perez",
           "date": "2021-05-15",
           "status": [false, false, false, true]
+        },
+        {
+          "name": "Juanito Perez",
+          "date": "2021-05-15",
+          "status": [false, false, true, false]
         }
       ],
         "course_public": false,

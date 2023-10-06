@@ -9,7 +9,8 @@ import Card from '../../Card/Card';
 function HistoryOfClasses() {
     const { tutors } = useTutorContext();
     const { isLoggedIn, userId, login, logout } = useUserContext();
-
+    const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
+    const colors = ["warning", "success", "primary", "secondary"]
     // "active_classes": [{
     //     "name": "Lorenzo Perez",
     //     "date": "2021-05-15",
@@ -23,40 +24,61 @@ function HistoryOfClasses() {
                 }
                 return course.active_classes.map((active_class) => {
 
+                    const state = states[active_class.status.indexOf(true)];
+                    const color = colors[active_class.status.indexOf(true)];
+
                     return (
                         <>
                             <div className='' style={{ maxWidth: "700px", margin: "0 auto" }}>
                                 <div className='card mb-3 mt-5'>
                                     <div class="card-body">
 
-                                        <div className="name-rating d-flex align-items-center">
+                                        <div className="name-rating d-flex justify-content-between align-items-center">
                                             <h3 class="card-title p-1">Clase de{" "}{course.title}</h3>
                                             <h6>{active_class.date}</h6>
 
                                         </div>
 
-                                        <p class="card-text"><i class="fa-solid fa-quote-left fa-quotes"></i>{" "}
-                                            asdasdsasad {" "}
-                                            <i class="fa-solid fa-quote-right fa-quotes"></i></p>
+                                        <p class="card-text">
+                                            Duracion: {course.frequency[2] + ' ' + course.frequency[1] + "s"}</p>
+
                                     </div>
-                                    <div class="card-footer bg-transparent border-success">
-                                        <h3 className='btn btn-primary'>{course.state}</h3>
+                                    <div
+                                        className="card-footer d-flex bg-transparent 
+                                    border-dark justify-content-between align-items-center">
+                                        <h5>
+                                            Alumno: {active_class.name}
+                                        </h5>
+
+                                        <h3
+                                            className={`btn btn-${color}`}
+                                            style={{ border: 'none', cursor: 'default' }}>
+                                            {state}</h3>
                                     </div>
                                 </div>
 
-                                <div className='d-flex justify-content-end align-items-end mb-5' style={{ maxWidth: "720px", margin: "0 auto" }}>
-                                    <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#AgregarModal" data-bs-whatever="@getbootstrap">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </button>
+                                <div className='d-flex justify-content-end align-items-end mb-5'>
+                                    <div className='d-flex justify-content-end align-items-end mb-5'>
 
-                                    <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#OcultarModal" >
+                                        {active_class.status[0] && (
+                                            <button type="button" className="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                                <i className="fa-solid fa-check"></i>
+                                            </button>
+                                        )}
+                                        {active_class.status[1] &&
+                                            (
+                                                <button type="button" className="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                                    <i class="fa-solid fa-flag-checkered"></i>
+                                                </button>
+                                            )}
+                                        {(active_class.status[0] || active_class.status[1]) && <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
+                                            <i className="fa-solid fa-x"></i>
+                                        </button>}
 
-                                    </button>
 
 
-                                    <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
-                                        <i className="fa-solid fa-x"></i>
-                                    </button>
+                                    </div>
+
 
                                 </div>
                             </div>
