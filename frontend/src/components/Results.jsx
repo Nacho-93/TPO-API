@@ -15,7 +15,7 @@ function Results() {
                 let rating_amount = false;
                 if (course.reviews.length > 0) {
                     last_review = course.reviews[course.reviews.length - 1].comment;
-                    rating_amount = [course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length, course.reviews.length]
+                    rating_amount = [course.reviews.reduce((sum, review) => Math.floor(sum + review.rating, 0) / course.reviews.length), course.reviews.length]
                 }
                 return (
                     <Card

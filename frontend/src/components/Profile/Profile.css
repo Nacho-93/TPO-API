@@ -1,5 +1,10 @@
 
 
+.red-link:hover {
+    background-color: rgba(243, 24, 24, 0.7)
+  }
+  
+
 
 .ui-w-80 {
     width : 80px !important;

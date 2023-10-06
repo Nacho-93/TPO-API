@@ -9,6 +9,7 @@ const data = [
             "description": "¡Hola! Soy un tutor dedicado y experimentado en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
             "email": "juan.perez@example.com",
             "phone": "123-456-7890",
+            "degree": "Ingeniero en Sistemas",
             "courses": [
               {
                 "title": "Matemáticas",
@@ -28,6 +29,7 @@ const data = [
             "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur odio odit id repellendus corporis magni officiis corrupti culpa dicta totam dolorem, nihil, ratione reprehenderit consequatur, voluptas quia officia! Reiciendis tempore nostrum ipsum ab, corporis voluptatum velit eius incidunt labore quisquam hic possimus atque id veniam nisi sequi, corrupti molestiae eos soluta suscipit architecto! Placeat alias animi consequuntur soluta nemo. Accusantium, vero. Quos non nulla aperiam consectetur laboriosam eligendi, explicabo dolore quibusdam.",
             "email": "maria.gonzalez@example.com",
             "phone": "987-654-3210",
+            "degree": "Ingeniero en Sistemas",
             "courses": [
               {
                 "title": "Programación Web",
@@ -60,7 +62,7 @@ const data = [
             "description": "¡Hola! Soy un tutor dedicado y experimentado en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
             "email": "carlos.lopez@example.com",
             "phone": "555-123-4567",
-            
+            "degree": "Ingeniero en Sistemas",
             "courses": [
               {
                 "title": "Química",
@@ -85,6 +87,7 @@ const data = [
             "description": "¡Hola! Soy una tutora dedicada y experimentada en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
             "email": "laura.rodriguez@example.com",
             "phone": "111-222-3333",
+            "degree": "Ingeniero en Sistemas",
             "courses": [
               {
                 "title": "Física",
@@ -109,6 +112,7 @@ const data = [
             "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur odio odit id repellendus corporis magni officiis corrupti culpa dicta totam dolorem, nihil, ratione reprehenderit consequatur, voluptas quia officia! Reiciendis tempore nostrum ipsum ab, corporis voluptatum velit eius incidunt labore quisquam hic possimus atque id veniam nisi sequi, corrupti molestiae eos soluta suscipit architecto! Placeat alias animi consequuntur soluta nemo. Accusantium, vero. Quos non nulla aperiam consectetur laboriosam eligendi, explicabo dolore quibusdam.",
             "email": "pedro.martinez@example.com",
             "phone": "999-888-7777",
+            "degree": "Ingeniero en Sistemas",
             "courses": [
               {
                 "title": "Inglés",
