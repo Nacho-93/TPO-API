@@ -10,11 +10,28 @@
     "degree": "Ingeniero en Sistemas",
     "courses": [
       {
+        "id": 1000,
         "title": "Matemáticas",
         "price_hour": "3050",
         "info_course": [true, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
         "frequency": [2, "semana"],
+        "active_classes": [{
+          "name": "Lorenzo Perez",
+          "date": "2021-05-15",
+          "status": [false, true, false, false]
+        },
+        {
+          "name": "Armando Perez",
+          "date": "2021-05-15",
+          "status": [true, false, false, false]
+        },
+        {
+          "name": "Juanito Perez",
+          "date": "2021-05-15",
+          "status": [false, false, false, true]
+        }
+      ],
         "reviews": []
       }
     ]
@@ -30,11 +47,28 @@
     "degree": "Ingeniero en Sistemas",
     "courses": [
       {
+        "id": 1001,
         "title": "Programación Web",
         "price_hour": "2500",
         "info_course": [true, false, true, false],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
         "frequency": [3, "semana"],
+        "active_classes": [{
+          "name": "Lorenzo Perez",
+          "date": "2021-05-15",
+          "status": [false, true, false, false]
+        },
+        {
+          "name": "Armando Perez",
+          "date": "2021-05-15",
+          "status": [true, false, false, false]
+        },
+        {
+          "name": "Juanito Perez",
+          "date": "2021-05-15",
+          "status": [false, false, false, true]
+        }
+      ],
         "reviews": [
           {
             "comment": "Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
@@ -63,11 +97,28 @@
     "degree": "Ingeniero en Sistemas",
     "courses": [
       {
+        "id": 1002,
         "title": "Química",
         "price_hour": "2800",
         "info_course": [true, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.", 
         "frequency": [1, "mes"],
+        "active_classes": [{
+          "name": "Lorenzo Perez",
+          "date": "2021-05-15",
+          "status": [false, true, false, false]
+        },
+        {
+          "name": "Armando Perez",
+          "date": "2021-05-15",
+          "status": [true, false, false, false]
+        },
+        {
+          "name": "Juanito Perez",
+          "date": "2021-05-15",
+          "status": [false, false, false, true]
+        }
+      ],
         "reviews": [{
             "comment": "Me distraje por la belleza del carlitos",
             "user_name": "Javier",
@@ -88,6 +139,7 @@
     "degree": "Ingeniero en Sistemas",
     "courses": [
       {
+        "id": 1003,
         "title": "Física",
         "price_hour": "2200",
         "info_course": [true, true, true, false],
@@ -113,6 +165,7 @@
     "degree": "Ingeniero en Sistemas",
     "courses": [
       {
+        "id": 1004,
         "title": "Inglés",
         "price_hour": "4000",
         "info_course": [true, false, false, true],
@@ -149,6 +202,7 @@
     "degree": "Licenciada en Biología",
     "courses": [
       {
+        "id": 1005,
         "title": "Biología",
         "price_hour": "2800",
         "info_course": [true, false, true, false],
@@ -176,6 +230,7 @@
         ]
       },
       {
+        "id": 1006,
         "title": "Química",
         "price_hour": "2500",
         "info_course": [true, true, false, false],
@@ -215,6 +270,7 @@
     "degree": "Licenciado en Matemáticas",
     "courses": [
       {
+        "id": 1007,
         "title": "Álgebra",
         "price_hour": "2200",
         "info_course": [true, false, true, true],
@@ -242,6 +298,7 @@
         ]
       },
       {
+        "id": 1008,
         "title": "Cálculo",
         "price_hour": "2600",
         "info_course": [true, true, true, false],

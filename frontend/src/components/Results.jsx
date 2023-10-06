@@ -15,7 +15,7 @@ function Results() {
                 let rating_amount = false;
                 if (course.reviews.length > 0) {
                     last_review = course.reviews[course.reviews.length - 1].comment;
-                    rating_amount = [Math.floor(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length, 2), course.reviews.length]
+                    rating_amount = [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length]
                 }
                 return (
                     <Card
@@ -31,6 +31,7 @@ function Results() {
                         last_review={last_review ? last_review : false}
                         info={course.info_course}                       // [individual, group, in_person, online] BOOLEAN
                         rating_amount={rating_amount}
+                        course_id={course.id}
                     />
                 )
             }

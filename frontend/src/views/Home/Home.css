@@ -254,7 +254,7 @@
   }
   
   .services .card a {
-    color: #001973;
+    color: #e0e2e9;
     transition: 0.3;
   }
   
@@ -372,4 +372,6 @@
     border-radius: 5px;
   }
 
- 
+ /* .change-bg {
+  background: linear-gradient(rgba(62, 64, 68, 0.5), rgba(82, 84, 87, 0.5)), url("../../assets/fondo-gris.png") center center;
+ } */

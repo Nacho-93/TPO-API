@@ -174,7 +174,7 @@ export default function Card(props) {
 
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
-                            <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary w-100">Opiniones</Link>
+                            <Link to={`/categorias/clase-${props.title}-opiniones`} className="btn btn-outline-secondary w-100">Opiniones</Link>
                         </div>
 
                     </div>
@@ -192,7 +192,7 @@ export default function Card(props) {
                         : <p className="card-text text-muted">{" "}No existen reseñas para este curso... ¡Sé el primero en dejar una!</p>}
                 </div>
                 <div className="col-md-2 reviews">
-                    {props.last_review ? <Link to="/claseMatematicaApellido-opiniones" className="btn btn-outline-secondary">Opiniones</Link>
+                    {props.last_review ? <Link to={`/categorias/clase-${props.title}-${props.course_id}-${props.id}-opiniones`} className="btn btn-outline-secondary">Opiniones</Link>
                         : <button type="button"
                             className="btn btn-outline-secondary"
                             data-bs-toggle="modal"

@@ -39,12 +39,16 @@ function Contact() {
 
     return (
         <>
-            <div className="breadcrumbs" data-aos="fade-in">
-                <div className="container">
-                    <h2>Contacto</h2>
-                    <p>Estamos aquí para responder a tus preguntas y proporcionarte la información que necesitas. No dudes en ponerte en contacto con nosotros.</p>
+            <section id="call-to-action" class="action-diferent section-home">
+                <div class="container" data-aos="zoom-out">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <h3>Contacto</h3>
+                            <p>Estamos aquí para responder a tus preguntas y proporcionarte la información que necesitas. No dudes en ponerte en contacto con nosotros.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
             <section id="contact" className="contact-section">
 
                 <div className="container" data-aos="fade-up">

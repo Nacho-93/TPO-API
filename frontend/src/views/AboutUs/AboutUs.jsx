@@ -5,12 +5,16 @@ function AboutUs() {
 
     return (
         <>
-            <div className="breadcrumbs" data-aos="fade-in">
-                <div className="container">
-                    <h2>Sobre Nosotros</h2>
-                    <p>Somos un equipo comprometido con la excelencia educativa y estamos aquí para ayudarte a alcanzar tus objetivos de aprendizaje. En Azerty estamos orgullosos de proporcionar servicios de clases particulares de alta calidad durante 2 años.</p>
+            <section id="call-to-action" class="action-diferent section-home">
+                <div class="container" data-aos="zoom-out">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <h3>Sobre Nosotros</h3>
+                            <p>Somos un equipo comprometido con la excelencia educativa y estamos aquí para ayudarte a alcanzar tus objetivos de aprendizaje. En Azerty estamos orgullosos de proporcionar servicios de clases particulares de alta calidad durante 2 años.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
             <section id="about" className="about py-5">
                 <div className="container" data-aos="fade-up">
                     <div className="row">

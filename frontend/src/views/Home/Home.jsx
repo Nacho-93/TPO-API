@@ -7,6 +7,7 @@ import Matematica from "../../assets/Matematica.jpg";
 import Quimica from "../../assets/Quimica.jpg";
 import Fisica from "../../assets/Fisica.jpg";
 import Violin from "../../assets/VIOLIN.jpg";
+import f from "../../assets/fondo-gris.png";
 import { Link } from "react-router-dom"
 
 
@@ -37,7 +38,7 @@ function Home() {
 
             <main id="main">
 
-                <section id="service" class="services pt-0 section-home " >
+                <section id="service" class="services pt-0 section-home change-bg" >
                     <div class="container" data-aos="fade-up">
 
                         <div class="section-header">
@@ -49,56 +50,56 @@ function Home() {
                         <div class="row gy-4">
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Quimica} alt="" class="img-fluid"  />
+                                        <img src={Quimica} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Quimica</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Quimica</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
                                         <img src={Guitarra} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Guitarra</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Guitarra</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
                                         <img src={Matematica} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Matematica</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Matematica</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
                                         <img src={Violin} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Violin</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Violin</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
                                         <img src={Ingles} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Ingles</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Ingles</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                                <div class="card">
+                                <div class="card bg-dark text-white">
                                     <div class="card-img">
                                         <img src={Fisica} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Fisica</a></h3>
+                                    <h3><Link to="/categorias" class="stretched-link">Fisica</Link></h3>
                                 </div>
                             </div>
 
@@ -115,7 +116,7 @@ function Home() {
                             <div class="col-lg-8 text-center">
                                 <h3>Contactanos</h3>
                                 <p> No dudes en llamar ante cualquier consulta!</p>
-                                <a class="cta-btn" href="#">Contacto</a>
+                                <Link class="cta-btn" to="/contacto">Contacto</Link>
                             </div>
                         </div>
 
@@ -203,7 +204,7 @@ function Home() {
                                         </h3>
                                         <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                               Para recibir un reembolso la clase debe ser cancelada con 24 horas de antelacion, en caso contrario no se devolvera el dinero.
+                                                Para recibir un reembolso la clase debe ser cancelada con 24 horas de antelacion, en caso contrario no se devolvera el dinero.
                                             </div>
                                         </div>
                                     </div>

@@ -11,6 +11,7 @@ import AboutUs from "./views/AboutUs/AboutUs";
 import Contact from "./views/Contact/Contact";
 import Profile from "./components/Profile/Profile";
 import Footer from "./views/Footer/Footer";
+import Opinions from "./components/Card/Opinions/Opinions";
 
 
 
@@ -28,7 +29,7 @@ export default function App() {
         <Route path="/recuperarContraseña" element={<RecuperarContraseña />} />
         <Route path="/categorias">
           <Route index element={<Results />} />
-          <Route path=":id" element={<Results />} />
+          <Route path=":id" element={<Opinions />} />
         </Route>
         <Route path="/sobreNosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
