@@ -130,7 +130,7 @@ export default function Card(props) {
                                 Contratar
 
                             </button>
-                            <ModalContact />
+                            
 
                         </div>
                     </div>
