@@ -1,10 +1,15 @@
 import React from 'react'
 import "./Home.css"
-import Fondo from "../../assets/background-for-school.jpg"
-import ModalEliminar from '../../components/modal/ModalEliminar';
-import ModalAgregar from '../../components/modal/ModalAgregar';
-import ModalEsconder from '../../components/modal/ModalEsconder';
 import Foto from "../../assets/background-for-school.jpg";
+import Guitarra from "../../assets/guitarra.jpg";
+import Ingles from "../../assets/ingles.jpg";
+import Matematica from "../../assets/Matematica.jpg";
+import Quimica from "../../assets/Quimica.jpg";
+import Fisica from "../../assets/Fisica.jpg";
+import Violin from "../../assets/VIOLIN.jpg";
+import fotito from "../../assets/fondo-dispositivo-electronico-computadora-portatil-mesa_687553-4601.avif"
+
+
 
 
 
@@ -14,50 +19,17 @@ function Home() {
             <div class="container">
                 <div class="row gy-4 d-flex justify-content-between">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                        <h2 data-aos="fade-up">Your Lightning Fast Delivery Partner</h2>
-                        <p data-aos="fade-up" data-aos-delay="100">Facere distinctio molestiae nisi fugit tenetur repellat non praesentium nesciunt optio quis sit odio nemo quisquam. eius quos reiciendis eum vel eum voluptatem eum maiores eaque id optio ullam occaecati odio est possimus vel reprehenderit</p>
+                        <h2 data-aos="fade-up">Aprende y enseña con nosotros!</h2>
+                        <p data-aos="fade-up" data-aos-delay="100">Busca la clase que necesites, comunicate con el profesor y en poco tiempo ya estas estudiando lo que te gusta!</p>
 
                         <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-                            <input type="text" class="form-control" placeholder="ZIP code or CitY"></input>
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <input type="text" class="form-control" placeholder="Buscar clase"></input>
+                            <button type="submit" class="btn btn-secondary">Buscar</button>
                         </form>
 
-                        <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
-
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Clients</p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Projects</p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Support</p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-6">
-                                <div class="stats-item text-center w-100 h-100">
-                                    <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-                                    <p>Workers</p>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
 
-                    <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                        <img src={Foto} class="img-fluid mb-3 mb-lg-0" alt="" />
-                    </div>
+
 
                 </div>
             </div>
@@ -65,7 +37,7 @@ function Home() {
 
             <main id="main">
 
-                <section id="service" class="services pt-0 section-home">
+                <section id="service" class="services pt-0 section-home " >
                     <div class="container" data-aos="fade-up">
 
                         <div class="section-header">
@@ -79,60 +51,54 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Quimica} alt="" class="img-fluid"  />
                                     </div>
                                     <h3><a href="service-details.html" class="stretched-link">Quimica</a></h3>
-                                    <p>Cumque eos in qui numquam. Aut aspernatur perferendis sed atque quia voluptas quisquam repellendus temporibus itaqueofficiis odit</p>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Guitarra} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Musica</a></h3>
-                                    <p>Asperiores provident dolor accusamus pariatur dolore nam id audantium ut et iure incidunt molestiae dolor ipsam ducimus occaecati nisi</p>
+                                    <h3><a href="service-details.html" class="stretched-link">Guitarra</a></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Matematica} alt="" class="img-fluid" />
                                     </div>
                                     <h3><a href="service-details.html" class="stretched-link">Matematica</a></h3>
-                                    <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Violin} alt="" class="img-fluid" />
                                     </div>
-                                    <h3><a href="service-details.html" class="stretched-link">Portuges</a></h3>
-                                    <p>Dicta quam similique quia architecto eos nisi aut ratione aut ipsum reiciendis sit doloremque oluptatem aut et molestiae ut et nihil</p>
+                                    <h3><a href="service-details.html" class="stretched-link">Violin</a></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Ingles} alt="" class="img-fluid" />
                                     </div>
                                     <h3><a href="service-details.html" class="stretched-link">Ingles</a></h3>
-                                    <p>Illo consequuntur quisquam delectus praesentium modi dignissimos facere vel cum onsequuntur maiores beatae consequatur magni voluptates</p>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                                 <div class="card">
                                     <div class="card-img">
-                                        <img src={Foto} alt="" class="img-fluid" />
+                                        <img src={Fisica} alt="" class="img-fluid" />
                                     </div>
                                     <h3><a href="service-details.html" class="stretched-link">Fisica</a></h3>
-                                    <p>Quas assumenda non occaecati molestiae. In aut earum sed natus eatae in vero. Ab modi quisquam aut nostrum unde et qui est non quo nulla</p>
                                 </div>
                             </div>
 
@@ -161,8 +127,8 @@ function Home() {
                     <div class="container" data-aos="fade-up">
 
                         <div class="section-header">
-                            <span>Frequently Asked Questions</span>
-                            <h2>Frequently Asked Questions</h2>
+                            <span>Preguntas frecuentes</span>
+                            <h2>Preguntas frecuentes</h2>
 
                         </div>
 
@@ -175,12 +141,12 @@ function Home() {
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Non consectetur a erat nam at lectus urna duis?
+                                                ¿Cómo puedo encontrar un profesor adecuado para mis necesidades?
                                             </button>
                                         </h3>
                                         <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                                Busca la materia que necesites y revisa todos los profesores que ofrecen clases, las opiniones que otros alumnos dieron y su calificacion.
                                             </div>
                                         </div>
                                     </div>
@@ -189,12 +155,12 @@ function Home() {
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                                                ¿Cómo puedo programar una clase particular?
                                             </button>
                                         </h3>
                                         <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                                selecciona la clase, contactate con el profesor y coordina un dia y horario para que puedas disfrutar de tu clase
                                             </div>
                                         </div>
                                     </div>
@@ -203,12 +169,12 @@ function Home() {
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                                                ¿Se ofrecen descuentos o paquetes especiales para la contratación de múltiples clases?
                                             </button>
                                         </h3>
                                         <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                                No, la pagina no cuenta con un servicio de descuentos o paquetes por cantidad de clases.
                                             </div>
                                         </div>
                                     </div>
@@ -217,13 +183,13 @@ function Home() {
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                                                ¿Los profesores ofrecen clases en línea o presenciales?
                                             </button>
                                         </h3>
                                         <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                                Cada profesor elige de que forma dar la clase, este detalle lo encontraras en la descripcion de la clase.
                                             </div>
                                         </div>
                                     </div>
@@ -232,12 +198,12 @@ function Home() {
                                         <h3 class="accordion-header">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
                                                 <i class="bi bi-question-circle question-icon"></i>
-                                                Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                                                ¿Cuál es la política de cancelación y reembolso?
                                             </button>
                                         </h3>
                                         <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                                               Para recibir un reembolso la clase debe ser cancelada con 24 horas de antelacion, en caso contrario no se devolvera el dinero.
                                             </div>
                                         </div>
                                     </div>
