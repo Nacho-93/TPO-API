@@ -19,19 +19,11 @@ function Results() {
                 }
                 return (
                     <Card
-                        name={professor.name}
-                        lastName={professor.lastName}
-                        // description={professor.description}   CAMBIAMOS POR course_description
-                        image_profile={professor.image_profile}
-                        frequency={course.frequency}                 // [cantidad, unidad] ej: [1, "semana"]
-                        id={professor.id}
-                        title={course.title}                            // "fisica"
-                        price_hour={course.price_hour}
-                        course_description={course.course_description}
-                        last_review={last_review ? last_review : false}
-                        info={course.info_course}                       // [individual, group, in_person, online] BOOLEAN
+                        tutor={professor}
+                        course={course}
+                        last_review={last_review}
                         rating_amount={rating_amount}
-                        course_id={course.id}
+                        key={course.id}
                     />
                 )
             }

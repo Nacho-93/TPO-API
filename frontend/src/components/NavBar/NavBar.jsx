@@ -47,7 +47,7 @@ export default function NavBar(props) {
   }
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgba(30,30,30, 0.9)" }}>
+    <nav class="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "rgb(30,30,30)" }}>
       <div class="container">
 
         {/* LOGO */}

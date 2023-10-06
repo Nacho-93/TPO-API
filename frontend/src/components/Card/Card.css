@@ -1,7 +1,7 @@
 .card-class {
     padding: 5px;
     max-width: 730px;
-    max-height: 330px;
+    max-height: 360px;
     margin: 30px auto;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
@@ -52,7 +52,7 @@ div {
     font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Lineas a mostrar */
+    -webkit-line-clamp: 6; /* Lineas a mostrar */
     overflow: hidden;
     
 
@@ -109,7 +109,7 @@ div {
     background-color:#eaeaeb;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Lineas a mostrar */
+    -webkit-line-clamp: 2; /* Lineas a mostrar */
     overflow: hidden;
     border-radius: 10px;
     padding: 6px;

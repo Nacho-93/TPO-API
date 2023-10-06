@@ -36,7 +36,6 @@ function Profile() {
                             </a>
                             <Link
                                 className="list-group-item list-group-item-action"
-                                data-toggle="list"
                                 to={`/perfil-profesor/${userId}/clases`}
                             >
                                 Clases
@@ -58,14 +57,14 @@ function Profile() {
                                     <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">
                                         Cambiar contraseña
                                     </a>
-                                    <Link
-                                        className="list-group-item list-group-item-action red-link"
+                                    <button
+                                        className="btn btn-danger"
                                         data-toggle="list"
                                         to={"/"}
                                         onClick={() => logout()}
                                     >
                                         Cerrar sesión
-                                    </Link>
+                                    </button>
                                 </>
                             ) : (
                                 <></>

@@ -4,6 +4,7 @@
     "image_profile": "images/tutor1.jpg",
     "name": "Juan",
     "lastName": "Perez",
+    "hours_experience": 234,
     "description": "¡Hola! Soy un tutor dedicado y experimentado en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
     "email": "juan.perez@example.com",
     "phone": "123-456-7890",
@@ -15,7 +16,7 @@
         "price_hour": "3050",
         "info_course": [true, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
-        "frequency": [2, "semana"],
+        "frequency": [2, "semana", 1],
         "active_classes": [{
           "name": "Lorenzo Perez",
           "date": "2021-05-15",
@@ -41,6 +42,7 @@
     "image_profile": "images/tutor2.jpg",
     "name": "Maria",
     "lastName": "Gonzalez",
+    "hours_experience": 105,
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur odio odit id repellendus corporis magni officiis corrupti culpa dicta totam dolorem, nihil, ratione reprehenderit consequatur, voluptas quia officia! Reiciendis tempore nostrum ipsum ab, corporis voluptatum velit eius incidunt labore quisquam hic possimus atque id veniam nisi sequi, corrupti molestiae eos soluta suscipit architecto! Placeat alias animi consequuntur soluta nemo. Accusantium, vero. Quos non nulla aperiam consectetur laboriosam eligendi, explicabo dolore quibusdam.",
     "email": "maria.gonzalez@example.com",
     "phone": "987-654-3210",
@@ -52,7 +54,7 @@
         "price_hour": "2500",
         "info_course": [true, false, true, false],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
-        "frequency": [3, "semana"],
+        "frequency": [3, "semana", 3],
         "active_classes": [{
           "name": "Lorenzo Perez",
           "date": "2021-05-15",
@@ -74,12 +76,15 @@
             "comment": "Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
             "user_name": "Ana",
             "date": "2021-05-15",
+            "public": true,
             "rating": 4
+            
           },
           {
             "comment": "Excelente profesora loco lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
             "user_name": "Jose",
             "date": "2021-05-15",
+            "public": true,
             "rating": 5
           }
         ]
@@ -91,6 +96,7 @@
     "image_profile": "images/tutor3.jpg",
     "name": "Carlos",
     "lastName": "Lopez",
+    "hours_experience": 209,
     "description": "¡Hola! Soy un tutor dedicado y experimentado en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
     "email": "carlos.lopez@example.com",
     "phone": "555-123-4567",
@@ -102,7 +108,7 @@
         "price_hour": "2800",
         "info_course": [true, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.", 
-        "frequency": [1, "mes"],
+        "frequency": [1, "mes", 2],
         "active_classes": [{
           "name": "Lorenzo Perez",
           "date": "2021-05-15",
@@ -123,6 +129,7 @@
             "comment": "Me distraje por la belleza del carlitos",
             "user_name": "Javier",
             "date": "2023-06-15",
+            "public": true,
             "rating": 5
           }]
       }
@@ -133,6 +140,7 @@
     "image_profile": "images/tutor4.jpg",
     "name": "Laura",
     "lastName": "Rodriguez",
+    "hours_experience": 220,
     "description": "¡Hola! Soy una tutora dedicada y experimentada en programación aquí para ayudarte a dominar el arte de la codificación. Poseo un profundo conocimiento de diversos lenguajes de programación y paradigmas. Mi objetivo es empoderar a estudiantes como tú con el conocimiento y las habilidades necesarias para destacar en el mundo de la programación.",
     "email": "laura.rodriguez@example.com",
     "phone": "111-222-3333",
@@ -144,12 +152,27 @@
         "price_hour": "2200",
         "info_course": [true, true, true, false],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
-        "frequency": [1, "semana"],
+        "frequency": [1, "semana", 4],
         "reviews": [{
             "comment": "Que buena clase!",
             "user_name": "Miryam",
             "date": "2023-06-15",
+            "public": true,
             "rating": 5
+          },
+          {
+            "comment": "No me gusto la clase",
+            "user_name": "Lopez",
+            "date": "2023-06-15",
+            "public": false,
+            "rating": 2
+          },
+          {
+            "comment": "No me gusto la clase",
+            "user_name": "Juan",
+            "date": "2023-06-15",
+            "public": false,
+            "rating": 1
           }]
       }
     ]
@@ -159,6 +182,7 @@
     "image_profile": "images/tutor5.jpg",
     "name": "Pedro",
     "lastName": "Martinez",
+    "hours_experience": 317,
     "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur odio odit id repellendus corporis magni officiis corrupti culpa dicta totam dolorem, nihil, ratione reprehenderit consequatur, voluptas quia officia! Reiciendis tempore nostrum ipsum ab, corporis voluptatum velit eius incidunt labore quisquam hic possimus atque id veniam nisi sequi, corrupti molestiae eos soluta suscipit architecto! Placeat alias animi consequuntur soluta nemo. Accusantium, vero. Quos non nulla aperiam consectetur laboriosam eligendi, explicabo dolore quibusdam.",
     "email": "pedro.martinez@example.com",
     "phone": "999-888-7777",
@@ -170,12 +194,13 @@
         "price_hour": "4000",
         "info_course": [true, false, false, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.", 
-        "frequency": [2, "semana"],
+        "frequency": [2, "semana", 4],
         "reviews": [
           {
             "comment": "Muy buen profesor",
             "user_name": "Juan",
             "date": "2020-10-10",
+            "public": true,
             "rating": 4
           }
         ]
@@ -185,7 +210,8 @@
         "price_hour": "3500",
         "info_course": [false, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
-        "frequency": [2, "mes"],
+        "frequency": [2, "mes", 4],
+        
         "reviews": []
       }
 
@@ -196,6 +222,7 @@
     "image_profile": "images/tutor2.jpg",
     "name": "Maria",
     "lastName": "Gonzalez",
+    "hours_experience": 93,
     "description": "¡Hola! Soy una tutora apasionada por la ciencia y la educación. Tengo una amplia experiencia en la enseñanza de ciencias naturales y estoy aquí para ayudarte a explorar el fascinante mundo de la biología. Mi objetivo es hacer que el aprendizaje sea divertido y accesible para todos.",
     "email": "maria.gonzalez@example.com",
     "phone": "987-654-3210",
@@ -207,24 +234,27 @@
         "price_hour": "2800",
         "info_course": [true, false, true, false],
         "course_description": "En este emocionante curso de biología, exploraremos los principios fundamentales de la vida. Desde la genética hasta la ecología, te sumergirás en el estudio de los seres vivos y su entorno. Aprenderás a apreciar la biodiversidad y a comprender el impacto de la biología en nuestro mundo.",
-        "frequency": [3, "semana"],
+        "frequency": [3, "semana", 2],
         "reviews": [
           {
             "comment": "Maria es una excelente profesora de biología. Su pasión por el tema es contagiosa y hace que las clases sean muy interesantes.",
             "user_name": "Carlos",
             "date": "2021-06-10",
+            "public": true,
             "rating": 5
           },
           {
             "comment": "Me encanta el enfoque práctico de Maria en las clases. Sus explicaciones son claras y fáciles de entender.",
             "user_name": "Laura",
             "date": "2021-06-12",
+            "public": true,
             "rating": 4
           },
           {
             "comment": "¡Recomendaría a Maria a cualquiera que quiera aprender biología! Es una tutora excepcional.",
             "user_name": "Andrés",
             "date": "2021-06-15",
+            "public": true,
             "rating": 5
           }
         ]
@@ -235,24 +265,27 @@
         "price_hour": "2500",
         "info_course": [true, true, false, false],
         "course_description": "Este curso de química te llevará a un viaje a través de la materia y sus transformaciones. Desde la estructura atómica hasta las reacciones químicas, aprenderás los conceptos fundamentales de la química. ¡Prepárate para experimentos emocionantes!",
-        "frequency": [2, "semana"],
+        "frequency": [2, "semana", 6],
         "reviews": [
           {
             "comment": "Maria hace que la química sea divertida. Sus demostraciones en clase son geniales.",
             "user_name": "Sofía",
             "date": "2021-06-20",
+            "public": true,
             "rating": 4
           },
           {
             "comment": "Excelente tutora de química. Maria tiene un gran conocimiento y lo comparte de manera efectiva.",
             "user_name": "Javier",
             "date": "2021-06-22",
+            "public": true,
             "rating": 5
           },
           {
             "comment": "¡Aprobé mi examen de química gracias a las clases de Maria! Altamente recomendada.",
             "user_name": "Isabel",
             "date": "2021-06-25",
+            "public": true,
             "rating": 5
           }
         ]
@@ -264,6 +297,7 @@
     "image_profile": "images/tutor3.jpg",
     "name": "Carlos",
     "lastName": "Martínez",
+    "hours_experience": 300,
     "description": "¡Hola! Soy un tutor dedicado y experimentado en matemáticas aquí para ayudarte a dominar el arte de los números y las ecuaciones. Mi objetivo es hacer que las matemáticas sean accesibles y emocionantes para todos los estudiantes.",
     "email": "carlos.martinez@example.com",
     "phone": "555-123-4567",
@@ -275,24 +309,27 @@
         "price_hour": "2200",
         "info_course": [true, false, true, true],
         "course_description": "En este curso de álgebra, exploraremos los conceptos fundamentales de las ecuaciones y las funciones. Aprenderás a resolver problemas algebraicos y a aplicar tus habilidades en situaciones del mundo real. ¡Las matemáticas nunca han sido tan emocionantes!",
-        "frequency": [3, "semana"],
+        "frequency": [3, "semana", 5],
         "reviews": [
           {
             "comment": "Carlos es un tutor de álgebra increíble. Sus ejemplos prácticos hacen que sea fácil de entender.",
             "user_name": "Ana",
             "date": "2021-07-05",
+            "public": true,
             "rating": 5
           },
           {
             "comment": "Gracias a las clases de Carlos, finalmente comprendo el álgebra. ¡Recomendado!",
             "user_name": "Juan",
             "date": "2021-07-08",
+            "public": true,
             "rating": 4
           },
           {
             "comment": "Carlos hace que las matemáticas sean divertidas. ¡No puedo esperar para la próxima clase!",
             "user_name": "Laura",
             "date": "2021-07-10",
+            "public": false,
             "rating": 5
           }
         ]
@@ -303,24 +340,28 @@
         "price_hour": "2600",
         "info_course": [true, true, true, false],
         "course_description": "Este emocionante curso de cálculo te llevará a través de las derivadas e integrales. Aprenderás a comprender y resolver problemas de cálculo de manera efectiva. ¡Prepárate para un desafío!",
-        "frequency": [2, "semana"],
+        "frequency": [2, "semana", 8],
         "reviews": [
           {
             "comment": "Carlos es un tutor de cálculo fantástico. Sus explicaciones son claras y concisas.",
             "user_name": "Sofía",
             "date": "2021-07-15",
+            "public": true,
             "rating": 4
+            
           },
           {
             "comment": "Excelente tutor de cálculo. Carlos me ayudó a superar mis dificultades en esta materia.",
             "user_name": "Javier",
             "date": "2021-07-18",
+            "public": false,
             "rating": 5
           },
           {
             "comment": "¡Gracias a Carlos, estoy mejorando mis habilidades de cálculo cada día!",
             "user_name": "Isabel",
             "date": "2021-07-20",
+            "public": false,
             "rating": 5
           }
         ]

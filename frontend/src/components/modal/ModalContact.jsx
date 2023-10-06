@@ -27,7 +27,7 @@ function ModalContact() {
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Rango de preferencia para comunicarse:</label>
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Rango horario</option>
+                                    <option selected disabled>Rango horario</option>
                                     <option value="1">08:00 - 12:00</option>
                                     <option value="2">13:00 - 16:00</option>
                                     <option value="3">17:00 - 21:00</option>

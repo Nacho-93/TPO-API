@@ -3,7 +3,7 @@ import "./Footer.css"
 import { Link } from 'react-router-dom'
 function Footer() {
     return (
-        <footer id="footer">
+        <footer id="footer" categorias>
 
             <div className="footer-top">
                 <div className="container">
@@ -31,10 +31,10 @@ function Footer() {
                         <div className="col-lg-3 col-md-6 footer-links">
                             <h4>Algunos servicios</h4>
                             <ul>
-                                <li><i className="bx bx-chevron-right"></i> <Link to="/">Física</Link></li>
-                                <li><i className="bx bx-chevron-right"></i> <Link to="/">Matemática</Link></li>
-                                <li><i className="bx bx-chevron-right"></i> <Link to="/">Música</Link></li>
-                                <li><i className="bx bx-chevron-right"></i> <Link to="/">Idiomas</Link></li>
+                                <li><i className="bx bx-chevron-right"></i> <Link to="/categorias">Física</Link></li>
+                                <li><i className="bx bx-chevron-right"></i> <Link to="/categorias">Matemática</Link></li>
+                                <li><i className="bx bx-chevron-right"></i> <Link to="/categorias">Música</Link></li>
+                                <li><i className="bx bx-chevron-right"></i> <Link to="/categorias">Idiomas</Link></li>
                             </ul>
                         </div>
 

@@ -3,6 +3,7 @@ import './Opinions.css'
 import { useTutorContext } from '../../../Context/TutorContext'
 import { useLocation } from 'react-router-dom'
 import Opinion from './Opinion';
+import ModalComment from '../../modal/ModalComment';
 
 
 function Opinions() {
@@ -42,8 +43,8 @@ function Opinions() {
                                 data-bs-target="#exampleModalComment"
                                 data-bs-whatever="@getbootstrap">
                                 Agregar
-
                             </button>
+                            <ModalComment />
                         </div>
 
                     </div>

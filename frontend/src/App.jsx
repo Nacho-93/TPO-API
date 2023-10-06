@@ -12,6 +12,8 @@ import Contact from "./views/Contact/Contact";
 import Profile from "./components/Profile/Profile";
 import Footer from "./views/Footer/Footer";
 import Opinions from "./components/Card/Opinions/Opinions";
+import Requests from "./components/Profile/ProffesorViews/Requests";
+import Classes from "./components/Profile/ProffesorViews/Classes";
 
 
 
@@ -34,7 +36,12 @@ export default function App() {
         <Route path="/sobreNosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
 
-        <Route path="/perfil-profesor/:id" element={<Profile />}></Route>
+        <Route path="/perfil-profesor/:id" element={<Profile />} />
+
+        <Route path="/perfil-profesor/:id/solicitudesReseñas" element={<Requests />} />
+        <Route path="/perfil-profesor/:id/clases" element={<Classes />} />
+
+
 
 
 
