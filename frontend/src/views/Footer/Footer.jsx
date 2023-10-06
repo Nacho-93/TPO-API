@@ -3,7 +3,7 @@ import "./Footer.css"
 import { Link } from 'react-router-dom'
 function Footer() {
     return (
-        <footer id="footer" categorias>
+        <footer id="footer">
 
             <div className="footer-top">
                 <div className="container">

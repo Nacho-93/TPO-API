@@ -118,7 +118,7 @@ export default function Card(props) {
                         <h6 className="card-title frequency text-stats">
                             <i class="fa-solid fa-graduation-cap"></i>
                             {" "}
-                            {props.frequency[2]}{" "}semanas
+                            {props.frequency[2]}{" "}semana/s
                         </h6>
                         <h6 className="card-text text-muted frequency text-stats">
                             <i class="fa-solid fa-clock"></i>
@@ -163,7 +163,7 @@ export default function Card(props) {
                                 <h6 className="card-title frequency text-stats">
                                     <i class="fa-solid fa-graduation-cap"></i>
                                     {" "}
-                                    {props.frequency[2]}{" "}semanas
+                                    {props.frequency[2]}{" "}semana/s
                                 </h6>
                             </div>
                         </div>

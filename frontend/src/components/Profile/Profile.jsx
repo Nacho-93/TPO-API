@@ -8,11 +8,11 @@ import { useLocation } from 'react-router-dom'
 function Profile() {
     const { tutors } = useTutorContext();
     const { isLoggedIn, userId, login, logout } = useUserContext();
-    const location = useLocation().pathname.split("/")[2];
-    const isActual_user = isLoggedIn && userId && (userId === parseInt(location));
-    const tutor = tutors[parseInt(location)];
+    const user_id_byLocation = parseInt(useLocation().pathname.split("/")[2]);
+    const isActual_user = isLoggedIn && userId && (userId === user_id_byLocation);
+    const tutor = tutors[user_id_byLocation];
 
-    const [professor_image, setProfessor_image] = React.useState(tutor.image_profile);
+    const [professor_image, setProfessor_image] = React.useState(`${tutor.image_profile}${new Date().getTime()}`);
     const [professor_name, setProfessor_name] = React.useState(tutor.name + " " + tutor.lastName);
     const [professor_email, setProfessor_email] = React.useState(tutor.email);
     const [professor_phone, setProfessor_phone] = React.useState(tutor.phone);
@@ -36,9 +36,9 @@ function Profile() {
                             </a>
                             <Link
                                 className="list-group-item list-group-item-action"
-                                to={`/perfil-profesor/${userId}/clases`}
+                                to={`/perfil-profesor/${user_id_byLocation}/clases`}
                             >
-                                Clases
+                                {isActual_user ? 'Mis clases' : `Clases de ${professor_name}`}
                             </Link>
                             {isActual_user ? (
                                 <>
@@ -57,14 +57,14 @@ function Profile() {
                                     <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">
                                         Cambiar contraseña
                                     </a>
-                                    <button
-                                        className="btn btn-danger"
+                                    <Link
+                                        className="list-group-item list-group-item-action red-link"
                                         data-toggle="list"
                                         to={"/"}
                                         onClick={() => logout()}
                                     >
                                         Cerrar sesión
-                                    </button>
+                                    </Link>
                                 </>
                             ) : (
                                 <></>

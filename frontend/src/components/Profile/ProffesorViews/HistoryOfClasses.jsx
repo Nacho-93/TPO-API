@@ -5,6 +5,9 @@ import ModalAgregar from '../../modal/ModalAgregar';
 import ModalEsconder from '../../modal/ModalEsconder';
 import ModalEliminar from '../../modal/ModalEliminar';
 import Card from '../../Card/Card';
+import ModalAceptar from '../../modal/ModalAceptar';
+import ModalRechazar from '../../modal/ModalRechazar';
+import ModalFinalizar from '../../modal/ModalFinalizar';
 
 function HistoryOfClasses() {
     const { tutors } = useTutorContext();
@@ -81,6 +84,9 @@ function HistoryOfClasses() {
 
 
                                 </div>
+                                <ModalAceptar text={`la clase de ${course.title} con ${active_class.name}`} />
+                                <ModalRechazar text={`de ${active_class.name} para la clase de ${course.title}`} />
+                                <ModalFinalizar text={``} />
                             </div>
                         </>
                     )
@@ -99,15 +105,7 @@ function HistoryOfClasses() {
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
-                            <h3>Mis clases</h3>
-                            <button type="button"
-                                className="btn btn-info w-50"
-                                data-bs-toggle="modal"
-                                data-bs-target="#AgregarModal"
-                                data-bs-whatever="@getbootstrap">
-                                Agregar clase
-                            </button>
-
+                            <h3>Historial de clases</h3>
                         </div>
 
                     </div>

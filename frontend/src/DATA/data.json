@@ -111,7 +111,7 @@
         "course_public": true,
         "info_course": [true, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.", 
-        "frequency": [1, "mes", 2],
+        "frequency": [1, "semana", 2],
         "active_classes": [{
           "name": "Lorenzo Perez",
           "date": "2021-05-15",
@@ -273,7 +273,7 @@
         "course_public": true,
         "info_course": [false, true, true, true],
         "course_description":"Este emocionante curso de matemáticas te sumergirá en el mundo de los números, las ecuaciones y la resolución de problemas. Desde álgebra hasta cálculo, explorarás conceptos matemáticos fundamentales y técnicas avanzadas. Aprenderás a abordar desafiantes problemas matemáticos con confianza y a aplicar estas habilidades en la vida cotidiana y en la toma de decisiones.",
-        "frequency": [2, "mes", 4],
+        "frequency": [2, "semana", 4],
         
         "reviews": []
       }

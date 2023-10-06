@@ -5,21 +5,29 @@ import ModalAgregar from '../../modal/ModalAgregar'
 import Card from '../../Card/Card';
 import ModalEliminar from '../../modal/ModalEliminar';
 import ModalEsconder from '../../modal/ModalEsconder';
+import { useLocation } from 'react-router-dom';
 
 
 function Classes() {
     const { tutors } = useTutorContext();
     const { isLoggedIn, userId, login, logout } = useUserContext();
     const [isPublic, setIsPublic] = React.useState(true);
-    // course_public
 
+    // course_public
+    const user_id_byLocation = parseInt(useLocation().pathname.split("/")[2]);
+    const isActual_user = isLoggedIn && userId && (userId === user_id_byLocation);
+
+    // /perfil-profesor/3/clases
     const classes_list = tutors.map((tutor) => {
-        if (tutor.id === userId && tutor.courses) {
+        if (tutor.id === user_id_byLocation && tutor.courses) {
             return tutor.courses.map((course) => {
                 let last_review = null;
                 let rating_amount = false;
-
+                if (!isActual_user && !course.course_public) {
+                    return null;
+                }
                 if (course.reviews.length > 0) {
+
                     last_review = course.reviews[course.reviews.length - 1].comment;
                     rating_amount = [
                         (
@@ -51,7 +59,7 @@ function Classes() {
                                 isTutor={true}
                             />
 
-                            <div className='d-flex justify-content-end align-items-end mb-5' style={{ maxWidth: "720px", margin: "0 auto" }}>
+                            {isActual_user && <div className='d-flex justify-content-end align-items-end mb-5' style={{ maxWidth: "720px", margin: "0 auto" }}>
                                 <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#AgregarModal" data-bs-whatever="@getbootstrap">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
@@ -65,7 +73,7 @@ function Classes() {
                                     <i className="fa-solid fa-x"></i>
                                 </button>
                                 <ModalEliminar />
-                            </div>
+                            </div>}
                         </div>
                     </>
                 );
@@ -82,7 +90,7 @@ function Classes() {
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
-                            <h3>Mis clases</h3>
+                            {isLoggedIn ? <h3>Mis clases</h3> : <h3>Clases de { }</h3>}
                             <button type="button"
                                 className="btn btn-info w-50"
                                 data-bs-toggle="modal"
