@@ -5,7 +5,6 @@ import ModalContact from "../modal/ModalContact"
 import ModalComment from "../modal/ModalComment"
 
 
-
 export default function Card(props) {
 
     // Como funciona el array info_course:
@@ -47,7 +46,7 @@ export default function Card(props) {
                             <div className="name-rating">
                                 <section className="name d-flex justify-content-end">
 
-                                    <Link to="Perfil-profesor-NombreApellido" className="card-title name">
+                                    <Link to={`/perfil-profesor/${props.id}`} className="card-title name">
                                         {props.name}{" "}{props.lastName}
                                     </Link>
                                 </section>
@@ -78,7 +77,7 @@ export default function Card(props) {
                     <div className="professor-course">
                         <section className="name-rating d-none d-md-flex justify-content-between align-items-center">
 
-                            <Link to="/Perfil-profesor-NombreApellido" className="card-title name">
+                            <Link to={`/perfil-profesor/${props.id}`} className="card-title name">
                                 {props.name}{" "}{props.lastName}
                             </Link>
 
@@ -130,7 +129,7 @@ export default function Card(props) {
                                 Contratar
 
                             </button>
-                            
+
 
                         </div>
                     </div>

@@ -1,18 +1,35 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import logo from "../../assets/logo.png"
 import "./NavBar.css"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useTutorContext } from "../../Context/TutorContext";
+import { useUserContext } from '../../Context/UserContext';
 
 
 export default function NavBar(props) {
-  const [isLogged, setIsLogged] = useState(true);
+  const { isLoggedIn, userId, login, logout } = useUserContext();
+  const { tutors } = useTutorContext();
+  const tutor = tutors[userId];
 
-  const [professor_image, setProfessor_image] = useState(<span class="round-photo" >
-    <img src={"images/tutor1.jpg"} alt="professor" className="d-inline-block align-top" style={{ width: "50px", height: "50px" }} />
-  </span>
-  )
+
+
+
+  const [professor_image, setProfessor_image] = useState(
+    <span className="round-photo">
+      {tutor && tutor.image_profile ? (
+        <img
+          src={tutor.image_profile}
+          alt="professor"
+          className="d-inline-block align-top"
+          style={{ width: "50px", height: "50px" }}
+        />
+      ) : (
+        <div>No se encontró imagen</div>
+      )}
+    </span>
+  );
+
 
 
 
@@ -60,8 +77,8 @@ export default function NavBar(props) {
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
 
-            <Link to="/perfil-nombreApellido" className="log nav-item text-primary mb-0" onClick={closeSideBar}>
-              {isLogged ? professor_image : <i class="login-icon bi bi-person-circle"></i>} </Link>
+            <Link to={`/perfil-profesor/${userId}`} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
+              {isLoggedIn ? professor_image : <i class="login-icon bi bi-person-circle"></i>} </Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -76,7 +93,6 @@ export default function NavBar(props) {
                 <Link class="nav-link link-changed dropdown-toggleNOT" to="/categorias"
                   role="button">
                   Categorias
-
                 </Link>
               </li>
 
@@ -100,12 +116,12 @@ export default function NavBar(props) {
             </ul>
             {/* Login / Sign Up */}
             <div className="d-none d-lg-block">
-              {isLogged ? (<Link to="/perfil-nombreApellido" className="log nav-item text-primary mb-0">
+              {isLoggedIn ? (<Link to={`/perfil-profesor/${userId}`} className="log nav-item text-primary mb-0">
                 {professor_image} </Link>)
                 :
                 (<div className="div-login d-none d-lg-block mt-1">
                   <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>
-                  <Link role="button" to="/perfil-nombreApellido" className="login register btn btn-outline-info text-white">Registrarse</Link>
+                  <Link role="button" to="/registro" className="login register btn btn-outline-info text-white">Registrarse</Link>
                 </div>)}
             </div>
 

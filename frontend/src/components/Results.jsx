@@ -1,12 +1,14 @@
 import React from 'react'
 import Card from './Card/Card'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import data from '../DATA/data.json'
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useTutorContext } from '../Context/TutorContext';
+
 function Results() {
+    const { tutors } = useTutorContext();
 
 
-    const professors_list = data.map((professor) => {
+    const professors_list = tutors.map((professor) => {
         return (
             professor.courses.map((course) => {
                 let last_review = null;

@@ -1,12 +1,22 @@
 import React from 'react'
 import "./Profile.css"
+import { Link } from 'react-router-dom'
+import { useTutorContext } from '../../Context/TutorContext'
+import { useUserContext } from '../../Context/UserContext'
+import { useLocation } from 'react-router-dom'
 
 function Profile() {
+    const { tutors } = useTutorContext();
+    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const location = useLocation().pathname.split("/")[2];
+
+    const isActual_user = isLoggedIn && userId && (userId === parseInt(location));
+
     return (
         <div className="container light-style flex-grow-1 container-p-y">
-            <h4 className="font-weight-bold py-3 mb-4">
-                Configurar Perfil
-            </h4>
+            <h2 className="font-weight-bold py-3 mb-4 text-primary-emphasis">
+                {isActual_user ? "Configurar Perfil" : "Perfil"}
+            </h2>
             <div className="card card-profile overflow-hidden">
                 <div className="row no-gutters row-bordered row-border-light">
                     <div className="col-md-3 pt-0">
@@ -15,8 +25,18 @@ function Profile() {
                                 href="#account-general">General</a>
                             <a className="list-group-item list-group-item-action" data-toggle="list"
                                 href="#account-info">Información</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list"
-                                href="#account-change-password">Cambiar contraseña</a>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list"
+                                to={`/perfil-profesor/${userId}/clases`}>Clases</Link>
+                            {isActual_user ?
+                                <><Link className="list-group-item list-group-item-action"
+                                    to={`/perfil-profesor/${userId}/solicitudesReseñas`}>Solicitudes</Link>
+                                    <Link className="list-group-item list-group-item-action"
+                                        to={`/perfil-profesor/${userId}/historial-clases`}>Historial de clases</Link>
+                                    <a className="list-group-item list-group-item-action" data-toggle="list"
+                                        href="#account-change-password">Cambiar contraseña</a>
+                                    <Link className="list-group-item list-group-item-action" data-toggle="list"
+                                        to={"/"} onClick={() => logout()}>Cerrar sesion</Link></>
+                                : <></>}
 
                         </div>
                     </div>
@@ -24,15 +44,16 @@ function Profile() {
                         <div className="tab-content">
                             <div className="tab-pane fade active show" id="account-general">
                                 <div className="card-body media align-items-center">
-                                    <img src="images/notperfil.png" alt
+                                    <img src="images/notperfil.png" alt=""
                                         className="d-block ui-w-80" />
                                     <div className="media-body ml-4">
-                                        <label className="btn btn-outline-primary">
+                                        {isActual_user ? <> <label className="btn btn-outline-primary">
                                             Subir foto de perfil
                                             <input type="file" className="account-settings-fileinput" />
                                         </label> &nbsp;
-                                        <button type="button" className="btn btn-default md-btn-flat">Reset</button>
-                                        <div className="text-light small mt-1">JPG/PNG</div>
+                                            <button type="button" className="btn btn-default md-btn-flat">Reset</button>
+                                            <div className="text-light small mt-1">JPG/PNG</div></> :
+                                            <></>}
                                     </div>
                                 </div>
                                 <hr className="border-light m-0" />
@@ -81,28 +102,14 @@ function Profile() {
                                         <textarea className="form-control"
                                             rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label className="form-label">Nacimiento</label>
                                         <input type="text" className="form-control" value="26/05/2003" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="form-label">Country</label>
-                                        <select className="custom-select">
-                                            <option>USA</option>
-                                            <option selected>Canada</option>
-                                            <option>UK</option>
-                                            <option>Germany</option>
-                                            <option>France</option>
-                                        </select>
-                                    </div>
+                                    </div> */}
+
                                 </div>
                                 <hr className="border-light m-0" />
                                 <div className="card-body pb-2">
-
-                                    <div className="form-group">
-                                        <label className="form-label">Website</label>
-                                        <input type="text" className="form-control" value />
-                                    </div>
                                 </div>
                             </div>
 
@@ -110,7 +117,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            <div className="text-right mt-3">
+            <div className="text-right mt-3 mb-5">
                 <button type="button" className="btn btn-primary">Aplicar cambios</button>&nbsp;
                 <button type="button" className="btn btn-default">Cancelar</button>
             </div>

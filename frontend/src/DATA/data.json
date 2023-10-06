@@ -1,6 +1,6 @@
 [
     {
-        "id": "1",
+        "id": 0,
         "image_profile": "images/tutor1.jpg",
         "name": "Juan",
         "lastName": "Perez",
@@ -19,7 +19,7 @@
         ]
       },
       {
-        "id": "2",
+        "id": 1,
         "image_profile": "images/tutor2.jpg",
         "name": "Maria",
         "lastName": "Gonzalez",
@@ -51,7 +51,7 @@
         ]
       },
       {
-        "id": "3",
+        "id": 2,
         "image_profile": "images/tutor3.jpg",
         "name": "Carlos",
         "lastName": "Lopez",
@@ -76,7 +76,7 @@
         ]
       },
       {
-        "id": "4",
+        "id": 3,
         "image_profile": "images/tutor4.jpg",
         "name": "Laura",
         "lastName": "Rodriguez",
@@ -100,7 +100,7 @@
         ]
       },
       {
-        "id": "5",
+        "id": 4,
         "image_profile": "images/tutor5.jpg",
         "name": "Pedro",
         "lastName": "Martinez",

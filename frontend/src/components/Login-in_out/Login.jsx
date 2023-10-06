@@ -1,10 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import login_icon from "../../assets/login-icon.svg"
 import userName_icon from "../../assets/username-icon.svg"
 import password_icon from "../../assets/password-icon.svg"
 import { Link } from 'react-router-dom'
+import { useUserContext } from '../../Context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+    const { isLoggedIn, userId, login, logout } = useUserContext();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [showAlert, setShowAlert] = useState(false);
+
+    const navigate = useNavigate();
+
+    const authEmail = "a@a.com"
+    const authPassword = "a123"
+
+
+    const handleLogin = () => {
+        if (email === authEmail && password === authPassword) {
+            login(1)
+            setShowAlert(false)
+            navigate('/')
+        } else {
+            setShowAlert(true)
+        }
+
+    }
+
+
+
     return (
         <div class="bg-info d-flex justify-content-center align-items-center vh-100">
             <form>
@@ -21,6 +48,12 @@ export default function Login() {
                     </div>
                     <div class="text-center fs-1 fw-bold">Iniciar sesión</div>
                     <div class="input-group mt-4">
+                        {showAlert && (
+                            <div class="alert alert-danger" role="alert">
+                                Credenciales incorrectas. Intente nuevamente.
+                            </div>
+                        )}
+
                         <div class="input-group-text bg-info">
                             <img
                                 src={userName_icon}
@@ -28,11 +61,14 @@ export default function Login() {
                                 style={{ height: "1rem" }}
                             />
                         </div>
+
                         <label htmlfor="usuario"></label>
                         <input
                             class="form-control bg-light"
                             type="text"
-                            placeholder="Usuario"
+                            placeholder="Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
                     <div class="input-group mt-1">
@@ -48,6 +84,8 @@ export default function Login() {
                             class="form-control bg-light"
                             type="password"
                             placeholder="Contraseña"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <div class="d-flex justify-content-around mt-1">
@@ -64,7 +102,10 @@ export default function Login() {
                             >Olvido su contraseña?</Link>
                         </div>
                     </div>
-                    <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
+                    <div
+                        class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm"
+                        onClick={handleLogin}
+                    >
                         Iniciar sesión
                     </div>
                     <div class="d-flex gap-1 justify-content-center mt-1">

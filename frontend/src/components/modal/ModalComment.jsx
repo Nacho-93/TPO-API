@@ -42,4 +42,4 @@ function ModalComment() {
     )
 }
 
-export default ModalComment
+export default ModalComment;

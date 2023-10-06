@@ -1,11 +1,11 @@
 import React from 'react'
 import "./Home.css"
-import Fondo from "../assets/background-for-school.jpg"
-import ModalEliminar from '../components/modal/ModalEliminar';
-import ModalAgregar from '../components/modal/ModalAgregar';
-import ModalEsconder from '../components/modal/ModalEsconder';
-import Foto from "../assets/background-for-school.jpg";
-import FondoHome from "../assets/fondo home.jpg"
+import Fondo from "../../assets/background-for-school.jpg"
+import ModalEliminar from '../../components/modal/ModalEliminar';
+import ModalAgregar from '../../components/modal/ModalAgregar';
+import ModalEsconder from '../../components/modal/ModalEsconder';
+import Foto from "../../assets/background-for-school.jpg";
+
 
 
 function Home() {
@@ -62,8 +62,8 @@ function Home() {
                 </div>
             </div>
         </section>
-        
-        <main id="main">
+
+            <main id="main">
 
                 <section id="service" class="services pt-0 section-home">
                     <div class="container" data-aos="fade-up">
@@ -252,9 +252,9 @@ function Home() {
 
             </main></>
 
-        
+
     )
-    
+
 }
 
 export default Home;
