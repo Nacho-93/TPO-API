@@ -7,7 +7,7 @@ import Matematica from "../../assets/Matematica.jpg";
 import Quimica from "../../assets/Quimica.jpg";
 import Fisica from "../../assets/Fisica.jpg";
 import Violin from "../../assets/VIOLIN.jpg";
-import fotito from "../../assets/fondo-dispositivo-electronico-computadora-portatil-mesa_687553-4601.avif"
+import { Link } from "react-router-dom"
 
 
 
