@@ -10,12 +10,12 @@ function Opinion({ review, isUser }) {
 
     // `/perfil-profesor/${userId}/solicitudesReseñas
     return (
-
+        // style={{ maxWidth: "400px", margin: "0 auto" }}
         <>
-            <div class="card mb-3 mt-5">
+            <div class="card mb-3 mt-5" >
                 <div class="card-body">
 
-                    <div className="name-rating d-flex align-items-center">
+                    <div className="name-rating d-flex justify-content-space-between align-items-center">
                         <h3 class="card-title p-1">De{" "}{review.user_name}</h3>
                         <div className="ml-auto p-1">
                             {review.rating && (<h6 className="card-title rating ">

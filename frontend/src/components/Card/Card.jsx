@@ -5,11 +5,11 @@ import ModalContact from "../modal/ModalContact"
 import ModalComment from "../modal/ModalComment"
 
 
-export default function Card({ tutor, course, ...props }) {
+export default function Card(props) {
 
     // Como funciona el array info_course:
     // props.info_course == [individual, group, in_person, online]
-    console.log(tutor)
+
     return (
 
 
@@ -21,7 +21,7 @@ export default function Card({ tutor, course, ...props }) {
                 <div className="col-md-1 g-0 d-none d-lg-block d-md-block">
                     <div className="professor-img">
                         <span className="round-photo">
-                            <img src={tutor.image_profile} alt="professor" className="img-fluid" />
+                            <img src={props.image_profile} alt="professor" className="img-fluid" />
                         </span>
                     </div>
                 </div>
@@ -34,20 +34,20 @@ export default function Card({ tutor, course, ...props }) {
                     <div className="mobile-line">
                         <div className="col-2 professor-img">
                             <span className="round-photo">
-                                <img src={tutor.image_profile} alt="professor" className="img-fluid" />
+                                <img src={props.image_profile} alt="professor" className="img-fluid" />
                             </span>
                         </div>
 
                         <h4 className="card-title clase col-5 font-weight-600">
-                            Clase:<br /> {course.title}
+                            Clase:<br /> {props.title}
                         </h4>
 
                         <div className="col-5">
                             <div className="name-rating">
                                 <section className="name d-flex justify-content-end">
 
-                                    <Link to={`/perfil-profesor/${tutor.id}`} className="card-title name">
-                                        {tutor.name}{" "}{tutor.lastName}
+                                    <Link to={`/perfil-profesor/${props.id}`} className="card-title name">
+                                        {props.name}{" "}{props.lastName}
                                     </Link>
                                 </section>
                                 <section className="rating d-flex justify-content-end">
@@ -77,8 +77,8 @@ export default function Card({ tutor, course, ...props }) {
                     <div className="professor-course">
                         <section className="name-rating d-none d-md-flex justify-content-between align-items-center">
 
-                            <Link to={`/perfil-profesor/${tutor.id}`} className="card-title name">
-                                {tutor.name}{" "}{tutor.lastName}
+                            <Link to={`/perfil-profesor/${props.id}`} className="card-title name">
+                                {props.name}{" "}{props.lastName}
                             </Link>
 
 
@@ -89,9 +89,9 @@ export default function Card({ tutor, course, ...props }) {
                             </h6>)}
 
                         </section>
-                        <h3 className="card-title clase d-none d-md-block">Clase:{" "}{course.title}</h3>
+                        <h3 className="card-title clase d-none d-md-block">Clase:{" "}{props.title}</h3>
                         <p className="card-text text-muted professor-description">
-                            {course.course_description}
+                            {props.course_description}
                             {/* <a href="#profile" className="text-muted professor-profile">...ver perfil</a> */}
                         </p>
 
@@ -108,27 +108,25 @@ export default function Card({ tutor, course, ...props }) {
                         <h6 className="card-title hours text-stats">
                             <i>$</i>
                             {" "}
-                            {course.price_hour}/hora
+                            {props.price_hour}/hora
                         </h6>
                         <h6 className="card-text text-muted frequency text-stats">
                             <i class="fa-regular fa-calendar-days"></i>
                             {" "}
-                            {course.frequency[0]}{" "}clases por{" "}{course.frequency[1]}
+                            {props.frequency[0]}{" "}clases por{" "}{props.frequency[1]}
                         </h6>
                         <h6 className="card-title frequency text-stats">
                             <i class="fa-solid fa-graduation-cap"></i>
                             {" "}
-                            {course.frequency[2]}{" "}semanas
+                            {props.frequency[2]}{" "}semanas
                         </h6>
                         <h6 className="card-text text-muted frequency text-stats">
                             <i class="fa-solid fa-clock"></i>
                             {" "}
-                            {course.hours_experience}{" "}horas dictadas
+                            {props.hours_experience}{" "}horas dictadas
                         </h6>
-                        <h6 className="card-title text-stats"><i>#</i>{" "}{course.info[0] && course.info[1] ? "Individual/Grupal"
-                            : (course.info[0] ? "Individual" : "Grupal")}</h6>
-                        <h6 className="card-title text-stats"><i>#</i>{" "}{course.info[2] && course.info[3] ? "Presencial/Online"
-                            : (course.info[2] ? "Presencial" : "Online")}</h6>
+                        <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
+                        <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
 
                         <div className="d none d-md-block">
                             <button
@@ -155,30 +153,30 @@ export default function Card({ tutor, course, ...props }) {
                                 <h6 className="card-title hours text-stats">
                                     <i>$</i>
                                     {" "}
-                                    {course.price_hour}/hora
+                                    {props.price_hour}/hora
                                 </h6>
                                 <h6 className="card-text text-muted frequency text-stats">
                                     <i class="fa-regular fa-calendar-days"></i>
                                     {" "}
-                                    {course.frequency[0]}{" "}clases por{" "}{course.frequency[1]}
+                                    {props.frequency[0]}{" "}clases por{" "}{props.frequency[1]}
                                 </h6>
                                 <h6 className="card-title frequency text-stats">
                                     <i class="fa-solid fa-graduation-cap"></i>
                                     {" "}
-                                    {course.frequency[2]}{" "}semanas
+                                    {props.frequency[2]}{" "}semanas
                                 </h6>
                             </div>
                         </div>
 
                         <div className="col-6 d-flex justify-content-end align-items-end">
                             <section className="modality-format">
-                                <h6 className="card-title text-stats"><i>#</i>{" "}{course.info[0] && course.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
+                                <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[0] && props.info[1] ? "Individual/Grupal" : (props.info[0] ? "Individual" : "Grupal")}</h6>
                                 <h6 className="card-text text-muted frequency text-stats">
                                     <i class="fa-solid fa-clock"></i>
                                     {" "}
-                                    {tutor.hours_experience}{" "}horas dictadas
+                                    {props.hours_experience}{" "}horas dictadas
                                 </h6>
-                                <h6 className="card-title text-stats"><i>#</i>{" "}{course.info[2] && course.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
+                                <h6 className="card-title text-stats"><i>#</i>{" "}{props.info[2] && props.info[3] ? "Presencial/Online" : (props.info[2] ? "Presencial" : "Online")}</h6>
                             </section>
                         </div>
                     </div>
@@ -197,7 +195,7 @@ export default function Card({ tutor, course, ...props }) {
 
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
-                            <Link to={`/categorias/clase-${course.title}-opiniones`}
+                            <Link to={`/categorias/clase-${props.title}-opiniones`}
                                 className="btn btn-outline-secondary w-100">Opiniones</Link>
                         </div>
 
@@ -216,7 +214,7 @@ export default function Card({ tutor, course, ...props }) {
                         : <p className="card-text text-muted">{" "}No existen reseñas para este curso... ¡Sé el primero en dejar una!</p>}
                 </div>
                 <div className="col-md-2 reviews">
-                    {props.last_review ? <Link to={`/categorias/clase-${course.title}-${props.course_id}-${tutor.id}-opiniones`} className="btn btn-outline-secondary">Opiniones</Link>
+                    {props.last_review ? <Link to={`/categorias/clase-${props.title}-${props.course_id}-${props.id}-opiniones`} className="btn btn-outline-secondary">Opiniones</Link>
                         : <button type="button"
                             className="btn btn-outline-secondary"
                             data-bs-toggle="modal"

@@ -14,6 +14,7 @@ import Footer from "./views/Footer/Footer";
 import Opinions from "./components/Card/Opinions/Opinions";
 import Requests from "./components/Profile/ProffesorViews/Requests";
 import Classes from "./components/Profile/ProffesorViews/Classes";
+import HistoryOfClasses from "./components/Profile/ProffesorViews/HistoryOfClasses";
 
 
 
@@ -40,7 +41,7 @@ export default function App() {
 
         <Route path="/perfil-profesor/:id/solicitudesReseñas" element={<Requests />} />
         <Route path="/perfil-profesor/:id/clases" element={<Classes />} />
-
+        <Route path="/perfil-profesor/:id/historial-clases" element={<HistoryOfClasses />} />
 
 
 

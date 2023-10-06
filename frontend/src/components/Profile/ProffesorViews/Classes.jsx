@@ -11,7 +11,7 @@ function Classes() {
     const { tutors } = useTutorContext();
     const { isLoggedIn, userId, login, logout } = useUserContext();
     const [isPublic, setIsPublic] = React.useState(true);
-
+    // course_public
 
     const classes_list = tutors.map((tutor) => {
         if (tutor.id === userId && tutor.courses) {
