@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 export default function Login() {
   return (
 
-    <div class="bg-info d-flex justify-content-center align-items-center vh-100">
+    <div class="bg-info d-flex justify-content-center align-items-center vh-100 login-register-bg">
 
       <form>
         <div

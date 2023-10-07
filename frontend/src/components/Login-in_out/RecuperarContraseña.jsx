@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 export default function RecuperarContraseña() {
   return (
 
-    <div class="bg-info d-flex justify-content-center align-items-center vh-100">
+    <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
       <div
         class="bg-white p-5 rounded-5 text-secondary shadow"
         style={{ width: "25rem" }}
@@ -34,7 +34,7 @@ export default function RecuperarContraseña() {
           />
         </div>
 
-        <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
+        <div class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm">
           Recuperar contraseña
         </div>
         <div class="d-flex gap-1 justify-content-center mt-1">

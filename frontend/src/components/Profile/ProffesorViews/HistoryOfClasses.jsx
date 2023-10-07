@@ -100,7 +100,7 @@ function HistoryOfClasses() {
 
 
     return (
-        <div className='bg-change-color-profile'>
+        <div className='bg-change-color-profile pb-5'>
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">

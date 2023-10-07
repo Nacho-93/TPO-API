@@ -5,6 +5,7 @@ import password_icon from "../../assets/password-icon.svg"
 import { Link } from 'react-router-dom'
 import { useUserContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom'
+import './Login.css'
 
 export default function Login() {
     const { isLoggedIn, userId, login, logout } = useUserContext();
@@ -33,7 +34,8 @@ export default function Login() {
 
 
     return (
-        <div class="d-flex justify-content-center align-items-center vh-100" style={{ background: "url(../../assets/geometry-1023846_1920.jpg)" }}>
+
+        <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
             <form>
                 <div
                     class="bg-white p-5 rounded-5 text-secondary shadow"
@@ -103,7 +105,7 @@ export default function Login() {
                         </div>
                     </div>
                     <div
-                        class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm"
+                        class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm"
                         onClick={handleLogin}
                     >
                         Iniciar sesión
@@ -117,6 +119,7 @@ export default function Login() {
                 </div>
             </form>
         </div>
+
     )
 }
 

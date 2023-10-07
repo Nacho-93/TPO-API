@@ -29,7 +29,7 @@ function Results() {
     }, [categoriaSeleccionada, tutors]);
 
     return (
-        <div className='bg-change-color'>
+        <div className='bg-change-color pb-5'>
             <section id="call-to-action" className="action-diferent section-home">
 
 

@@ -13,7 +13,7 @@ function Opinion({ review, isUser }) {
         // style={{ maxWidth: "400px", margin: "0 auto" }}
         <>
             <div className="" style={{ maxWidth: "700px", margin: "0 auto" }}>
-                <div class="card mb-3 mt-5 bg-dark text-white">
+                <div class="card mb-3 mt-5">
                     <div class="card-body">
 
                         <div className="name-rating d-flex justify-content-between align-items-center">

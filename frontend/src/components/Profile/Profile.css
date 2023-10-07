@@ -1,4 +1,7 @@
 
+.container-profile {
+    background-image: url("../../assets/profilepic.jpg");
+}
 
 .red-link:hover {
     background-color: rgba(243, 24, 24, 0.7)

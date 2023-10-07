@@ -30,7 +30,7 @@ function Opinions() {
     });
 
     return (
-        <>
+        <div className='bg-change-color-profile' >
 
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
@@ -50,7 +50,7 @@ function Opinions() {
                     </div>
                 </div>
             </section>
-            <div className="px-10 div-op">
+            <div className="p-5 div-op" style={{ backdropFilter: "blur(5px)" }}>
                 <div className="container">
                     {opinions_list && opinions_list.length > 0 ? (
                         <div>{opinions_list}</div>
@@ -60,7 +60,7 @@ function Opinions() {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 }
 
