@@ -21,6 +21,7 @@ export const UserContextProvider = ({ children }) => {
     // Función para cerrar sesión
     const logout = () => {
         setIsLoggedIn(false);
+
         setUserId(null);
     };
 

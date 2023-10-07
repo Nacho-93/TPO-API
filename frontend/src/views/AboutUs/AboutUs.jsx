@@ -42,7 +42,7 @@ function AboutUs() {
 
 
             {/* <!-- ======= Counts Section ======= --> */}
-            <section id="counts" className="counts section-bg">
+            <section id="counts" className="counts section-bg" style={{ backgroundColor: "#f0f0f0" }}>
                 <div className="container">
 
                     <div className="row counters">

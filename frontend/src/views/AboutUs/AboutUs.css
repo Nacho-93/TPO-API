@@ -48,6 +48,7 @@
   --------------------------------------------------------------*/
   .counts {
     padding: 30px 0;
+    
   }
   
   .counts .counters span {
@@ -64,4 +65,5 @@
     font-size: 15px;
     font-weight: 600;
     color: #37423b;
+  
   }

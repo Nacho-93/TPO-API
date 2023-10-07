@@ -1,15 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
+import { Star } from '../Star/Star';
 function ModalFilter(props) {
-    // const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('allCategories');
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('allCategories');
 
-    // const handleCategoriaChange = (e) => {
-    //     setCategoriaSeleccionada(e.target.value);
+    const handleCategoriaChange = (e) => {
+        setCategoriaSeleccionada(e.target.value);
 
-    // };
-    // const handleAplicarClick = () => {
-    //     props.handleFilter(categoriaSeleccionada);
-    // };
+    };
+    const handleAplicarClick = () => {
+        props.handleFilter(categoriaSeleccionada);
+    };
     return (
         <div class="modal fade" id="filterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -22,8 +23,8 @@ function ModalFilter(props) {
                         <form action="">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label" >Categoria</label>
-                                <select id="categoriaSelect" class="form-select"
-                                    aria-label="Default select example">
+                                <select id="categoriaSelect" class="form-select" value={categoriaSeleccionada}
+                                    onChange={handleCategoriaChange} aria-label="Default select example">
                                     <option selected value="allCategories">Todas las categorias</option>
                                     <option value="Biología">Biología</option>
                                     <option value="Física">Física</option>
@@ -60,21 +61,14 @@ function ModalFilter(props) {
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label" >Calificación</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected disabled>-</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                                <Star />
                             </div>
 
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aplicar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={handleAplicarClick}>Aplicar</button>
                     </div>
                 </div>
             </div>

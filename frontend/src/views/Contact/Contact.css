@@ -27,7 +27,7 @@
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 5px;
-    color: #37423b;
+    color: #000000;
   }
   
   .contact-section .info p {
@@ -107,7 +107,7 @@
   
   .contact-section .email-form input:focus,
   .contact-section .email-form textarea:focus {
-    border-color: #0dcaf0;
+    border-color: #000000;
   }
   
   .contact-section .email-form input {

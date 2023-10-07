@@ -1,0 +1,4 @@
+
+.bg-change-color {
+    background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../../assets/background-for-school.jpg") center center;
+}

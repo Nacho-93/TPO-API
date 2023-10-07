@@ -12,7 +12,7 @@ function Profile() {
     const isActual_user = isLoggedIn && userId && (userId === user_id_byLocation);
     const tutor = tutors[user_id_byLocation];
 
-    const [professor_image, setProfessor_image] = React.useState(`${tutor.image_profile}${new Date().getTime()}`);
+    const [professor_image, setProfessor_image] = React.useState(tutor.image_profile);
     const [professor_name, setProfessor_name] = React.useState(tutor.name + " " + tutor.lastName);
     const [professor_email, setProfessor_email] = React.useState(tutor.email);
     const [professor_phone, setProfessor_phone] = React.useState(tutor.phone);
@@ -20,7 +20,7 @@ function Profile() {
     const [professor_description, setProfessor_description] = React.useState(tutor.description);
 
     return (
-        <div className="container light-style flex-grow-1 container-p-y">
+        <div className="container light-style flex-grow-1 container-p-y" >
             <h2 className="font-weight-bold py-3 mb-4 text-primary-emphasis">
                 {isActual_user ? "Configurar Perfil" : "Perfil"}
             </h2>

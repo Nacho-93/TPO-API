@@ -1,4 +1,5 @@
 import React from 'react'
+import { Star } from '../Star/Star';
 
 function ModalComment() {
     return (
@@ -25,11 +26,7 @@ function ModalComment() {
                                 <textarea class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="starwidget mb-2">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
+                                <Star />
                             </div>
                         </form>
                     </div>

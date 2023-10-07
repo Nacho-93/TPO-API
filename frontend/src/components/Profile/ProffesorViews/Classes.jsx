@@ -56,7 +56,7 @@ function Classes() {
                                 course_id={course.id}
                                 hours_experience={tutor.hours_experience}
                                 key={course.id}
-                                isTutor={true}
+                                isTutor={isActual_user}
                             />
 
                             {isActual_user && <div className='d-flex justify-content-end align-items-end mb-5' style={{ maxWidth: "720px", margin: "0 auto" }}>
@@ -85,20 +85,20 @@ function Classes() {
 
 
     return (
-        <>
+        <div className='bg-change-color-profile'>
             <section id="call-to-action" class="action-diferent section-home">
-                <div class="container" data-aos="zoom-out">
+                <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
-                            {isLoggedIn ? <h3>Mis clases</h3> : <h3>Clases de { }</h3>}
-                            <button type="button"
+                            {isActual_user ? <h3>Mis clases</h3> : <h3>Clases de {tutors[user_id_byLocation].name}</h3>}
+                            {isActual_user && <><button type="button"
                                 className="btn btn-info w-50"
                                 data-bs-toggle="modal"
                                 data-bs-target="#AgregarModal"
                                 data-bs-whatever="@getbootstrap">
                                 Agregar clase
                             </button>
-                            <ModalAgregar />
+                                <ModalAgregar /></>}
 
                         </div>
 
@@ -108,7 +108,7 @@ function Classes() {
             <div>
                 {classes_list}
             </div>
-        </>
+        </div>
     )
 }
 

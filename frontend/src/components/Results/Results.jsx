@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { useTutorContext } from '../Context/TutorContext';
-import ModalFilter from './modal/ModalFilter';
-import Card from './Card/Card';
+import { useTutorContext } from '../../Context/TutorContext';
+import ModalFilter from '../modal/ModalFilter';
+import Card from '../Card/Card';
+import './Results.css';
 
 function Results() {
     const { tutors } = useTutorContext();
-    // const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
-    // const [filteredProfessors, setFilteredProfessors] = useState();
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('allCategories');
+    const [filteredProfessors, setFilteredProfessors] = useState([]);
 
-    // const handleFilter = (categoriaSeleccionada) => {
-    //     setCategoriaSeleccionada(categoriaSeleccionada);
-    //     console.log(categoriaSeleccionada);
-    // };
+    const handleFilter = (categoriaSeleccionada) => {
+        setCategoriaSeleccionada(categoriaSeleccionada);
+    };
 
-    // const handleList = () => {
-    //     // Filtrar la lista de profesores/tutores en función de la categoría seleccionada
-    //     return tutors.filter((professor) =>
-    //         professor.courses.some((course) =>
-    //             categoriaSeleccionada === "allCategories" ? true : course.course_public && course.title === categoriaSeleccionada
-    //         )
-    //     );
-    // };
+    useEffect(() => {
+        const filteredList = () => {
+            return tutors.filter((professor) =>
+                professor.courses.some((course) =>
+                    categoriaSeleccionada === "allCategories" ? true : (
+                        course.course_public && course.title === categoriaSeleccionada
+                    )
+                )
+            );
+        };
 
-    // useEffect(() => {
-    //     // Obtener la lista filtrada al cargar la página
-    //     const filteredList = handleList();
-    //     setFilteredProfessors(filteredList);
-    // }, [categoriaSeleccionada, tutors]);
+        const filteredProfessors = filteredList();
+        setFilteredProfessors(filteredProfessors);
+    }, [categoriaSeleccionada, tutors]);
 
     return (
-        <>
+        <div className='bg-change-color'>
             <section id="call-to-action" className="action-diferent section-home">
+
+
                 <div className="container" data-aos="zoom-out">
                     <div className="row justify-content-center">
                         <div className="col-lg-8 text-center">
@@ -42,9 +44,16 @@ function Results() {
                     </div>
                 </div>
             </section>
-            <div>
-                {tutors.map((professor) =>
-                    professor.courses.map((course) => (
+
+            <div style={{ backdropFilter: "blur(5px)" }}>
+                {filteredProfessors.map((professor) => {
+                    const filteredCourses = professor.courses.filter((course) =>
+                        categoriaSeleccionada === "allCategories" ? true : (
+                            course.course_public && course.title === categoriaSeleccionada
+                        )
+                    );
+
+                    return filteredCourses.map((course) => (
                         <Card
                             name={professor.name}
                             lastName={professor.lastName}
@@ -61,12 +70,16 @@ function Results() {
                             hours_experience={professor.hours_experience}
                             key={course.id}
                         />
-                    ))
-                )}
+                    ));
+                })}
             </div>
-            <ModalFilter />
-        </>
+            <ModalFilter handleFilter={handleFilter} />
+        </div>
     );
 }
 
 export default Results;
+
+
+
+

@@ -70,7 +70,7 @@ function HistoryOfClasses() {
                                         )}
                                         {active_class.status[1] &&
                                             (
-                                                <button type="button" className="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                                <button type="button" className="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
                                                     <i class="fa-solid fa-flag-checkered"></i>
                                                 </button>
                                             )}
@@ -100,7 +100,7 @@ function HistoryOfClasses() {
 
 
     return (
-        <>
+        <div className='bg-change-color-profile'>
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
@@ -112,7 +112,7 @@ function HistoryOfClasses() {
                 </div>
             </section>
             {classes_list}
-        </>
+        </div>
     )
 }
 

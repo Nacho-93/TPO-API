@@ -41,8 +41,8 @@ function Footer() {
                         <div className="col-lg-4 col-md-6 footer-newsletter">
                             <h4>¿Quieres estar al tanto de nuestras novedades educativas?</h4>
                             <p>¡Suscríbete para recibir actualizaciones, noticias y recursos educativos directamente en tu bandeja de entrada!</p>
-                            <form action="" method="post">
-                                <input type="email" name="email" /><input type="submit" value="Subscribe" />
+                            <form action="" method="">
+                                <input type="email" name="email" /><input type="submit" value="Suscribirse" />
                             </form>
 
                         </div>

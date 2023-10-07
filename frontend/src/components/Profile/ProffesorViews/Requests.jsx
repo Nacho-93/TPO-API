@@ -3,6 +3,7 @@ import { useTutorContext } from '../../../Context/TutorContext'
 import { useLocation } from 'react-router-dom'
 import { useUserContext } from '../../../Context/UserContext';
 import Opinion from '../../Card/Opinions/Opinion';
+import './styleViews.css'
 
 function Requests() {
     const { tutors } = useTutorContext();
@@ -28,7 +29,7 @@ function Requests() {
 
 
     return (
-        <>
+        <div className="bg-change-color-profile">
 
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
@@ -40,7 +41,7 @@ function Requests() {
                     </div>
                 </div>
             </section>
-            <div className="px-10 div-op">
+            <div className="px-10 div-op" >
                 <div className="container">
                     {requests_list && requests_list.length > 0 ? (
                         <div>{requests_list}</div>
@@ -50,7 +51,7 @@ function Requests() {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 }
 

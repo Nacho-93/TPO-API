@@ -21,7 +21,7 @@ export default function Login() {
 
     const handleLogin = () => {
         if (email === authEmail && password === authPassword) {
-            login(1)
+            login(3)
             setShowAlert(false)
             navigate('/')
         } else {
@@ -33,7 +33,7 @@ export default function Login() {
 
 
     return (
-        <div class="bg-info d-flex justify-content-center align-items-center vh-100">
+        <div class="d-flex justify-content-center align-items-center vh-100" style={{ background: "url(../../assets/geometry-1023846_1920.jpg)" }}>
             <form>
                 <div
                     class="bg-white p-5 rounded-5 text-secondary shadow"

@@ -2,7 +2,7 @@ import react, { useEffect } from "react";
 import { Routes, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
-import Results from "./components/Results";
+import Results from "./components/Results/Results";
 import Login from "./components/Login-in_out/Login";
 import Registro from "./components/Login-in_out/Registro"
 import RecuperarContraseña from "./components/Login-in_out/RecuperarContraseña"

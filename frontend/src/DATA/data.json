@@ -198,13 +198,39 @@
             "date": "2023-06-15",
             "public": false,
             "rating": 1
+          },
+          {
+            "comment": "Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
+            "user_name": "Ana",
+            "date": "2021-05-15",
+            "public": true,
+            "rating": 4
+            
+          },
+          {
+            "comment": "Excelente profesora loco lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia Excelente tutora lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quia",
+            "user_name": "Jose",
+            "date": "2021-05-15",
+            "public": true,
+            "rating": 5
           }]
       },
       {
         "id": 1008,
         "title": "Cálculo",
         "price_hour": "2600",
-        "active_classes": [],
+        "active_classes": [
+          {
+            "name": "Juanito Perez",
+            "date": "2021-05-15",
+            "status": [false, false, false, true]
+          },
+          {
+            "name": "Juanito Perez",
+            "date": "2021-05-15",
+            "status": [false, false, true, false]
+          }
+        ],
         "course_public": true,
         "info_course": [true, true, true, false],
         "course_description": "Este emocionante curso de cálculo te llevará a través de las derivadas e integrales. Aprenderás a comprender y resolver problemas de cálculo de manera efectiva. ¡Prepárate para un desafío!",
