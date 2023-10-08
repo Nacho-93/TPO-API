@@ -1,5 +1,5 @@
 import React from 'react'
-import { Star } from '../Star/Star';
+import { Star } from '../Opinions/Star/Star';
 
 function ModalComment() {
     return (

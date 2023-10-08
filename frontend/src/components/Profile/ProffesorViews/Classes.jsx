@@ -18,43 +18,18 @@ function Classes() {
     const isActual_user = isLoggedIn && userId && (userId === user_id_byLocation);
 
     // /perfil-profesor/3/clases
+
     const classes_list = tutors.map((tutor) => {
         if (tutor.id === user_id_byLocation && tutor.courses) {
             return tutor.courses.map((course) => {
-                let last_review = null;
-                let rating_amount = false;
                 if (!isActual_user && !course.course_public) {
                     return null;
                 }
-                if (course.reviews.length > 0) {
-
-                    last_review = course.reviews[course.reviews.length - 1].comment;
-                    rating_amount = [
-                        (
-                            course.reviews.reduce((sum, review) => sum + review.rating, 0) /
-                            course.reviews.length
-                        ).toFixed(1),
-                        course.reviews.length,
-                    ];
-                }
-
                 return (
                     <>
                         <div className=''>
                             <Card
-                                name={tutor.name}
-                                lastName={tutor.lastName}
-                                image_profile={tutor.image_profile}
-                                frequency={course.frequency}
-                                id={tutor.id}
-                                title={course.title}
-                                price_hour={course.price_hour}
-                                course_description={course.course_description}
-                                last_review={last_review ? last_review : false}
-                                info={course.info_course}
-                                rating_amount={rating_amount}
-                                course_id={course.id}
-                                hours_experience={tutor.hours_experience}
+                                course={course}
                                 key={course.id}
                                 isTutor={isActual_user}
                             />

@@ -161,7 +161,7 @@ function Home() {
                                         </h3>
                                         <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                             <div class="accordion-body">
-                                                selecciona la clase, contactate con el profesor y coordina un dia y horario para que puedas disfrutar de tu clase
+                                                Selecciona la clase, contactate con el profesor y coordina un dia y horario para que puedas disfrutar de tu clase
                                             </div>
                                         </div>
                                     </div>

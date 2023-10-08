@@ -6,6 +6,7 @@ import Opinion from './Opinion';
 import ModalComment from '../../modal/ModalComment';
 
 
+
 function Opinions() {
     const location = useLocation().pathname.split("/")[2].split("-");
     const course_id = parseInt(location[2]);

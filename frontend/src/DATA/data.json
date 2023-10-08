@@ -12,6 +12,7 @@
     "courses": [
       {
         "id": 1000,
+        "tutor_id": 0,
         "title": "Matemáticas",
         "price_hour": "3050",
         "course_public": true,
@@ -51,7 +52,8 @@
     "courses": [
       {
         "id": 1001,
-        "title": "Programación Web",
+        "tutor_id": 1,
+        "title": "Programación web",
         "price_hour": "2500",
         "course_public": true,
         "info_course": [true, false, true, false],
@@ -106,6 +108,7 @@
     "courses": [
       {
         "id": 1002,
+        "tutor_id": 2,
         "title": "Química",
         "price_hour": "2800",
         "course_public": true,
@@ -151,6 +154,7 @@
     "courses": [
       {
         "id": 1003,
+        "tutor_id": 3,
         "title": "Física",
         "price_hour": "2200",
         "active_classes": [{
@@ -217,6 +221,7 @@
       },
       {
         "id": 1008,
+        "tutor_id": 3,
         "title": "Cálculo",
         "price_hour": "2600",
         "active_classes": [
@@ -275,6 +280,7 @@
     "courses": [
       {
         "id": 1004,
+        "tutor_id": 4,
         "title": "Inglés",
         "price_hour": "4000",
         "active_classes": [],
@@ -294,6 +300,7 @@
       },
       {
         "title": "Portugués",
+        "tutor_id": 4,
         "price_hour": "3500",
         "active_classes": [],
         "course_public": true,
@@ -321,6 +328,7 @@
       {
         "id": 1005,
         "title": "Biología",
+        "tutor_id": 5,
         "price_hour": "2800",
         "active_classes": [],
         "course_public": true,
@@ -354,6 +362,7 @@
       {
         "id": 1006,
         "title": "Química",
+        "tutor_id": 5,
         "price_hour": "2500",
         "active_classes": [],
         "course_public": true,
@@ -400,6 +409,7 @@
       {
         "id": 1007,
         "title": "Álgebra",
+        "tutor_id": 6,
         "price_hour": "2200",
         "course_public": true,
         "active_classes": [],
@@ -433,6 +443,7 @@
       {
         "id": 1008,
         "title": "Cálculo",
+        "tutor_id": 6,
         "price_hour": "2600",
         "course_public": true,
         "active_classes": [],

@@ -6,27 +6,62 @@ import './Results.css';
 
 function Results() {
     const { tutors } = useTutorContext();
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('allCategories');
-    const [filteredProfessors, setFilteredProfessors] = useState([]);
+    const [regexCategory, setRegexCategory] = useState(new RegExp(`allCategories.*`, 'i')); // /.*i/ = /.*?/i
+    const [filteredProfessors, setFilteredProfessors] = useState(tutors);
+    const [filter, setFilter] = useState({
+        category: 'allCategories',
+        frequency_class: "",
+        type_of_class: {
+            individual: false,
+            group: false,
+        },
+        rating: 0,
+    });
 
-    const handleFilter = (categoriaSeleccionada) => {
-        setCategoriaSeleccionada(categoriaSeleccionada);
+    const filteredCourses = filteredProfessors.map((professor) => {
+        // Usar filter para filtrar los cursos del profesor
+        const filteredProfessorCourses = professor.courses.filter((course) => {
+            if (!course.course_public) {
+                return false; // Cambiar a false para filtrar el curso
+            }
+
+            const categoryMatch =
+                filter.category === "allCategories" ? true : (
+                    regexCategory.test(course.title));
+
+            const frequencyMatch =
+                !filter.frequency_class ? true : (
+                    course.frequency[1] === filter.frequency_class);
+
+            const typeMatch =
+                !filter.type_of_class.individual
+                    && !filter.type_of_class.group ? true : (
+                    filter.type_of_class.individual === course.info_course[0]
+                    || filter.type_of_class.group === course.info_course[1]);
+
+            const ratingMatch =
+                filter.rating === 0 ? true : (
+                    course.rating === filter.rating);
+
+            return categoryMatch && frequencyMatch && typeMatch && ratingMatch;
+        });
+
+        // Usar map para crear un arreglo de componentes Card a partir de los cursos filtrados
+        return filteredProfessorCourses.map((course) => (
+            <Card
+                key={course.id}
+                course={course}
+            />
+        ));
+    });
+
+
+    const handleFilter = (filter) => {
+        setFilter(filter);
+        setRegexCategory(new RegExp(`${filter.category}.*`, 'i'));
     };
 
-    useEffect(() => {
-        const filteredList = () => {
-            return tutors.filter((professor) =>
-                professor.courses.some((course) =>
-                    categoriaSeleccionada === "allCategories" ? true : (
-                        course.course_public && course.title === categoriaSeleccionada
-                    )
-                )
-            );
-        };
 
-        const filteredProfessors = filteredList();
-        setFilteredProfessors(filteredProfessors);
-    }, [categoriaSeleccionada, tutors]);
 
     return (
         <div className='bg-change-color pb-5'>
@@ -46,32 +81,7 @@ function Results() {
             </section>
 
             <div style={{ backdropFilter: "blur(5px)" }}>
-                {filteredProfessors.map((professor) => {
-                    const filteredCourses = professor.courses.filter((course) =>
-                        categoriaSeleccionada === "allCategories" ? true : (
-                            course.course_public && course.title === categoriaSeleccionada
-                        )
-                    );
-
-                    return filteredCourses.map((course) => (
-                        <Card
-                            name={professor.name}
-                            lastName={professor.lastName}
-                            image_profile={professor.image_profile}
-                            frequency={course.frequency}
-                            id={professor.id}
-                            title={course.title}
-                            price_hour={course.price_hour}
-                            course_description={course.course_description}
-                            last_review={course.reviews.length > 0 ? course.reviews[course.reviews.length - 1].comment : false}
-                            info={course.info_course}
-                            rating_amount={course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false}
-                            course_id={course.id}
-                            hours_experience={professor.hours_experience}
-                            key={course.id}
-                        />
-                    ));
-                })}
+                {filteredCourses}
             </div>
             <ModalFilter handleFilter={handleFilter} />
         </div>

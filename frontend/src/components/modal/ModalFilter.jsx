@@ -1,18 +1,37 @@
-import React from 'react'
-import { useState } from 'react';
-import { Star } from '../Star/Star';
+import React, { useState } from 'react';
+import { Star } from '../Opinions/Star/Star';
+import './Modals.css';
+
 function ModalFilter(props) {
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('allCategories');
+    const [formData, setFormData] = useState({
+        category: 'allCategories',
+        frequency_class: '',
+        type_of_class: {
+            individual: false,
+            group: false,
+        },
+        rating: 0, // Supongamos que 0 representa ninguna calificación seleccionada.
+    });
 
-    const handleCategoriaChange = (e) => {
-        setCategoriaSeleccionada(e.target.value);
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
 
+        // Actualizar el estado según el tipo de campo.
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: type === 'radio' ? { ...prevData[name], [value]: checked } : value,
+        }));
     };
-    const handleAplicarClick = () => {
-        props.handleFilter(categoriaSeleccionada);
+
+    const handleClick = () => {
+        // Pasar todos los valores del formulario como un objeto a la función handleFilter.
+        props.handleFilter(formData);
     };
+
     return (
-        <div class="modal fade" id="filterModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal fade text-white" id="filterModal"
+            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="filterModalLabel" aria-hidden="true" data-bs-theme="dark">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -22,58 +41,95 @@ function ModalFilter(props) {
                     <div class="modal-body">
                         <form action="">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label" >Categoria</label>
-                                <select id="categoriaSelect" class="form-select" value={categoriaSeleccionada}
-                                    onChange={handleCategoriaChange} aria-label="Default select example">
+                                <label for="category" class="col-form-label">Categoria</label>
+                                <select
+                                    id="category"
+                                    name="category"
+                                    class="form-select"
+                                    value={formData.category}
+                                    onChange={handleChange}
+                                    aria-label="Default select example"
+                                >
+                                    {/* Opciones de categoría */}
                                     <option selected value="allCategories">Todas las categorias</option>
                                     <option value="Biología">Biología</option>
                                     <option value="Física">Física</option>
                                     <option value="Matemáticas">Matemáticas</option>
                                     <option value="Música">Música</option>
                                     <option value="Idiomas">Idiomas</option>
-                                    <option value="Programación web">Programación</option>
+                                    <option value="Programación">Programación</option>
                                     <option value="Química">Química</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label" >Frecuencia de clase:</label>
-                                <select class="form-select" aria-label="Default select example" required>
-                                    <option selected disabled>-</option>
+                                <label for="frequency" class="col-form-label">Frecuencia de clase:</label>
+                                <select
+                                    id="frequency"
+                                    name="frequency_class"
+                                    class="form-select"
+                                    value={formData.frequency_class}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    {/* Opciones de frecuencia de clase */}
+                                    <option selected value="">-</option>
                                     <option value="1">Clase única</option>
                                     <option value="2">Semanal</option>
                                     <option value="3">Mensual</option>
                                 </select>
                             </div>
                             <div className="mb-3">
-                                <label for="recipient-name" class="col-form-label" >Tipo de clase:</label>
+                                <label class="col-form-label">Tipo de clase:</label>
                                 <div className="form-check">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input"
-                                            type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-                                        <label class="form-check-label" for="inlineRadio1">Individual</label>
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="type_of_class"
+                                            id="individual"
+                                            value="individual"
+                                            checked={formData.type_of_class.individual}
+                                            onChange={handleChange}
+                                        />
+                                        <label class="form-check-label" for="individual">Individual</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input"
-                                            type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-                                        <label class="form-check-label" for="inlineRadio2">Grupal</label>
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="type_of_class"
+                                            id="group"
+                                            value="group"
+                                            checked={formData.type_of_class.group}
+                                            onChange={handleChange}
+                                        />
+                                        <label class="form-check-label" for="group">Grupal</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label" >Calificación</label>
-                                <Star />
+                                <label for="rating" class="col-form-label">Calificación</label>
+                                <Star value={formData.rating} onChange={handleChange} />
                             </div>
-
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={handleAplicarClick}>Aplicar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={handleClick}>Aplicar</button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ModalFilter;
+
+
+
+
+
+
+
+
+
