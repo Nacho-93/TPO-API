@@ -1,13 +1,13 @@
 import React from 'react'
 import { useTutorContext } from '../../../Context/TutorContext'
 import { useUserContext } from '../../../Context/UserContext'
-import ModalAgregar from '../../modal/ModalAgregar';
-import ModalEsconder from '../../modal/ModalEsconder';
-import ModalEliminar from '../../modal/ModalEliminar';
+import ModalAgregar from '../../Modal/ModalAgregar';
+import ModalEsconder from '../../Modal/ModalEsconder';
+import ModalEliminar from '../../Modal/ModalEliminar';
 import Card from '../../Card/Card';
-import ModalAceptar from '../../modal/ModalAceptar';
-import ModalRechazar from '../../modal/ModalRechazar';
-import ModalFinalizar from '../../modal/ModalFinalizar';
+import ModalAceptar from '../../Modal/ModalAceptar';
+import ModalRechazar from '../../Modal/ModalRechazar';
+import ModalFinalizar from '../../Modal/ModalFinalizar';
 
 function HistoryOfClasses() {
     const { tutors } = useTutorContext();

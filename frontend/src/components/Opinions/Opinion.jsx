@@ -1,7 +1,7 @@
 import React from 'react'
 import './Opinion.css'
-import ModalAceptar from '../../modal/ModalAceptar'
-import ModalRechazar from '../../modal/ModalRechazar'
+import ModalAceptar from '../Modal/ModalAceptar'
+import ModalRechazar from '../Modal/ModalRechazar'
 
 
 

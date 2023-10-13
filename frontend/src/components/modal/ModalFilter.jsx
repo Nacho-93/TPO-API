@@ -6,20 +6,26 @@ function ModalFilter(props) {
     const [formData, setFormData] = useState({
         category: 'allCategories',
         frequency_class: '',
-        type_of_class: {
-            individual: false,
-            group: false,
-        },
+        type_of_class: '',
         rating: 0, // Supongamos que 0 representa ninguna calificación seleccionada.
     });
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value } = e.target;
 
         // Actualizar el estado según el tipo de campo.
         setFormData((prevData) => ({
             ...prevData,
-            [name]: type === 'radio' ? { ...prevData[name], [value]: checked } : value,
+            [name]: value,
+        }));
+    };
+
+    const handleRatingChange = (rating) => {
+        // Actualizar el estado de la calificación.
+
+        setFormData((prevData) => ({
+            ...prevData,
+            rating: rating,
         }));
     };
 
@@ -88,7 +94,7 @@ function ModalFilter(props) {
                                             name="type_of_class"
                                             id="individual"
                                             value="individual"
-                                            checked={formData.type_of_class.individual}
+                                            checked={formData.type_of_class === "individual"}
                                             onChange={handleChange}
                                         />
                                         <label class="form-check-label" for="individual">Individual</label>
@@ -100,7 +106,7 @@ function ModalFilter(props) {
                                             name="type_of_class"
                                             id="group"
                                             value="group"
-                                            checked={formData.type_of_class.group}
+                                            checked={formData.type_of_class === "group"}
                                             onChange={handleChange}
                                         />
                                         <label class="form-check-label" for="group">Grupal</label>
@@ -109,7 +115,7 @@ function ModalFilter(props) {
                             </div>
                             <div class="mb-3">
                                 <label for="rating" class="col-form-label">Calificación</label>
-                                <Star value={formData.rating} onChange={handleChange} />
+                                <Star value={formData.rating} onChange={handleRatingChange} />
                             </div>
                         </form>
                     </div>

@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { FaStar } from "react-icons/fa";
-import "./Star.css";
+import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import './Star.css';
 
-export function Star() {
-    const [rating, setRating] = useState(null);
+export function Star({ value, onChange }) {
     const [hover, setHover] = useState(null);
 
     const handleStarClick = (currentRating) => {
-        setRating(currentRating);
+        onChange(currentRating);
     };
 
     return (
@@ -19,13 +18,14 @@ export function Star() {
                         <input
                             type="radio"
                             name="rating"
+                            className="star"
                             value={currentRating}
-                            onClick={() => handleStarClick(currentRating)}
+                            onClick={() => handleStarClick(currentRating)} // Llamar a handleStarClick en el evento onClick
                         />
                         <FaStar
                             className="star"
                             size={25}
-                            color={currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+                            color={currentRating <= (hover || value) ? '#ffc107' : '#e4e5e9'}
                             onMouseEnter={() => setHover(currentRating)}
                             onMouseLeave={() => setHover(null)}
                         />
@@ -35,3 +35,5 @@ export function Star() {
         </div>
     );
 }
+
+

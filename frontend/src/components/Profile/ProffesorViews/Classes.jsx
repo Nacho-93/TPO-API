@@ -1,10 +1,10 @@
 import React from 'react'
 import { useUserContext } from '../../../Context/UserContext'
 import { useTutorContext } from '../../../Context/TutorContext'
-import ModalAgregar from '../../modal/ModalAgregar'
+import ModalAgregar from '../../Modal/ModalAgregar'
 import Card from '../../Card/Card';
-import ModalEliminar from '../../modal/ModalEliminar';
-import ModalEsconder from '../../modal/ModalEsconder';
+import ModalEliminar from '../../Modal/ModalEliminar';
+import ModalEsconder from '../../Modal/ModalEsconder';
 import { useLocation } from 'react-router-dom';
 
 

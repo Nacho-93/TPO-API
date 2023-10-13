@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTutorContext } from '../../Context/TutorContext';
-import ModalFilter from '../modal/ModalFilter';
+import ModalFilter from '../Modal/ModalFilter';
 import Card from '../Card/Card';
 import './Results.css';
 
@@ -11,10 +11,7 @@ function Results() {
     const [filter, setFilter] = useState({
         category: 'allCategories',
         frequency_class: "",
-        type_of_class: {
-            individual: false,
-            group: false,
-        },
+        type_of_class: '',
         rating: 0,
     });
 
@@ -24,6 +21,7 @@ function Results() {
             if (!course.course_public) {
                 return false; // Cambiar a false para filtrar el curso
             }
+            const ratingAmount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
 
             const categoryMatch =
                 filter.category === "allCategories" ? true : (
@@ -34,18 +32,17 @@ function Results() {
                     course.frequency[1] === filter.frequency_class);
 
             const typeMatch =
-                !filter.type_of_class.individual
-                    && !filter.type_of_class.group ? true : (
-                    filter.type_of_class.individual === course.info_course[0]
-                    || filter.type_of_class.group === course.info_course[1]);
+                !filter.type_of_class ? true : (
+                    (filter.type_of_class === "individual" && course.info_course[0])
+                    || (filter.type_of_class === "group" && course.info_course[1]));
 
             const ratingMatch =
                 filter.rating === 0 ? true : (
-                    course.rating === filter.rating);
+                    parseInt(ratingAmount) === filter.rating);
 
             return categoryMatch && frequencyMatch && typeMatch && ratingMatch;
         });
-
+        console.log(filter.rating)
         // Usar map para crear un arreglo de componentes Card a partir de los cursos filtrados
         return filteredProfessorCourses.map((course) => (
             <Card

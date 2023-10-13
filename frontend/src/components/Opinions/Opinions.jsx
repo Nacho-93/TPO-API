@@ -1,9 +1,9 @@
 import React from 'react'
 import './Opinions.css'
-import { useTutorContext } from '../../../Context/TutorContext'
+import { useTutorContext } from '../../Context/TutorContext'
 import { useLocation } from 'react-router-dom'
 import Opinion from './Opinion';
-import ModalComment from '../../modal/ModalComment';
+import ModalComment from '../Modal/ModalComment';
 
 
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useTutorContext } from '../../../Context/TutorContext'
 import { useLocation } from 'react-router-dom'
 import { useUserContext } from '../../../Context/UserContext';
-import Opinion from '../../Card/Opinions/Opinion';
+import Opinion from "../../Opinions/Opinion"
 import './styleViews.css'
 
 function Requests() {

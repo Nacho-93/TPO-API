@@ -1,8 +1,8 @@
 import React from "react"
 import "./Card.css"
 import { Link } from "react-router-dom"
-import ModalContact from "../modal/ModalContact"
-import ModalComment from "../modal/ModalComment"
+import ModalContact from "../Modal/ModalContact"
+import ModalComment from "../Modal/ModalComment"
 import { useTutorContext } from "../../Context/TutorContext"
 
 export default function Card({ course, ...props }) {

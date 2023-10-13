@@ -11,7 +11,7 @@ import AboutUs from "./views/AboutUs/AboutUs";
 import Contact from "./views/Contact/Contact";
 import Profile from "./components/Profile/Profile";
 import Footer from "./views/Footer/Footer";
-import Opinions from "./components/Card/Opinions/Opinions";
+import Opinions from "./components/Opinions/Opinions";
 import Requests from "./components/Profile/ProffesorViews/Requests";
 import Classes from "./components/Profile/ProffesorViews/Classes";
 import HistoryOfClasses from "./components/Profile/ProffesorViews/HistoryOfClasses";
