@@ -4,8 +4,9 @@ import { useLocation } from 'react-router-dom'
 import { useUserContext } from '../../../Context/UserContext';
 import Opinion from "../../Opinions/Opinion"
 import './styleViews.css'
+import { ManageRequests } from './ManageRequests';
 
-function Requests() {
+function Comments() {
     const { tutors } = useTutorContext();
     const { isLoggedIn, userId, login, logout } = useUserContext();
 
@@ -28,19 +29,13 @@ function Requests() {
 
 
 
+
     return (
         <div className="bg-change-color-profile">
 
-            <section id="call-to-action" class="action-diferent section-home">
-                <div class="container" data-aos="zoom-out">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 text-center">
-                            <h3>Solicitudes de comentarios</h3>
-                        </div>
+            <ManageRequests />
 
-                    </div>
-                </div>
-            </section>
+
             <div className="px-10 div-op" >
                 <div className="container">
                     {requests_list && requests_list.length > 0 ? (
@@ -57,4 +52,4 @@ function Requests() {
 
 
 
-export default Requests
+export default Comments;

@@ -1,4 +1,11 @@
 .bg-change-color-profile {
-    background-image: url("../../../assets/background-for-school.jpg");
-    
+    background-image: url("../../../assets/background-for-school.jpg");   
+}
+.cell-mobile {
+    display: none;
+}
+@media (max-width: 770px) {
+    .cell-mobile {
+        display: block;
+    }
 }

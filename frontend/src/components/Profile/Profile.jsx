@@ -45,15 +45,9 @@ function Profile() {
                                     <>
                                         <Link
                                             className="list-group-item list-group-item-action"
-                                            to={`/perfil-profesor/${userId}/solicitudesReseñas`}
+                                            to={`/perfil-profesor/${userId}/solicitudes-clases`}
                                         >
-                                            Solicitudes
-                                        </Link>
-                                        <Link
-                                            className="list-group-item list-group-item-action"
-                                            to={`/perfil-profesor/${userId}/historial-clases`}
-                                        >
-                                            Historial de clases
+                                            Gestionar solicitudes
                                         </Link>
                                         <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">
                                             Cambiar contraseña

@@ -12,9 +12,9 @@ import Contact from "./views/Contact/Contact";
 import Profile from "./components/Profile/Profile";
 import Footer from "./views/Footer/Footer";
 import Opinions from "./components/Opinions/Opinions";
-import Requests from "./components/Profile/ProffesorViews/Requests";
-import Classes from "./components/Profile/ProffesorViews/Classes";
-import HistoryOfClasses from "./components/Profile/ProffesorViews/HistoryOfClasses";
+import Comments from "./components/Profile/ProffesorViews/Comments";
+import MyClasses from "./components/Profile/ProffesorViews/MyClasses";
+import ManageClasses from "./components/Profile/ProffesorViews/ManageClasses";
 
 
 
@@ -39,9 +39,9 @@ export default function App() {
 
         <Route path="/perfil-profesor/:id" element={<Profile />} />
 
-        <Route path="/perfil-profesor/:id/solicitudesReseñas" element={<Requests />} />
-        <Route path="/perfil-profesor/:id/clases" element={<Classes />} />
-        <Route path="/perfil-profesor/:id/historial-clases" element={<HistoryOfClasses />} />
+        <Route path="/perfil-profesor/:id/solicitudes-comentarios" element={<Comments />} />
+        <Route path="/perfil-profesor/:id/clases" element={<MyClasses />} />
+        <Route path="/perfil-profesor/:id/solicitudes-clases" element={<ManageClasses />} />
 
 
 
