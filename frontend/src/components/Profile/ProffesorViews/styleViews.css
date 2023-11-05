@@ -4,6 +4,18 @@
 .cell-mobile {
     display: none;
 }
+
+
+.course-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Lineas a mostrar */
+    overflow: hidden;
+    
+
+
+}
+
 @media (max-width: 770px) {
     .cell-mobile {
         display: block;

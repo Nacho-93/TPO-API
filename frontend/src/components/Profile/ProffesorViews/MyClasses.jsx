@@ -6,6 +6,7 @@ import Card from '../../Card/Card';
 import ModalEliminar from '../../Modal/ModalEliminar';
 import ModalEsconder from '../../Modal/ModalEsconder';
 import { useLocation } from 'react-router-dom';
+import './styleViews.css'
 
 
 function Classes() {
@@ -21,35 +22,52 @@ function Classes() {
 
     const classes_list = tutors.map((tutor) => {
         if (tutor.id === user_id_byLocation && tutor.courses) {
-            return tutor.courses.map((course) => {
+            return tutor.courses.map((course, index) => {
                 if (!isActual_user && !course.course_public) {
                     return null;
                 }
+                let color = course.course_public ? "warning" : "secondary";
                 return (
                     <>
-                        <div className=''>
-                            <Card
-                                course={course}
-                                key={course.id}
-                                isTutor={isActual_user}
-                            />
+                        <tr className={`table-${color}`}>
+                            <th scope="row">
+                                {course.title}</th>
+                            <td className="">
+                                {course.price_hour}</td>
+                            <td className="">
+                                {course.frequency[0] > 1
+                                    ? `${course.frequency[0]} clases/semana`
+                                    : "1clase/semana"}</td>
+                            <td className="">
+                                {course.frequency[2]}{" "}{course.frequency[2] === 1
+                                    ? "semana"
+                                    : "semanas"}</td>
+                            <td className="">
+                                {course.info_course[2] && course.info_course[3]
+                                    ? "Presencial/Online"
+                                    : (course.info_course[2] ? "Presencial" : "Online")}</td>
+                            <td className="">{course.info_course[0] ? "Si" : "No"}</td>
+                            <td className="">{course.info_course[1] ? "Si" : "No"}</td>
 
-                            {isActual_user && <div className='d-flex justify-content-end align-items-end mb-5' style={{ maxWidth: "720px", margin: "0 auto" }}>
-                                <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#AgregarModal" data-bs-whatever="@getbootstrap">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <ModalAgregar />
-                                <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#OcultarModal" >
-                                    {!isPublic ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}
-                                </button>
-                                <ModalEsconder isPublic={isPublic} handleClick={(e) => setIsPublic(!isPublic)} />
+                            <td>
+                                {isActual_user && <div className='d-flex justify-content-between align-items-end' style={{ maxWidth: "720px", margin: "0 auto" }}>
+                                    <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#AgregarModal" data-bs-whatever="@getbootstrap">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </button>
+                                    <ModalAgregar />
+                                    <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#OcultarModal" >
+                                        {course.course_public ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}
+                                    </button>
+                                    <ModalEsconder isPublic={isPublic} handleClick={(e) => setIsPublic(!isPublic)} />
 
-                                <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
-                                    <i className="fa-solid fa-x"></i>
-                                </button>
-                                <ModalEliminar />
-                            </div>}
-                        </div>
+                                    <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
+                                        <i className="fa-solid fa-x"></i>
+                                    </button>
+                                    <ModalEliminar />
+                                </div>}
+                            </td>
+                        </tr>
+
                     </>
                 );
             });
@@ -80,9 +98,25 @@ function Classes() {
                     </div>
                 </div>
             </section>
-            <div>
-                {classes_list}
-            </div>
+            <section className="table-responsive table-classes">
+                <table className="table table-info table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">$/hora</th>
+                            <th scope="col">Frecuencia</th>
+                            <th scope="col">Duración</th>
+                            <th scope="col">Modalidad</th>
+                            <th scope="col">Individual</th>
+                            <th scope="col">Grupal</th>
+                            <th scope="col">Actualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody className='table-group-divider'>
+                        {classes_list}
+                    </tbody>
+                </table>
+            </section>
         </div>
     )
 }

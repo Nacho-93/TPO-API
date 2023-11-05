@@ -18,8 +18,7 @@ function ManageClasses() {
     //     "date": "2021-05-15",
     //     "status": [false, true, false, false]
     //   },
-    const show_cell_md = "d-none d-md-table-cell"
-    const show_cell_sm = "table-cell cell-mobile"
+
 
     const get_end_date = (startDate, frequency) => {
         let date = new Date(startDate);
@@ -60,12 +59,9 @@ function ManageClasses() {
                             <tr className={`table-${color}`}>
                                 <th scope="row">{course.title}</th>
                                 <td>{active_class.name}</td>
-                                <td className={show_cell_sm}>
-                                    {init_date}{" - "}{end_date}
-                                </td>
-                                <td className={show_cell_md}>{init_date}</td>
-                                <td className={show_cell_md}>{end_date}</td>
-                                <td className={show_cell_md}>{state}</td>
+                                <td className="">{init_date}</td>
+                                <td className="">{end_date}</td>
+                                <td className="">{state}</td>
 
                                 <td>
                                     <div className='d-flex justify-content-between align-items-center'>
@@ -78,7 +74,7 @@ function ManageClasses() {
                                         {active_class.status[1] &&
                                             (
                                                 <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                                    data-bs-target="#FinalizarModal" data-bs-whatever="@getbootstrap">
                                                     <i class="fa-solid fa-flag-checkered"></i>
                                                 </button>
                                             )}
@@ -111,20 +107,19 @@ function ManageClasses() {
     return (
         <div className='bg-change-color-profile pb-5'>
             <ManageRequests />
-            <section className="table-classes">
-                <table className="table table-info">
+            <section className="table-responsive table-classes">
+                <table className="table table-info table-bordered">
                     <thead>
                         <tr>
                             <th scope="col">Clase</th>
                             <th scope="col">Alumno</th>
-                            <th scope="col" className={show_cell_sm}>Inicio/Fin</th>
-                            <th scope="col" className={show_cell_md}>Fecha inicio</th>
-                            <th scope="col" className={show_cell_md}>Fecha fin</th>
-                            <th scope="col" className={show_cell_md}>Estado</th>
+                            <th scope="col" className="">Inicio</th>
+                            <th scope="col" className="">Fin</th>
+                            <th scope="col" className="">Estado</th>
                             <th scope="col">Actualizar</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='table-group-divider'>
                         {classes_list}
                     </tbody>
                 </table>

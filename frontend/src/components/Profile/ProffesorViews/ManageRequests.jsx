@@ -9,9 +9,12 @@ export function ManageRequests() {
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 text-center">
+                            <h3 className="">Solicitudes</h3>
+                        </div>
+                        <div class="col-lg-8 text-center">
                             <Link
                                 to={`/perfil-profesor/${userId}/solicitudes-clases`}
-                                className="btn btn-outline-light me-2"
+                                className="btn btn-outline-info me-2"
                                 style={{ width: "120px" }}>
                                 Clases
                             </Link>
