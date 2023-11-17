@@ -180,7 +180,7 @@ export default function Card({ course, ...props }) {
                                 <h6 className="card-title hours text-stats">
                                     <i>$</i>
                                     {" "}
-                                    {tutor.price_hour}/hora
+                                    {course.price_hour}/hora
                                 </h6>
                                 <h6 className="card-text text-muted frequency text-stats">
                                     <i class="fa-regular fa-calendar-days"></i>
@@ -256,7 +256,7 @@ export default function Card({ course, ...props }) {
             <div className="card-body row professor-reviews d-md-flex">
 
                 <div className="col-md-10 comment">
-                    {last_review
+                    {last_review && !props.isTutor
                         ? <p className="card-text"><i class="fa-solid fa-quote-left"></i>{" "}
                             {last_review}</p>
                         : <p className="card-text text-muted">{" "}
@@ -265,7 +265,7 @@ export default function Card({ course, ...props }) {
                 </div>
 
                 <div className="col-md-2 reviews">
-                    {last_review
+                    {last_review || props.isTutor
 
                         ? <Link to={`/categorias/clase-${course.title}-${course.id}-${tutor.id}-opiniones`}
                             className="btn btn-outline-secondary">

@@ -217,7 +217,7 @@
   .action-diferent {
     background: linear-gradient(rgba(92, 97, 103, 0.6), rgba(38, 42, 48, 0.8)), url("../../assets/background-for-school.jpg") center center;
     background-size: cover;
-    padding: 60px 0;
+    padding: 30px 0;
   }
   
   @media (min-width: 1365px) {
