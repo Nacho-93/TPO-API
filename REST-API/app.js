@@ -2,6 +2,7 @@
 var express = require('express');
 var cookieParser = require('cookie-parser');
 var bluebird = require('bluebird');
+var morgan = require('morgan');
 
 //incorporo cors
 var cors = require('cors');
@@ -12,6 +13,7 @@ var apiRouter = require('./routes/api'); //Custom
 
 //instancio el servidor
 var app = express();
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
   extended: false
