@@ -11,7 +11,8 @@ export default function Card({ course, ...props }) {
     const last_review = course.reviews.length > 0 ? course.reviews[course.reviews.length - 1].comment : false
     const rating_amount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
     // Como funciona el array info_course:
-    // props.info_course == [individual, group, in_person, online]
+    // course.info_course == [individual, group, in_person, online]
+    const [isIndividual, isGroup, isInPerson, isOnline] = course.info_course
 
     return (
 
@@ -146,14 +147,14 @@ export default function Card({ course, ...props }) {
                         </h6>
 
                         <h6 className="card-title text-stats"><i>#</i>{" "}
-                            {course.info_course[0] && course.info_course[1]
+                            {isIndividual && isGroup
                                 ? "Individual/Grupal"
-                                : (course.info_course[0] ? "Individual" : "Grupal")}</h6>
+                                : (isIndividual ? "Individual" : "Grupal")}</h6>
 
                         <h6 className="card-title text-stats"><i>#</i>
-                            {" "}{course.info_course[2] && course.info_course[3]
+                            {" "}{isInPerson && isOnline
                                 ? "Presencial/Online"
-                                : (course.info_course[2] ? "Presencial" : "Online")}</h6>
+                                : (isInPerson ? "Presencial" : "Online")}</h6>
 
                         <div className="d none d-md-block">
                             <button
@@ -201,9 +202,9 @@ export default function Card({ course, ...props }) {
                             <section className="modality-format">
 
                                 <h6 className="card-title text-stats"><i>#</i>{" "}
-                                    {course.info_course[0] && course.info_course[1]
+                                    {isIndividual && isGroup
                                         ? "Individual/Grupal"
-                                        : (course.info_course[0]
+                                        : (isIndividual
                                             ? "Individual"
                                             : "Grupal")}
                                 </h6>
@@ -215,9 +216,9 @@ export default function Card({ course, ...props }) {
                                 </h6>
 
                                 <h6 className="card-title text-stats"><i>#</i>{" "}
-                                    {course.info_course[2] && course.info_course[3]
+                                    {isInPerson && isOnline
                                         ? "Presencial/Online"
-                                        : (course.info_course[2]
+                                        : (isInPerson
                                             ? "Presencial"
                                             : "Online")}
                                 </h6>

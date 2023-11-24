@@ -17,7 +17,6 @@ router.put('/update', Authorization, UserController.updateUser)
 router.delete('/delete', Authorization, UserController.removeUser)
 
 
-
 // Export the Router
 module.exports = router;
 

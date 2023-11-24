@@ -1,5 +1,5 @@
 // Gettign the Newly created Mongoose Model we just created 
-var User = require('../models/User.model');
+var {User, Professor} = require('../db/models/User.model');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
@@ -57,7 +57,7 @@ exports.createUser = async function (user) {
 
 exports.updateUser = async function (user) {
     
-    var id = {name :user.name}
+    var id = {_id :user._id}
     console.log(id)
     try {
         //Find the old User Object by the Id
