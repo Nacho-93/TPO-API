@@ -62,16 +62,17 @@ exports.updateUser = async function (req, res, next) {
         return res.status(400).json({status: 400., message: "Name be present"})
     }
 
-    
-    var User = {
-       
+    var userData = {
         name: req.body.name ? req.body.name : null,
         email: req.body.email ? req.body.email : null,
         password: req.body.password ? req.body.password : null
     }
 
+    const userId = req.userId;
+    console.log("userId: CONTROLLER",userId);
+
     try {
-        var updatedUser = await UserService.updateUser(User)
+        var updatedUser = await UserService.updateUser(userId ,userData)
         return res.status(200).json({status: 200, data: updatedUser, message: "Succesfully Updated User"})
     } catch (e) {
         return res.status(400).json({status: 400., message: e.message})

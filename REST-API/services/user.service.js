@@ -55,14 +55,14 @@ exports.createUser = async function (user) {
     }
 }
 
-exports.updateUser = async function (user) {
-    
-    var id = {_id :user._id}
-    console.log(id)
+exports.updateUser = async function (userId, userData) {
+
+
+
     try {
         //Find the old User Object by the Id
-        var oldUser = await User.findOne(id);
-        console.log (oldUser)
+        var oldUser = await User.findOne({_id: userId});
+
     } catch (e) {
         throw Error("Error occured while Finding the User")
     }
@@ -71,10 +71,15 @@ exports.updateUser = async function (user) {
         return false;
     }
     //Edit the User Object
-    var hashedPassword = bcrypt.hashSync(user.password, 8);
-    oldUser.name = user.name
-    oldUser.email = user.email
-    oldUser.password = hashedPassword
+
+    if (userData.name) {
+        oldUser.name = userData.name}
+    if (userData.email) {
+        oldUser.email = userData.email}
+    if (userData.password) {
+        oldUser.password =  bcrypt.hashSync(userData.password, 10);}
+    
+
     try {
         var savedUser = await oldUser.save()
         return savedUser;
@@ -84,18 +89,19 @@ exports.updateUser = async function (user) {
 }
 
 exports.deleteUser = async function (id) {
-    console.log(id)
+    console.log("Delete ID" + id)
     // Delete the User
     try {
-        var deleted = await User.remove({
+        const deleted = await User.deleteOne({
             _id: id
         })
+        console.log(deleted)
         if (deleted.n === 0 && deleted.ok === 1) {
             throw Error("User Could not be deleted")
         }
         return deleted;
     } catch (e) {
-        throw Error("Error Occured while Deleting the User")
+        throw Error(`Error Occured while Deleting the User`)
     }
 }
 
@@ -110,6 +116,7 @@ exports.loginUser = async function (user) {
             email: user.email
         });
         var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
+        
         if (!passwordIsValid) return 0;
 
         var token = jwt.sign({

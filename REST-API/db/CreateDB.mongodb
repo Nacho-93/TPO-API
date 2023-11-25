@@ -1,3 +1,5 @@
+
+
 use('AzertyDB');
 
 // Insert a few documents into the sales collection.
@@ -31,5 +33,7 @@ db.Courses.updateMany({}, {$rename:{professor_id:"tutor_id"}})
 // Delete courses from Professor collection
 use('AzertyDB');
 db.Professor.updateMany({}, {$unset:{courses:""}})
+
+
 
 
