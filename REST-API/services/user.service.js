@@ -53,54 +53,6 @@ exports.createUser = async function (user) {
     }
 }
 
-exports.updateUser = async function (userId, userData) {
-
-    try {
-        //Find the old User Object by the Id
-        var oldUser = await User.findOne({_id: userId});
-
-    } catch (e) {
-        throw Error("Error occured while Finding the User")
-    }
-    // If no old User Object exists return false
-    if (!oldUser) {
-        return false;
-    }
-    //Edit the User Object
-
-    if (userData.name) {
-        oldUser.name = userData.name}
-    if (userData.email) {
-        oldUser.email = userData.email}
-    if (userData.password) {
-        oldUser.password =  bcrypt.hashSync(userData.password, 10);}
-    
-
-    try {
-        var savedUser = await oldUser.save()
-        return savedUser;
-    } catch (e) {
-        throw Error("And Error occured while updating the User");
-    }
-}
-
-exports.deleteUser = async function (id) {
-    console.log("Delete ID" + id)
-    // Delete the User
-    try {
-        const deleted = await User.deleteOne({
-            _id: id
-        })
-        console.log(deleted)
-        if (deleted.n === 0 && deleted.ok === 1) {
-            throw Error("User Could not be deleted")
-        }
-        return deleted;
-    } catch (e) {
-        throw Error(`Error Occured while Deleting the User`)
-    }
-}
-
 
 exports.loginUser = async function (user) {
 
@@ -127,3 +79,55 @@ exports.loginUser = async function (user) {
     }
 
 }
+
+
+
+// exports.updateUser = async function (userId, userData) {
+
+//     try {
+//         //Find the old User Object by the Id
+//         var oldUser = await User.findOne({_id: userId});
+
+//     } catch (e) {
+//         throw Error("Error occured while Finding the User")
+//     }
+//     // If no old User Object exists return false
+//     if (!oldUser) {
+//         return false;
+//     }
+//     //Edit the User Object
+
+//     if (userData.name) {
+//         oldUser.name = userData.name}
+//     if (userData.email) {
+//         oldUser.email = userData.email}
+//     if (userData.password) {
+//         oldUser.password =  bcrypt.hashSync(userData.password, 10);}
+    
+
+//     try {
+//         var savedUser = await oldUser.save()
+//         return savedUser;
+//     } catch (e) {
+//         throw Error("And Error occured while updating the User");
+//     }
+// }
+
+// exports.deleteUser = async function (id) {
+//     console.log("Delete ID" + id)
+//     // Delete the User
+//     try {
+//         const deleted = await User.deleteOne({
+//             _id: id
+//         })
+//         console.log(deleted)
+//         if (deleted.n === 0 && deleted.ok === 1) {
+//             throw Error("User Could not be deleted")
+//         }
+//         return deleted;
+//     } catch (e) {
+//         throw Error(`Error Occured while Deleting the User`)
+//     }
+// }
+
+

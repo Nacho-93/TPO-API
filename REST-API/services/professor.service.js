@@ -1,4 +1,6 @@
 var { User } = require('../db/models/User.model');
+var { Course } = require('../db/models/Course.model');
+var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
@@ -23,10 +25,7 @@ exports.updateProfessor = async (userId, userData) => {
     try {
         const oldProfessor = await User.findOne({ _id: userId });
 
-        // console.log("\noldProfessor SERVICE\n",oldProfessor)    
-
         const validKeys = Object.keys(User.schema.paths);
-
 
         Object.keys(userData).forEach(key => {
 
@@ -41,3 +40,23 @@ exports.updateProfessor = async (userId, userData) => {
         throw Error("Error al actualizar el perfil")
     }
 }
+
+
+exports.deleteProfessor = async function (id) {
+    console.log("Delete ID" + id)
+
+    try {
+        const deleted = await User.deleteOne({
+            _id: id
+        })
+        console.log(deleted)
+        if (deleted.n === 0 && deleted.ok === 1) {
+            throw Error("No se ha podido eliminar el perfil")
+        }
+        return deleted;
+    } catch (e) {
+        throw Error(`Error al eliminar el perfil`)
+    }
+}
+
+

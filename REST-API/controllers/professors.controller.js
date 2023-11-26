@@ -19,7 +19,6 @@ exports.updateProfessor = async (req, res, next) => {
     const {id} = req.params;
     const professorData = req.body;
   
-    console.log("professorData CONTROLLER:",professorData)
     try {
         const updatedProfessor = await ProfessorService.updateProfessor(id, professorData)
         res.status(200).json(updatedProfessor);
@@ -28,4 +27,22 @@ exports.updateProfessor = async (req, res, next) => {
 }
 
 }
+
+
+exports.deleteProfessor = async (req, res, next) => {
+    const {id} = req.params;
+
+    const confirmDelete = req.body.confirmDelete;
+
+    try {
+        if (!confirmDelete) {
+            throw Error("No se ha confirmado la eliminación del perfil")    
+        }
+        const deleted = await ProfessorService.deleteProfessor(id)
+        res.status(200).json({status: 200, message: "Succesfully Professor Deleted"});
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
 
