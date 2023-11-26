@@ -35,5 +35,10 @@ use('AzertyDB');
 db.Professor.updateMany({}, {$unset:{courses:""}})
 
 
-
+use('AzertyDB');
+db.Courses.updateMany(
+    { }, // Filtro vacío para seleccionar todos los documentos
+    { $set: { "active_classes.$[].id": ObjectId() } } // Añadir un nuevo campo 'id' con un valor único (ObjectId)
+  )
+  
 

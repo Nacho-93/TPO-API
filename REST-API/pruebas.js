@@ -15,8 +15,8 @@ const updateProfessorsWithPassword = async () => {
     //     professor.date = new Date();
     //     await professor.save();
     //   }
-  	const deleted = await User.deleteOne({_id: '656179ef3310c22804a316a8'});
-    console.log(deleted)
+   
+
     process.exit(0);
 };
 

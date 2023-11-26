@@ -6,23 +6,18 @@ const UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     date: Date,
-
-    // Otras propiedades comunes a todos los usuarios
-});
-
-const ProfessorSchema = new mongoose.Schema({
+    lastName: String,
     hours_experience: Number,
     description: String,
     phone: String,
     degree: String,
+    image_profile: String,
+
+    // Otras propiedades comunes a todos los usuarios
 });
 
-
 UserSchema.plugin(mongoosePaginate);
-ProfessorSchema.plugin(mongoosePaginate);
 
 const User = mongoose.model('User', UserSchema, 'Professor');
-const Professor = mongoose.model('Professor', ProfessorSchema, 'Professor');
 
-
-module.exports = { User, Professor };
+module.exports = { User };
