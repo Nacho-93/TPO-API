@@ -42,3 +42,17 @@ db.Courses.updateMany(
   )
   
 
+use('AzertyDB');
+db.Courses.find({}).forEach(course => {
+    // Itera sobre cada active_class en el curso
+    course.active_classes.forEach(ac => {
+        // Asigna un nuevo ObjectId a cada active_class
+        ac.id = ObjectId();
+    });
+
+    // Actualiza el documento con las modificaciones
+    db.Courses.updateOne(
+        { _id: course._id }, // Filtra por el ID del curso
+        { $set: { active_classes: course.active_classes } } // Actualiza active_classes
+    );
+});

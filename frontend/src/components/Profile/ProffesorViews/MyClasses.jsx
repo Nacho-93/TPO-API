@@ -7,6 +7,7 @@ import ModalEliminar from '../../Modal/ModalEliminar';
 import ModalEsconder from '../../Modal/ModalEsconder';
 import { useLocation } from 'react-router-dom';
 import './styleViews.css'
+import ModalUpdate from '../../Modal/ModalUpdate';
 
 
 function Classes() {
@@ -51,15 +52,10 @@ function Classes() {
 
                             <td>
                                 {isActual_user && <div className='d-flex justify-content-between align-items-end' style={{ maxWidth: "720px", margin: "0 auto" }}>
-                                    <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#AgregarModal" data-bs-whatever="@getbootstrap">
+                                    <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-whatever="@getbootstrap">
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </button>
-                                    <ModalAgregar />
-                                    <button type="button" class="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target="#OcultarModal" >
-                                        {course.course_public ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}
-                                    </button>
-                                    <ModalEsconder isPublic={isPublic} handleClick={(e) => setIsPublic(!isPublic)} />
-
+                                    <ModalUpdate />
                                     <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
                                         <i className="fa-solid fa-x"></i>
                                     </button>

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const {User} = require('./db/models/User.model'); // Reemplaza 'tu_modelo' con la ruta adecuada a tu modelo
-
+const {User} = require('./db/models/User.model');
+const {Course} = require('./db/models/Course.model'); 
 
 const updateProfessorsWithPassword = async () => {
     // const profesores = await User.find({});
@@ -15,7 +15,10 @@ const updateProfessorsWithPassword = async () => {
     //     professor.date = new Date();
     //     await professor.save();
     //   }
-   
+
+    // Change id from each active_class of each course
+
+
 
     process.exit(0);
 };

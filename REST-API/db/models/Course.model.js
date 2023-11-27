@@ -21,10 +21,10 @@ const CourseSchema = new mongoose.Schema({
     price_hour: String,
     course_public: Boolean,
     active_classes: [Active_classes],
-    frequency: Array,
+    frequency: [],
     reviews: [ReviewSchema],
     info_course: [Boolean],
-    professor: { type: mongoose.Schema.Types.ObjectId, ref: 'Professor' },
+    tutor_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Professor' },
 });
 
 
