@@ -18,7 +18,13 @@ const updateProfessorsWithPassword = async () => {
 
     // Change id from each active_class of each course
 
-
+    const courses = await Course.find({});
+    courses.forEach(c => {
+        c.active_classes.forEach(ac => {
+            ac._id = new mongoose.Types.ObjectId();
+        });
+        c.save();
+    })
 
     process.exit(0);
 };

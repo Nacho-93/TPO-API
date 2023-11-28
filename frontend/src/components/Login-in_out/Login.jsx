@@ -7,35 +7,56 @@ import { useUserContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom'
 import './Login.css'
 
+import { login_exe } from '../../controllers/user.controller'
+import { Redirect } from 'react-router-dom'
+
 export default function Login() {
     const { isLoggedIn, userId, login, logout } = useUserContext();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+    const [validUser, setValidUser] = useState(false);
+    const [loggedUserId, setLoggedUserId] = useState(null);
 
-    const navigate = useNavigate();
-
-    const authEmail = "a@a.com"
-    const authPassword = "a123"
-
-
-    const handleLogin = () => {
-        if (email === authEmail && password === authPassword) {
-            login(3)
-            setShowAlert(false)
-            navigate('/')
-        } else {
-            setShowAlert(true)
+    const validateLogin = async () => {
+        let user = {
+            email: email,
+            password: password
         }
+        const response = await login_exe(user);
 
+        if (response.rdo === 0) {
+            setValidUser(true);
+            setLoggedUserId(response.user._id);
+        } else {
+            alert("El usuario no es valido")
+        }
     }
 
 
+    const loginUser = () => {
+
+        if (email !== "" && password !== "") {
+            validateLogin();
+        }
+        else {
+            alert("Debe completar usuario y password");
+        }
+    }
+
+    const redirect = () => {
+        if (validUser) {
+            return <useNavigate to={`/perfil/${loggedUserId}`} />
+        }
+
+
+    }
 
     return (
 
         <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
+            {redirect()}
             <form>
                 <div
                     class="bg-white p-5 rounded-5 text-secondary shadow"
@@ -106,7 +127,7 @@ export default function Login() {
                     </div>
                     <div
                         class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm"
-                        onClick={handleLogin}
+                        onClick={loginUser}
                     >
                         Iniciar sesión
                     </div>
@@ -121,5 +142,5 @@ export default function Login() {
         </div>
 
     )
-}
 
+}

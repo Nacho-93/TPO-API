@@ -2,7 +2,7 @@ import React from 'react'
 
 function ModalUpdate() {
     return (
-        <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
+        <div class="modal fade text-white" data-bs-theme="dark" id="UpdateModal" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

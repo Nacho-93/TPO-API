@@ -93,7 +93,7 @@ exports.removeUser = async function (req, res, next) {
 
 exports.loginUser = async function (req, res, next) {
     // Req.Body contains the form submit values.
-    console.log("body",req.body)
+    console.log("\nbody CONTROLLER", req.body, req.body.email, req.body.password)
     var User = {
         email: req.body.email,
         password: req.body.password

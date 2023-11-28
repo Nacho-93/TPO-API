@@ -50,7 +50,7 @@ export default function Card({ course, ...props }) {
                             <div className="name-rating">
                                 <section className="name d-flex justify-content-end">
 
-                                    <Link to={`/perfil-profesor/${tutor.id}`} className="card-title name">
+                                    <Link to={`/perfil/${tutor.id}`} className="card-title name">
                                         {tutor.name}{" "}{tutor.lastName}
                                     </Link>
                                 </section>
@@ -81,7 +81,7 @@ export default function Card({ course, ...props }) {
                     <div className="professor-course">
                         <section className="name-rating d-none d-md-flex justify-content-between align-items-center">
 
-                            <Link to={`/perfil-profesor/${tutor.id}`} className="card-title name">
+                            <Link to={`/perfil/${tutor.id}`} className="card-title name">
                                 {tutor.name}{" "}{tutor.lastName}
                             </Link>
 
@@ -162,8 +162,7 @@ export default function Card({ course, ...props }) {
                                 class="btn btn-primary"
                                 data-bs-toggle="modal"
                                 data-bs-target="#exampleModalContact"
-                                data-bs-whatever="@getbootstrap"
-                                disabled={props.isTutor}>
+                                data-bs-whatever="@getbootstrap">
                                 Contactar
 
                             </button>

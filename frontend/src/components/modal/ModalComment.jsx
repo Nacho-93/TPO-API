@@ -3,7 +3,8 @@ import { Star } from '../Opinions/Star/Star';
 
 function ModalComment() {
     return (
-        <div class="modal fade" id="exampleModalComment" tabindex="-1" aria-labelledby="exampleModalCommentLabel" aria-hidden="true">
+        <div class="modal fade text-white" data-bs-theme="dark" id="exampleModalComment"
+            tabindex="-1" aria-labelledby="exampleModalCommentLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

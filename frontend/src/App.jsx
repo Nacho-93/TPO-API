@@ -37,11 +37,11 @@ export default function App() {
         <Route path="/sobreNosotros" element={<AboutUs />} />
         <Route path="/contacto" element={<Contact />} />
 
-        <Route path="/perfil-profesor/:id" element={<Profile />} />
+        <Route path="/perfil/:id" element={<Profile />} />
 
-        <Route path="/perfil-profesor/:id/solicitudes-comentarios" element={<Comments />} />
-        <Route path="/perfil-profesor/:id/clases" element={<MyClasses />} />
-        <Route path="/perfil-profesor/:id/solicitudes-clases" element={<ManageClasses />} />
+        <Route path="/perfil/:id/solicitudes-comentarios" element={<Comments />} />
+        <Route path="/perfil/:id/misClases" element={<MyClasses />} />
+        <Route path="/perfil/:id/solicitudes-clases" element={<ManageClasses />} />
 
 
 

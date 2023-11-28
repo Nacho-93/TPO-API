@@ -8,7 +8,7 @@ var Authorization = require('../../middlewares/authorization');
 router.post('/registration', UserController.createUser)
 
 // Login user --> OK       // http://localhost:8080/api/user/login
-router.post('/login/', UserController.loginUser)
+router.post('/login', UserController.loginUser)
 
 // Get user by id --> OK    // http://localhost:8080/api/user/[id]
 router.get('/users',Authorization, UserController.getUsers) 

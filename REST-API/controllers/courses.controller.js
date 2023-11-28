@@ -1,6 +1,9 @@
 var CoursesService = require('../services/courses.service');
 
 
+
+// ------------------------------------------PROFILE----------------------------------------------------
+
 exports.getCoursesByProfessorId = async (req, res, next) => {
     const {id} = req.params;
 
@@ -48,14 +51,98 @@ exports.deleteCourse = async (req, res, next) => {
     }
 }
 
+// ------------------------------------------MANAGE REQUESTs----------------------------------------------------
+
+
+exports.getCourses_CACHE = async (req, res, next) => {
+    const {id} = req.params;
+
+    try {
+        const all_ACs = await CoursesService.getCourses_CACHE(id)
+        res.status(200).json(all_ACs);
+
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
 
 exports.manageCourseStatus = async (req, res, next) => {
-    const {course_id, id,  status} = req.body;
-    const active_class = {id, status}
+    const {course_id, _id,  status} = req.body;
+    const data_ac = {_id, status}
     const tutor_id = req.params.id;
     try {
-        const updatedCourse = await CoursesService.manageCourseStatus(course_id, active_class, tutor_id)
+        const updatedCourse = await CoursesService.manageCourseStatus(course_id, data_ac, tutor_id)
         res.status(201).json({updatedCourse, message: "Succesfully Updated Course Status"});
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+// -----------------------------------REVIEWS--------------------------------------------------
+
+
+exports.getReviewRequests = async (req, res, next) => {
+    const {tutor_id} = req.params;
+
+    try {
+        const reviews_not_public = await CoursesService.getReviewRequests(tutor_id)
+        res.status(200).json(reviews_not_public);
+
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+exports.acceptReview = async (req, res, next) => {
+    const {course_id, review_id} = req.body;
+    try {
+        const updatedCourse = await CoursesService.acceptReview(course_id, review_id)
+        res.status(201).json({updatedCourse, message: "El comentario fue aceptado"});
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+exports.rejectReview = async (req, res, next) => {
+    const {course_id, review_id} = req.body;
+    try {
+        const updatedCourse = await CoursesService.rejectReview(course_id, review_id)
+        res.status(201).json({updatedCourse, message: "El comentario fue rechazado"});
+    } catch (e) {
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+
+// ------------------------------------------ALL COURSES UserView----------------------------------------------------
+
+
+exports.getAllCourses = async (req, res, next) => {
+    
+        try {
+            const allCourses = await CoursesService.getAllCourses()
+            res.status(200).json(allCourses);
+    
+        } catch (e) {
+            res.status(400).json({status: 400, message: e.message})
+        }
+    }
+
+
+exports.addReview = async (req, res, next) => {
+    const { comment, user_name, rating } = req.body;
+    const reviewData = { comment, user_name, rating, date: new Date(), public: false }
+    const course_id = req.body.course_id
+
+
+    try {
+        const updatedCourse = await CoursesService.addReview(reviewData, course_id)
+        res.status(201).json({updatedCourse, message: "Succesfully Added Review"});
     } catch (e) {
         res.status(400).json({status: 400, message: e.message})
     }

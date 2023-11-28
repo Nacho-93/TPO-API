@@ -1,4 +1,4 @@
-
+const { ObjectId } = require('mongodb');
 
 use('AzertyDB');
 
@@ -38,7 +38,7 @@ db.Professor.updateMany({}, {$unset:{courses:""}})
 use('AzertyDB');
 db.Courses.updateMany(
     { }, // Filtro vacío para seleccionar todos los documentos
-    { $set: { "active_classes.$[].id": ObjectId() } } // Añadir un nuevo campo 'id' con un valor único (ObjectId)
+    { $unset: { "active_classes.$[].id": "" } } // Añadir un nuevo campo 'id' con un valor único (ObjectId)
   )
   
 
@@ -47,12 +47,39 @@ db.Courses.find({}).forEach(course => {
     // Itera sobre cada active_class en el curso
     course.active_classes.forEach(ac => {
         // Asigna un nuevo ObjectId a cada active_class
-        ac.id = ObjectId();
+        ac._id = new ObjectId();
     });
 
     // Actualiza el documento con las modificaciones
     db.Courses.updateOne(
         { _id: course._id }, // Filtra por el ID del curso
         { $set: { active_classes: course.active_classes } } // Actualiza active_classes
+    );
+});
+
+
+
+
+
+
+use('AzertyDB');
+db.Courses.updateMany(
+    { }, // Filtro vacío para seleccionar todos los documentos
+    { $unset: { "reviews.$[].id": "" } } // Añadir un nuevo campo 'id' con un valor único (ObjectId)
+  )
+
+
+use('AzertyDB');
+db.Courses.find({}).forEach(course => {
+    // Itera sobre cada active_class en el curso
+    course.reviews.forEach(r => {
+        // Asigna un nuevo ObjectId a cada active_class
+        r._id = new ObjectId();
+    });
+
+    // Actualiza el documento con las modificaciones
+    db.Courses.updateOne(
+        { _id: course._id }, // Filtra por el ID del curso
+        { $set: { reviews: course.reviews } } // Actualiza active_classes
     );
 });

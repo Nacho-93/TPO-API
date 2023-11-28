@@ -59,7 +59,7 @@ exports.loginUser = async function (user) {
     // Creating a new Mongoose Object by using the new keyword
     try {
         // Find the User 
-        console.log("login:",user)
+        console.log("login SERVICE:",user, user.email, user.password + "\n")
         var _details = await User.findOne({
             email: user.email
         });

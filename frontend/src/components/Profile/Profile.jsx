@@ -37,7 +37,7 @@ function Profile() {
                                 </a>
                                 <Link
                                     className="list-group-item list-group-item-action"
-                                    to={`/perfil-profesor/${user_id_byLocation}/clases`}
+                                    to={`/perfil/${user_id_byLocation}/misClases`}
                                 >
                                     {isActual_user ? 'Mis clases' : `Clases de ${professor_name}`}
                                 </Link>
@@ -45,7 +45,7 @@ function Profile() {
                                     <>
                                         <Link
                                             className="list-group-item list-group-item-action"
-                                            to={`/perfil-profesor/${userId}/solicitudes-clases`}
+                                            to={`/perfil/${userId}/solicitudes-clases`}
                                         >
                                             Gestionar solicitudes
                                         </Link>
@@ -79,7 +79,7 @@ function Profile() {
                                                         <input type="file" className="account-settings-fileinput" />
                                                     </label>{" "}
                                                     &nbsp;
-                                                    <button type="button" className="btn btn-default md-btn-flat">
+                                                    <button type="button" className="btn btn-outline-danger md-btn-flat">
                                                         Reset
                                                     </button>
                                                     <div className="text-light small mt-1">JPG/PNG</div>

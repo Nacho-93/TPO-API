@@ -77,7 +77,7 @@ export default function NavBar(props) {
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
 
-            <Link to={`/perfil-profesor/${userId}`} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
+            <Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
               {isLoggedIn ? professor_image : <i class="login-icon bi bi-person-circle"></i>} </Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -116,7 +116,7 @@ export default function NavBar(props) {
             </ul>
             {/* Login / Sign Up */}
             <div className="d-none d-lg-block">
-              {isLoggedIn ? (<Link to={`/perfil-profesor/${userId}`} className="log nav-item text-primary mb-0">
+              {isLoggedIn ? (<Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0">
                 {professor_image} </Link>)
                 :
                 (<div className="div-login d-none d-lg-block mt-1">
