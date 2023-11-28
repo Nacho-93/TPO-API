@@ -72,6 +72,7 @@ exports.loginUser = async function (user) {
         }, process.env.SECRET, {
             expiresIn: 86400 // expires in 24 hours
         });
+        
         return {token:token, user:_details};
     } catch (e) {
         // return a Error message describing the reason     

@@ -4,11 +4,11 @@ import userName_icon from "../../assets/username-icon.svg"
 import password_icon from "../../assets/password-icon.svg"
 import { Link } from 'react-router-dom'
 import { useUserContext } from '../../Context/UserContext'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import './Login.css'
 
 import { login_exe } from '../../controllers/user.controller'
-import { Redirect } from 'react-router-dom'
+
 
 export default function Login() {
     const { isLoggedIn, userId, login, logout } = useUserContext();
@@ -20,11 +20,11 @@ export default function Login() {
     const [loggedUserId, setLoggedUserId] = useState(null);
 
     const validateLogin = async () => {
-        let user = {
+        let userData = {
             email: email,
             password: password
         }
-        const response = await login_exe(user);
+        const response = await login_exe(userData);
 
         if (response.rdo === 0) {
             setValidUser(true);
@@ -47,100 +47,100 @@ export default function Login() {
 
     const redirect = () => {
         if (validUser) {
-            return <useNavigate to={`/perfil/${loggedUserId}`} />
+            return <Navigate to={`/perfil/${loggedUserId}`} />
         }
 
 
     }
 
     return (
-
-        <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
+        <>
             {redirect()}
-            <form>
-                <div
-                    class="bg-white p-5 rounded-5 text-secondary shadow"
-                    style={{ width: "25rem" }}
-                >
-                    <div class="d-flex justify-content-center">
-                        <img
-                            src={login_icon}
-                            alt="login-icon"
-                            style={{ height: "7rem" }}
-                        />
-                    </div>
-                    <div class="text-center fs-1 fw-bold">Iniciar sesión</div>
-                    <div class="input-group mt-4">
-                        {showAlert && (
-                            <div class="alert alert-danger" role="alert">
-                                Credenciales incorrectas. Intente nuevamente.
-                            </div>
-                        )}
-
-                        <div class="input-group-text bg-info">
-                            <img
-                                src={userName_icon}
-                                alt="username-icon"
-                                style={{ height: "1rem" }}
-                            />
-                        </div>
-
-                        <label htmlfor="usuario"></label>
-                        <input
-                            class="form-control bg-light"
-                            type="text"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div class="input-group mt-1">
-                        <div class="input-group-text bg-info">
-                            <img
-                                src={password_icon}
-                                alt="password-icon"
-                                style={{ height: "1rem" }}
-                            />
-                        </div>
-                        <label htmlfor="password"></label>
-                        <input
-                            class="form-control bg-light"
-                            type="password"
-                            placeholder="Contraseña"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div class="d-flex justify-content-around mt-1">
-                        <div class="d-flex align-items-center gap-1">
-                            <input class="form-check-input" type="checkbox" />
-                            <label htmlfor="check" className='custom-input-label'></label>
-                            <div class="pt-1" style={{ fontSize: "0.9rem" }}>Recordarme</div>
-                        </div>
-                        <div class="pt-1">
-                            <Link
-                                to="/recuperarContraseña"
-                                class="text-decoration-none text-info fw-semibold fst-italic"
-                                style={{ fontSize: "0.9rem" }}
-                            >Olvido su contraseña?</Link>
-                        </div>
-                    </div>
+            <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
+                <form>
                     <div
-                        class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm"
-                        onClick={loginUser}
+                        class="bg-white p-5 rounded-5 text-secondary shadow"
+                        style={{ width: "25rem" }}
                     >
-                        Iniciar sesión
-                    </div>
-                    <div class="d-flex gap-1 justify-content-center mt-1">
-                        <div>No tienes cuenta?</div>
-                        <Link to="/registro"
-                            class="text-decoration-none text-info fw-semibold">
-                            Registrate</Link>
-                    </div>
-                </div>
-            </form>
-        </div>
+                        <div class="d-flex justify-content-center">
+                            <img
+                                src={login_icon}
+                                alt="login-icon"
+                                style={{ height: "7rem" }}
+                            />
+                        </div>
+                        <div class="text-center fs-1 fw-bold">Iniciar sesión</div>
+                        <div class="input-group mt-4">
+                            {showAlert && (
+                                <div class="alert alert-danger" role="alert">
+                                    Credenciales incorrectas. Intente nuevamente.
+                                </div>
+                            )}
 
+                            <div class="input-group-text bg-info">
+                                <img
+                                    src={userName_icon}
+                                    alt="username-icon"
+                                    style={{ height: "1rem" }}
+                                />
+                            </div>
+
+                            <label htmlfor="usuario"></label>
+                            <input
+                                class="form-control bg-light"
+                                type="text"
+                                placeholder="Email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+                        <div class="input-group mt-1">
+                            <div class="input-group-text bg-info">
+                                <img
+                                    src={password_icon}
+                                    alt="password-icon"
+                                    style={{ height: "1rem" }}
+                                />
+                            </div>
+                            <label htmlfor="password"></label>
+                            <input
+                                class="form-control bg-light"
+                                type="password"
+                                placeholder="Contraseña"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div class="d-flex justify-content-around mt-1">
+                            <div class="d-flex align-items-center gap-1">
+                                <input class="form-check-input" type="checkbox" />
+                                <label htmlfor="check" className='custom-input-label'></label>
+                                <div class="pt-1" style={{ fontSize: "0.9rem" }}>Recordarme</div>
+                            </div>
+                            <div class="pt-1">
+                                <Link
+                                    to="/recuperarContraseña"
+                                    class="text-decoration-none text-info fw-semibold fst-italic"
+                                    style={{ fontSize: "0.9rem" }}
+                                >Olvido su contraseña?</Link>
+                            </div>
+                        </div>
+                        <div
+                            class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm"
+                            onClick={loginUser}
+                        >
+                            Iniciar sesión
+                        </div>
+                        <div class="d-flex gap-1 justify-content-center mt-1">
+                            <div>No tienes cuenta?</div>
+                            <Link to="/registro"
+                                class="text-decoration-none text-info fw-semibold">
+                                Registrate</Link>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </>
     )
 
 }

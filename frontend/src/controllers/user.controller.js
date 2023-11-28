@@ -3,7 +3,9 @@ import urlWebServices from "./webServices";
 
 export const login_exe = async (user) => {
     try {
-        console.log("user",user)
+        const formData = new URLSearchParams();
+        formData.append('email', user.email);
+        formData.append('password', user.password);
         const response = await fetch(urlWebServices.login, {
             method: 'POST',
             mode: 'cors',
@@ -13,15 +15,14 @@ export const login_exe = async (user) => {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 // 'x-access-token': WebToken.WebToken
             },
-            body: {
-                email: user.email,
-                password: user.password
-            }
+            body: formData
         });
 
 
         let rdo = response.status;
+        
         let data = await response.json();
+        console.log(rdo)
         console.log("DATA",data)
         switch (rdo) {
             case 201:
