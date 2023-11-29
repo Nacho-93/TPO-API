@@ -10,7 +10,7 @@ exports.getProfessorById = async (id) => {
     try {
 
         const professor = await User.findOne({ _id: id});
-        console.log("\nprofessor SERVICE\n",professor)
+   
         return professor;
 
     } catch (e) {

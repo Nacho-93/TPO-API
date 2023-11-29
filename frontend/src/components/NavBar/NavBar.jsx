@@ -8,27 +8,25 @@ import { useUserContext } from '../../Context/UserContext';
 
 
 export default function NavBar(props) {
-  const { isLoggedIn, userId, login, logout } = useUserContext();
+  const { userId } = useUserContext();
   const { tutors } = useTutorContext();
-  const tutor = tutors[userId];
+  // const tutor = tutors[userId];
 
 
-
-
-  const [professor_image, setProfessor_image] = useState(
-    <span className="round-photo">
-      {tutor && tutor.image_profile ? (
-        <img
-          src={tutor.image_profile}
-          alt="professor"
-          className="d-inline-block align-top"
-          style={{ width: "50px", height: "50px" }}
-        />
-      ) : (
-        <div>No se encontró imagen</div>
-      )}
-    </span>
-  );
+  // const [professor_image, setProfessor_image] = useState(
+  //   <span className="round-photo">
+  //     {tutor && tutor.image_profile ? (
+  //       <img
+  //         src={tutor.image_profile}
+  //         alt="professor"
+  //         className="d-inline-block align-top"
+  //         style={{ width: "50px", height: "50px" }}
+  //       />
+  //     ) : (
+  //       <div>No se encontró imagen</div>
+  //     )}
+  //   </span>
+  // );
 
 
 
@@ -78,7 +76,7 @@ export default function NavBar(props) {
           <div class="offcanvas-header text-white">
 
             <Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
-              {isLoggedIn ? professor_image : <i class="login-icon bi bi-person-circle"></i>} </Link>
+              {userId ? "" : <i class="login-icon bi bi-person-circle"></i>} </Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -116,8 +114,8 @@ export default function NavBar(props) {
             </ul>
             {/* Login / Sign Up */}
             <div className="d-none d-lg-block">
-              {isLoggedIn ? (<Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0">
-                {professor_image} </Link>)
+              {userId ? (<Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0">
+                {""} </Link>)
                 :
                 (<div className="div-login d-none d-lg-block mt-1">
                   <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>

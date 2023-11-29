@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useUserContext } from "../../../Context/UserContext";
 export function ManageRequests() {
-    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const { userId, login, logout } = useUserContext();
     return (
         <div>
             <section id="call-to-action" class="action-diferent section-home">

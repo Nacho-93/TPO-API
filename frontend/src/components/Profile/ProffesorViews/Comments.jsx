@@ -8,7 +8,7 @@ import { ManageRequests } from './ManageRequests';
 
 function Comments() {
     const { tutors } = useTutorContext();
-    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const { userId, login, logout } = useUserContext();
 
     const requests_list = tutors.map((tutor) => {
         if (tutor.id === userId && tutor.courses) {

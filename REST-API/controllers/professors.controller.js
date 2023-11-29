@@ -4,9 +4,9 @@ var ProfessorService = require('../services/professor.service');
 // Async Controller function to get the To do List
 exports.getProfessorById = async (req, res, next) => {
     const {id} = req.params;
-
+    
     try {
-        console.log("Professor id CONTROLLER:",id)
+   
         const professor_data = await ProfessorService.getProfessorById(id)
         res.status(200).json(professor_data);
     } catch (e) {
@@ -17,7 +17,9 @@ exports.getProfessorById = async (req, res, next) => {
 
 exports.updateProfessor = async (req, res, next) => {
     const {id} = req.params;
+    console.log("CONTROLLER ID", id + "\n")
     const professorData = req.body;
+    console.log("CONTROLLER DATA", professorData, "\n")
   
     try {
         const updatedProfessor = await ProfessorService.updateProfessor(id, professorData)

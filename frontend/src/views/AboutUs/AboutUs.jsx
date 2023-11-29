@@ -33,7 +33,7 @@ function AboutUs() {
                             </ul>
                             <p>
                                 Estamos comprometidos con la excelencia educativa y esperamos ser tu socio en tu viaje de aprendizaje. Si deseas obtener más información sobre nuestros servicios, no dudes en
-                                {" "}<Link to="/contacto" classNameName='text-dark'>contactarnos</Link>.
+                                {" "}<Link to="/contacto" className='text-dark'>contactarnos</Link>.
                             </p>
                         </div>
                     </div>

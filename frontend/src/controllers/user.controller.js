@@ -2,7 +2,10 @@ import urlWebServices from "./webServices";
 
 
 export const login_exe = async (user) => {
+
     try {
+        console.log("ASDASD")
+        
         const formData = new URLSearchParams();
         formData.append('email', user.email);
         formData.append('password', user.password);
@@ -22,8 +25,7 @@ export const login_exe = async (user) => {
         let rdo = response.status;
         
         let data = await response.json();
-        console.log(rdo)
-        console.log("DATA",data)
+
         switch (rdo) {
             case 201:
                 {

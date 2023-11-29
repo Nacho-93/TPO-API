@@ -10,7 +10,7 @@ function Footer() {
                     <div className="row">
 
                         <div className="col-lg-3 col-md-6 footer-contact">
-                            <h3 classNameName='logo-title'>Azerty</h3>
+                            <h3 className='logo-title'>Azerty</h3>
                             <p>
                                 Argentina <br />
                                 <strong>Teléfono:</strong> +54 11 5279 9760<br />

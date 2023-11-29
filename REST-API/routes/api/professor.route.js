@@ -10,7 +10,7 @@ const router = Router();
 router.get('/:id', ProfessorController.getProfessorById)
 
 // Actualizar datos del profesor --> OK   // http://localhost:8080/api/professor/[id]/update
-router.put('/:id/update', Authorization, ProfessorController.updateProfessor)
+router.put('/:id/update', ProfessorController.updateProfessor)
 
 // Eliminar profesor --> OK               // http://localhost:8080/api/professor/[id]/delete
 router.delete('/:id/delete', Authorization, ProfessorController.deleteProfessor)

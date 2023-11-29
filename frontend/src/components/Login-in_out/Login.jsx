@@ -11,7 +11,7 @@ import { login_exe } from '../../controllers/user.controller'
 
 
 export default function Login() {
-    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const { loginContext } = useUserContext();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -30,7 +30,7 @@ export default function Login() {
             setValidUser(true);
             setLoggedUserId(response.user._id);
         } else {
-            alert("El usuario no es valido")
+            setShowAlert(true);
         }
     }
 
@@ -47,6 +47,7 @@ export default function Login() {
 
     const redirect = () => {
         if (validUser) {
+            loginContext(loggedUserId);
             return <Navigate to={`/perfil/${loggedUserId}`} />
         }
 

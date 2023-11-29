@@ -13,7 +13,6 @@ import { Link } from "react-router-dom"
 
 
 
-
 function Home() {
     return (
         <><section id="hero" class="hero d-flex align-items-center section-home">
@@ -21,6 +20,8 @@ function Home() {
                 <div class="row gy-4 d-flex justify-content-between">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
                         <h2 data-aos="fade-up">¡Aprende y enseña con nosotros!</h2>
+
+
                         <p data-aos="fade-up" data-aos-delay="100">Busca la clase que necesites, comunicate con el profesor y en poco tiempo ya estas estudiando lo que te gusta!</p>
 
                         <form action="#" class="form-search d-flex align-items-center mb-3" data-aos="fade-up" data-aos-delay="200">

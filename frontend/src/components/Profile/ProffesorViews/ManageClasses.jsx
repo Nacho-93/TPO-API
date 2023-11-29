@@ -10,7 +10,7 @@ import './styleViews.css'
 
 function ManageClasses() {
     const { tutors } = useTutorContext();
-    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const { userId, login, logout } = useUserContext();
     const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
     const colors = ["warning", "success", "danger", "secondary"]
     // "active_classes": [{

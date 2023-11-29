@@ -12,12 +12,12 @@ import ModalUpdate from '../../Modal/ModalUpdate';
 
 function Classes() {
     const { tutors } = useTutorContext();
-    const { isLoggedIn, userId, login, logout } = useUserContext();
+    const { userId, login, logout } = useUserContext();
     const [isPublic, setIsPublic] = React.useState(true);
 
     // course_public
     const user_id_byLocation = parseInt(useLocation().pathname.split("/")[2]);
-    const isActual_user = isLoggedIn && userId && (userId === user_id_byLocation);
+    const isActual_user = userId && (userId === user_id_byLocation);
 
     // /perfil-profesor/3/clases
 

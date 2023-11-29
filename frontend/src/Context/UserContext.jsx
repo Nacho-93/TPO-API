@@ -5,23 +5,20 @@ export const useUserContext = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true); // Estado de inicio de sesión
-    const [userId, setUserId] = useState(isLoggedIn ? 3 : null); // ID del usuario logueado
+    const [userId, setUserId] = useState(null); // ID del usuario logueado
+
     // Almacena la lista de tutores aquí
 
     // Tutor actualmente logueado
 
 
     // Función para iniciar sesión
-    const login = (id) => {
-        setIsLoggedIn(true);
+    const loginContext = (id) => {
         setUserId(id);
     };
 
     // Función para cerrar sesión
-    const logout = () => {
-        setIsLoggedIn(false);
-
+    const logoutContext = () => {
         setUserId(null);
     };
 
@@ -29,10 +26,9 @@ export const UserContextProvider = ({ children }) => {
     return (
         <UserContext.Provider
             value={{
-                isLoggedIn,
                 userId,
-                login,
-                logout,
+                loginContext,
+                logoutContext,
             }}
         >
             {children}
