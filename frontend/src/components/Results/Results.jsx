@@ -17,16 +17,16 @@ function Results() {
     const { tutorsContext } = useTutorContext();
     const { allCoursesContext } = useCoursesContext();
 
-    // const [filteredProfessors, setFilteredProfessors] = useState([]);
-
-
-
     const [filter, setFilter] = useState({
         category: 'allCategories',
         frequency_class: "",
         type_of_class: '',
         rating: 0,
     });
+
+    if (!allCoursesContext || !tutorsContext) {
+        return <div>Cargando...</div>;
+    }
 
 
     const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
@@ -59,25 +59,19 @@ function Results() {
     });
 
     // Usar map para crear un arreglo de componentes Card a partir de los cursos filtrados
-    console.log("TUTOR CONTEXt", tutorsContext)
+
 
     let filtered_list = [];
+
     if (allCoursesContext && tutorsContext && filteredCourses) {
-        console.log("FILTERED COURSES", filteredCourses)
-        filtered_list = filteredCourses.map((course) => {
-
-            let tutor = tutorsContext[course.tutor_id];
-            // console.log("TUTOR RESULTS", tutor)
-
-            return (<Card
+        filtered_list = filteredCourses.map((course) => (
+            <Card
                 key={course._id}
                 course={course}
-                tutor={tutor}
-            />)
-
-        });
+                tutor={tutorsContext[course.tutor_id]}
+            />
+        ));
     }
-
 
 
 
@@ -91,7 +85,7 @@ function Results() {
 
     return (
         <>
-            {allCoursesContext && tutorsContext &&
+            {!allCoursesContext && !tutorsContext && !filteredCourses ? <h1>Cargando...</h1> :
                 (<div className='bg-change-color pb-5'>
                     <section id="call-to-action" className="action-diferent section-home">
 

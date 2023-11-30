@@ -10,7 +10,7 @@ import { useUserContext } from '../../Context/UserContext';
 export default function NavBar(props) {
 
   const { tutors } = useTutorContext();
-  const userId = localStorage.getItem('userId');
+  let userId = localStorage.getItem('userId');
   const image_profile = localStorage.getItem('image_profile');
   // const tutor = tutors[userId];
 

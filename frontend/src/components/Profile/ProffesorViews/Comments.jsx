@@ -5,29 +5,31 @@ import { useUserContext } from '../../../Context/UserContext';
 import Opinion from "../../Opinions/Opinion"
 import './styleViews.css'
 import { ManageRequests } from './ManageRequests';
+import { useCoursesContext } from '../../../Context/CoursesContext';
+
 
 function Comments() {
-    const { tutors } = useTutorContext();
-    const { userId, login, logout } = useUserContext();
+    const { tutorsContext } = useTutorContext();
+    const { allCoursesContext } = useCoursesContext();
+    const userId = localStorage.getItem('userId');
 
-    const requests_list = tutors.map((tutor) => {
-        if (tutor.id === userId && tutor.courses) {
-            return tutor.courses.map((course) => {
-                if (course.reviews) {
-                    return course.reviews.map((review) => {
-                        if (!review.public) {
-                            return <Opinion review={review} isUser={userId} />;
-                        }
-                        return null; // Si la revisión es pública, devuelve null para evitar elementos vacíos.
-                    });
-                }
-                return null; // Si no hay revisiones, devuelve null para evitar elementos vacíos.
-            });
+    const coursesArray = Object.values(allCoursesContext);
+
+    const requests_list = coursesArray.map((course) => {
+        if (course.tutor_id === userId) {
+            if (course.reviews) {
+                return course.reviews.map((review) => {
+                    if (!review.public) {
+                        return <Opinion review={review} isUser={userId} />;
+                    }
+                    return null; // Si la revisión es pública, devuelve null para evitar elementos vacíos.
+                });
+            }
+            return null; // Si no hay revisiones, devuelve null para evitar elementos vacíos.
         }
-        return null; // Si no se cumple la condición del tutor, devuelve null para evitar elementos vacíos.
-    });
-
-
+        return null; // Si el curso no pertenece al usuario, devuelve null para evitar elementos vacíos.
+    }
+    );
 
 
     return (
@@ -35,8 +37,7 @@ function Comments() {
 
             <ManageRequests />
 
-
-            <div className="px-10 div-op" >
+            <div className="px-10 div-op py-5" >
                 <div className="container">
                     {requests_list && requests_list.length > 0 ? (
                         <div>{requests_list}</div>

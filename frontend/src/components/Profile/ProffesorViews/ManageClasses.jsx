@@ -7,12 +7,14 @@ import ModalRechazar from '../../Modal/ModalRechazar';
 import ModalFinalizar from '../../Modal/ModalFinalizar';
 import { ManageRequests } from './ManageRequests';
 import './styleViews.css'
+import { useCoursesContext } from '../../../Context/CoursesContext';
 
 function ManageClasses() {
-    const { tutors } = useTutorContext();
-    const { userId, login, logout } = useUserContext();
+    const { tutorsContext } = useTutorContext();
+    const { allCoursesContext } = useCoursesContext();
     const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
     const colors = ["warning", "success", "danger", "secondary"]
+    const userId = localStorage.getItem('userId');
     // "active_classes": [{
     //     "name": "Lorenzo Perez",
     //     "date": "2021-05-15",
@@ -37,68 +39,66 @@ function ManageClasses() {
         return end_date;
     }
 
+    const coursesArray = Object.values(allCoursesContext);
 
-
-    const classes_list = tutors.map((tutor) => {
-        if (tutor.id === userId && tutor.courses) {
-            return tutor.courses.map((course) => {
-                if (course.active_classes.length === 0) {
-                    return null;
-                }
-                return course.active_classes.map((active_class) => {
-
-                    const state = states[active_class.status.indexOf(true)];
-                    const color = colors[active_class.status.indexOf(true)];
-                    const date = new Date(active_class.date);
-                    const init_date = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'numeric', day: 'numeric' });
-                    const end_date = get_end_date(active_class.date, course.frequency);
-
-
-                    return (
-                        <>
-                            <tr className={`table-${color}`}>
-                                <th scope="row">{course.title}</th>
-                                <td>{active_class.name}</td>
-                                <td className="">{init_date}</td>
-                                <td className="">{end_date}</td>
-                                <td className="">{state}</td>
-
-                                <td>
-                                    <div className='d-flex justify-content-between align-items-center'>
-                                        {active_class.status[0] && (
-                                            <button type="button" className="btn btn-success" data-bs-toggle="modal"
-                                                data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
-                                                <i className="fa-solid fa-check"></i>
-                                            </button>
-                                        )}
-                                        {active_class.status[1] &&
-                                            (
-                                                <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-                                                    data-bs-target="#FinalizarModal" data-bs-whatever="@getbootstrap">
-                                                    <i class="fa-solid fa-flag-checkered"></i>
-                                                </button>
-                                            )}
-                                        {(active_class.status[0] || active_class.status[1]) &&
-                                            <button type="button" className="btn btn-danger"
-                                                data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
-                                                <i className="fa-solid fa-x"></i>
-                                            </button>}
-
-
-
-                                    </div>
-                                    <ModalAceptar text={`la clase de ${course.title} con ${active_class.name}`} />
-                                    <ModalRechazar text={`de ${active_class.name} para la clase de ${course.title}`} />
-                                    <ModalFinalizar text={``} />
-
-                                </td>
-                            </tr>
-                        </>
-                    )
-                })
-            })
+    const classes_list = coursesArray.map((course) => {
+        if (userId !== course.tutor_id || course.active_classes.length === 0) {
+            return null;
         }
+        return course.active_classes.map((active_class) => {
+
+            const state = states[active_class.status.indexOf(true)];
+            const color = colors[active_class.status.indexOf(true)];
+            const date = new Date(active_class.date);
+            const init_date = date.toLocaleDateString('es-ES', { year: 'numeric', month: 'numeric', day: 'numeric' });
+            const end_date = get_end_date(active_class.date, course.frequency);
+
+
+            return (
+                <>
+                    <tr className={`table-${color}`}>
+                        <th scope="row">{course.title}</th>
+                        <td>{active_class.name}</td>
+                        <td className="">{init_date}</td>
+                        <td className="">{end_date}</td>
+                        <td className="">{state}</td>
+
+                        <td>
+                            <div className='d-flex justify-content-between align-items-center'>
+                                {active_class.status[0] && (
+                                    <button type="button" className="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                        <i className="fa-solid fa-check"></i>
+                                    </button>
+                                )}
+                                {active_class.status[1] &&
+                                    (
+                                        <button type="button" className="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#FinalizarModal" data-bs-whatever="@getbootstrap">
+                                            <i class="fa-solid fa-flag-checkered"></i>
+                                        </button>
+                                    )}
+                                {(active_class.status[0] || active_class.status[1]) &&
+                                    <button type="button" className="btn btn-danger"
+                                        data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
+                                        <i className="fa-solid fa-x"></i>
+                                    </button>}
+
+
+
+                            </div>
+                            <ModalAceptar text={`la clase de ${course.title} con ${active_class.name}`} />
+                            <ModalRechazar text={`de ${active_class.name} para la clase de ${course.title}`} />
+                            <ModalFinalizar text={``} />
+
+                        </td>
+                    </tr>
+                </>
+            )
+        })
     })
+
+
 
 
 

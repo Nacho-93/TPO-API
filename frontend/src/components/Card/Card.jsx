@@ -3,21 +3,34 @@ import "./Card.css"
 import { Link } from "react-router-dom"
 import ModalContact from "../Modal/ModalContact"
 import ModalComment from "../Modal/ModalComment"
-import { useTutorContext } from "../../Context/TutorContext"
+
+
 
 export default function Card({ tutor, course, ...props }) {
     // const { tutors } = useTutorContext()
     // console.log(tutor)
     // console.log(course)
-    const last_review = course.reviews.length > 0 ? course.reviews[course.reviews.length - 1].comment : false
+
+
     const rating_amount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
     // Como funciona el array info_course:
     // course.info_course == [individual, group, in_person, online]
     const [isIndividual, isGroup, isInPerson, isOnline] = course.info_course
 
 
-    console.log("CARD TUTOr", tutor)
-    // console.log("CARD COURSE", course)
+    const getLastReview = () => {
+        if (course.reviews.length > 0) {
+            for (let i = course.reviews.length - 1; i >= 0; i--) {
+                if (course.reviews[i].public) {
+                    return course.reviews[i].comment
+                }
+            }
+        }
+        return false
+    }
+
+    let last_review = getLastReview();
+
 
     return (
 

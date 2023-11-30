@@ -257,7 +257,7 @@ var cachedCourses_Categories = {};
 exports.getAllCourses = async () => {
     try {
         if (Object.keys(cachedCourses_Categories).length === 0) {
-            const courses = await Course.find({ course_public: true });
+            const courses = await Course.find({});
             courses.forEach(course => {
                 cachedCourses_Categories[course._id] = course;
             });
