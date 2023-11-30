@@ -35,6 +35,7 @@ const TutorContextProvider = ({ children }) => {
         <TutorContext.Provider
             value={{
                 tutorsContext,
+                setTutorsContext
             }}>
             {children}
         </TutorContext.Provider>

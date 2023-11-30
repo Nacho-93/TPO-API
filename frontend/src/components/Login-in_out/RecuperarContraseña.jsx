@@ -8,7 +8,7 @@ export default function RecuperarContraseña() {
 
     <div class="d-flex justify-content-center align-items-center vh-100 login-register-bg">
       <div
-        class="bg-white p-5 rounded-5 text-secondary shadow"
+        class="bg-dark p-5 rounded-5 text-light shadow"
         style={{ width: "25rem" }}
       >
         <div class="d-flex justify-content-center">
@@ -18,17 +18,14 @@ export default function RecuperarContraseña() {
             style={{ height: "7rem" }}
           />
         </div>
-        <div class="text-center  fw-bold">Recuperar contraseña</div>
+        <div class="text-center fs-3 fw-bold">Recuperar contraseña</div>
         <div class="input-group mt-4">
           <div class="input-group-text bg-info">
-            <img
-              src={email}
-              style={{ height: "1rem" }}
-              alt="" />
+            <i class="register-icon fa-solid fa-envelope"></i>
           </div>
           <label htmlfor="email"></label>
           <input
-            class="form-control bg-light"
+            class="form-control bg-dark text-light placeholder-white"
             type="email"
             placeholder="Email"
           />
@@ -37,9 +34,9 @@ export default function RecuperarContraseña() {
         <div class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm">
           Recuperar contraseña
         </div>
-        <div class="d-flex gap-1 justify-content-center mt-1">
+        <div class="d-flex gap-1 justify-content-center mt-2">
           <div>Tenes cuenta?</div>
-          <Link to="/login" class="text-decoration-none text-info fw-semibold"
+          <Link to="/login" class="text-decoration text-secondary fw-semibold"
           >Iniciar sesion</Link>
         </div>
       </div>

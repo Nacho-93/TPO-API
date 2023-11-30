@@ -8,3 +8,7 @@
     font-size: 18px;
     max-width: 16px;
 }
+
+.placeholder-white::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Puedes ajustar la opacidad o el color según lo necesites */
+}

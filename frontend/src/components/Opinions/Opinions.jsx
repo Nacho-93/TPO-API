@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Opinion from './Opinion';
 import ModalComment from '../Modal/ModalComment';
 import { useCoursesContext } from '../../Context/CoursesContext';
-
+import Loading from '../Loading';
 
 function Opinions() {
     const location = useLocation().pathname.split("/")[2].split("-");
@@ -12,20 +12,24 @@ function Opinions() {
 
     const { allCoursesContext } = useCoursesContext();
 
+
     const course = allCoursesContext[course_id];
 
 
     let opinions_list = [];
 
-    if (allCoursesContext) {
-        opinions_list = course.reviews.map((review) => (
-            review.public ? <Opinion review={review} isUser={false} /> : null
+    if (allCoursesContext && course) {
+        opinions_list = course.reviews.map((r) => (
+            r.public ? <Opinion review={r} isUser={false} course={course} /> : null
         ));
     }
 
     return (
         <>
-            {opinions_list &&
+            {opinions_list.length === 0
+                ?
+                <div className="bg-change-color-profile"><Loading /></div>
+                :
                 (<div className='bg-change-color-profile' >
 
                     <section id="call-to-action" class="action-diferent section-home">
@@ -48,13 +52,7 @@ function Opinions() {
                     </section>
                     <div className="p-5 div-op" style={{ backdropFilter: "blur(5px)" }}>
                         <div className="container">
-                            {opinions_list.length > 0 ? (
-                                <div>{opinions_list}</div>
-                            ) : (
-                                <div className='d-flex justify-content-center'>
-                                    <p className='text-white'>No hay opiniones disponibles.</p>
-                                </div>
-                            )}
+                            {<div>{opinions_list}</div>}
                         </div>
                     </div>
 

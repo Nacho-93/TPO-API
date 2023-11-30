@@ -13,20 +13,17 @@ const CoursesContextProvider = ({ children }) => {
 
     const [allCoursesContext, setAllCoursesContext] = useState({});
 
+    const fetchCourses = async () => {
+        try {
+            const data = await getCourses();
+            setAllCoursesContext(data);
+        } catch (error) {
+            console.error('Error obteniendo los cursos:', error);
+        }
+    }
+
 
     useEffect(() => {
-        async function fetchCourses() {
-            try {
-                const data = await getCourses();
-                console.log(data)
-                setAllCoursesContext(data);
-                console.log("ACACACA" + allCoursesContext)
-
-
-            } catch (error) {
-                console.error('Error obteniendo los cursos:', error);
-            }
-        }
         fetchCourses();
     }, []);
 
@@ -35,6 +32,8 @@ const CoursesContextProvider = ({ children }) => {
         <CoursesContext.Provider
             value={{
                 allCoursesContext,
+                setAllCoursesContext,
+                fetchCourses
             }}>
             {children}
         </CoursesContext.Provider>

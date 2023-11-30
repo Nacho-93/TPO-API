@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { acceptReview } from '../../controllers/courses.controller'
-
+import { useCoursesContext } from '../../Context/CoursesContext'
 function ModalAceptar({ course_id, title, review_id, ...props }) {
+  const { allCoursesContext, fetchCourses } = useCoursesContext();
   const [formData, setFormData] = useState({
     _id: course_id,
     course_id: course_id,
@@ -14,10 +15,11 @@ function ModalAceptar({ course_id, title, review_id, ...props }) {
     console.log(typeof (course_id), typeof (review_id))
     const res = await acceptReview(course_id, review_id)
     if (res.rdo === 0) {
+      fetchCourses();
       console.log("Review aceptada")
     }
     console.log(res)
-    console.log("MODAl")
+    console.log("MODA")
   }
 
 

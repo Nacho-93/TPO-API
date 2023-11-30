@@ -210,7 +210,7 @@ exports.acceptReview = async (course_id, review_id, tutor_id) => {
 
     
     try {
-        console.log("ESTAMOS ACA LOCO")
+
         cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         const course = cachedCourses_ManageRequests[course_id]
@@ -225,6 +225,7 @@ exports.acceptReview = async (course_id, review_id, tutor_id) => {
 
         course.reviews = updatedReviews;
         const savedCourse = await course.save();
+        cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
         return savedCourse;
 
     } catch (e) {

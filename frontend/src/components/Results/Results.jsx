@@ -8,7 +8,7 @@ import { getAllTutors } from '../../controllers/tutors.controller';
 
 import { useCoursesContext } from '../../Context/CoursesContext';
 import { useTutorContext } from '../../Context/TutorContext';
-
+import Loading from '../Loading';
 
 function Results() {
 
@@ -16,7 +16,6 @@ function Results() {
 
     const { tutorsContext } = useTutorContext();
     const { allCoursesContext } = useCoursesContext();
-
     const [filter, setFilter] = useState({
         category: 'allCategories',
         frequency_class: "",
@@ -24,46 +23,48 @@ function Results() {
         rating: 0,
     });
 
-    if (!allCoursesContext || !tutorsContext) {
-        return <div>Cargando...</div>;
-    }
 
 
     const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
     // console.log("COURSES ARRAY", coursesArray)
 
-    const filteredCourses = coursesArray.filter((course) => {
-        if (!course.course_public) {
-            return false; // Cambiar a false para filtrar el curso
-        }
-        const ratingAmount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
+    let filteredCourses = []
 
-        const categoryMatch =
-            filter.category === "allCategories" ? true : (
-                regexCategory.test(course.title));
 
-        const frequencyMatch =
-            !filter.frequency_class ? true : (
-                course.frequency[1] === filter.frequency_class);
+    if (allCoursesContext && coursesArray) {
 
-        const typeMatch =
-            !filter.type_of_class ? true : (
-                (filter.type_of_class === "individual" && course.info_course[0])
-                || (filter.type_of_class === "group" && course.info_course[1]));
+        filteredCourses = coursesArray.filter((course) => {
+            if (!course.course_public) {
+                return false; // Cambiar a false para filtrar el curso
+            }
+            const ratingAmount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
 
-        const ratingMatch =
-            filter.rating === 0 ? true : (
-                parseInt(ratingAmount) === filter.rating);
+            const categoryMatch =
+                filter.category === "allCategories" ? true : (
+                    regexCategory.test(course.title));
 
-        return categoryMatch && frequencyMatch && typeMatch && ratingMatch;
-    });
+            const frequencyMatch =
+                !filter.frequency_class ? true : (
+                    course.frequency[1] === filter.frequency_class);
 
+            const typeMatch =
+                !filter.type_of_class ? true : (
+                    (filter.type_of_class === "individual" && course.info_course[0])
+                    || (filter.type_of_class === "group" && course.info_course[1]));
+
+            const ratingMatch =
+                filter.rating === 0 ? true : (
+                    parseInt(ratingAmount) === filter.rating);
+
+            return categoryMatch && frequencyMatch && typeMatch && ratingMatch;
+        });
+    }
     // Usar map para crear un arreglo de componentes Card a partir de los cursos filtrados
 
 
     let filtered_list = [];
 
-    if (allCoursesContext && tutorsContext && filteredCourses) {
+    if (filteredCourses.length > 0) {
         filtered_list = filteredCourses.map((course) => (
             <Card
                 key={course._id}
@@ -85,7 +86,7 @@ function Results() {
 
     return (
         <>
-            {!allCoursesContext && !tutorsContext && !filteredCourses ? <h1>Cargando...</h1> :
+            {filtered_list.length === 0 ? <div className='bg-change-color pb-5'> <Loading /> </div> :
                 (<div className='bg-change-color pb-5'>
                     <section id="call-to-action" className="action-diferent section-home">
 

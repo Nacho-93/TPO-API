@@ -71,11 +71,11 @@ export default function Register() {
     <>
 
 
-      <div class="bg-info d-flex justify-content-center align-items-center vh-100 login-register-bg">
+      <div class="bg-dark d-flex justify-content-center align-items-center vh-100 login-register-bg">
 
         <form>
           <div
-            class="bg-white p-5 rounded-5 text-secondary shadow"
+            class="bg-dark text-light p-5 rounded-5 shadow"
             style={{ width: "25rem" }}
           >
             <div class="d-flex justify-content-center">
@@ -90,11 +90,11 @@ export default function Register() {
 
             <div class="input-group mt-4">
               <div class="input-group-text bg-info">
-                <i class="register-icon fa-solid fa-user" ></i>
+                <i class="register-icon fa-solid fa-user"></i>
               </div>
 
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-light placeholder-white"
                 type="text"
                 placeholder="Nombre"
                 name="name"
@@ -107,7 +107,7 @@ export default function Register() {
                 <i class="register-icon fa-solid fa-user-tag"></i>
               </div>
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-light placeholder-white"
                 type="text"
                 placeholder="Apellido"
                 name="lastName"
@@ -121,7 +121,7 @@ export default function Register() {
               </div>
 
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-light placeholder-white"
                 type="password"
                 placeholder="Contraseña"
                 name="password"
@@ -129,14 +129,13 @@ export default function Register() {
               />
             </div>
 
-
             <div class="input-group mt-1">
               <div class="input-group-text bg-info">
                 <i class="register-icon fa-solid fa-lock"></i>
               </div>
-              <label htmlfor="password"></label>
+              <label htmlFor="password"></label>
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-light placeholder-white"
                 type="password"
                 placeholder="Confirmar Contraseña"
                 name="secondPassword"
@@ -144,14 +143,13 @@ export default function Register() {
               />
             </div>
 
-
             <div class="input-group mt-1">
               <div class="input-group-text bg-info">
                 <i class="register-icon fa-solid fa-envelope"></i>
               </div>
 
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-white placeholder-white"
                 type="email"
                 placeholder="Email"
                 name="email"
@@ -165,7 +163,7 @@ export default function Register() {
               </div>
 
               <input
-                class="form-control bg-light"
+                class="form-control bg-dark text-light placeholder-white"
                 type="tel"
                 placeholder="Teléfono"
                 name="phone"
@@ -176,26 +174,26 @@ export default function Register() {
             {showAlert && (
               <div class="alert alert-danger mt-2" role="alert">
                 {message}
-              </div>)}
+              </div>
+            )}
 
             <div class="d-flex gap-1 justify-content-center mt-3">
-              <div>Ya tienes cuenta?</div>
+              <div>¿Ya tienes cuenta?</div>
               <Link to="/login"
-                className="text-decoration-none text-info fw-semibold fst-italic"
+                className="text-decoration text-secondary fw-semibold fst-italic"
               >Iniciar sesión</Link>
             </div>
 
             <div
-              class="btn btn-info text-white w-100 mt-3 fw-semibold shadow-sm"
+              class="btn btn-info text-dark w-100 mt-3 fw-semibold shadow-sm"
               onClick={validateUser}
             >
               Registrarse
             </div>
 
           </div>
-        </form >
-      </div >
+        </form>
+      </div>
     </>
   )
-
 }

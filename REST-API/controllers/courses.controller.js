@@ -98,7 +98,7 @@ exports.getReviewRequests = async (req, res, next) => {
 
 exports.acceptReview = async (req, res, next) => {
     const {course_id, review_id, tutor_id} = req.body;
-    console.log("HOLA ESTOY EN CONTROLER")
+    console.log("REVIEW_ID", review_id, "COURSE_ID", course_id)
     try {
         const updatedCourse = await CoursesService.acceptReview(course_id, review_id, tutor_id)
         res.status(201).json({updatedCourse, message: "El comentario fue aceptado"});

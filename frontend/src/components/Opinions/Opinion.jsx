@@ -47,7 +47,7 @@ function Opinion({ review, isUser, course }) {
                                         <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-check"></i>
                                         </button>
-                                        <ModalAceptar text="este comentario" review_id={review._id} course_id={course._id} tutor_id={tutor_id} />
+                                        <ModalAceptar text="este comentario" review_id={review._id} course_id={course._id} tutor_id={tutor_id} title={course.title} />
 
                                         <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-x"></i>
