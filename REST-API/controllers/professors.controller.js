@@ -17,7 +17,7 @@ exports.getProfessorById = async (req, res, next) => {
 
 exports.updateProfessor = async (req, res, next) => {
     const {id} = req.params;
-    console.log("CONTROLLER ID", id + "\n")
+
     const professorData = req.body;
     console.log("CONTROLLER DATA", professorData, "\n")
   
@@ -48,3 +48,17 @@ exports.deleteProfessor = async (req, res, next) => {
 }
 
 
+
+exports.getAllProfessors = async (req, res, next) => {
+    // Check the existence of the query parameters, If doesn't exists assign a default value
+
+    try {
+        const professors = await ProfessorService.getAllProfessors();
+        
+        // Return the Users list with the appropriate HTTP password Code and Message.
+        res.status(200).json({status: 200, data: professors, message: "Succesfully Users Recieved"});
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        res.status(400).json({status: 400, message: e.message})
+    }
+}

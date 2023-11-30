@@ -1,7 +1,6 @@
 import React from 'react'
 import "./Profile.css"
 import { Link } from 'react-router-dom'
-import { useTutorContext } from '../../Context/TutorContext'
 import { useUserContext } from '../../Context/UserContext'
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -9,14 +8,17 @@ import { getProfile } from '../../controllers/professor.controller'
 import { updateProfile } from '../../controllers/professor.controller'
 
 function Profile() {
-    const { tutors } = useTutorContext();
-    const { userId, logout } = useUserContext();
+    const { logoutContext } = useUserContext();
     // const [updatedData, setUpdatedData] = React.useState({});
     const [professorData, setProfessorData] = React.useState(null);
-    // const user_id_byLocation = parseInt(useLocation().pathname.split("/")[2]);
+    const [updatedData, setUpdatedData] = React.useState({});
+    const userId = useLocation().pathname.split('/')[2];
+    const isUser = localStorage.getItem('userId') === userId;
+
     useEffect(() => {
         const fetchData = async () => {
             try {
+
                 const profileData = await getProfile(userId);
                 setProfessorData(profileData);
             } catch (error) {
@@ -28,29 +30,46 @@ function Profile() {
         fetchData(); // Llama a la función para obtener los datos del perfil cuando el componente se monta
     }, []); // El segundo argumento vacío [] hace que useEffect se ejecute solo una vez (similar a componentDidMount)
 
+
+
     const handleInputChange = (e) => {
-        setProfessorData({
-            ...professorData,
-            [e.target.name]: e.target.value,
+        const { name, value } = e.target;
+        if (name !== 'oldPassword' && name !== 'secondPassword') {
+            setProfessorData({
+                ...professorData,
+                [name]: value,
+            });
+        }
+        setUpdatedData({
+            ...updatedData,
+            [name]: value,
         });
     };
 
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
+        console.log(updatedData)
+        if (updatedData.password && updatedData.secondPassword) {
+            if (updatedData.password !== updatedData.secondPassword) {
+                alert("Las contraseñas no coinciden");
+                return;
+            }
+        }
         try {
+            delete updatedData.secondPassword;
             const updatedProfile = await updateProfile({
-                ...professorData,
-                // ...updatedData,
+                ...updatedData,
             }, userId);
 
             setProfessorData(updatedProfile);
-            // setUpdatedData({}); // Reinicia los datos actualizados después de enviarlos
+            setUpdatedData({});
+
         } catch (error) {
             console.error('Error al actualizar el perfil:', error);
         }
     };
+
 
     return (
         <>
@@ -58,7 +77,7 @@ function Profile() {
                 (<div className="container-profile pb-5">
                     <div className="container light-style flex-grow-1 container-p-y">
                         <h2 className="font-weight-bold py-3 mb-4 text-primary-emphasis text-light">
-                            {userId ? "Configurar Perfil" : "Perfil"}
+                            {isUser ? "Configurar Perfil" : `Perfil de ${professorData.name}`}
                         </h2>
                         <div className="card card-profile overflow-hidden">
                             <div className="row no-gutters row-bordered row-border-light">
@@ -74,9 +93,9 @@ function Profile() {
                                             className="list-group-item list-group-item-action"
                                             to={`/perfil/${userId}/misClases`}
                                         >
-                                            {userId ? 'Mis clases' : `Clases de ${professorData.name}`}
+                                            {isUser ? 'Mis clases' : `Clases de ${professorData.name}`}
                                         </Link>
-                                        {userId ? (
+                                        {isUser ? (
                                             <>
                                                 <Link
                                                     className="list-group-item list-group-item-action"
@@ -91,7 +110,7 @@ function Profile() {
                                                     className="list-group-item list-group-item-action red-link"
                                                     data-toggle="list"
                                                     to={"/"}
-                                                    onClick={() => logout()}
+                                                    onClick={() => logoutContext()}
                                                 >
                                                     Cerrar sesión
                                                 </Link>
@@ -107,11 +126,12 @@ function Profile() {
                                             <div className="card-body media align-items-center">
                                                 <img src={professorData.image_profile} alt="imagen" className="d-block ui-w-80" />
                                                 <div className="media-body ml-4">
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <>
                                                             <label className="btn btn-outline-primary">
                                                                 Subir foto de perfil
-                                                                <input type="file" className="account-settings-fileinput" />
+                                                                <input type="file" className="account-settings-fileinput"
+                                                                    name='image_profile' onClick={handleInputChange} />
                                                             </label>{" "}
                                                             &nbsp;
                                                             <button type="button" className="btn btn-outline-danger md-btn-flat">
@@ -128,7 +148,7 @@ function Profile() {
                                             <div className="card-body">
                                                 <div className="form-group">
                                                     <label className="form-label">Nombre</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <input type="text" className="form-control" name='name' value={professorData.name}
                                                             onChange={handleInputChange} />
                                                     ) : (
@@ -137,7 +157,7 @@ function Profile() {
                                                 </div>
                                                 <div className="form-group">
                                                     <label className="form-label">Apellido</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <input type="text" className="form-control" name='lastName' value={professorData.lastName}
                                                             onChange={handleInputChange} />
                                                     ) : (
@@ -147,7 +167,7 @@ function Profile() {
                                                 <h4 className="my-3 font-weight-bold">Contacto</h4>
                                                 <div className="form-group">
                                                     <label className="form-label">Email</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <input type="text" className="form-control mb-1"
                                                             value={professorData.email}
                                                             name='email'
@@ -158,7 +178,7 @@ function Profile() {
                                                 </div>
                                                 <div className="form-group">
                                                     <label className="form-label">Teléfono</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <input type="text" className="form-control"
                                                             name='phone'
                                                             value={professorData.phone}
@@ -173,15 +193,26 @@ function Profile() {
                                             <div className="card-body pb-2">
                                                 <div className="form-group">
                                                     <label className="form-label">Contraseña actual</label>
-                                                    <input type="password" className="form-control" />
+                                                    <input type="password" className="form-control"
+                                                        name='oldPassword'
+                                                        onChange={handleInputChange}
+                                                    />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className="form-label">Nueva contraseña</label>
-                                                    <input type="password" className="form-control" />
+                                                    <input type="password" className="form-control"
+                                                        name='password'
+                                                        onChange={handleInputChange}
+                                                    />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className="form-label">Repetir contraseña</label>
-                                                    <input type="password" className="form-control" />
+                                                    <input type="password" className="form-control"
+                                                        name='secondPassword'
+                                                        onChange={handleInputChange}
+                                                    />
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +220,7 @@ function Profile() {
                                             <div className="card-body pb-2">
                                                 <div className="form-group">
                                                     <label className="form-label">Titulo</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <input type="text" className="form-control"
                                                             name='degree'
                                                             value={professorData.degree}
@@ -200,7 +231,7 @@ function Profile() {
                                                 </div>
                                                 <div className="form-group mt-3">
                                                     <label className="form-label">Experiencia</label>
-                                                    {userId ? (
+                                                    {isUser ? (
                                                         <textarea className="form-control" rows="5" value={professorData.description}
                                                             name='description'
                                                             onChange={handleInputChange}></textarea>
@@ -217,7 +248,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className="text-right mt-3 mb-5">
-                            {userId && (
+                            {isUser && (
                                 <>
                                     <button type="button" className="btn btn-primary mx-2"
                                         onClick={handleFormSubmit}>

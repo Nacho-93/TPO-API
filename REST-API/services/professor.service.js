@@ -24,13 +24,17 @@ exports.getProfessorById = async (id) => {
 exports.updateProfessor = async (userId, userData) => {
     try {
         const oldProfessor = await User.findOne({ _id: userId });
-
+       
         const validKeys = Object.keys(User.schema.paths);
-
+        
         Object.keys(userData).forEach(key => {
-
-            if (validKeys.includes(key) && userData[key] && key !== "_id") { 
-                oldProfessor[key] = key !== 'password' ? userData[key] : bcrypt.hashSync(userData[key], 10);
+            if ((validKeys.includes(key) || key === "oldPassword") && userData[key] && key !== "_id") { 
+    
+                if (key === "oldPassword" && bcrypt.compareSync(userData[key], oldProfessor.password) && userData["password"]) {
+                    oldProfessor['password'] = bcrypt.hashSync(userData['password'], 10);
+                } else if (key !== "oldPassword" && key !== "password") {
+                    oldProfessor[key] = userData[key]
+                }
             }
         });
         const savedProfessor = await oldProfessor.save();
@@ -59,4 +63,21 @@ exports.deleteProfessor = async function (id) {
     }
 }
 
+var cachedTutors = {};
 
+exports.getAllProfessors = async function () {
+    // Creating a new Mongoose Object by using the new keyword
+    try {
+        if (Object.keys(cachedTutors).length === 0) {
+            const tutors = await User.find({}); // Obtener solo los _id de los profesores
+            tutors.forEach(tutor => {
+                cachedTutors[tutor._id] = tutor; // Asignar cada profesor al objeto usando su _id como clave
+            });
+        }
+
+        return cachedTutors;
+
+    } catch (e) {
+        throw Error("Error al buscar los perfiles")
+    }
+}

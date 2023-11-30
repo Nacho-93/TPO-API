@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './Context/UserContext';
 import { TutorContextProvider } from './Context/TutorContext';
+import { CoursesContextProvider } from './Context/CoursesContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,8 +14,9 @@ root.render(
     <BrowserRouter>
       <UserContextProvider>
         <TutorContextProvider>
-          <App />
-
+          <CoursesContextProvider>
+            <App />
+          </CoursesContextProvider>
         </TutorContextProvider>
       </UserContextProvider>
     </BrowserRouter>

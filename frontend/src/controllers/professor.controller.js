@@ -1,6 +1,12 @@
 import urlWebServices from "./webServices";
+const localUserId = localStorage.getItem('userId');
 
 export const getProfile = async (userId) => {
+    
+    // if (userId !== localUserId) {
+    //     return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
+    // }
+
     const url = urlWebServices.getProfile.replace(":id", userId);
     try {
         const response = await fetch(url, {
@@ -25,6 +31,10 @@ export const getProfile = async (userId) => {
 
 
 export const updateProfile = async (user ,userId) => {
+
+    if (userId !== localUserId) {
+        return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
+    }
 
     const url = urlWebServices.updateProfile.replace(":id", userId);
 
@@ -53,3 +63,5 @@ export const updateProfile = async (user ,userId) => {
         return ({rdo:1,mensaje:"Ha ocurrido un error"});
     }
 }
+
+

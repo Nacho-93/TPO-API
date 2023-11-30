@@ -1,26 +1,32 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useUserContext } from './UserContext';
+import { getAllTutors } from '../controllers/tutors.controller';
+
+
 const TutorContext = createContext();
 export default TutorContext;
 export const useTutorContext = () => useContext(TutorContext);
 
 
 const TutorContextProvider = ({ children }) => {
-    const { userId } = useUserContext();
-    const [tutorsContext, setTutorsContext] = useState([]);
-    const [professorContext, setProfessorContext] = useState(null);
-    const [coursesContext, setCoursesContext] = useState([]);
+    // const { userId } = useUserContext();
+
+    const [tutorsContext, setTutorsContext] = useState({});
 
 
-    const getTutors = (allTutors) => {
-        setTutorsContext(allTutors);
-    }
-
-    const getCourses = (allCourses) => {
-        setCoursesContext(allCourses);
-    }
+    useEffect(() => {
+        async function fetchTutors() {
+            try {
+                const data = await getAllTutors();
+                setTutorsContext(data);
 
 
+            } catch (error) {
+                console.error('Error obteniendo los cursos:', error);
+            }
+        }
+        fetchTutors();
+    }, []);
 
 
 
@@ -29,12 +35,6 @@ const TutorContextProvider = ({ children }) => {
         <TutorContext.Provider
             value={{
                 tutorsContext,
-                coursesContext,
-                professorContext,
-                setProfessorContext,
-                getTutors,
-                setCoursesContext,
-
             }}>
             {children}
         </TutorContext.Provider>

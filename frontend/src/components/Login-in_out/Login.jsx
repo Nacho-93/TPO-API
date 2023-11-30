@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
 import { useUserContext } from '../../Context/UserContext'
 import { Navigate } from 'react-router-dom'
 import './Login.css'
-
 import { login_exe } from '../../controllers/user.controller'
 
 
 export default function Login() {
+
+
     const { loginContext } = useUserContext();
 
     const [email, setEmail] = useState("");
@@ -29,6 +30,7 @@ export default function Login() {
         if (response.rdo === 0) {
             setValidUser(true);
             setLoggedUserId(response.user._id);
+
         } else {
             setShowAlert(true);
         }
@@ -50,9 +52,8 @@ export default function Login() {
             loginContext(loggedUserId);
             return <Navigate to={`/perfil/${loggedUserId}`} />
         }
-
-
     }
+
 
     return (
         <>
@@ -72,11 +73,6 @@ export default function Login() {
                         </div>
                         <div class="text-center fs-1 fw-bold">Iniciar sesión</div>
                         <div class="input-group mt-4">
-                            {showAlert && (
-                                <div class="alert alert-danger" role="alert">
-                                    Credenciales incorrectas. Intente nuevamente.
-                                </div>
-                            )}
 
                             <div class="input-group-text bg-info">
                                 <img
@@ -112,12 +108,14 @@ export default function Login() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
+
                         <div class="d-flex justify-content-around mt-1">
                             <div class="d-flex align-items-center gap-1">
                                 <input class="form-check-input" type="checkbox" />
                                 <label htmlfor="check" className='custom-input-label'></label>
                                 <div class="pt-1" style={{ fontSize: "0.9rem" }}>Recordarme</div>
                             </div>
+
                             <div class="pt-1">
                                 <Link
                                     to="/recuperarContraseña"
@@ -125,9 +123,15 @@ export default function Login() {
                                     style={{ fontSize: "0.9rem" }}
                                 >Olvido su contraseña?</Link>
                             </div>
+
                         </div>
+                        {showAlert && (
+                            <div class="alert alert-danger mt-2" role="alert">
+                                Credenciales incorrectas. Intente nuevamente.
+                            </div>
+                        )}
                         <div
-                            class="btn btn-info text-dark w-100 mt-4 fw-semibold shadow-sm"
+                            class="btn btn-info text-dark w-100 mt-2 fw-semibold shadow-sm"
                             onClick={loginUser}
                         >
                             Iniciar sesión

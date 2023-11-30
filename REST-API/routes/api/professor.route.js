@@ -17,6 +17,7 @@ router.delete('/:id/delete', Authorization, ProfessorController.deleteProfessor)
 
 
 
+
 // // Obtener clases del profesor --> OK      // http://localhost:8080/api/professor/[id]/misClases
 // router.get('/:id/misClases', Authorization, ProfessorController.getCoursesByProfessorId) 
 // --> Movido a courses.route.js

@@ -42,8 +42,10 @@ exports.createUser = async function (req, res, next) {
     var User = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        phone: req.body.phone,
     }
+    console.log("\nTHIS IS CONTROLLER", User)
     try {
         // Calling the Service function with the new object from the Request Body
         var createdUser = await UserService.createUser(User)
@@ -97,6 +99,7 @@ exports.loginUser = async function (req, res, next) {
     var User = {
         email: req.body.email,
         password: req.body.password
+        
     }
     try {
         // Calling the Service function with the new object from the Request Body

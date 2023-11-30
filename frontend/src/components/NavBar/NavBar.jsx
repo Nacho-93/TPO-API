@@ -8,25 +8,27 @@ import { useUserContext } from '../../Context/UserContext';
 
 
 export default function NavBar(props) {
-  const { userId } = useUserContext();
+
   const { tutors } = useTutorContext();
+  const userId = localStorage.getItem('userId');
+  const image_profile = localStorage.getItem('image_profile');
   // const tutor = tutors[userId];
 
 
-  // const [professor_image, setProfessor_image] = useState(
-  //   <span className="round-photo">
-  //     {tutor && tutor.image_profile ? (
-  //       <img
-  //         src={tutor.image_profile}
-  //         alt="professor"
-  //         className="d-inline-block align-top"
-  //         style={{ width: "50px", height: "50px" }}
-  //       />
-  //     ) : (
-  //       <div>No se encontró imagen</div>
-  //     )}
-  //   </span>
-  // );
+  const [professor_image, setProfessor_image] = useState(
+    <span className="round-photo">
+      {userId && image_profile ? (
+        <img
+          src={image_profile}
+          alt="professor"
+          className="d-inline-block align-top"
+          style={{ width: "50px", height: "50px" }}
+        />
+      ) : (
+        <i class="login-icon bi bi-person-circle"></i>
+      )}
+    </span>
+  );
 
 
 
@@ -54,9 +56,6 @@ export default function NavBar(props) {
           <Link to="/" className="">
             AZERTY</Link>
         </h1>
-        {/* <img src={logo} alt="Logo"
-            className="d-inline-block align-top"
-            width="150" height="60" /> */}
 
 
 
@@ -94,15 +93,6 @@ export default function NavBar(props) {
                 </Link>
               </li>
 
-              {/* <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><Link class="dropdown-item" to="/categorias/fisica" >Física</Link></li>
-                  <li><Link class="dropdown-item" to="/categorias/idiomas">Idiomas</Link></li>
-                  <li><Link class="dropdown-item" to="/categorias/matematica">Matemática</Link></li>
-                  <li><Link class="dropdown-item" to="/categorias/musica">Musica</Link></li>
-                  <li><Link class="dropdown-item" to="/categorias/programacion">Programación</Link></li>
-                  <li><Link class="dropdown-item" to="/categorias/quimica">Química</Link></li>
-                </ul>
-              </li> */}
 
               <li class="nav-item item-changed mx-md-2">
                 <Link class="nav-link link-changed" to="/sobreNosotros" onClick={closeSideBar}>Sobre nosotros</Link>
@@ -115,7 +105,7 @@ export default function NavBar(props) {
             {/* Login / Sign Up */}
             <div className="d-none d-lg-block">
               {userId ? (<Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0">
-                {""} </Link>)
+                {professor_image} </Link>)
                 :
                 (<div className="div-login d-none d-lg-block mt-1">
                   <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>

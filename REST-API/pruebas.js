@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const {User} = require('./db/models/User.model');
 const {Course} = require('./db/models/Course.model'); 
+const { ObjectId } = require('mongodb');
 
 const updateProfessorsWithPassword = async () => {
     // const profesores = await User.find({});
@@ -18,13 +19,27 @@ const updateProfessorsWithPassword = async () => {
 
     // Change id from each active_class of each course
 
-    const courses = await Course.find({});
-    courses.forEach(c => {
-        c.active_classes.forEach(ac => {
-            ac._id = new mongoose.Types.ObjectId();
-        });
-        c.save();
-    })
+    // const courses = await Course.find({});
+    // courses.forEach(c => {
+    //     c.active_classes.forEach(ac => {
+    //         ac._id = new mongoose.Types.ObjectId();
+    //     });
+    //     c.save();
+    // })
+    // Change password from 6557e53fe79bf4e3ff72a4d4 to 123456
+    // const profesores = await User.find({});
+  
+    // for (const professor of profesores) {
+    //     const id = professor._id.toString();
+    //     if (id === '6557e53fe79bf4e3ff72a4d4') {
+    //         const hashedPassword = await bcrypt.hash('123456', 10); // Contraseña por defecto o vacía
+    //         professor.password = hashedPassword;
+    //         console.log(professor)
+    //         await professor.save();
+    //     }
+    // }
+    
+    //$2a$10$JS9ZtGhTUNq1bbdH421Em.MHa5TKAqE6xIX8lYapCTVc8PvhQUIIy
 
     process.exit(0);
 };

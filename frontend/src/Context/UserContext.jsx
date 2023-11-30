@@ -19,6 +19,11 @@ export const UserContextProvider = ({ children }) => {
 
     // Función para cerrar sesión
     const logoutContext = () => {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('x');
+        localStorage.removeItem('nombre');
+        localStorage.removeItem('email');
+        localStorage.removeItem('image_url');
         setUserId(null);
     };
 

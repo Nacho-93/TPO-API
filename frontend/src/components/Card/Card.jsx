@@ -5,14 +5,19 @@ import ModalContact from "../Modal/ModalContact"
 import ModalComment from "../Modal/ModalComment"
 import { useTutorContext } from "../../Context/TutorContext"
 
-export default function Card({ course, ...props }) {
-    const { tutors } = useTutorContext()
-    const tutor = tutors[course.tutor_id]
+export default function Card({ tutor, course, ...props }) {
+    // const { tutors } = useTutorContext()
+    // console.log(tutor)
+    // console.log(course)
     const last_review = course.reviews.length > 0 ? course.reviews[course.reviews.length - 1].comment : false
     const rating_amount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false
     // Como funciona el array info_course:
     // course.info_course == [individual, group, in_person, online]
     const [isIndividual, isGroup, isInPerson, isOnline] = course.info_course
+
+
+    console.log("CARD TUTOr", tutor)
+    // console.log("CARD COURSE", course)
 
     return (
 
@@ -25,7 +30,7 @@ export default function Card({ course, ...props }) {
                 <div className="col-md-1 g-0 d-none d-lg-block d-md-block">
                     <div className="professor-img">
                         <span className="round-photo">
-                            <img src={tutor.image_profile} alt="professor" className="img-fluid" />
+                            <img src={""} alt="professor" className="img-fluid" />
                         </span>
                     </div>
                 </div>
@@ -38,7 +43,7 @@ export default function Card({ course, ...props }) {
                     <div className="mobile-line">
                         <div className="col-2 professor-img">
                             <span className="round-photo">
-                                <img src={tutor.image_profile} alt="professor" className="img-fluid" />
+                                <img src={""} alt="professor" className="img-fluid" />
                             </span>
                         </div>
 
@@ -50,7 +55,7 @@ export default function Card({ course, ...props }) {
                             <div className="name-rating">
                                 <section className="name d-flex justify-content-end">
 
-                                    <Link to={`/perfil/${tutor.id}`} className="card-title name">
+                                    <Link to={`/perfil/${tutor._id}`} className="card-title name">
                                         {tutor.name}{" "}{tutor.lastName}
                                     </Link>
                                 </section>
@@ -81,7 +86,7 @@ export default function Card({ course, ...props }) {
                     <div className="professor-course">
                         <section className="name-rating d-none d-md-flex justify-content-between align-items-center">
 
-                            <Link to={`/perfil/${tutor.id}`} className="card-title name">
+                            <Link to={`/perfil/${tutor._id}`} className="card-title name">
                                 {tutor.name}{" "}{tutor.lastName}
                             </Link>
 
@@ -241,7 +246,7 @@ export default function Card({ course, ...props }) {
 
                         </div>
                         <div className="col-6 d-lg-none d-md-none d-sm-block">
-                            <Link to={`/categorias/clase-${course.title}-${course.id}-${tutor.id}-opiniones`}
+                            <Link to={`/categorias/clase-${course.title}-${course._id}-${tutor._id}-opiniones`}
                                 className="btn btn-outline-secondary w-100">Opiniones</Link>
                         </div>
 
@@ -267,7 +272,7 @@ export default function Card({ course, ...props }) {
                 <div className="col-md-2 reviews">
                     {last_review || props.isTutor
 
-                        ? <Link to={`/categorias/clase-${course.title}-${course.id}-${tutor.id}-opiniones`}
+                        ? <Link to={`/categorias/clase-${course.title}-${course._id}-${tutor._id}-opiniones`}
                             className="btn btn-outline-secondary">
                             Opiniones
                         </Link>

@@ -1,119 +1,187 @@
 import React from "react"
 import login_icon from "../../assets/login-icon.svg"
-import userName_icon from "../../assets/user icon - registro.png"
-import password_icon from "../../assets/contraseña icon - registro.png"
-import direccion from "../../assets/direccion.png"
-import email from "../../assets/email.svg"
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import { register_exe } from "../../controllers/user.controller"
+import { Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
+
+  const navigate = useNavigate();
+
+
+  const [userData, setUserData] = useState({
+    name: "",
+    password: "",
+    secondPassword: "",
+    email: "",
+    phone: "",
+  });
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [validLogin, setValidLogin] = useState(false);
+
+  const handleInputChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+
+
+  const validateUser = async () => {
+    setShowAlert(false);
+    if (userData.name && userData.password && userData.secondPassword && userData.email && userData.phone) {
+      if (userData.password === userData.secondPassword) {
+
+        delete userData.secondPassword;
+        const login_response = await register_exe(userData);
+
+        if (login_response.rdo === 0) {
+          setValidLogin(true);
+          navigate(`/perfil/${localStorage.getItem('userId')}`);
+
+        }
+
+      }
+      else {
+        setShowAlert(true);
+        setMessage("Las contraseñas no coinciden");
+      }
+    }
+    else {
+      setShowAlert(true);
+      setMessage("Debe completar todos los campos");
+    }
+  }
+
+  const redirect = () => {
+    if (validLogin) {
+      return <Navigate to={`/perfil/${localStorage.getItem('userId')}`} />
+    }
+  }
+
+
   return (
-
-    <div class="bg-info d-flex justify-content-center align-items-center vh-100 login-register-bg">
-
-      <form>
-        <div
-          class="bg-white p-5 rounded-5 text-secondary shadow"
-          style={{ width: "25rem" }}
-        >
-          <div class="d-flex justify-content-center">
-            <img
-              src={login_icon}
-              alt="login-icon"
-              style={{ height: "7rem" }}
-            />
-          </div>
-          <div class="text-center fs-1 fw-bold">Registrarse</div>
-          <div class="input-group mt-4">
-            <div class="input-group-text bg-info">
-              <img
-                src={userName_icon}
-                alt="username-icon"
-                style={{ height: "1rem" }}
-              />
-            </div>
-            <label htmlfor="usuario"></label>
-            <input
-              class="form-control bg-light"
-              type="text"
-              placeholder="Usuario"
-            />
-          </div>
-          <div class="input-group mt-1">
-            <div class="input-group-text bg-info">
-              <img
-                src={password_icon}
-                alt="password-icon"
-                style={{ height: "1rem" }}
-              />
-            </div>
-            <label htmlfor="password"></label>
-            <input
-              class="form-control bg-light"
-              type="password"
-              placeholder="Contraseña"
-            />
-          </div>
-          <div class="input-group mt-1">
-            <div class="input-group-text bg-info">
-              <img
-                src={password_icon}
-                alt="password-icon"
-                style={{ height: "1rem" }}
-              />
-            </div>
-            <label htmlfor="password"></label>
-            <input
-              class="form-control bg-light"
-              type="password"
-              placeholder="Confirmar Contraseña"
-            />
-          </div>
-          <div class="input-group mt-1">
-            <div class="input-group-text bg-info">
-              <img
-                src={email}
-                style={{ height: "1rem" }}
-                alt=""
-              />
-            </div>
-            <label htmlfor="email"></label>
-            <input
-              class="form-control bg-light"
-              type="email"
-              placeholder="Email"
-            />
-          </div>
-          <div class="input-group mt-1">
-            <div class="input-group-text bg-info">
-              <img
-                src={direccion}
-                alt="password-icon"
-                style={{ height: "1rem" }}
-              />
-            </div>
-            <label htmlfor="direccion"></label>
-            <input
-              class="form-control bg-light"
-              type="direccion"
-              placeholder="Direccion"
-            />
-          </div>
-          <div class="d-flex gap-1 justify-content-center mt-1">
-            <div>Ya tienes cuenta?</div>
-            <Link to="/login"
-            >Iniciar sesión</Link>
-          </div>
-          <div class="d-flex justify-content-around mt-1">
+    <>
 
 
-          </div>
-          <div class="btn btn-info text-white w-100 mt-4 fw-semibold shadow-sm">
-            Registrarse
-          </div>
+      <div class="bg-info d-flex justify-content-center align-items-center vh-100 login-register-bg">
 
-        </div>
-      </form>
-    </div>
+        <form>
+          <div
+            class="bg-white p-5 rounded-5 text-secondary shadow"
+            style={{ width: "25rem" }}
+          >
+            <div class="d-flex justify-content-center">
+              <img
+                src={login_icon}
+                alt="login-icon"
+                style={{ height: "7rem" }}
+              />
+            </div>
+
+            <div class="text-center fs-1 fw-bold">Registrarse</div>
+
+            <div class="input-group mt-4">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-user" ></i>
+              </div>
+
+              <input
+                class="form-control bg-light"
+                type="text"
+                placeholder="Nombre"
+                name="name"
+                onChange={handleInputChange}
+              />
+            </div>
+
+
+            <div class="input-group mt-1">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-lock"></i>
+              </div>
+              <label htmlfor="password"></label>
+              <input
+                class="form-control bg-light"
+                type="password"
+                placeholder="Contraseña"
+                name="password"
+                onChange={handleInputChange}
+              />
+            </div>
+
+
+            <div class="input-group mt-1">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-lock"></i>
+              </div>
+              <label htmlfor="password"></label>
+              <input
+                class="form-control bg-light"
+                type="password"
+                placeholder="Confirmar Contraseña"
+                name="secondPassword"
+                onChange={handleInputChange}
+              />
+            </div>
+
+
+            <div class="input-group mt-1">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-envelope"></i>
+              </div>
+
+              <input
+                class="form-control bg-light"
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div class="input-group mt-1">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-phone"></i>
+              </div>
+
+              <input
+                class="form-control bg-light"
+                type="tel"
+                placeholder="Teléfono"
+                name="phone"
+                onChange={handleInputChange}
+              />
+            </div>
+
+            {showAlert && (
+              <div class="alert alert-danger mt-2" role="alert">
+                {message}
+              </div>)}
+
+            <div class="d-flex gap-1 justify-content-center mt-3">
+              <div>Ya tienes cuenta?</div>
+              <Link to="/login"
+                className="text-decoration-none text-info fw-semibold fst-italic"
+              >Iniciar sesión</Link>
+            </div>
+
+            <div
+              class="btn btn-info text-white w-100 mt-3 fw-semibold shadow-sm"
+              onClick={validateUser}
+            >
+              Registrarse
+            </div>
+
+          </div>
+        </form >
+      </div >
+    </>
   )
+
 }

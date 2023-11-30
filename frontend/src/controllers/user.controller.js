@@ -4,7 +4,6 @@ import urlWebServices from "./webServices";
 export const login_exe = async (user) => {
 
     try {
-        console.log("ASDASD")
         
         const formData = new URLSearchParams();
         formData.append('email', user.email);
@@ -29,10 +28,12 @@ export const login_exe = async (user) => {
         switch (rdo) {
             case 201:
                 {
-                localStorage.setItem('x', data.loginUser.token);
                 let user = data.loginUser.user;
+                localStorage.setItem('x', user.token);
+                localStorage.setItem('userId', user._id);
                 localStorage.setItem("nombre",user.name);
                 localStorage.setItem("email",user.email);
+                localStorage.setItem("image_url",user.image_profile);
                 return ({rdo:0,mensaje:"Ok", user: user});
                 }
             case 202:
@@ -51,3 +52,30 @@ export const login_exe = async (user) => {
         return ({rdo:1,mensaje:"Ha ocurrido un error"});
     }
 }
+
+export const register_exe = async (user) => {
+
+        try {
+            const formData = new URLSearchParams(user);
+
+            const response = await fetch(urlWebServices.register, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Origin': 'http://localhost:3000',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    // 'x-access-token': WebToken.WebToken
+                },
+                body: formData
+            });
+
+            if (response.status === 201) {
+                const login_response = await login_exe(user);
+                return login_response;
+            }
+
+        } catch (e) {
+            return ({rdo:1,mensaje:"Ha ocurrido un error"});
+        }
+    }
