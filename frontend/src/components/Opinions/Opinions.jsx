@@ -11,9 +11,10 @@ function Opinions() {
     const location = useLocation().pathname.split("/")[2].split("-");
     const course_id = parseInt(location[2]);
     const tutor_id = parseInt(location[3]);
-    const { tutors } = useTutorContext();
+    const { tutorsContext } = useTutorContext();
 
-    const opinions_list = tutors.map((professor) => {
+
+    const opinions_list = tutorsContext.map((professor) => {
 
         if (professor.id === tutor_id && professor.courses) {
 
