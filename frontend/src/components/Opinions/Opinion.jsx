@@ -2,10 +2,11 @@ import React from 'react'
 import './Opinion.css'
 import ModalAceptar from '../Modal/ModalAceptar'
 import ModalRechazar from '../Modal/ModalRechazar'
+import { useLocation } from 'react-router-dom'
 
 
-
-function Opinion({ review, isUser }) {
+function Opinion({ review, isUser, course }) {
+    const tutor_id = useLocation().pathname.split("/")[2];
 
     let date_comment = new Date(review.date);
     let date_str = date_comment.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -18,12 +19,14 @@ function Opinion({ review, isUser }) {
                     <div class="card-body">
 
                         <div className="name-rating d-flex justify-content-between align-items-center">
-                            <div className='d-flex align-items-center'>
+                            <div className='d-flex align-items-center justify-content-center'>
                                 <h3 className="card-title me-3">
                                     {review.user_name}
                                 </h3>
                                 <span className='me-3'>-</span>
-                                <p className='card-text' style={{ fontSize: "14px" }}>{date_str}</p>
+                                <span className='card-text me-3' style={{ fontSize: "14px" }}>{course.title}</span>
+                                <span className='me-3'>-</span>
+                                <span className='card-text' style={{ fontSize: "14px" }}>{date_str}</span>
                             </div>
 
                             <div className="ml-auto p-1">
@@ -44,7 +47,7 @@ function Opinion({ review, isUser }) {
                                         <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-check"></i>
                                         </button>
-                                        <ModalAceptar text="este comentario" />
+                                        <ModalAceptar text="este comentario" review_id={review._id} course_id={course._id} tutor_id={tutor_id} />
 
                                         <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-x"></i>

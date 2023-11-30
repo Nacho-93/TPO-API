@@ -5,7 +5,7 @@ export const useUserContext = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
 
-    const [userId, setUserId] = useState(null); // ID del usuario logueado
+    const [userIdContext, setUserIdContext] = useState(null); // ID del usuario logueado
 
     // Almacena la lista de tutores aquí
 
@@ -14,7 +14,7 @@ export const UserContextProvider = ({ children }) => {
 
     // Función para iniciar sesión
     const loginContext = (id) => {
-        setUserId(id);
+        setUserIdContext(id);
     };
 
     // Función para cerrar sesión
@@ -24,14 +24,14 @@ export const UserContextProvider = ({ children }) => {
         localStorage.removeItem('nombre');
         localStorage.removeItem('email');
         localStorage.removeItem('image_url');
-        setUserId(null);
+        setUserIdContext(null);
     };
 
 
     return (
         <UserContext.Provider
             value={{
-                userId,
+                userIdContext,
                 loginContext,
                 logoutContext,
             }}

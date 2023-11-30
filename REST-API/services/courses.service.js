@@ -5,7 +5,8 @@ var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 let cachedCourses_MyClasses = {};
-let cachedCourses_ManageRequests = {};
+
+
 
 exports.getCoursesByProfessorId = async (id) => {
     try {
@@ -103,16 +104,27 @@ exports.deleteCourse = async function (course_id) {
 
 // ------------------------------------------MANAGE REQUESTs----------------------------------------------------
 
+var cachedCourses_ManageRequests = {};
+
+const getCACHE_ManageRequests = async (tutor_id) => {
+    tutor_id = mongoose.Types.ObjectId(tutor_id);
+    if (Object.keys(cachedCourses_ManageRequests).length === 0) {
+        const courses = await Course.find({ tutor_id: tutor_id });
+        courses.forEach(course => {
+            cachedCourses_ManageRequests[course._id] = course;
+        });
+    }
+    return cachedCourses_ManageRequests;
+}
+
+
+
 exports.getCourses_CACHE = async (tutor_id) => {
 
     try {
         tutor_id = mongoose.Types.ObjectId(tutor_id);
-        if (Object.keys(cachedCourses_ManageRequests).length === 0) {
-            const courses = await Course.find({ tutor_id: tutor_id });
-            courses.forEach(course => {
-                cachedCourses_ManageRequests[course._id] = course;
-            });
-        }
+        
+        cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         const all_ACs= Object.values(cachedCourses_ManageRequests).flatMap(course => {
             if (course.active_classes.length > 0) {
@@ -138,10 +150,7 @@ exports.manageCourseStatus = async (course_id, data_ac, tutor_id) => {
  
     try {
 
-        if (Object.keys(cachedCourses_ManageRequests).length === 0) {
-            throw Error("No hay cursos para actualizar")
-        }
-        
+        cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         const oldCourse = cachedCourses_ManageRequests[course_id]
 
@@ -170,9 +179,8 @@ var cached_reviewsNotPublic = {};
 exports.getReviewRequests = async (tutor_id) => {
 
     try {
-        if (Object.keys(cachedCourses_ManageRequests).length === 0) {
-            throw Error("No hay cursos")
-        }
+        
+        cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         if (Object.keys(cached_reviewsNotPublic).length === 0) {
             cached_reviewsNotPublic = Object.values(cachedCourses_ManageRequests)
@@ -195,18 +203,19 @@ exports.getReviewRequests = async (tutor_id) => {
 
 
 
-exports.acceptReview = async (course_id, review_id) => {
+exports.acceptReview = async (course_id, review_id, tutor_id) => {
 
     course_id = mongoose.Types.ObjectId(course_id);
     review_id = mongoose.Types.ObjectId(review_id);
+
     
     try {
-        if (Object.keys(cachedCourses_ManageRequests) === 0) {
-            throw Error("No hay reviews")
-        }
+        console.log("ESTAMOS ACA LOCO")
+        cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         const course = cachedCourses_ManageRequests[course_id]
-        
+        console.log(course)
+
         const updatedReviews = course.reviews.map(review => {
             if (review._id.equals(review_id)) {
                 review.public = true;
@@ -254,16 +263,20 @@ exports.rejectReview = async (course_id, review_id) => {
 
 var cachedCourses_Categories = {};
 
+const getCACHE_categories = async () => {
+    if (Object.keys(cachedCourses_Categories).length === 0) {
+        const courses = await Course.find({});
+        courses.forEach(course => {
+            cachedCourses_Categories[course._id] = course;
+        });
+    }
+    return cachedCourses_Categories;
+}
+
 exports.getAllCourses = async () => {
     try {
-        if (Object.keys(cachedCourses_Categories).length === 0) {
-            const courses = await Course.find({});
-            courses.forEach(course => {
-                cachedCourses_Categories[course._id] = course;
-            });
-        }
         
-        return cachedCourses_Categories;
+        return getCACHE_categories();
 
     } catch (e) {
         throw Error("Error al buscar las clases")
@@ -276,21 +289,18 @@ exports.addReview = async (reviewData, course_id) => {
     course_id = mongoose.Types.ObjectId(course_id);
 
     try {
-
-        if (Object.keys(cachedCourses_Categories).length === 0) {
-            throw Error("No hay clases disponibles")
-        }
-
+        cachedCourses_Categories = await getCACHE_categories();
         const course = cachedCourses_Categories[course_id]
         
         console.log(course)
-
         reviewData._id = new mongoose.Types.ObjectId();
         course.reviews.push(reviewData);
+
         const savedCourse = await course.save();
+
         return savedCourse;
 
     } catch (e) {
-        throw Error("Error al añadir el comentario")
+        throw Error(e.message)
     }
 }

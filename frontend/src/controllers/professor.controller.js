@@ -30,7 +30,7 @@ export const getProfile = async (userId) => {
 }
 
 
-export const updateProfile = async (user ,userId) => {
+export const updateProfile = async (user, userId) => {
 
     if (userId !== localUserId) {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});

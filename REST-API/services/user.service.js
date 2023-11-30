@@ -63,8 +63,7 @@ exports.loginUser = async function (user) {
         var _details = await User.findOne({
             email: user.email
         });
-        console.log("\nUSER SERVICE", user)
-        console.log("\nDETAILS SERVICE", _details)
+
         var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
         
         if (!passwordIsValid) return 0;

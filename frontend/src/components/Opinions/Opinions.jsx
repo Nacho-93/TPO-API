@@ -40,7 +40,7 @@ function Opinions() {
                                         data-bs-whatever="@getbootstrap">
                                         Agregar
                                     </button>
-                                    <ModalComment />
+                                    <ModalComment course_id={course_id} />
                                 </div>
 
                             </div>

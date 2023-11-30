@@ -16,6 +16,8 @@ const urlWebServices = {
 
     // COURSEs
     getCourses: urlApi + '/api/categorias',
+    addReview: urlApi + '/api/categorias',
+    acceptReview: urlApi + '/api/perfil/:id/solicitudes-comentarios',
     
 }
 

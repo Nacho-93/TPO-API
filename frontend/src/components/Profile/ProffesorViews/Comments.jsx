@@ -20,7 +20,7 @@ function Comments() {
             if (course.reviews) {
                 return course.reviews.map((review) => {
                     if (!review.public) {
-                        return <Opinion review={review} isUser={userId} />;
+                        return <Opinion review={review} isUser={userId} course={course} />;
                     }
                     return null; // Si la revisión es pública, devuelve null para evitar elementos vacíos.
                 });

@@ -13,6 +13,7 @@ export default function Register() {
 
   const [userData, setUserData] = useState({
     name: "",
+    lastName: "",
     password: "",
     secondPassword: "",
     email: "",
@@ -34,7 +35,7 @@ export default function Register() {
 
   const validateUser = async () => {
     setShowAlert(false);
-    if (userData.name && userData.password && userData.secondPassword && userData.email && userData.phone) {
+    if (userData.name && userData.lastName && userData.password && userData.secondPassword && userData.email && userData.phone) {
       if (userData.password === userData.secondPassword) {
 
         delete userData.secondPassword;
@@ -63,6 +64,7 @@ export default function Register() {
       return <Navigate to={`/perfil/${localStorage.getItem('userId')}`} />
     }
   }
+
 
 
   return (
@@ -100,12 +102,24 @@ export default function Register() {
               />
             </div>
 
+            <div class="input-group mt-1">
+              <div class="input-group-text bg-info">
+                <i class="register-icon fa-solid fa-user-tag"></i>
+              </div>
+              <input
+                class="form-control bg-light"
+                type="text"
+                placeholder="Apellido"
+                name="lastName"
+                onChange={handleInputChange}
+              />
+            </div>
 
             <div class="input-group mt-1">
               <div class="input-group-text bg-info">
                 <i class="register-icon fa-solid fa-lock"></i>
               </div>
-              <label htmlfor="password"></label>
+
               <input
                 class="form-control bg-light"
                 type="password"

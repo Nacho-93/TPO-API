@@ -10,7 +10,8 @@ import { useUserContext } from '../../Context/UserContext';
 export default function NavBar(props) {
 
   const { tutors } = useTutorContext();
-  let userId = localStorage.getItem('userId');
+  let { userIdContext } = useUserContext();
+  let userId = userIdContext || localStorage.getItem('userId');
   const image_profile = localStorage.getItem('image_profile');
   // const tutor = tutors[userId];
 
@@ -25,7 +26,7 @@ export default function NavBar(props) {
           style={{ width: "50px", height: "50px" }}
         />
       ) : (
-        <i class="login-icon bi bi-person-circle"></i>
+        <i class="d-inline-block align-top login-icon bi bi-person-circle"></i>
       )}
     </span>
   );
@@ -74,8 +75,8 @@ export default function NavBar(props) {
         <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header text-white">
 
-            <Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
-              {userId ? "" : <i class="login-icon bi bi-person-circle"></i>} </Link>
+            <Link to={userId ? `/perfil/${userId}` : '/login'} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
+              {userId ? professor_image : <i class="login-icon bi bi-person-circle"></i>} </Link>
 
             <button type="button" class="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>

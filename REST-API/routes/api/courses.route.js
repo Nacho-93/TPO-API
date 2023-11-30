@@ -36,7 +36,7 @@ router.put('/:id/solicitudes-clases', Authorization, CoursesController.manageCou
 router.get('/:id/solicitudes-comentarios', Authorization, CoursesController.getReviewRequests)
 
 // Aceptar comentario --> OK              // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
-router.put('/:id/solicitudes-comentarios', Authorization, CoursesController.acceptReview)
+router.put('/:id/solicitudes-comentarios', CoursesController.acceptReview)
 
 // Rechazar comentario --> OK             // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
 router.delete('/:id/solicitudes-comentarios', Authorization, CoursesController.rejectReview)
