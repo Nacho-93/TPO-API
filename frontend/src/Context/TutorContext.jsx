@@ -13,18 +13,17 @@ const TutorContextProvider = ({ children }) => {
 
     const [tutorsContext, setTutorsContext] = useState({});
 
+    const fetchTutors = async () => {
+        try {
+            const data = await getAllTutors();
+            setTutorsContext(data);
+        } catch (error) {
+            console.error('Error obteniendo los cursos:', error);
+        }
+    }
+
 
     useEffect(() => {
-        async function fetchTutors() {
-            try {
-                const data = await getAllTutors();
-                setTutorsContext(data);
-
-
-            } catch (error) {
-                console.error('Error obteniendo los cursos:', error);
-            }
-        }
         fetchTutors();
     }, []);
 
@@ -35,7 +34,9 @@ const TutorContextProvider = ({ children }) => {
         <TutorContext.Provider
             value={{
                 tutorsContext,
-                setTutorsContext
+                setTutorsContext,
+                fetchTutors
+
             }}>
             {children}
         </TutorContext.Provider>

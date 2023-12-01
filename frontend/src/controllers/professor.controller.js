@@ -7,6 +7,7 @@ export const getProfile = async (userId) => {
     //     return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     // }
     const url = urlWebServices.getProfile.replace(":id", userId);
+    const token = localStorage.getItem('x');
     try {
         const response = await fetch(url, {
             method: 'GET',
@@ -14,8 +15,8 @@ export const getProfile = async (userId) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             }
         });
         let data = await response.json();
@@ -46,20 +47,19 @@ export const updateProfile = async (user, userId) => {
             formData.append(key, user[key]);
             });
 
-        console.log("FORMDATA CONTROLLER 1",formData)
-
+       
+        const token = localStorage.getItem('x');
         const response = await fetch(url, {
             method: 'PUT',
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-      
-                // 'x-access-token': localStorage.getItem('x')
+                'x-access-token': token
             },
             body: formData,
         });
-       
+        
         let data = await response.json();
    
         return data;

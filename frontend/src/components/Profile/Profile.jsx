@@ -10,6 +10,8 @@ import Loading from '../Loading'
 import ModalContact from '../Modal/ModalContact'
 import { useCoursesContext } from '../../Context/CoursesContext'
 
+
+
 function Profile() {
     const { logoutContext } = useUserContext();
     // const [updatedData, setUpdatedData] = React.useState({});
@@ -39,7 +41,6 @@ function Profile() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-
                 const profileData = await getProfile(userId);
                 setProfessorData(profileData);
             } catch (error) {
@@ -94,6 +95,7 @@ function Profile() {
             const updatedProfile = await updateProfile({
                 ...updatedData,
             }, userId);
+
 
             setProfessorData(updatedProfile);
             setUpdatedData({});

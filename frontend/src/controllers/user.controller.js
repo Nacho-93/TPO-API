@@ -29,7 +29,8 @@ export const login_exe = async (user) => {
             case 201:
                 {
                 let user = data.loginUser.user;
-                localStorage.setItem('x', user.token);
+                let token = data.loginUser.token;
+                localStorage.setItem('x', token);
                 localStorage.setItem('userId', user._id);
                 localStorage.setItem("nombre",user.name);
                 localStorage.setItem("email",user.email);
