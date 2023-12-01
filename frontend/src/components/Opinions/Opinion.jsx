@@ -44,7 +44,7 @@ function Opinion({ review, isUser, course }) {
                             <div className="btns">
                                 {isUser && (
                                     <div className='d-flex align-items-center'>
-                                        <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                        <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target={`#${review._id}`} data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-check"></i>
                                         </button>
                                         <ModalAceptar text="este comentario" review_id={review._id} course_id={course._id} tutor_id={tutor_id} title={course.title} />

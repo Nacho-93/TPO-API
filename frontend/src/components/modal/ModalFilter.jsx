@@ -10,7 +10,7 @@ function ModalFilter(props) {
         rating: 0, // Supongamos que 0 representa ninguna calificación seleccionada.
     });
 
-    console.log(formData)
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;

@@ -57,6 +57,7 @@ export const acceptReview = async (course_id, review_id) => {
     try {
 
         const formData = new URLSearchParams({course_id, review_id, tutor_id: localUserId});
+        console.log(formData, "FORM")
         const response = await fetch(url, {
             method: 'PUT',
             mode: 'cors',
@@ -87,6 +88,63 @@ export const createCourse = async (course) => {
         const formData = new URLSearchParams(course);
         const response = await fetch(url, {
             method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+                // 'x-access-token': localStorage.getItem('x')
+            },
+            body: formData
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (e) {
+        return ({rdo:1,mensaje:"Ha ocurrido un error"});
+    }
+}
+
+
+export const manageCourseStatus = async (course_id, ac_id, status) => {
+    const url = urlWebServices.manageCourseStatus.replace(":id", localUserId);
+    if (!localUserId) {
+        return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
+    }
+
+    try {
+        const formData = new URLSearchParams({course_id, ac_id, status, tutor_id: localUserId});
+        const response = await fetch(url, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+                // 'x-access-token': localStorage.getItem('x')
+            },
+            body: formData
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (e) {
+        return ({rdo:1,mensaje:"Ha ocurrido un error"});
+    }
+}
+
+
+export const updateCourse = async (course) => {
+    const url = urlWebServices.updateCourse.replace(":id", localUserId);
+    if (!localUserId) {
+        return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
+    }
+    try {
+        const formData = new URLSearchParams(course);
+        const response = await fetch(url, {
+            method: 'PUT',
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',

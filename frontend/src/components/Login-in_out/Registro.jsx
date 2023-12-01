@@ -5,9 +5,9 @@ import { useState } from "react"
 import { register_exe } from "../../controllers/user.controller"
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-
+import { useTutorContext } from "../../Context/TutorContext"
 export default function Register() {
-
+  const { tutorsContext } = useTutorContext();
   const navigate = useNavigate();
 
 
@@ -36,7 +36,22 @@ export default function Register() {
   const validateUser = async () => {
     setShowAlert(false);
     if (userData.name && userData.lastName && userData.password && userData.secondPassword && userData.email && userData.phone) {
+
+      const emailRegex = new RegExp(`^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$`);
+      if (!emailRegex.test(userData.email)) {
+        setShowAlert(true);
+        setMessage("El email no es válido");
+        return;
+      }
       if (userData.password === userData.secondPassword) {
+
+        for (let prof of Object.values(tutorsContext)) {
+          if (prof.email === userData.email) {
+            setShowAlert(true);
+            setMessage("El email ya se encuentra registrado");
+            return;
+          }
+        }
 
         delete userData.secondPassword;
         const login_response = await register_exe(userData);

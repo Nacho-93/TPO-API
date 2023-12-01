@@ -21,6 +21,8 @@ const urlWebServices = {
     acceptReview: urlApi + '/api/perfil/:id/solicitudes-comentarios',
     // rejectReview: urlApi + '/api/perfil/:id/solicitudes-comentarios',
     createCourse: urlApi + '/api/perfil/:id/misClases',
+    updateCourse: urlApi + '/api/perfil/:id/misClases',
+    manageCourseStatus: urlApi + '/api/perfil/:id/solicitudes-clases',
     
 }
 

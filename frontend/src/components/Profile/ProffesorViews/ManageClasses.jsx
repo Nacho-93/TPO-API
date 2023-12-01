@@ -2,12 +2,11 @@ import React from 'react'
 import { useTutorContext } from '../../../Context/TutorContext'
 import { useUserContext } from '../../../Context/UserContext'
 import Card from '../../Card/Card';
-import ModalAceptar from '../../Modal/ModalAceptar';
-import ModalRechazar from '../../Modal/ModalRechazar';
-import ModalFinalizar from '../../Modal/ModalFinalizar';
+import ModalPut from '../../Modal/ModalPut';
 import { ManageRequests } from './ManageRequests';
 import './styleViews.css'
 import { useCoursesContext } from '../../../Context/CoursesContext';
+import { useEffect, useState } from 'react';
 
 function ManageClasses() {
     const { tutorsContext } = useTutorContext();
@@ -15,12 +14,20 @@ function ManageClasses() {
     const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
     const colors = ["warning", "success", "danger", "secondary"]
     const userId = localStorage.getItem('userId');
+    const [selectedCourseId, setSelectedCourseId] = React.useState(null);
+    const [selectedChange, setSelectedChange] = React.useState(null);
     // "active_classes": [{
     //     "name": "Lorenzo Perez",
     //     "date": "2021-05-15",
     //     "status": [false, true, false, false]
     //   },
 
+    const [coursesArray, setCoursesArray] = useState([]);
+
+    useEffect(() => {
+        // Fetch initial courses data
+        setCoursesArray(Object.values(allCoursesContext));
+    }, [allCoursesContext]);
 
     const get_end_date = (startDate, frequency) => {
         let date = new Date(startDate);
@@ -39,7 +46,6 @@ function ManageClasses() {
         return end_date;
     }
 
-    const coursesArray = Object.values(allCoursesContext);
 
     const classes_list = coursesArray.map((course) => {
 
@@ -68,29 +74,39 @@ function ManageClasses() {
                             <div className='d-flex justify-content-between align-items-center'>
                                 {active_class.status[0] && (
                                     <button type="button" className="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#AceptarModal" data-bs-whatever="@getbootstrap">
+                                        data-bs-target={`#${active_class._id}`} data-bs-whatever="@getbootstrap"
+                                        onClick={() => { setSelectedChange(1) }}
+                                    >
                                         <i className="fa-solid fa-check"></i>
                                     </button>
                                 )}
                                 {active_class.status[1] &&
                                     (
                                         <button type="button" className="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#FinalizarModal" data-bs-whatever="@getbootstrap">
+                                            data-bs-target={`#${active_class._id}`} data-bs-whatever="@getbootstrap"
+                                            onClick={() => { setSelectedChange(2) }}
+                                        >
                                             <i class="fa-solid fa-flag-checkered"></i>
                                         </button>
                                     )}
                                 {(active_class.status[0] || active_class.status[1]) &&
                                     <button type="button" className="btn btn-danger"
-                                        data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
+                                        data-bs-toggle="modal" data-bs-target={`#${active_class._id}`}
+                                        data-bs-whatever="@getbootstrap"
+                                        onClick={() => { setSelectedChange(3) }}
+                                    >
                                         <i className="fa-solid fa-x"></i>
                                     </button>}
 
 
 
                             </div>
-                            <ModalAceptar text={`la clase de ${course.title} con ${active_class.name}`} />
-                            <ModalRechazar text={`de ${active_class.name} para la clase de ${course.title}`} />
-                            <ModalFinalizar text={``} />
+                            <ModalPut
+                                course_id={course._id}
+                                text={`realizar esta acción?`}
+                                ac_id={active_class._id}
+                                action={selectedChange}
+                            />
 
                         </td>
                     </tr>

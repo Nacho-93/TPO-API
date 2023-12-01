@@ -6,6 +6,17 @@ var jwt = require('jsonwebtoken');
 
 let cachedCourses_MyClasses = {};
 
+const getCACHE_MyClasses = async (id) => {
+    id = mongoose.Types.ObjectId(id);
+    if (Object.keys(cachedCourses_MyClasses).length === 0) {
+        const courses = await Course.find({ tutor_id: id });
+        courses.forEach(course => {
+            cachedCourses_MyClasses[course._id] = course;
+        });
+    }
+    return cachedCourses_MyClasses;
+}
+
 
 
 exports.getCoursesByProfessorId = async (id) => {
@@ -53,12 +64,11 @@ exports.createCourse = async (courseData, id) => {
 
 exports.updateCourse = async (courseData, course_id) => {
     try {
-
-        if (Object.keys(cachedCourses_MyClasses).length === 0) {
-            throw Error("No hay cursos para actualizar")
-        }
         
-
+        if (Object.keys(cachedCourses_MyClasses).length === 0) {
+            cachedCourses_MyClasses = await getCACHE_MyClasses(courseData.tutor_id);
+        }
+    
         const oldCourse = cachedCourses_MyClasses[course_id]
         const validKeys = Object.keys(Course.schema.paths);
 
@@ -69,6 +79,7 @@ exports.updateCourse = async (courseData, course_id) => {
         });
 
         const savedCourse = await oldCourse.save();
+        console.log(savedCourse.active_classes)
         return savedCourse;
     } catch (e) {
         throw Error(e.message)
@@ -140,16 +151,16 @@ exports.manageCourseStatus = async (course_id, data_ac, tutor_id) => {
 
     tutor_id = mongoose.Types.ObjectId(tutor_id);
     course_id = mongoose.Types.ObjectId(course_id);
-    data_ac._id = mongoose.Types.ObjectId(data_ac._id);
+    data_ac.ac_id = mongoose.Types.ObjectId(data_ac.ac_id);
  
     try {
-
+        data_ac.status = data_ac.status.split(",")
         cachedCourses_ManageRequests = await getCACHE_ManageRequests(tutor_id);
 
         const oldCourse = cachedCourses_ManageRequests[course_id]
 
         const updatedACs = oldCourse.active_classes.map(ac => {
-            if (ac._id.equals(data_ac._id)) {
+            if (ac._id.equals(data_ac.ac_id)) {
                 ac.status = data_ac.status;
             }
             return ac;

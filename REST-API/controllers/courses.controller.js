@@ -77,9 +77,10 @@ exports.getCourses_CACHE = async (req, res, next) => {
 
 
 exports.manageCourseStatus = async (req, res, next) => {
-    const {course_id, _id,  status} = req.body;
-    const data_ac = {_id, status}
+    const {course_id, ac_id,  status} = req.body;
+    const data_ac = {ac_id, status}
     const tutor_id = req.params.id;
+    console.log("DATA_AC", data_ac, "TUTOR_ID", tutor_id)
     try {
         const updatedCourse = await CoursesService.manageCourseStatus(course_id, data_ac, tutor_id)
         res.status(201).json({updatedCourse, message: "Succesfully Updated Course Status"});

@@ -53,10 +53,11 @@ function Classes() {
 
                     <td>
                         {isActual_user && <div className='d-flex justify-content-between align-items-end' style={{ maxWidth: "720px", margin: "0 auto" }}>
-                            <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#UpdateModal" data-bs-whatever="@getbootstrap">
+                            <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal"
+                                data-bs-target={`#${course._id}`} data-bs-whatever="@getbootstrap">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </button>
-                            <ModalUpdate />
+                            <ModalUpdate course={course} course_id={course._id} />
                             <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
                                 <i className="fa-solid fa-x"></i>
                             </button>
