@@ -40,7 +40,14 @@ export const updateProfile = async (user, userId) => {
 
     try {
 
-        const formData = new URLSearchParams(user);
+        console.log(user)
+
+        const formData = new FormData();
+        Object.keys(user).forEach((key) => {
+            formData.append(key, user[key]);
+            });
+
+        console.log("FORMDATA CONTROLLER 1",formData)
 
         const response = await fetch(url, {
             method: 'PUT',
@@ -48,10 +55,10 @@ export const updateProfile = async (user, userId) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
+      
                 // 'x-access-token': localStorage.getItem('x')
             },
-            body: formData
+            body: formData,
         });
        
         let data = await response.json();

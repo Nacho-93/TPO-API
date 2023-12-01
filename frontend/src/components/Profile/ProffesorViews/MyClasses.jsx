@@ -86,7 +86,7 @@ function Classes() {
                                 data-bs-whatever="@getbootstrap">
                                 Agregar clase
                             </button>
-                                <ModalAgregar /></>}
+                                <ModalAgregar user_id={userId} /></>}
 
                         </div>
 

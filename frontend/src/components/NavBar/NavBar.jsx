@@ -12,22 +12,20 @@ export default function NavBar(props) {
   const { tutors } = useTutorContext();
   let { userIdContext } = useUserContext();
   let userId = userIdContext || localStorage.getItem('userId');
-  const image_profile = localStorage.getItem('image_profile');
+  const image_profile = localStorage.getItem('image_url');
   // const tutor = tutors[userId];
 
 
   const [professor_image, setProfessor_image] = useState(
     <span className="round-photo">
-      {userId && image_profile ? (
+      {
         <img
           src={image_profile}
           alt="professor"
           className="d-inline-block align-top"
           style={{ width: "50px", height: "50px" }}
         />
-      ) : (
-        <i class="d-inline-block align-top login-icon bi bi-person-circle"></i>
-      )}
+      }
     </span>
   );
 

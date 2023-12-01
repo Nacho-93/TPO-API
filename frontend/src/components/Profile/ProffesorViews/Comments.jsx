@@ -41,10 +41,12 @@ function Comments() {
                 <div className="container">
                     {requests_list && requests_list.length > 0 ? (
                         <div>{requests_list}</div>
+
                     ) : (
                         <p>No hay solicitudes de comentarios disponibles.</p>
                     )}
                 </div>
+
             </div>
 
         </div>

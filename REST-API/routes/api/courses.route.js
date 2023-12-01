@@ -12,7 +12,7 @@ const router = Router();
 router.get('/:id/misClases', Authorization, CoursesController.getCoursesByProfessorId)
 
 // Crear clase --> OK                      // http://localhost:8080/api/professor/[id]/misClases
-router.post('/:id/misClases', Authorization, CoursesController.createCourse)
+router.post('/:id/misClases', CoursesController.createCourse)
 
 // Modificar clase --> OK                 // http://localhost:8080/api/professor/[id]/misClases
 router.put('/:id/misClases', Authorization, CoursesController.updateCourse)

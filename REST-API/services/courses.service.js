@@ -33,20 +33,14 @@ exports.getCoursesByProfessorId = async (id) => {
 exports.createCourse = async (courseData, id) => {
     try {
         
-        
-        
-        courseData.frequency = [1, "semana", 6];
-        courseData.info_course = [true,false, true, false];
-        console.log(courseData.tutor_id)
+        console.log(courseData)
         const requiredKeys = ['title', 'course_description', 'price_hour', 'course_public', 'info_course', 'frequency'];
 
-        Object.keys(courseData).forEach(key => {
-            if (!requiredKeys.includes(key) || !courseData[key]) {
-                throw Error("Error al crear el curso")
-            }
-        });
-    
+        courseData.active_classes = [];
+        courseData.reviews = [];
         courseData.tutor_id = mongoose.Types.ObjectId(id);
+
+        console.log(courseData)
 
         const newCourse = new Course(courseData);
         const savedCourse = await newCourse.save();

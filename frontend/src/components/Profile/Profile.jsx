@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { getProfile } from '../../controllers/professor.controller'
 import { updateProfile } from '../../controllers/professor.controller'
+import Loading from '../Loading'
 
 function Profile() {
     const { logoutContext } = useUserContext();
@@ -14,6 +15,8 @@ function Profile() {
     const [updatedData, setUpdatedData] = React.useState({});
     const userId = useLocation().pathname.split('/')[2];
     const isUser = localStorage.getItem('userId') === userId;
+    const [image, setImage] = React.useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -48,8 +51,7 @@ function Profile() {
 
 
     const handleFormSubmit = async (e) => {
-        e.preventDefault();
-        console.log(updatedData)
+
         if (updatedData.password && updatedData.secondPassword) {
             if (updatedData.password !== updatedData.secondPassword) {
                 alert("Las contraseñas no coinciden");
@@ -58,12 +60,26 @@ function Profile() {
         }
         try {
             delete updatedData.secondPassword;
+
+            updatedData.image_profile = image
+                ? await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(image);
+                    reader.onloadend = () => {
+                        resolve(reader.result);
+                    };
+                    reader.onerror = (error) => {
+                        reject(error);
+                    };
+                })
+                : professorData.image_profile;
             const updatedProfile = await updateProfile({
                 ...updatedData,
             }, userId);
 
             setProfessorData(updatedProfile);
             setUpdatedData({});
+            setImage(null);
 
         } catch (error) {
             console.error('Error al actualizar el perfil:', error);
@@ -73,7 +89,8 @@ function Profile() {
 
     return (
         <>
-            {professorData &&
+            {!professorData ? <div className="container-profile pb-5"><Loading /></div>
+                :
                 (<div className="container-profile pb-5">
                     <div className="container light-style flex-grow-1 container-p-y">
                         <h2 className="font-weight-bold py-3 mb-4 text-primary-emphasis text-light">
@@ -128,15 +145,13 @@ function Profile() {
                                                 <div className="media-body ml-4">
                                                     {isUser ? (
                                                         <>
-                                                            <label className="btn btn-outline-primary">
-                                                                Subir foto de perfil
+                                                            <label className="btn btn-secondary">
+                                                                <i class="fa-solid fa-cloud-arrow-up"></i>
                                                                 <input type="file" className="account-settings-fileinput"
-                                                                    name='image_profile' onClick={handleInputChange} />
+                                                                    name='image_profile'
+                                                                    onClick={(e) => setImage(e.target.files[0])}
+                                                                />
                                                             </label>{" "}
-                                                            &nbsp;
-                                                            <button type="button" className="btn btn-outline-danger md-btn-flat">
-                                                                Reset
-                                                            </button>
                                                             <div className="text-light small mt-1">JPG/PNG</div>
                                                         </>
                                                     ) : (

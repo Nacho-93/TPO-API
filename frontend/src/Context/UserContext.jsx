@@ -25,6 +25,10 @@ export const UserContextProvider = ({ children }) => {
         localStorage.removeItem('email');
         localStorage.removeItem('image_url');
         setUserIdContext(null);
+        window.location.href = "/";
+        setTimeout(() => {
+            window.location.reload();
+        }, 300);
     };
 
 

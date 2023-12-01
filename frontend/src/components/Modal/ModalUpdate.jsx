@@ -56,7 +56,7 @@ function ModalUpdate() {
                                 <input type="money" class="form-control" id="recipient-name" placeholder="$/hora" required></input>
                             </div>
                             <div class="form-check form-switch">
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Despublicar clase</label>
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Quieres que la clase sea pública?</label>
                                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                             </div>
                             <div class="mb-3">

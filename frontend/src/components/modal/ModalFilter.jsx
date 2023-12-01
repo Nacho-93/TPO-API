@@ -81,7 +81,6 @@ function ModalFilter(props) {
                                     <option selected value="">-</option>
                                     <option value="1">Clase única</option>
                                     <option value="2">Semanal</option>
-                                    <option value="3">Mensual</option>
                                 </select>
                             </div>
                             <div className="mb-3">

@@ -43,7 +43,7 @@ export default function Card({ tutor, course, ...props }) {
                         <div className="col-md-1 g-0 d-none d-lg-block d-md-block">
                             <div className="professor-img">
                                 <span className="round-photo">
-                                    <img src={""} alt="professor" className="img-fluid" />
+                                    <img src={tutor.image_profile} alt="professor" className="img-fluid" />
                                 </span>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ export default function Card({ tutor, course, ...props }) {
                             <div className="mobile-line">
                                 <div className="col-2 professor-img">
                                     <span className="round-photo">
-                                        <img src={""} alt="professor" className="img-fluid" />
+                                        <img src={tutor.image_profile} alt="professor" className="img-fluid" />
                                     </span>
                                 </div>
 

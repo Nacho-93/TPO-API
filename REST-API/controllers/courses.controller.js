@@ -19,9 +19,18 @@ exports.getCoursesByProfessorId = async (req, res, next) => {
 exports.createCourse = async (req, res, next) => {
     const courseData = req.body;
     const {id} = req.params;
+    const course = {}
+    course.title = req.body.title;
+    course.course_description = req.body.course_description;
+    course.price_hour = req.body.price_hour;
+    course.course_public = req.body.course_public;
+    course.info_course = req.body.info_course.split(",");
+    course.frequency = req.body.frequency.split(",");
+    course.tutor_id = id;
+
 
     try {
-        const createdCourse = await CoursesService.createCourse(courseData, id)
+        const createdCourse = await CoursesService.createCourse(course, id)
         res.status(201).json({createdCourse, message: "Succesfully Created Course"});
     } catch (e) {
         res.status(400).json({status: 400, message: e.message})
