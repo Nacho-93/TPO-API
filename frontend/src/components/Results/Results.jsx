@@ -5,17 +5,16 @@ import Card from '../Card/Card';
 import './Results.css';
 import { getCourses } from '../../controllers/courses.controller';
 import { getAllTutors } from '../../controllers/tutors.controller';
-
 import { useCoursesContext } from '../../Context/CoursesContext';
 import { useTutorContext } from '../../Context/TutorContext';
 import Loading from '../Loading';
 
 function Results() {
 
-    const [regexCategory, setRegexCategory] = useState(new RegExp(`allCategories.*`, 'i')); // /.*i/ = /.*?/i
 
+    const [regexCategory, setRegexCategory] = useState(new RegExp(`allCategories.*`, 'i')); // /.*i/ = /.*?/i
     const { tutorsContext } = useTutorContext();
-    const { allCoursesContext } = useCoursesContext();
+    const { allCoursesContext, fetchCourses } = useCoursesContext();
     const [filter, setFilter] = useState({
         category: 'allCategories',
         frequency_class: "",
@@ -31,6 +30,7 @@ function Results() {
     let filteredCourses = []
 
 
+
     if (allCoursesContext && coursesArray) {
 
         filteredCourses = coursesArray.filter((course) => {
@@ -44,8 +44,10 @@ function Results() {
                     regexCategory.test(course.title));
 
             const frequencyMatch =
-                !filter.frequency_class ? true : (
-                    course.frequency[1] === filter.frequency_class);
+                !filter.frequency_class ? true
+                    : (course.frequency[0] === 1 && course.frequency[2] === 1)
+                    || (course.frequency[2] >= 1 && filter.frequency_class === 'Semanal')
+
 
             const typeMatch =
                 !filter.type_of_class ? true : (
@@ -64,6 +66,8 @@ function Results() {
 
     let filtered_list = [];
 
+    let noCoursesFound = true;
+
     if (filteredCourses.length > 0) {
         filtered_list = filteredCourses.map((course) => (
             <Card
@@ -71,7 +75,9 @@ function Results() {
                 course={course}
                 tutor={tutorsContext[course.tutor_id]}
             />
+
         ));
+        noCoursesFound = false;
     }
 
 
@@ -86,7 +92,8 @@ function Results() {
 
     return (
         <>
-            {filtered_list.length === 0 ? <div className='bg-change-color pb-5'> <Loading /> </div> :
+            {filtered_list.length === 0 && !noCoursesFound
+                ? <div className='bg-change-color pb-5'> <Loading /> </div> :
                 (<div className='bg-change-color pb-5'>
                     <section id="call-to-action" className="action-diferent section-home">
 
@@ -104,9 +111,11 @@ function Results() {
                     </section>
 
                     <div style={{ backdropFilter: "blur(5px)" }}>
-                        {filtered_list}
+                        {noCoursesFound ? <h3 className="text-center text-light my-5">No se encontraron cursos disponibles</h3> :
+                            filtered_list}
                     </div>
                     <ModalFilter handleFilter={handleFilter} />
+
                 </div>)}
 
         </>

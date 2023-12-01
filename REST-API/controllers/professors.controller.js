@@ -7,9 +7,7 @@ var ProfessorService = require('../services/professor.service');
 // Async Controller function to get the To do List
 exports.getProfessorById = async (req, res, next) => {
     const {id} = req.params;
-    
     try {
-   
         const professor_data = await ProfessorService.getProfessorById(id)
         res.status(200).json(professor_data);
     } catch (e) {
@@ -68,6 +66,18 @@ exports.getAllProfessors = async (req, res, next) => {
         res.status(200).json({status: 200, data: professors, message: "Succesfully Users Recieved"});
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
+        res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+exports.contactProfessor = async (req, res, next) => {
+    const {id} = req.params;
+    const data = req.body;
+    try {
+        const contact = await ProfessorService.contactProfessor(id, data.name, data.email, data.message, data.course_id);
+        res.status(200).json({status: 200, data: contact, message: "Succesfully Contacted Professor"});
+    } catch (e) {
         res.status(400).json({status: 400, message: e.message})
     }
 }

@@ -10,6 +10,8 @@ function ModalFilter(props) {
         rating: 0, // Supongamos que 0 representa ninguna calificación seleccionada.
     });
 
+    console.log(formData)
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -79,8 +81,8 @@ function ModalFilter(props) {
                                 >
                                     {/* Opciones de frecuencia de clase */}
                                     <option selected value="">-</option>
-                                    <option value="1">Clase única</option>
-                                    <option value="2">Semanal</option>
+                                    <option value="Clase única">Clase única</option>
+                                    <option value="Semanal">Semanal</option>
                                 </select>
                             </div>
                             <div className="mb-3">

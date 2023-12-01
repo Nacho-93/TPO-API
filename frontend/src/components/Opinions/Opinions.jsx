@@ -15,18 +15,22 @@ function Opinions() {
 
     const course = allCoursesContext[course_id];
 
-
+    let noOpinions = false;
     let opinions_list = [];
 
     if (allCoursesContext && course) {
         opinions_list = course.reviews.map((r) => (
             r.public ? <Opinion review={r} isUser={false} course={course} /> : null
         ));
+        if (opinions_list.length === 0) {
+            noOpinions = true;
+        }
+
     }
 
     return (
         <>
-            {opinions_list.length === 0
+            {opinions_list.length === 0 && !noOpinions
                 ?
                 <div className="bg-change-color-profile"><Loading /></div>
                 :
@@ -51,9 +55,12 @@ function Opinions() {
                         </div>
                     </section>
                     <div className="p-5 div-op" style={{ backdropFilter: "blur(5px)" }}>
-                        <div className="container">
-                            {<div>{opinions_list}</div>}
-                        </div>
+                        {noOpinions
+                            ? <h3 className="text-center text-light">No hay opiniones</h3>
+                            :
+                            (<div className="container">
+                                {<div>{opinions_list}</div>}
+                            </div>)}
                     </div>
 
                 </div>)}

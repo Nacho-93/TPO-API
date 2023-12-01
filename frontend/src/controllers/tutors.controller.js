@@ -2,7 +2,7 @@ import urlWebServices from "./webServices";
 
 
 export const getAllTutors = async () => {
-    console.log("BEFORE")
+
     try {
         
         const response = await fetch(urlWebServices.getAllTutors, {

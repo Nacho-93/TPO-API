@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { getProfile } from '../../controllers/professor.controller'
 import { updateProfile } from '../../controllers/professor.controller'
 import Loading from '../Loading'
+import ModalContact from '../Modal/ModalContact'
+import { useCoursesContext } from '../../Context/CoursesContext'
 
 function Profile() {
     const { logoutContext } = useUserContext();
@@ -16,6 +18,22 @@ function Profile() {
     const userId = useLocation().pathname.split('/')[2];
     const isUser = localStorage.getItem('userId') === userId;
     const [image, setImage] = React.useState(null);
+    const { allCoursesContext } = useCoursesContext();
+
+    const [allTitles, setAllTitles] = React.useState({});
+    let noContactAvailable = false;
+
+    useEffect(() => {
+        const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
+        const titles = coursesArray
+            .filter((course) => course.tutor_id === userId)
+            .reduce((acc, course) => {
+                acc[course.title] = course._id;
+                return acc;
+            }, {});
+        setAllTitles(titles);
+
+    }, [userId]);
 
 
     useEffect(() => {
@@ -31,7 +49,7 @@ function Profile() {
         };
 
         fetchData(); // Llama a la función para obtener los datos del perfil cuando el componente se monta
-    }, []); // El segundo argumento vacío [] hace que useEffect se ejecute solo una vez (similar a componentDidMount)
+    }, [userId]); // El segundo argumento vacío [] hace que useEffect se ejecute solo una vez (similar a componentDidMount)
 
 
 
@@ -87,6 +105,7 @@ function Profile() {
     };
 
 
+
     return (
         <>
             {!professorData ? <div className="container-profile pb-5"><Loading /></div>
@@ -133,7 +152,23 @@ function Profile() {
                                                 </Link>
                                             </>
                                         ) : (
-                                            <></>
+                                            <>
+                                                {false ? <Loading /> :
+                                                    <>
+                                                        <button
+                                                            type="button"
+                                                            class="btn btn-primary"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModalContact"
+                                                            data-bs-whatever="@getbootstrap"
+                                                            disabled={noContactAvailable}
+                                                        >
+                                                            Contactar
+                                                        </button>
+                                                        <ModalContact allTitles={allTitles} tutor={professorData} />
+                                                    </>
+                                                }
+                                            </>
                                         )}
                                     </div>
                                 </div>

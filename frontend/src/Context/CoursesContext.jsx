@@ -22,7 +22,6 @@ const CoursesContextProvider = ({ children }) => {
         }
     }
 
-
     useEffect(() => {
         fetchCourses();
     }, []);

@@ -15,7 +15,7 @@ router.put('/:id/update',  upload.single('image_profile'), ProfessorController.u
 // Eliminar profesor --> OK               // http://localhost:8080/api/professor/[id]/delete
 router.delete('/:id/delete', Authorization, ProfessorController.deleteProfessor)
 
-
+router.post('/:id/contact', ProfessorController.contactProfessor)
 
 
 // // Obtener clases del profesor --> OK      // http://localhost:8080/api/professor/[id]/misClases

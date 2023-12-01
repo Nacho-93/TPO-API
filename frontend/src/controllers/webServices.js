@@ -12,6 +12,7 @@ const urlWebServices = {
     getProfile: urlApi + '/api/perfil/:id',
     updateProfile: urlApi + '/api/perfil/:id/update',
     getAllTutors: urlApi + '/api/tutors',
+    contactProfessor: urlApi + '/api/perfil/:id/contact',
     // deleteProfile: urlApi + '/api/perfil/',
 
     // COURSEs

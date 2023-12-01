@@ -11,7 +11,7 @@ import { useCoursesContext } from '../../../Context/CoursesContext';
 
 function ManageClasses() {
     const { tutorsContext } = useTutorContext();
-    const { allCoursesContext } = useCoursesContext();
+    const { allCoursesContext, fetchCourses } = useCoursesContext();
     const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
     const colors = ["warning", "success", "danger", "secondary"]
     const userId = localStorage.getItem('userId');
@@ -42,6 +42,7 @@ function ManageClasses() {
     const coursesArray = Object.values(allCoursesContext);
 
     const classes_list = coursesArray.map((course) => {
+
         if (userId !== course.tutor_id || course.active_classes.length === 0) {
             return null;
         }

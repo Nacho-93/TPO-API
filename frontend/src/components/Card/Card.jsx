@@ -175,15 +175,11 @@ export default function Card({ tutor, course, ...props }) {
                                         : (isInPerson ? "Presencial" : "Online")}</h6>
 
                                 <div className="d none d-md-block">
-                                    <button
-                                        type="button"
-                                        class="btn btn-primary"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalContact"
-                                        data-bs-whatever="@getbootstrap">
-                                        Contactar
-
-                                    </button>
+                                    <Link className="btn btn-primary w-100"
+                                        to={`/perfil/${tutor._id}`}
+                                    >
+                                        Contratar
+                                    </Link>
 
 
                                 </div>
@@ -249,13 +245,11 @@ export default function Card({ tutor, course, ...props }) {
                             {/* MOBILE BUTTONS */}
                             <div className="row">
                                 <div className="col-6 d-lg-none d-md-none  d-sm-block">
-                                    <button href="#contractForm" className="btn btn-primary w-100"
-                                        type="button"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#exampleModalContact"
-                                        data-bs-whatever="@getbootstrap"
-                                        disabled={props.isTutor}>Contactar
-                                    </button>
+                                    <Link className="btn btn-primary w-100"
+                                        to={`/perfil/${tutor._id}`}
+                                    >
+                                        Contratar
+                                    </Link>
 
                                 </div>
                                 <div className="col-6 d-lg-none d-md-none d-sm-block">
@@ -283,27 +277,17 @@ export default function Card({ tutor, course, ...props }) {
                         </div>
 
                         <div className="col-md-2 reviews">
-                            {last_review || props.isTutor
+                            <Link to={`/categorias/clase-${course.title}-${course._id}-${tutor._id}-opiniones`}
+                                className="btn btn-outline-secondary">
+                                Opiniones
+                            </Link>
 
-                                ? <Link to={`/categorias/clase-${course.title}-${course._id}-${tutor._id}-opiniones`}
-                                    className="btn btn-outline-secondary">
-                                    Opiniones
-                                </Link>
 
-                                : <button type="button"
-                                    className="btn btn-outline-secondary"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#exampleModalComment"
-                                    data-bs-whatever="@getbootstrap">
-                                    Agregar
-                                </button>
-                            }
 
                         </div>
                     </div>
 
-                    <ModalContact />
-                    <ModalComment />
+
                 </div >
                 )}
         </>
