@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 const { ObjectId } = require('mongodb');
-const nodemailer = require('nodemailer');
+const { MailerService } = require('./nodemailer.js');
 
 
 var cachedTutors = {};
@@ -105,38 +105,25 @@ exports.contactProfessor = async function (id, name, email, message, course_id) 
         const updatedCourse = await course.save();
 
        // Configuración del transporte (SMTP)
-       const transporter = nodemailer.createTransport({
-        host: 'tu_servidor_smtp',
-        port: 587, // Puerto del servidor SMTP
-        secure: false, // true para SSL
-        auth: {
-            user: 'tu_usuario',
-            pass: 'tu_contraseña'
-        }
-    });
+
+    
 
     // Opciones del correo
     const mailOptions = {
-        from: 'tu_email@dominio.com',
-        to: 'email_del_profesor@ejemplo.com', // Dirección de correo del profesor
+        from: "ignacioindurainmoneo@hotmail.com",
+        to: 'ignacioindurainmoneo@hotmail.com', // Dirección de correo del profesor
         subject: 'Asunto del correo',
         text: `Hola Profesor, ${message}` // Cuerpo del mensaje
     };
 
     // Enviar el correo
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Correo enviado: ' + info.response);
-        }
-    });
+    const msg = await MailerService.sendMail(mailOptions);
 
-    console.log("Correo enviado con éxito");
+    console.log("Correo enviado con éxito", msg);
 
     return;
 } catch (e) {
-    throw Error("Error al buscar el perfil");
+    throw Error(e.message);
 }
 }
 
