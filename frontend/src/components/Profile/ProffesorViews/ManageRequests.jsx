@@ -7,13 +7,13 @@ export function ManageRequests() {
 
     return (
         <div>
-            <section id="call-to-action" class="action-diferent section-home">
-                <div class="container" data-aos="zoom-out">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 text-center">
+            <section id="call-to-action" className="action-diferent section-home">
+                <div className="container" data-aos="zoom-out">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-8 text-center">
                             <h3 className="">Solicitudes</h3>
                         </div>
-                        <div class="col-lg-8 text-center">
+                        <div className="col-lg-8 text-center">
                             <Link
                                 to={`/perfil/${userId}/solicitudes-clases`}
                                 className="btn btn-outline-info me-2"

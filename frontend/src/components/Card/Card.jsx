@@ -29,6 +29,7 @@ export default function Card({ tutor, course, ...props }) {
         return false
     }
 
+
     let last_review = getLastReview();
 
 
@@ -68,7 +69,10 @@ export default function Card({ tutor, course, ...props }) {
                                     <div className="name-rating">
                                         <section className="name d-flex justify-content-end">
 
-                                            <Link to={`/perfil/${tutor._id}`} className="card-title name">
+                                            <Link to={`/perfil/${tutor._id}`}
+                                                className="card-title name"
+
+                                            >
                                                 {tutor.name}{" "}{tutor.lastName}
                                             </Link>
                                         </section>

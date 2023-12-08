@@ -1,166 +1,141 @@
 import React from 'react'
 import { useState } from 'react'
 import { updateCourse } from '../../controllers/courses.controller'
+import { useCoursesContext } from '../../Context/CoursesContext'
 
-
-function ModalUpdate({ course, user_id }) {
-    const [amountWeekly, setAmountWeekly] = useState(course.frequency[0])
-    const [amountWeeks, setAmountWeeks] = useState(course.frequency[2])
-    const [individual, setIndividual] = useState(course.info_course[0])
-    const [group, setGroup] = useState(course.info_course[1])
-    const [in_person, setIn_person] = useState(course.info_course[2])
-    const [online, setOnline] = useState(course.info_course[3])
+function ModalUpdate({ oldCourse, user_id }) {
+    const { fetchCourses } = useCoursesContext();
     const [showAlert, setShowAlert] = useState(false);
 
-    const [courseData, setcourseData] = useState({
-        title: course.title,
-        courseData_description: course.course_description,
-        price_hour: course.price_hour,
-        courseData_public: course.course_public,
-        // frequency: [amountWeekly, 'semanal', amountWeeks],
-        // info_courseData: [true, false, false, false],  courseData.info_courseData == [individual, group, in_person, online]
-        tutor_id: user_id,
+    const [course, setCourse] = useState({
+        _id: oldCourse._id,
+        title: oldCourse.title,
+        course_description: oldCourse.course_description,
+        price_hour: oldCourse.price_hour,
+        course_public: oldCourse.course_public,
+        durationWeeks: oldCourse.frequency[2],
+        frequency: [oldCourse.frequency[0], 'semanal', oldCourse.frequency[2]],
+        info_course: oldCourse.info_course,
+        // info_course: [true, false, false, false],  course.info_course == [individual, group, in_person, online]
+        tutor_id: oldCourse.tutor_id,
     });
 
-    const modalIdRef = React.useRef(course._id);
+    const modalIdRef = React.useRef(oldCourse._id);
+    console.log(course.info_course)
+    const handleModalidad = (event) => {
+        let individual = course.info_course[0];
+        let group = course.info_course[1];
 
-    const handleInfocourseData = (event) => {
-        if (event.target.name === "modalidad") {
-            if (event.target.value === "1") {
-                setIndividual(true)
-                setGroup(false)
-            } else if (event.target.value === "2") {
-                setIndividual(false)
-                setGroup(true)
-            } else if (event.target.value === "3") {
-                setIndividual(true)
-                setGroup(true)
-            }
-        } else {
-            if (event.target.value === "1") {
-                setIn_person(true)
-                setOnline(false)
-            } else if (event.target.value === "2") {
-                setIn_person(false)
-                setOnline(true)
-            } else if (event.target.value === "3") {
-                setIn_person(true)
-                setOnline(true)
-            }
+        if (event.target.value === "3") {
+            individual = true;
+            group = true;
+        } else if (event.target.value === "2") {
+            individual = false;
+            group = true;
         }
+        else if (event.target.value === "1") {
+            individual = true;
+            group = false;
+        }
+
+
+
+        setCourse({
+            ...course,
+            info_course: [individual, group, course.info_course[2], course.info_course[3]],
+        });
+    };
+
+    const handleNotModalidad = (event) => {
+        let in_person = course.info_course[2];
+        let online = course.info_course[3];
+
+        if (event.target.value === "3") {
+            in_person = true;
+            online = true
+        } else if (event.target.value === "2") {
+            in_person = false;
+            online = true;
+        }
+        else if (event.target.value === "1") {
+            in_person = true;
+            online = false;
+        }
+
+        setCourse({
+            ...course,
+            info_course: [course.info_course[0], course.info_course[1], in_person, online],
+        });
     }
 
-
     const handleInputChange = (event) => {
-        setcourseData({
-            ...courseData,
+        setCourse({
+            ...course,
             [event.target.name]: event.target.value,
         });
     }
 
     const handleCheckboxChange = (event) => {
-        setcourseData({
-            ...courseData,
+        setCourse({
+            ...course,
             [event.target.name]: event.target.checked,
         });
     }
 
-    //   const addcourseData = async () => {
-    //     setShowAlert(false);
-    //     let frequency = [amountWeekly, 'semanal', amountWeeks]
-    //     let info_courseData = [individual, group, in_person, online]
-    //     courseData.frequency = frequency
-    //     courseData.info_courseData = info_courseData
-    //     const allFieldsFilled = Object.keys(courseData).every(field => courseData[field]);
 
-    //     if (allFieldsFilled) {
-    //       const courseData_response = await createcourseData(courseData);
-    //       if (courseData_response.status === 200) {
-    //         fetchcourseDatas()
-    //         console.log("Curso creado, tenes que esperar que lo acepte un admin:(");
-
-    //       } else {
-    //         console.log(courseData_response.message);
-    //       }
-    //       setcourseData({
-    //         title: "",
-    //         courseData_description: "",
-    //         price_hour: "",
-    //         courseData_public: false,
-    //         tutor_id: user_id,
-    //       });
-    //       setAmountWeekly(null)
-    //       setAmountWeeks(null)
-    //       setIndividual(false)
-    //       setGroup(false)
-    //       setIn_person(false)
-    //       setOnline(false)
-    //     } else {
-    //       setShowAlert(true);
-    //     }
-    //   }
 
     const confirmUpdateCourse = async () => {
         setShowAlert(false);
-        let frequency = [amountWeekly, 'semanal', amountWeeks]
-        let info_courseData = [individual, group, in_person, online]
-        courseData.frequency = frequency
-        courseData.info_courseData = info_courseData
-        const allFieldsFilled = Object.keys(courseData).every(field => courseData[field]);
 
-        if (allFieldsFilled) {
-            const courseData_response = await updateCourse(courseData, course._id);
-            if (courseData_response.status === 200) {
-                // fetchCourses()
-                console.log("Curso creado, tenes que esperar que lo acepte un admin:(");
+        const allFieldsFilled = Object.keys(course).every(field => {
+            return true ? course[field] !== 'public' : false;
+        });
 
-            } else {
-                console.log(courseData_response.message);
-            }
-            setcourseData({
-                title: "",
-                courseData_description: "",
-                price_hour: "",
-                courseData_public: false,
-                tutor_id: user_id,
-            });
-            setAmountWeekly(null)
-            setAmountWeeks(null)
-            setIndividual(false)
-            setGroup(false)
-            setIn_person(false)
-            setOnline(false)
-        } else {
+        if (!allFieldsFilled) {
             setShowAlert(true);
+            return;
         }
+
+        try {
+            const course_response = await updateCourse(course);
+
+            fetchCourses();
+
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
         <div class="modal fade text-white" data-bs-theme="dark"
-            id={modalIdRef.current} data-bs-backdrop="static" data-bs-keyboard="false"
+            id={`update:${modalIdRef.current}`} data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1"
             aria-labelledby={`${modalIdRef.current}Label`} aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="UpdateModalLabel">Modificar clase de {courseData.title}</h5>
+                        <h5 class="modal-title" id="UpdateModalLabel">Modificar clase de {course.title}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
+
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Titulo:</label>
                                 <input type="text" class="form-control" id="recipient-name"
                                     name="title"
-                                    value={courseData.title}
+                                    value={course.title}
                                     onChange={handleInputChange}
                                     required></input>
                             </div>
+
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label" >Frecuencia semanal:</label>
                                 <select class="form-select" aria-label="Default select example"
-                                    value={amountWeekly}
-                                    onChange={(e) => setAmountWeekly(e.target.value)}
+                                    name='frequency'
+                                    value={course.frequency[0]}
+                                    onChange={(e) => setCourse({ ...course, frequency: [e.target.value, 'semana', course.frequency[2]] })}
                                     required>
                                     <option selected disabled>Cantidad de dias</option>
                                     <option value="1">1</option>
@@ -173,17 +148,28 @@ function ModalUpdate({ course, user_id }) {
 
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="semanas" class="col-form-label" >Duración en semanas:</label>
-                                <input type="text" class="form-control" id="semanas"
-                                    onClick={(e) => setAmountWeeks(e.target.value)}
+                                <input type="number" class="form-control" id="durationWeeks"
+                                    value={course.frequency[2]}
+                                    name='frequency'
+                                    onChange={(e) => setCourse({ ...course, frequency: [course.frequency[0], 'semana', e.target.value] })}
                                     required></input>
                             </div>
+
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label" >Tipo de clase:</label>
                                 <select class="form-select" aria-label="Default select example"
                                     name="modalidad"
-                                    onClick={handleInfocourseData}
+                                    onChange={handleModalidad}
+                                    value={
+                                        course.info_course[0] && course.info_course[1]
+                                            ? '3'
+                                            : course.info_course[0]
+                                                ? '1'
+                                                : '2'
+                                    }
                                     required>
                                     <option selected disabled>-</option>
                                     <option value="1">Individual</option>
@@ -191,11 +177,19 @@ function ModalUpdate({ course, user_id }) {
                                     <option value="3">Individual/Grupal</option>
                                 </select>
                             </div>
+
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label" >Modalidad:</label>
                                 <select class="form-select" aria-label="Default select example"
-                                    onClick={handleInfocourseData}
+                                    onChange={handleNotModalidad}
                                     name="notModalidad"
+                                    value={
+                                        course.info_course[2] && course.info_course[3]
+                                            ? '3'
+                                            : course.info_course[2]
+                                                ? '1'
+                                                : '2'
+                                    }
                                     required>
                                     <option selected disabled>-</option>
                                     <option value="1">Presencial</option>
@@ -203,30 +197,38 @@ function ModalUpdate({ course, user_id }) {
                                     <option value="3">Presencial/Online</option>
                                 </select>
                             </div>
+
                             <div class="mb-3" >
                                 <label for="recipient-name" class="col-form-label">Costo:</label>
-                                <input type="money" class="form-control" id="recipient-name" placeholder="$/hora"
+                                <input type="number" class="form-control" id="recipient-name" placeholder="$/hora"
                                     name="price_hour"
-                                    value={courseData.price_hour}
+                                    value={course.price_hour}
                                     onChange={handleInputChange}
                                     required></input>
                             </div>
+
                             <div class="form-check form-switch">
                                 <label class="form-check-label" for="flexSwitchCheckDefault">Quieres que la clase sea pública?</label>
-                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
-                                    name="courseData_public"
-                                    value={courseData.courseData_public}
+                                <input class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id="flexSwitchCheckDefault"
+                                    name="course_public"
+                                    value={course.course_public}
                                     onChange={handleCheckboxChange}
+                                    checked={course.course_public}
                                 />
                             </div>
+
                             <div class="mb-3">
                                 <label for="message-text" class="col-form-label">Descripcion:</label>
                                 <textarea class="form-control" id="message-text"
-                                    value={courseData.courseData_description}
+                                    value={course.course_description}
                                     onChange={handleInputChange}
-                                    name="courseData_description"
+                                    name="course_description"
                                 ></textarea>
                             </div>
+
                             {showAlert && (
                                 <div class="alert alert-danger mt-2" role="alert">
                                     Completa todos los campos!

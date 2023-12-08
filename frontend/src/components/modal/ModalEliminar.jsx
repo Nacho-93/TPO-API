@@ -1,9 +1,32 @@
 import React from 'react'
+import { useCoursesContext } from '../../Context/CoursesContext'
+import { deleteCourse } from '../../controllers/courses.controller';
 
-function ModalEliminar() {
+function ModalEliminar({ course_id, ...props }) {
+
+  const { fetchCourses } = useCoursesContext();
+  const modalIdRef = React.useRef(course_id);
+
+  const handleDelete = async () => {
+    const id = modalIdRef.current;
+    try {
+      const res = await deleteCourse(id)
+      console.log("El curso fue eliminado con exito!")
+      fetchCourses();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
 
-    <div class="modal fade text-white" data-bs-theme="dark" id="EliminarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade text-white"
+      data-bs-theme="dark"
+      data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby={`${modalIdRef.current}Label`}
+      aria-hidden="true"
+      id={`delete:${modalIdRef.current}`}>
+
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -15,7 +38,7 @@ function ModalEliminar() {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onClick={handleDelete}>Eliminar</button>
           </div>
         </div>
       </div>

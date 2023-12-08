@@ -6,16 +6,21 @@ import { BrowserRouter } from 'react-router-dom';
 import { UserContextProvider } from './Context/UserContext';
 import { TutorContextProvider } from './Context/TutorContext';
 import { CoursesContextProvider } from './Context/CoursesContext';
+import { ProfileContextProvider } from './Context/ProfileContext';
+import ScrollToTop from './components/ScrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <UserContextProvider>
         <TutorContextProvider>
           <CoursesContextProvider>
-            <App />
+            <ProfileContextProvider>
+              <App />
+            </ProfileContextProvider>
           </CoursesContextProvider>
         </TutorContextProvider>
       </UserContextProvider>

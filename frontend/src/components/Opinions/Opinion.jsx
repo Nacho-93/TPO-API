@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom'
 
 function Opinion({ review, isUser, course }) {
     const tutor_id = useLocation().pathname.split("/")[2];
-
     let date_comment = new Date(review.date);
     let date_str = date_comment.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
     // `/perfil-profesor/${userId}/solicitudesReseñas
@@ -44,15 +43,19 @@ function Opinion({ review, isUser, course }) {
                             <div className="btns">
                                 {isUser && (
                                     <div className='d-flex align-items-center'>
-                                        <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target={`#${review._id}`} data-bs-whatever="@getbootstrap">
+                                        <button type="button" className="btn btn-success me-2" data-bs-toggle="modal" data-bs-target={`#aceptar:${review._id}`} data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-check"></i>
                                         </button>
-                                        <ModalAceptar text="este comentario" review_id={review._id} course_id={course._id} tutor_id={tutor_id} title={course.title} />
+                                        <ModalAceptar text="este comentario"
+                                            review_id={review._id}
+                                            course_id={course._id}
+                                            tutor_id={tutor_id}
+                                        />
 
-                                        <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#RechazarModal" data-bs-whatever="@getbootstrap">
+                                        <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={`#rechazar:${review._id}`} data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-x"></i>
                                         </button>
-                                        <ModalRechazar text="de comentario" />
+                                        <ModalRechazar review_id={review._id} course_id={course._id} tutor_id={tutor_id} />
                                     </div>
                                 )}
                             </div>

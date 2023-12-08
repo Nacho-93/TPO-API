@@ -1,5 +1,4 @@
 // const cloudinary = require('../services/cloudinary.service');
-// const upload = require('../middlewares/multer');
 
 var ProfessorService = require('../services/professor.service');
 
@@ -18,17 +17,12 @@ exports.getProfessorById = async (req, res, next) => {
 
 exports.updateProfessor = async (req, res, next) => {
     const {id} = req.params;
-
-    // const urlImg = await CloudinaryService.uploadImage(fileBuffer);
-    // console.log("URL IMG", urlImg, "\n")
     const professorData = req.body;
-    if (req.file) {
-        const { path, ...fileWithoutPath } = req.file;
-        professorData.image_profile = path;
-    }
-    
 
     try {
+        if (req.file) {
+            professorData.image_profile  = req.file.path;
+        }
         const updatedProfessor = await ProfessorService.updateProfessor(id, professorData)
         res.status(200).json(updatedProfessor);
     } catch (e) {

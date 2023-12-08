@@ -12,13 +12,13 @@ const router = Router();
 router.get('/:id/misClases', Authorization, CoursesController.getCoursesByProfessorId)
 
 // Crear clase --> OK                      // http://localhost:8080/api/professor/[id]/misClases
-router.post('/:id/misClases',Authorization, CoursesController.createCourse)
+router.post('/:id/misClases', CoursesController.createCourse)
 
 // Modificar clase --> OK                 // http://localhost:8080/api/professor/[id]/misClases
 router.put('/:id/misClases', CoursesController.updateCourse)
 
 // Eliminar clase --> OK                  // http://localhost:8080/api/professor/[id]/misClases
-router.delete('/:id/misClases', Authorization, CoursesController.deleteCourse)
+router.delete('/:id/misClases', CoursesController.deleteCourse)
 
 
 
@@ -39,7 +39,7 @@ router.get('/:id/solicitudes-comentarios', Authorization, CoursesController.getR
 router.put('/:id/solicitudes-comentarios', CoursesController.acceptReview)
 
 // Rechazar comentario --> OK             // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
-router.delete('/:id/solicitudes-comentarios', Authorization, CoursesController.rejectReview)
+router.delete('/:id/solicitudes-comentarios', CoursesController.rejectReview)
 
 
 

@@ -38,11 +38,12 @@ exports.createCourse = async (req, res, next) => {
 }
 
 exports.updateCourse = async (req, res, next) => {
-    const courseData = req.body;
-    const course_id = courseData._id;
+    const {...courseData} = req.body;
+    courseData.info_course = req.body.info_course.split(",");
+    courseData.frequency = req.body.frequency.split(",");
 
     try {
-        const updatedCourse = await CoursesService.updateCourse(courseData, course_id)
+        const updatedCourse = await CoursesService.updateCourse(courseData, courseData._id)
         res.status(201).json({updatedCourse, message: "Succesfully Updated Course"});
     } catch (e) {
         res.status(400).json({status: 400, message: e.message})
@@ -50,8 +51,8 @@ exports.updateCourse = async (req, res, next) => {
 }
 
 exports.deleteCourse = async (req, res, next) => {
-    const course_id = req.body._id;
-
+    const {course_id} = req.body;
+    console.log(course_id)
     try {
         const deletedCourse = await CoursesService.deleteCourse(course_id)
         res.status(201).json({deletedCourse, message: "Succesfully Deleted Course"});
@@ -77,10 +78,12 @@ exports.getCourses_CACHE = async (req, res, next) => {
 
 
 exports.manageCourseStatus = async (req, res, next) => {
-    const {course_id, ac_id,  status} = req.body;
+   
+    const {course_id, ac_id,  status, tutor_id} = req.body;
     const data_ac = {ac_id, status}
-    const tutor_id = req.params.id;
-    console.log("DATA_AC", data_ac, "TUTOR_ID", tutor_id)
+    
+   
+  
     try {
         const updatedCourse = await CoursesService.manageCourseStatus(course_id, data_ac, tutor_id)
         res.status(201).json({updatedCourse, message: "Succesfully Updated Course Status"});
@@ -108,7 +111,7 @@ exports.getReviewRequests = async (req, res, next) => {
 
 exports.acceptReview = async (req, res, next) => {
     const {course_id, review_id, tutor_id} = req.body;
-    console.log("REVIEW_ID", review_id, "COURSE_ID", course_id)
+
     try {
         const updatedCourse = await CoursesService.acceptReview(course_id, review_id, tutor_id)
         res.status(201).json({updatedCourse, message: "El comentario fue aceptado"});
@@ -119,7 +122,7 @@ exports.acceptReview = async (req, res, next) => {
 
 
 exports.rejectReview = async (req, res, next) => {
-    const {course_id, review_id} = req.body;
+    const {course_id, review_id, tutor_id} = req.body;
     try {
         const updatedCourse = await CoursesService.rejectReview(course_id, review_id)
         res.status(201).json({updatedCourse, message: "El comentario fue rechazado"});
@@ -146,10 +149,9 @@ exports.getAllCourses = async (req, res, next) => {
 
 
 exports.addReview = async (req, res, next) => {
-    const { comment, user_name, rating } = req.body;
+    const { comment, user_name, rating, course_id } = req.body;
     const reviewData = { comment, user_name, rating, date: new Date(), public: false }
-    const course_id = req.body.course_id
-
+    
 
     try {
         const updatedCourse = await CoursesService.addReview(reviewData, course_id)

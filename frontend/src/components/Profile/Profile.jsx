@@ -1,29 +1,31 @@
 import React from 'react'
 import "./Profile.css"
-import { Link } from 'react-router-dom'
+import { Link, useRouter } from 'react-router-dom'
 import { useUserContext } from '../../Context/UserContext'
 import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getProfile } from '../../controllers/professor.controller'
 import { updateProfile } from '../../controllers/professor.controller'
 import Loading from '../Loading'
 import ModalContact from '../Modal/ModalContact'
 import { useCoursesContext } from '../../Context/CoursesContext'
-
+import { useProfileContext } from '../../Context/ProfileContext'
 
 
 function Profile() {
+    const { professorData, setProfessorData, fetchProfileData } = useProfileContext();
     const { logoutContext } = useUserContext();
-    // const [updatedData, setUpdatedData] = React.useState({});
-    const [professorData, setProfessorData] = React.useState(null);
-    const [updatedData, setUpdatedData] = React.useState({});
+    const [updatedData, setUpdatedData] = useState({});
+    const [image, setImage] = useState(null);
+
     const userId = useLocation().pathname.split('/')[2];
     const isUser = localStorage.getItem('userId') === userId;
-    const [image, setImage] = React.useState(null);
-    const { allCoursesContext } = useCoursesContext();
 
-    const [allTitles, setAllTitles] = React.useState({});
+    const { allCoursesContext } = useCoursesContext();
+    const [allTitles, setAllTitles] = useState({});
     let noContactAvailable = false;
+
+
 
     useEffect(() => {
         const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
@@ -35,23 +37,13 @@ function Profile() {
             }, {});
         setAllTitles(titles);
 
-    }, [userId]);
-
+    }, [userId, allCoursesContext]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const profileData = await getProfile(userId);
-                setProfessorData(profileData);
-            } catch (error) {
-                console.error('Error obteniendo el perfil:', error);
-                // Maneja los errores si ocurre alguno al obtener el perfil
-            }
-        };
-
-        fetchData(); // Llama a la función para obtener los datos del perfil cuando el componente se monta
-    }, [userId]); // El segundo argumento vacío [] hace que useEffect se ejecute solo una vez (similar a componentDidMount)
-
+        if (professorData && userId !== professorData._id) {
+            fetchProfileData(userId);
+        }
+    }, [userId, professorData]);
 
 
     const handleInputChange = (e) => {
@@ -69,6 +61,7 @@ function Profile() {
     };
 
 
+
     const handleFormSubmit = async (e) => {
 
         if (updatedData.password && updatedData.secondPassword) {
@@ -76,30 +69,20 @@ function Profile() {
                 alert("Las contraseñas no coinciden");
                 return;
             }
+            delete updatedData.secondPassword;
         }
         try {
-            delete updatedData.secondPassword;
-
-            updatedData.image_profile = image
-                ? await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(image);
-                    reader.onloadend = () => {
-                        resolve(reader.result);
-                    };
-                    reader.onerror = (error) => {
-                        reject(error);
-                    };
-                })
-                : professorData.image_profile;
+            if (image) {
+                updatedData.image_profile = image
+            }
             const updatedProfile = await updateProfile({
                 ...updatedData,
             }, userId);
 
-
             setProfessorData(updatedProfile);
             setUpdatedData({});
             setImage(null);
+
 
         } catch (error) {
             console.error('Error al actualizar el perfil:', error);
@@ -110,7 +93,7 @@ function Profile() {
 
     return (
         <>
-            {!professorData ? <div className="container-profile pb-5"><Loading /></div>
+            {!professorData || Object.keys(allTitles).length === 0 ? <div className="container-profile pb-5"><Loading /></div>
                 :
                 (<div className="container-profile pb-5">
                     <div className="container light-style flex-grow-1 container-p-y">
@@ -178,7 +161,7 @@ function Profile() {
                                     <div className="tab-content">
                                         <div className="tab-pane fade active show" id="account-general">
                                             <div className="card-body media align-items-center">
-                                                <img src={professorData.image_profile} alt="imagen" className="d-block ui-w-80" />
+                                                <img src={professorData.image_profile || process.env.PUBLIC_URL + '/images/notperfil.png'} alt="imagen" className="d-block ui-w-80" />
                                                 <div className="media-body ml-4">
                                                     {isUser ? (
                                                         <>
@@ -186,7 +169,7 @@ function Profile() {
                                                                 <i class="fa-solid fa-cloud-arrow-up"></i>
                                                                 <input type="file" className="account-settings-fileinput"
                                                                     name='image_profile'
-                                                                    onClick={(e) => setImage(e.target.files[0])}
+                                                                    onChange={(e) => setImage(e.target.files[0])}
                                                                 />
                                                             </label>{" "}
                                                             <div className="text-light small mt-1">JPG/PNG</div>

@@ -1,6 +1,7 @@
 const multer = require('multer');
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const { v4: uuidv4 } = require('uuid');
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -11,9 +12,9 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'folder_name', // Opcional: nombre de la carpeta en Cloudinary
+    folder: 'images_professors', // Opcional: nombre de la carpeta en Cloudinary
     format: async (req, file) => 'png', // Opcional: formato del archivo
-    public_id: (req, file) => 'image_profile', // Opcional: nombre del archivo
+    public_id: (req, file) => `image_profile_${uuidv4()}`, // Opcional: nombre del archivo
   },
 });
 

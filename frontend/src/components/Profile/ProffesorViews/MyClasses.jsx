@@ -39,7 +39,7 @@ function Classes() {
                     <td className="">
                         {course.frequency[0] > 1
                             ? `${course.frequency[0]} clases/semana`
-                            : "1clase/semana"}</td>
+                            : "1 clase/semana"}</td>
                     <td className="">
                         {course.frequency[2]}{" "}{course.frequency[2] === 1
                             ? "semana"
@@ -51,19 +51,20 @@ function Classes() {
                     <td className="">{course.info_course[0] ? "Si" : "No"}</td>
                     <td className="">{course.info_course[1] ? "Si" : "No"}</td>
 
-                    <td>
-                        {isActual_user && <div className='d-flex justify-content-between align-items-end' style={{ maxWidth: "720px", margin: "0 auto" }}>
+                    {isActual_user && <td>
+                        <div className='d-flex justify-content-between align-items-end' style={{ maxWidth: "720px", margin: "0 auto" }}>
                             <button type="button" class="btn btn-warning mx-2" data-bs-toggle="modal"
-                                data-bs-target={`#${course._id}`} data-bs-whatever="@getbootstrap">
+                                data-bs-target={`#update:${course._id}`} data-bs-whatever="@getbootstrap">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </button>
-                            <ModalUpdate course={course} course_id={course._id} />
-                            <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#EliminarModal" data-bs-whatever="@getbootstrap">
+                            <ModalUpdate oldCourse={course} course_id={course._id} />
+                            <button type="button" className="btn btn-danger mx-2" data-bs-toggle="modal"
+                                data-bs-target={`#delete:${course._id}`} data-bs-whatever="@getbootstrap">
                                 <i className="fa-solid fa-x"></i>
                             </button>
-                            <ModalEliminar />
-                        </div>}
-                    </td>
+                            <ModalEliminar course_id={course._id} />
+                        </div>
+                    </td>}
                 </tr>
 
             </>
@@ -105,7 +106,7 @@ function Classes() {
                             <th scope="col">Modalidad</th>
                             <th scope="col">Individual</th>
                             <th scope="col">Grupal</th>
-                            <th scope="col">Actualizar</th>
+                            {isActual_user && <th scope="col">Actualizar</th>}
                         </tr>
                     </thead>
                     <tbody className='table-group-divider'>

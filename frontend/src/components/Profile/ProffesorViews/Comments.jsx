@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useTutorContext } from '../../../Context/TutorContext'
 import { useLocation } from 'react-router-dom'
 import { useUserContext } from '../../../Context/UserContext';
@@ -6,49 +6,55 @@ import Opinion from "../../Opinions/Opinion"
 import './styleViews.css'
 import { ManageRequests } from './ManageRequests';
 import { useCoursesContext } from '../../../Context/CoursesContext';
+import Loading from '../../Loading';
 
 
 function Comments() {
     const { tutorsContext } = useTutorContext();
-    const { allCoursesContext } = useCoursesContext();
+    const { allCoursesContext, fetchCourses } = useCoursesContext();
     const userId = localStorage.getItem('userId');
+    const [coursesArray, setCoursesArray] = React.useState([]);
+    let requests_list = [];
 
-    const coursesArray = Object.values(allCoursesContext);
 
-    const requests_list = coursesArray.map((course) => {
-        if (course.tutor_id === userId) {
-            if (course.reviews) {
-                return course.reviews.map((review) => {
-                    if (!review.public) {
-                        return <Opinion review={review} isUser={userId} course={course} />;
-                    }
-                    return null; // Si la revisión es pública, devuelve null para evitar elementos vacíos.
-                });
-            }
-            return null; // Si no hay revisiones, devuelve null para evitar elementos vacíos.
+
+    useEffect(() => {
+        setCoursesArray(Object.values(allCoursesContext));
+    }, [allCoursesContext]);
+
+
+
+    requests_list = coursesArray.reduce((acc, course) => {
+        if (course.tutor_id === userId && course.reviews) {
+            const nonPublicReviews = course.reviews.filter(review => !review.public);
+            const reviewsJSX = nonPublicReviews.map(review => (
+                <Opinion key={review.id} review={review} isUser={userId} course={course} />
+            ));
+            acc.push(...reviewsJSX);
         }
-        return null; // Si el curso no pertenece al usuario, devuelve null para evitar elementos vacíos.
-    }
-    );
+        return acc;
+    }, []);
+
 
 
     return (
         <div className="bg-change-color-profile">
 
             <ManageRequests />
-
-            <div className="px-10 div-op py-5" >
-                <div className="container">
-                    {requests_list && requests_list.length > 0 ? (
-                        <div>{requests_list}</div>
-
-                    ) : (
-                        <p>No hay solicitudes de comentarios disponibles.</p>
-                    )}
-                </div>
-
-            </div>
-
+            <>
+                {
+                    requests_list.length === 0
+                        ?
+                        <div className="py-5 div-op" style={{ backdropFilter: "blur(6px)" }}>
+                            <h3 className="text-center text-light">No hay opiniones</h3>
+                        </div>
+                        :
+                        <div className="px-10 div-op py-5" >
+                            <div className="container">
+                                {<div>{requests_list}</div>}
+                            </div>
+                        </div>}
+            </>
         </div>
     );
 }

@@ -25,7 +25,7 @@ export const getProfile = async (userId) => {
                 
         
     } catch (e) {
-        return ({rdo:1,mensaje:"Ha ocurrido un error"});
+        return ({rdo:1,mensaje: e});
     }
 }
 
@@ -35,12 +35,11 @@ export const updateProfile = async (user, userId) => {
     if (userId !== localUserId) {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
-
+    
     const url = urlWebServices.updateProfile.replace(":id", userId);
 
     try {
 
-        console.log(user)
 
         const formData = new FormData();
         Object.keys(user).forEach((key) => {
@@ -61,7 +60,7 @@ export const updateProfile = async (user, userId) => {
         });
         
         let data = await response.json();
-   
+
         return data;
                 
         

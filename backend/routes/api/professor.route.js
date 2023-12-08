@@ -4,8 +4,9 @@ var Authorization = require('../../middlewares/authorization');
 const upload = require('../../middlewares/multer');
 const authorization = require('../../middlewares/authorization');
 const router = Router();
-// http://localhost:8080/api/perfil/[id] --> GET PERFIL
 
+
+// http://localhost:8080/api/perfil/[id] --> GET PERFIL
 
 // Obtener el perfil del profesor --> OK   // http://localhost:8080/api/professor/[id]
 router.get('/:id', ProfessorController.getProfessorById)

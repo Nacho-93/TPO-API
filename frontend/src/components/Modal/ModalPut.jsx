@@ -5,18 +5,18 @@ import { useCoursesContext } from '../../Context/CoursesContext'
 
 function ModalPut({ course_id, ac_id, action, ...props }) {
     const modalIdRef = React.useRef(ac_id);
-    const { allCoursesContext, fetchCourses } = useCoursesContext();
+    const { allCoursesContext, setAllCoursesContext } = useCoursesContext();
+
 
     const handlePut = async () => {
         let status = [false, false, false, false]
         status[action] = true
 
         const id = modalIdRef.current;
-        const res = await manageCourseStatus(course_id, id, status)
-        if (res.rdo === 0) {
-            console.log("STATUS ACTUALIZADO")
-            fetchCourses();
-        }
+        const res = await manageCourseStatus(course_id, id, status);
+
+        setAllCoursesContext({ ...allCoursesContext, [course_id]: res.updatedCourse });
+
     }
 
     return (
@@ -35,7 +35,7 @@ function ModalPut({ course_id, ac_id, action, ...props }) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        <button type="button" class={`btn btn-${props.color}`} data-bs-dismiss="modal"
                             onClick={handlePut}
                         >Confirmar</button>
                     </div>

@@ -6,7 +6,6 @@ import { useCoursesContext } from '../../Context/CoursesContext'
 function ModalAgregar({ user_id }) {
   const { fetchCourses } = useCoursesContext();
   const [amountWeekly, setAmountWeekly] = useState(null)
-  const [amountWeeks, setAmountWeeks] = useState(null)
   const [individual, setIndividual] = useState(false)
   const [group, setGroup] = useState(false)
   const [in_person, setIn_person] = useState(false)
@@ -16,8 +15,9 @@ function ModalAgregar({ user_id }) {
     title: "",
     course_description: "",
     price_hour: "",
-    course_public: false,
-    // frequency: [amountWeekly, 'semanal', amountWeeks],
+    course_public: "",
+    durationWeeks: "",
+    // frequency: [amountWeekly, 'semanal', durationWeeks],
     // info_course: [true, false, false, false],  course.info_course == [individual, group, in_person, online]
     tutor_id: user_id,
   });
@@ -67,38 +67,48 @@ function ModalAgregar({ user_id }) {
 
   const addCourse = async () => {
     setShowAlert(false);
-    let frequency = [amountWeekly, 'semanal', amountWeeks]
+
+    let frequency = [amountWeekly, 'semana', course.durationWeeks]
     let info_course = [individual, group, in_person, online]
     course.frequency = frequency
     course.info_course = info_course
-    const allFieldsFilled = Object.keys(course).every(field => course[field]);
 
-    if (allFieldsFilled) {
+    const allFieldsFilled = Object.keys(course).every(field => {
+      return true ? course[field] !== 'public' : false;
+    });
+
+    if (!allFieldsFilled) {
+      setShowAlert(true);
+      return;
+    }
+
+    delete course.durationWeeks
+
+    try {
       const course_response = await createCourse(course);
-      if (course_response.status === 200) {
-        fetchCourses()
-        console.log("Curso creado, tenes que esperar que lo acepte un admin:(");
 
-      } else {
-        console.log(course_response.message);
-      }
+      fetchCourses();
+
       setCourse({
         title: "",
+        durationWeeks: "",
         course_description: "",
         price_hour: "",
         course_public: false,
         tutor_id: user_id,
       });
       setAmountWeekly(null)
-      setAmountWeeks(null)
       setIndividual(false)
       setGroup(false)
       setIn_person(false)
       setOnline(false)
-    } else {
-      setShowAlert(true);
+
+    } catch (error) {
+      console.log(error);
     }
+
   }
+
 
   return (
     <div class="modal fade text-white" data-bs-theme="dark" id="AgregarModal" tabindex="-1" aria-labelledby="AgregarModalLabel" aria-hidden="true">
@@ -110,6 +120,7 @@ function ModalAgregar({ user_id }) {
           </div>
           <div class="modal-body">
             <form>
+
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label">Titulo:</label>
                 <input type="text" class="form-control" id="recipient-name"
@@ -118,6 +129,7 @@ function ModalAgregar({ user_id }) {
                   onChange={handleInputChange}
                   required></input>
               </div>
+
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label" >Frecuencia semanal:</label>
                 <select class="form-select" aria-label="Default select example"
@@ -132,15 +144,19 @@ function ModalAgregar({ user_id }) {
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="7">Todos los dias</option>
-
                 </select>
+
               </div>
+
               <div class="mb-3">
                 <label for="semanas" class="col-form-label" >Duración en semanas:</label>
-                <input type="text" class="form-control" id="semanas"
-                  onClick={(e) => setAmountWeeks(e.target.value)}
+                <input type="number" class="form-control" id="durationWeeks"
+                  value={course.durationWeeks}
+                  name='durationWeeks'
+                  onChange={handleInputChange}
                   required></input>
               </div>
+
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label" >Tipo de clase:</label>
                 <select class="form-select" aria-label="Default select example"
@@ -153,6 +169,7 @@ function ModalAgregar({ user_id }) {
                   <option value="3">Individual/Grupal</option>
                 </select>
               </div>
+
               <div class="mb-3">
                 <label for="recipient-name" class="col-form-label" >Modalidad:</label>
                 <select class="form-select" aria-label="Default select example"
@@ -165,14 +182,16 @@ function ModalAgregar({ user_id }) {
                   <option value="3">Presencial/Online</option>
                 </select>
               </div>
+
               <div class="mb-3" >
                 <label for="recipient-name" class="col-form-label">Costo:</label>
-                <input type="money" class="form-control" id="recipient-name" placeholder="$/hora"
+                <input type="number" class="form-control" id="costo" placeholder="$/hora"
                   name="price_hour"
                   value={course.price_hour}
                   onChange={handleInputChange}
                   required></input>
               </div>
+
               <div class="form-check form-switch">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Quieres que la clase sea pública?</label>
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"

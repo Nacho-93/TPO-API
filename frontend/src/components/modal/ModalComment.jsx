@@ -1,11 +1,11 @@
 import React from 'react'
 import { Star } from '../Opinions/Star/Star';
-
+import { useCoursesContext } from '../../Context/CoursesContext';
 import { addReview } from '../../controllers/courses.controller';
 import { useState } from 'react';
 
 function ModalComment({ course_id }) {
-
+    const { fetchCourses } = useCoursesContext();
     const [review, setReview] = useState({
         rating: 0,
         comment: "",
@@ -28,19 +28,23 @@ function ModalComment({ course_id }) {
     }
 
     const createReview = async () => {
-        if (review.user_name && review.rating) {
+        if (!review.user_name && !review.rating) {
+            return;
+        }
+        try {
             const review_response = await addReview(review, course_id);
-            if (review_response.status === 200) {
-                console.log("Review creada, tenes que esperar que la acepte el profesor:(");
 
-            } else {
-                console.log(review_response.message);
-            }
+            console.log("Review creada, tenes que esperar que la acepte el profesor:(");
+            fetchCourses();
+
             setReview({
                 rating: 0,
                 comment: "",
                 user_name: "",
             });
+        }
+        catch (error) {
+            console.log(error)
         }
     }
 
