@@ -2,6 +2,11 @@
 
 Este proyecto consiste en una aplicación web que permite a profesores ofrecer clases particulares y a alumnos encontrar y contratar dichos servicios.
 
+### Desarrollo por:
+
+- Ignacio Indurain Moneo
+- Santiago Rapetti
+
 ## Tecnologías Utilizadas
 
 ### Backend
@@ -47,13 +52,13 @@ Ejecutar `npm install` en la carpeta `/frontend` para instalar:
 
 ## Uso
 
-- Para iniciar el servidor del backend: `npm start` en la carpeta `/backend`.
+- Para iniciar el servidor del backend: `npm run dev` en la carpeta `/backend`.
 - Para ejecutar la aplicación frontend: `npm start` en la carpeta `/frontend`.
 
 ## Imagenes
 
-Las imagenes de los profesores se encuentran en https://cloudinary.com/
+- Las imagenes de los profesores se encuentran en https://cloudinary.com/
 
 ## Documentacion de Endpoints en Postman
 
-https://documenter.getpostman.com/view/31219828/2s9YeEcsgt
+- https://documenter.getpostman.com/view/31219828/2s9YeEcsgt
