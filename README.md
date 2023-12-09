@@ -2,7 +2,7 @@
 
 Este proyecto consiste en una aplicación web que permite a profesores ofrecer clases particulares y a alumnos encontrar y contratar dichos servicios.
 
-### Desarrollo por:
+#### Desarrollo por:
 
 - Ignacio Indurain Moneo
 - Santiago Rapetti
