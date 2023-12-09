@@ -15,20 +15,15 @@ import { Link } from "react-router-dom"
 
 function Home() {
     return (
-        <><section id="hero" class="hero d-flex align-items-center section-home">
+        <><section id="hero" class="hero d-flex align-items-center section-home" style={{ maxHeight: "200px" }}>
             <div class="container">
                 <div class="row gy-4 d-flex justify-content-between">
                     <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
                         <h2 data-aos="fade-up">¡Aprende y enseña con nosotros!</h2>
-
-
-                        <p data-aos="fade-up" data-aos-delay="100">Busca la clase que necesites, comunicate con el profesor y en poco tiempo ya estas estudiando lo que te gusta!</p>
-
-                        <form action="#" class="form-search d-flex align-items-center mb-3" data-aos="fade-up" data-aos-delay="200">
-                            <input type="text" class="form-control" placeholder="Buscar clase"></input>
-                            <Link to={"/categorias"} type="submit" class="btn btn-secondary align-items-center">Buscar</Link>
-                        </form>
-
+                        <p data-aos="fade-up" data-aos-delay="100">
+                            Busca la clase que necesites, comunicate con el profesor y
+                            en poco tiempo ya estas estudiando lo que te gusta!
+                        </p>
                     </div>
 
 

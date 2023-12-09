@@ -78,7 +78,7 @@ function Profile() {
             const updatedProfile = await updateProfile({
                 ...updatedData,
             }, userId);
-
+            localStorage.setItem('image_url', btoa(updatedProfile.image_profile))
             setProfessorData(updatedProfile);
             setUpdatedData({});
             setImage(null);
@@ -93,7 +93,7 @@ function Profile() {
 
     return (
         <>
-            {!professorData || Object.keys(allTitles).length === 0 ? <div className="container-profile pb-5"><Loading /></div>
+            {!professorData ? <div className="container-profile pb-5"><Loading /></div>
                 :
                 (<div className="container-profile pb-5">
                     <div className="container light-style flex-grow-1 container-p-y">

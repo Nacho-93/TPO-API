@@ -6,6 +6,7 @@ import { register_exe } from "../../controllers/user.controller"
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { useTutorContext } from "../../Context/TutorContext"
+
 export default function Register() {
   const { tutorsContext } = useTutorContext();
   const navigate = useNavigate();

@@ -14,8 +14,13 @@ router.post('/login', UserController.loginUser)
 router.get('/users',Authorization, UserController.getUsers) 
 
 // Get user by mail --> OK    // http://localhost:8080/api/user/[id]
-router.post('/userByMail', Authorization, UserController.getUsersByMail) // Funciona
+router.post('/userByMail', Authorization, UserController.getUsersByMail) 
 
+// Send recovery mail --> OK    // http://localhost:8080/api/user/recuperarContrasenia
+router.post('/recuperarContrasenia', UserController.sendRecoveryEmail) 
+
+// Update password --> OK    // http://localhost:8080/api/user/recuperarContrasenia/updatePassword
+router.put('/recuperarContrasenia/updatePassword', UserController.recoveryUpdatePassword)
 
 // router.put('/update', Authorization, UserController.updateUser) // Esta en professor
 // router.delete('/delete', Authorization, UserController.removeUser) // Esta en professor

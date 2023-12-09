@@ -38,6 +38,7 @@ export const createCourse = async (course) => {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
     try {
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams(course);
         const response = await fetch(url, {
             method: 'POST',
@@ -45,8 +46,8 @@ export const createCourse = async (course) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });
@@ -68,6 +69,7 @@ export const manageCourseStatus = async (course_id, ac_id, status) => {
     }
 
     try {
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams({course_id, ac_id, status, tutor_id: localUserId});
         const response = await fetch(url, {
             method: 'PUT',
@@ -75,16 +77,13 @@ export const manageCourseStatus = async (course_id, ac_id, status) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });
 
         let data = await response.json();
-
-        localStorage.setItem("updatedCourse", JSON.stringify(data.updatedCourse));
-        
 
         return data;
 
@@ -101,6 +100,7 @@ export const updateCourse = async (course) => {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
     try {
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams(course);
         const response = await fetch(url, {
             method: 'PUT',
@@ -108,8 +108,8 @@ export const updateCourse = async (course) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });
@@ -130,6 +130,7 @@ export const deleteCourse = async (course_id) => {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
     try {
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams({course_id});
         const response = await fetch(url, {
             method: 'DELETE',
@@ -137,8 +138,8 @@ export const deleteCourse = async (course_id) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });
@@ -180,22 +181,25 @@ export const addReview = async (review, course_id) => {
 }
 
 export const acceptReview = async (course_id, review_id) => {
+
     const url = urlWebServices.acceptReview.replace(":id", localUserId);
+
     if (!localUserId) {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
     try {
 
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams({course_id, review_id, tutor_id: localUserId});
-        console.log(formData, "FORM")
+       
         const response = await fetch(url, {
             method: 'PUT',
             mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });
@@ -210,11 +214,13 @@ export const acceptReview = async (course_id, review_id) => {
 }
 
 export const rejectReview = async (course_id, review_id) => {
+
     const url = urlWebServices.rejectReview.replace(":id", localUserId);
     if (!localUserId) {
         return ({rdo:1,mensaje:"No se ha encontrado el perfil"});
     }
     try {
+        const token = localStorage.getItem('x');
         const formData = new URLSearchParams({course_id, review_id, tutor_id: localUserId});
         const response = await fetch(url, {
             method: 'DELETE',
@@ -222,8 +228,8 @@ export const rejectReview = async (course_id, review_id) => {
             headers: {
                 'Accept': 'application/json',
                 'Origin': 'http://localhost:3000',
-                'Content-Type': 'application/x-www-form-urlencoded'
-                // 'x-access-token': localStorage.getItem('x')
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'x-access-token': token
             },
             body: formData
         });

@@ -12,13 +12,13 @@ const router = Router();
 router.get('/:id/misClases', Authorization, CoursesController.getCoursesByProfessorId)
 
 // Crear clase --> OK                      // http://localhost:8080/api/professor/[id]/misClases
-router.post('/:id/misClases', CoursesController.createCourse)
+router.post('/:id/misClases', Authorization, CoursesController.createCourse)
 
 // Modificar clase --> OK                 // http://localhost:8080/api/professor/[id]/misClases
-router.put('/:id/misClases', CoursesController.updateCourse)
+router.put('/:id/misClases', Authorization, CoursesController.updateCourse)
 
 // Eliminar clase --> OK                  // http://localhost:8080/api/professor/[id]/misClases
-router.delete('/:id/misClases', CoursesController.deleteCourse)
+router.delete('/:id/misClases', Authorization, CoursesController.deleteCourse)
 
 
 
@@ -30,16 +30,16 @@ router.get('/:id/solicitudes-clases', Authorization,  CoursesController.getCours
 // SIRVE COMO CACHE PARA REVIEWS Y ACTIVE_CLASSES
 
 // Cambiar estado de clases --> OK        // http://localhost:8080/api/professor/[id]/solicitudes-clases
-router.put('/:id/solicitudes-clases', CoursesController.manageCourseStatus)
+router.put('/:id/solicitudes-clases', Authorization, CoursesController.manageCourseStatus)
 
 // Obtener solicitudes de comentarios --> OK // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
 router.get('/:id/solicitudes-comentarios', Authorization, CoursesController.getReviewRequests)
 
 // Aceptar comentario --> OK              // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
-router.put('/:id/solicitudes-comentarios', CoursesController.acceptReview)
+router.put('/:id/solicitudes-comentarios', Authorization, CoursesController.acceptReview)
 
 // Rechazar comentario --> OK             // http://localhost:8080/api/professor/[id]/solicitudes-comentarios
-router.delete('/:id/solicitudes-comentarios', CoursesController.rejectReview)
+router.delete('/:id/solicitudes-comentarios', Authorization, CoursesController.rejectReview)
 
 
 

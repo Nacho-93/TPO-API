@@ -7,6 +7,8 @@ const urlWebServices = {
     // USER
     login: urlApi + '/api/users/login',
     register: urlApi + '/api/users/registration',
+    recovery: urlApi + '/api/users/recuperarContrasenia',
+    updatePassword: urlApi + '/api/users/recuperarContrasenia/updatePassword',
     
     // PROFESSOR
     getProfile: urlApi + '/api/perfil/:id',

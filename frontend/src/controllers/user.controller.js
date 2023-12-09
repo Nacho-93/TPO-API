@@ -34,7 +34,7 @@ export const login_exe = async (user) => {
                 localStorage.setItem('userId', user._id);
                 localStorage.setItem("nombre",user.name);
                 localStorage.setItem("email",user.email);
-                localStorage.setItem("image_url",user.image_profile);
+                localStorage.setItem("image_url", user.image_profile ?  btoa(user.image_profile) : "");
                 return ({rdo:0,mensaje:"Ok", user: user});
                 }
             case 202:
@@ -80,3 +80,55 @@ export const register_exe = async (user) => {
             return ({rdo:1,mensaje:"Ha ocurrido un error"});
         }
     }
+
+
+export const sendRecoveryEmail = async (email, code) => {
+    try {
+        const formData = new URLSearchParams();
+        formData.append('email', email);
+        formData.append('code', code);
+
+        const response = await fetch(urlWebServices.recovery, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (e) {
+        return ({rdo:1,mensaje:"Ha ocurrido un error"});
+    }
+}
+
+
+export const recoveryUpdatePassword = async (email, password) => {
+    try {
+        const formData = new URLSearchParams();
+        formData.append('password', password);
+        formData.append('email', email);
+
+        const response = await fetch(urlWebServices.updatePassword, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json',
+                'Origin': 'http://localhost:3000',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData
+        });
+
+        let data = await response.json();
+        return data;
+
+    } catch (e) {
+        return ({rdo:1,mensaje:"Ha ocurrido un error"});
+    }
+}

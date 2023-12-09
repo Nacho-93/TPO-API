@@ -2,6 +2,7 @@
 var {User} = require('../db/models/User.model');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
+const { recoveryMailService } = require('./recoveryMailer.js');
 
 
 // Async function to get the User List
@@ -82,3 +83,47 @@ exports.loginUser = async function (user) {
 
 }
 
+
+exports.sendRecoveryEmail = async function (email, code) {
+
+    try {
+       // Configuración del transporte (SMTP)
+    // Opciones del correo
+    const mailOptions = {
+        from: "contrarecupero742@gmail.com",
+        to: "contrarecupero742@gmail.com", // {email}    // Dirección de correo del usuario a recuperar
+        subject: 'Solicitud de clase',
+        html: `<h1>Este es el codigo: ${code}</h1>` // Cuerpo del mensaje
+    };
+
+    // Enviar el correo
+    console.log("Enviando correo...");
+    const msg = await recoveryMailService.sendMail(mailOptions);
+    console.log("Correo enviado con éxito");
+
+    return;
+} catch (e) {
+    throw Error(e.message);
+}
+}
+
+
+exports.recoveryUpdatePassword = async function (email, password) {
+    // Creating a new Mongoose Object by using the new keyword
+
+    var hashedPassword = bcrypt.hashSync(password, 10);
+    try {
+        // Find the User 
+        var _details = await User.findOne({
+            email: email
+        });
+
+        _details.password = hashedPassword;
+        var savedUser = await _details.save();
+        return savedUser;
+    } catch (e) {
+        // return a Error message describing the reason     
+        throw Error("Error while Login User")
+    }
+
+}

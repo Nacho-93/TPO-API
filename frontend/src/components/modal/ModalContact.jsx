@@ -27,7 +27,9 @@ function ModalContact({ allTitles, tutor }) {
         const course_id = allTitles[formData.title]
         delete formData.title
         formData.course_id = course_id
+
         const res = await contactProfessor(formData, tutor._id)
+
         if (res.status === 200) {
             fetchCourses()
         }

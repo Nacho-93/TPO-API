@@ -25,7 +25,7 @@ exports.getUsersByMail = async function (req, res, next) {
     var page = req.query.page ? req.query.page : 1
     var limit = req.query.limit ? req.query.limit : 10;
     let filtro= {email: req.body.email}
-    console.log(filtro)
+
     try {
         var Users = await UserService.getUsers(filtro, page, limit)
         // Return the Users list with the appropriate HTTP password Code and Message.
@@ -38,7 +38,7 @@ exports.getUsersByMail = async function (req, res, next) {
 
 exports.createUser = async function (req, res, next) {
     // Req.Body contains the form submit values.
-    console.log("llegue al controller",req.body)
+
     var User = {
         name: req.body.name,
         lastName: req.body.lastName,
@@ -46,7 +46,7 @@ exports.createUser = async function (req, res, next) {
         password: req.body.password,
         phone: req.body.phone,
     }
-    console.log("\nTHIS IS CONTROLLER", User)
+
     try {
         // Calling the Service function with the new object from the Request Body
         var createdUser = await UserService.createUser(User)
@@ -116,5 +116,34 @@ exports.loginUser = async function (req, res, next) {
 }
 
 
+exports.sendRecoveryEmail = async function (req, res, next) {
+    // Req.Body contains the form submit values.
+    const code = req.body.code;
+    const email = req.body.email;
     
+    try {
+        // Calling the Service function with the new object from the Request Body
+        const sendRecoveryEmail = await UserService.sendRecoveryEmail(email, code);
+        return res.status(201).json({status: 201, sendRecoveryEmail, message: "Succesfully login"})
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        return res.status(400).json({status: 400, message: e.message})
+    }
+}
+
+
+exports.recoveryUpdatePassword = async function (req, res, next) {
+    // Req.Body contains the form submit values.
+    const email = req.body.email;
+    const password = req.body.password;
+    
+    try {
+        // Calling the Service function with the new object from the Request Body
+        const recoveryUpdatePassword = await UserService.recoveryUpdatePassword(email, password);
+        return res.status(201).json({status: 201, recoveryUpdatePassword, message: "Succesfully login"})
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        return res.status(400).json({status: 400, message: e.message})
+    }
+}
     

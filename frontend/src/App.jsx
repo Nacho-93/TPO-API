@@ -4,8 +4,8 @@ import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
 import Results from "./components/Results/Results";
 import Login from "./components/Login-in_out/Login";
-import Registro from "./components/Login-in_out/Registro"
-import RecuperarContraseña from "./components/Login-in_out/RecuperarContraseña"
+import Register from "./components/Login-in_out/Register"
+import RecoveryPassword from "./components/Login-in_out/RecoveryPassword"
 import Home from "./views/Home/Home";
 import AboutUs from "./views/AboutUs/AboutUs";
 import Contact from "./views/Contact/Contact";
@@ -28,8 +28,8 @@ export default function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/recuperarContraseña" element={<RecuperarContraseña />} />
+        <Route path="/registro" element={<Register />} />
+        <Route path="/recuperarContraseña" element={<RecoveryPassword />} />
 
         <Route path="/categorias">
           <Route index element={<Results />} />

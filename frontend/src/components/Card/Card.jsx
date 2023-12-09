@@ -22,7 +22,9 @@ export default function Card({ tutor, course, ...props }) {
         if (course.reviews.length > 0) {
             for (let i = course.reviews.length - 1; i >= 0; i--) {
                 if (course.reviews[i].public) {
-                    return course.reviews[i].comment
+                    if (course.reviews[i].comment) {
+                        return course.reviews[i].comment
+                    }
                 }
             }
         }
@@ -151,7 +153,7 @@ export default function Card({ tutor, course, ...props }) {
                                     {" "}
                                     {course.frequency[0] > 1
                                         ? course.frequency[0] + " clases " + course.frequency[1] + "les"
-                                        : "Clase única semana"}
+                                        : "Clase única"}
                                 </h6>
 
                                 <h6 className="card-title frequency text-stats">

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 const UserContext = createContext();
 
 export const useUserContext = () => useContext(UserContext);
@@ -19,16 +20,9 @@ export const UserContextProvider = ({ children }) => {
 
     // Función para cerrar sesión
     const logoutContext = () => {
-        localStorage.removeItem('userId');
-        localStorage.removeItem('x');
-        localStorage.removeItem('nombre');
-        localStorage.removeItem('email');
-        localStorage.removeItem('image_url');
+        localStorage.clear();
         setUserIdContext(null);
-        window.location.href = "/";
-        setTimeout(() => {
-            window.location.reload();
-        }, 300);
+        <Navigate to="/" />
     };
 
 

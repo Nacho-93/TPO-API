@@ -1,22 +1,30 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
 import "./NavBar.css"
 import { Link } from "react-router-dom";
 import { useUserContext } from '../../Context/UserContext';
-import { useProfileContext } from "../../Context/ProfileContext";
+import { useProfileContext } from '../../Context/ProfileContext';
 
 export default function NavBar(props) {
-
+  const { professorData } = useProfileContext();
   let { userIdContext } = useUserContext();
   let userId = userIdContext || localStorage.getItem('userId');
-  const { professorData } = useProfileContext();
-  // const tutor = tutors[userId];
+  const [image, setImage] = React.useState(localStorage.getItem('image_url')); // [image, setImage
+
+
+  useEffect(() => {
+    setImage(localStorage.getItem('image_url'));
+  }, [professorData]);
+
+
+  const image_profile = image ? atob(image) : <i className="login-icon bi bi-person-circle"></i>;
+
 
   const professor_image = (
     <span className="round-photo">
       {
         <img
-          src={professorData.image_profile}
+          src={image_profile}
           alt="professor"
           className="d-inline-block align-top"
           style={{ width: "50px", height: "50px" }}
@@ -24,6 +32,7 @@ export default function NavBar(props) {
       }
     </span>
   );
+
 
 
 
@@ -70,7 +79,7 @@ export default function NavBar(props) {
           <div className="offcanvas-header text-white">
 
             <Link to={userId ? `/perfil/${userId}` : '/login'} className="log nav-item text-primary mb-0" onClick={closeSideBar}>
-              {userId ? professor_image : <i className="login-icon bi bi-person-circle"></i>} </Link>
+              {userId && professor_image ? professor_image : <i className="login-icon bi bi-person-circle"></i>} </Link>
 
             <button type="button" className="btn-close btn-close-white shadow-none border-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
@@ -101,7 +110,7 @@ export default function NavBar(props) {
             <div className="d-none d-lg-block">
 
               {userId ? (<Link to={`/perfil/${userId}`} className="log nav-item text-primary mb-0">
-                {professor_image} </Link>)
+                {image ? professor_image : <i className="login-icon bi bi-person-circle"></i>} </Link>)
                 :
                 (<div className="div-login d-none d-lg-block mt-1">
                   <Link role="button" to="/login" className="login log btn btn-link text-white">Iniciar sesión</Link>

@@ -1,5 +1,3 @@
-// const cloudinary = require('../services/cloudinary.service');
-
 var ProfessorService = require('../services/professor.service');
 
 
@@ -68,6 +66,7 @@ exports.getAllProfessors = async (req, res, next) => {
 exports.contactProfessor = async (req, res, next) => {
     const {id} = req.params;
     const data = req.body;
+
     try {
         const contact = await ProfessorService.contactProfessor(id, data.name, data.email, data.message, data.course_id);
         res.status(200).json({status: 200, data: contact, message: "Succesfully Contacted Professor"});
