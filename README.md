@@ -1,8 +1,6 @@
-# TPO-API
-# Marketplace de Servicios Particulares
+# TPO-API --- Marketplace de Servicios Particulares
 
 Este proyecto consiste en una aplicación web que permite a profesores ofrecer clases particulares y a alumnos encontrar y contratar dichos servicios.
-
 
 ## Tecnologías Utilizadas
 
@@ -16,12 +14,14 @@ Este proyecto consiste en una aplicación web que permite a profesores ofrecer c
 
 - React
 - React Router
+- CSS
 
 ## Dependencias
 
 ### Backend
 
 Ejecutar `npm install` en la carpeta `/backend` para instalar:
+
 - `express`
 - `mongoose`
 - `nodemon`
@@ -35,6 +35,7 @@ Ejecutar `npm install` en la carpeta `/backend` para instalar:
 ### Frontend
 
 Ejecutar `npm install` en la carpeta `/frontend` para instalar:
+
 - `react`
 - `react-router-dom`
 
@@ -50,4 +51,9 @@ Ejecutar `npm install` en la carpeta `/frontend` para instalar:
 - Para ejecutar la aplicación frontend: `npm start` en la carpeta `/frontend`.
 
 ## Imagenes
+
 Las imagenes de los profesores se encuentran en https://cloudinary.com/
+
+## Documentacion de Endpoints en Postman
+
+https://documenter.getpostman.com/view/31219828/2s9YeEcsgt
