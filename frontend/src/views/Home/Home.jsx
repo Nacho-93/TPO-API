@@ -1,13 +1,11 @@
 import React from 'react'
 import "./Home.css"
-import Foto from "../../assets/background-for-school.jpg";
 import Guitarra from "../../assets/guitarra.jpg";
 import Ingles from "../../assets/ingles.jpg";
 import Matematica from "../../assets/Matematica.jpg";
 import Quimica from "../../assets/Quimica.jpg";
 import Fisica from "../../assets/Fisica.jpg";
 import Violin from "../../assets/VIOLIN.jpg";
-import f from "../../assets/fondo-gris.png";
 import { Link } from "react-router-dom"
 
 

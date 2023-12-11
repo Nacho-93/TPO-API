@@ -55,7 +55,10 @@ function Opinion({ review, isUser, course }) {
                                         <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target={`#rechazar:${review._id}`} data-bs-whatever="@getbootstrap">
                                             <i className="fa-solid fa-x"></i>
                                         </button>
-                                        <ModalRechazar review_id={review._id} course_id={course._id} tutor_id={tutor_id} />
+                                        <ModalRechazar
+                                            review_id={review._id}
+                                            course_id={course._id}
+                                            tutor_id={tutor_id} />
                                     </div>
                                 )}
                             </div>

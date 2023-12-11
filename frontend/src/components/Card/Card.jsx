@@ -1,8 +1,7 @@
 import React from "react"
 import "./Card.css"
 import { Link } from "react-router-dom"
-import ModalContact from "../Modal/ModalContact"
-import ModalComment from "../Modal/ModalComment"
+
 
 
 
@@ -184,7 +183,7 @@ export default function Card({ tutor, course, ...props }) {
                                     <Link className="btn btn-primary w-100"
                                         to={`/perfil/${tutor._id}`}
                                     >
-                                        Contratar
+                                        Contactar
                                     </Link>
 
 
@@ -254,7 +253,7 @@ export default function Card({ tutor, course, ...props }) {
                                     <Link className="btn btn-primary w-100"
                                         to={`/perfil/${tutor._id}`}
                                     >
-                                        Contratar
+                                        Contactar
                                     </Link>
 
                                 </div>

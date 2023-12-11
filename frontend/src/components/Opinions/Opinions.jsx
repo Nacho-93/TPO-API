@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Opinions.css'
 import { useLocation } from 'react-router-dom'
 import Opinion from './Opinion';

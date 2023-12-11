@@ -9,13 +9,13 @@ Este proyecto consiste en una aplicación web que permite a profesores ofrecer c
 
 ## Tecnologías Utilizadas
 
-### Backend
+### Backend ---> http://localhost:4000/api/
 
 - Node.js
 - Express
 - MongoDB
 
-### Frontend
+### Frontend ---> http://localhost:3000/
 
 - React
 - React Router
