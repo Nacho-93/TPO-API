@@ -2,7 +2,6 @@ import React from 'react'
 import "./AboutUs.css"
 import about from "../../assets/about.jpg"
 import { Link } from 'react-router-dom'
-import background_aboutus from "../../assets/background_aboutus.jpg"
 function AboutUs() {
 
     return (
