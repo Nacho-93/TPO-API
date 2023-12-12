@@ -3,42 +3,42 @@ import "./Contact.css"
 
 function Contact() {
 
-    // function validate_form() {
-    //     document.getElementById('formulario').addEventListener('submit', function (event) {
-    //         let emailValue = document.getElementById('email').value;
-    //         let telefonoValue = document.getElementById('telefono').value;
+    function validate_form() {
+        document.getElementById('formulario').addEventListener('submit', function (event) {
+            let emailValue = document.getElementById('email').value;
+            let telefonoValue = document.getElementById('telefono').value;
 
-    //         let isEmail = !validateEmail(emailValue);
-    //         let isTelefono = !validateTelefono(telefonoValue);
+            let isEmail = !validateEmail(emailValue);
+            let isTelefono = !validateTelefono(telefonoValue);
 
-    //         if (isEmail && isTelefono) {
-    //             alert('El email y el telefono ingresado son invalidos.'
-    //                 + '\n' + '¡Por favor ingrese los datos nuevamente!')
-    //         }
-    //         else if (isEmail) {
-    //             alert('El email ingresado es invalido.'
-    //                 + '\n' + '¡Por favor ingrese los datos nuevamente!')
-    //         }
-    //         else if (isTelefono) {
-    //             alert('El telefono ingresado es invalido.'
-    //                 + '\n' + '¡Por favor ingrese los datos nuevamente!')
-    //         }
-    //         else {
-    //             alert('Los datos son correctos!!!')
-    //         }
-    //     });
-    // }
-    // function validateTelefono(str) {
-    //     let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/
-    //     return regex.test(str);
-    // }
-    // function validateEmail(email) {
-    //     let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //     return regex.test(email);
-    // }
+            if (isEmail && isTelefono) {
+                alert('El email y el telefono ingresado son invalidos.'
+                    + '\n' + '¡Por favor ingrese los datos nuevamente!')
+            }
+            else if (isEmail) {
+                alert('El email ingresado es invalido.'
+                    + '\n' + '¡Por favor ingrese los datos nuevamente!')
+            }
+            else if (isTelefono) {
+                alert('El telefono ingresado es invalido.'
+                    + '\n' + '¡Por favor ingrese los datos nuevamente!')
+            }
+            else {
+                alert('Los datos son correctos!!!')
+            }
+        });
+    }
+    function validateTelefono(str) {
+        let regex = /^(1\s?)?(\d{3}|\(\d{3}\))[\-\s]?\d{3}[\-\s]?\d{4}$/
+        return regex.test(str);
+    }
+    function validateEmail(email) {
+        let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
 
     return (
-        <div className=''>
+        <div className='contact-main-container'>
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
@@ -49,15 +49,16 @@ function Contact() {
                     </div>
                 </div>
             </section>
+
             <section id="contact" className="contact-section">
 
-                <div className="container" data-aos="fade-up">
+                <div className="container " data-aos="fade-up">
 
                     <div className="row mt-5">
 
                         <div className="col-lg-4">
-                            <div className="info">
 
+                            <div className="info">
 
                                 <div className="email">
                                     <i className="bi bi-envelope"></i>

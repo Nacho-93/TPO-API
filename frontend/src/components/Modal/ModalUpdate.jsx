@@ -4,7 +4,7 @@ import { updateCourse } from '../../controllers/courses.controller'
 import { useCoursesContext } from '../../Context/CoursesContext'
 
 function ModalUpdate({ oldCourse, user_id }) {
-    const { fetchCourses } = useCoursesContext();
+    const { allCoursesContext, setAllCoursesContext } = useCoursesContext();
     const [showAlert, setShowAlert] = useState(false);
 
     const [course, setCourse] = useState({
@@ -21,7 +21,7 @@ function ModalUpdate({ oldCourse, user_id }) {
     });
 
     const modalIdRef = React.useRef(oldCourse._id);
-    console.log(course.info_course)
+
     const handleModalidad = (event) => {
         let individual = course.info_course[0];
         let group = course.info_course[1];
@@ -98,8 +98,9 @@ function ModalUpdate({ oldCourse, user_id }) {
 
         try {
             const course_response = await updateCourse(course);
+            const updated = course_response.updatedCourse;
 
-            fetchCourses();
+            setAllCoursesContext({ ...allCoursesContext, [updated._id]: updated });
 
         } catch (error) {
             console.log(error);

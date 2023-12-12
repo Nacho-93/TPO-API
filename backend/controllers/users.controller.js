@@ -72,7 +72,7 @@ exports.updateUser = async function (req, res, next) {
     }
 
     const userId = req.userId;
-    console.log("userId: CONTROLLER",userId);
+
 
     try {
         var updatedUser = await UserService.updateUser(userId ,userData)

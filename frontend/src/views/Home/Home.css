@@ -1,6 +1,8 @@
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+
+
 .hero {
     width: 100%;
     min-height: 50vh;
@@ -233,6 +235,12 @@
     position: relative;
     border-radius: 0;
     height: 100%;
+  }
+
+  .custom-img {
+    width: 100%; /* Ancho del 100% del contenedor */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Ajusta la imagen manteniendo la relación de aspecto */
   }
   
   .services .card .card-img {

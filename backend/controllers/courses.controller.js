@@ -52,7 +52,7 @@ exports.updateCourse = async (req, res, next) => {
 
 exports.deleteCourse = async (req, res, next) => {
     const {course_id} = req.body;
-    console.log(course_id)
+
     try {
         const deletedCourse = await CoursesService.deleteCourse(course_id)
         res.status(201).json({deletedCourse, message: "Succesfully Deleted Course"});

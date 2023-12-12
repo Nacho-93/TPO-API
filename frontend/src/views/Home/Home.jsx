@@ -46,16 +46,16 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Quimica} alt="" class="img-fluid" />
+                                        <img src={Quimica} alt="" class="img-fluid custom-img" />
                                     </div>
-                                    <h3><Link to="/categorias" class="stretched-link">Quimica</Link></h3>
+                                    <h3><Link to="/categorias" class="">Quimica</Link></h3>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Guitarra} alt="" class="img-fluid" />
+                                        <img src={Guitarra} alt="" class="img-fluid custom-img" />
                                     </div>
                                     <h3><Link to="/categorias" class="stretched-link">Guitarra</Link></h3>
                                 </div>
@@ -64,7 +64,7 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Matematica} alt="" class="img-fluid" />
+                                        <img src={Matematica} alt="" class="img-fluid custom-img" />
                                     </div>
                                     <h3><Link to="/categorias" class="stretched-link">Matematica</Link></h3>
                                 </div>
@@ -73,7 +73,7 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Violin} alt="" class="img-fluid" />
+                                        <img src={Violin} alt="" class="img-fluid custom-img" />
                                     </div>
                                     <h3><Link to="/categorias" class="stretched-link">Violin</Link></h3>
                                 </div>
@@ -82,7 +82,7 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Ingles} alt="" class="img-fluid" />
+                                        <img src={Ingles} alt="" class="img-fluid custom-img" />
                                     </div>
                                     <h3><Link to="/categorias" class="stretched-link">Ingles</Link></h3>
                                 </div>
@@ -91,7 +91,7 @@ function Home() {
                             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
                                 <div class="card bg-dark text-white">
                                     <div class="card-img">
-                                        <img src={Fisica} alt="" class="img-fluid" />
+                                        <img src={Fisica} alt="" class="img-fluid custom-img" />
                                     </div>
                                     <h3><Link to="/categorias" class="stretched-link">Fisica</Link></h3>
                                 </div>

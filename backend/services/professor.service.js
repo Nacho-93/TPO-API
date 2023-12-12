@@ -58,7 +58,7 @@ exports.deleteProfessor = async function (id) {
         const deleted = await User.deleteOne({
             _id: id
         })
-        console.log(deleted)
+
         if (deleted.n === 0 && deleted.ok === 1) {
             throw Error("No se ha podido eliminar el perfil")
         }

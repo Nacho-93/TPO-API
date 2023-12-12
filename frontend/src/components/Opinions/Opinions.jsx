@@ -17,7 +17,6 @@ function Opinions() {
 
 
 
-
     let noOpinions = false;
     let opinions_list = [];
 

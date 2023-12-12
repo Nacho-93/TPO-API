@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import ModalFilter from '../Modal/ModalFilter';
 import Card from '../Card/Card';
 import './Results.css';
-import { getCourses } from '../../controllers/courses.controller';
-import { getAllTutors } from '../../controllers/tutors.controller';
 import { useCoursesContext } from '../../Context/CoursesContext';
 import { useTutorContext } from '../../Context/TutorContext';
 import Loading from '../Loading';
@@ -14,7 +12,7 @@ function Results() {
 
     const [regexCategory, setRegexCategory] = useState(new RegExp(`allCategories.*`, 'i')); // /.*i/ = /.*?/i
     const { tutorsContext } = useTutorContext();
-    const { allCoursesContext, fetchCourses } = useCoursesContext();
+    const { allCoursesContext } = useCoursesContext();
     const [filter, setFilter] = useState({
         category: 'allCategories',
         frequency_class: "",
@@ -25,11 +23,15 @@ function Results() {
 
 
     const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
-    // console.log("COURSES ARRAY", coursesArray)
 
     let filteredCourses = []
 
+    coursesArray.sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
 
+        return titleA.localeCompare(titleB, 'es', { sensitivity: 'base' });
+    });
 
     if (allCoursesContext && coursesArray) {
 
@@ -94,10 +96,8 @@ function Results() {
         <>
             {filtered_list.length === 0 && !noCoursesFound
                 ? <div className='bg-change-color pb-5'> <Loading /> </div> :
-                (<div className='bg-change-color pb-5'>
+                (<div className='bg-change-color pb-5' >
                     <section id="call-to-action" className="action-diferent section-home">
-
-
                         <div className="container" data-aos="zoom-out">
                             <div className="row justify-content-center">
                                 <div className="col-lg-8 text-center">
@@ -110,8 +110,8 @@ function Results() {
                         </div>
                     </section>
 
-                    <div style={{ backdropFilter: "blur(5px)" }}>
-                        {noCoursesFound ? <h3 className="text-center text-light my-5">No se encontraron cursos disponibles</h3> :
+                    <div>
+                        {noCoursesFound ? <h3 className="text-center text-info my-5">No se encontraron cursos disponibles</h3> :
                             filtered_list}
                     </div>
                     <ModalFilter handleFilter={handleFilter} />

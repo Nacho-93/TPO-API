@@ -2,10 +2,11 @@ import React from 'react'
 import "./AboutUs.css"
 import about from "../../assets/about.jpg"
 import { Link } from 'react-router-dom'
+import background_aboutus from "../../assets/background_aboutus.jpg"
 function AboutUs() {
 
     return (
-        <>
+        <div className='containerAboutUs'>
             <section id="call-to-action" class="action-diferent section-home">
                 <div class="container" data-aos="zoom-out">
                     <div class="row justify-content-center">
@@ -16,13 +17,13 @@ function AboutUs() {
                     </div>
                 </div>
             </section>
-            <section id="about" className="about py-5">
+            <section id="about" className="about py-5 text-white">
                 <div className="container" data-aos="fade-up">
                     <div className="row">
                         <div className="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
                             <img src={about} className="img-fluid" alt="" />
                         </div>
-                        <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                        <div className="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content ">
                             <h3>Nuestra Historia</h3>
                             <p className="fst-italic">
                                 Nos dedicamos a la enseñanza y la tutoría desde nuestros inicios. Nuestra pasión por la educación y nuestro compromiso con el éxito de nuestros estudiantes nos han convertido en líderes en el campo de las clases particulares.
@@ -43,7 +44,7 @@ function AboutUs() {
 
 
             {/* <!-- ======= Counts Section ======= --> */}
-            <section id="counts" className="counts section-bg" style={{ backgroundColor: "#f0f0f0" }}>
+            <section id="counts" className="counts section-bg" style={{ backgroundColor: "#a0a0a0" }}>
                 <div className="container">
 
                     <div className="row counters">
@@ -77,7 +78,7 @@ function AboutUs() {
                 </div>
             </section>
 
-        </>
+        </div>
     )
 }
 

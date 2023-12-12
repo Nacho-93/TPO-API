@@ -15,14 +15,13 @@ exports.getUsers = async function (query, page, limit) {
     }
     // Try Catch the awaited promise to handle the error 
     try {
-        console.log("Query",query)
+
         var Users = await User.paginate(query, options)
         // Return the Userd list that was retured by the mongoose promise
         return Users;
 
     } catch (e) {
         // return a Error message describing the reason 
-        console.log("error services",e)
         throw Error('Error while Paginating Users');
     }
 }

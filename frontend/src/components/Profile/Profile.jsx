@@ -43,7 +43,7 @@ function Profile() {
         if (professorData && userId !== professorData._id) {
             fetchProfileData(userId);
         }
-    }, [userId, professorData]);
+    }, [userId, professorData, fetchProfileData]);
 
 
     const handleInputChange = (e) => {
@@ -89,29 +89,29 @@ function Profile() {
         }
     };
 
-
-
     return (
         <>
-            {!professorData ? <div className="container-profile pb-5"><Loading /></div>
+            {!professorData.name ? <div className="container-profile pb-5"><Loading /></div>
                 :
                 (<div className="container-profile pb-5">
                     <div className="container light-style flex-grow-1 container-p-y">
-                        <h2 className="font-weight-bold py-3 mb-4 text-primary-emphasis text-light">
+                        <h2 className="list-group list-group-flush account-settings-links text-light py-2">
                             {isUser ? "Configurar Perfil" : `Perfil de ${professorData.name}`}
                         </h2>
+                    </div>
+                    <div className="container light-style flex-grow-1 container-p-y">
                         <div className="card card-profile overflow-hidden">
                             <div className="row no-gutters row-bordered row-border-light">
                                 <div className="col-md-3 pt-0">
                                     <div className="list-group list-group-flush account-settings-links">
-                                        <a className="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">
+                                        <a className="list-group-item list-group-item-action active icon-link" data-toggle="list" href="#account-general">
                                             General
                                         </a>
                                         <a className="list-group-item list-group-item-action icon-link" data-toggle="list" href="#account-info">
                                             Información
                                         </a>
                                         <Link
-                                            className="list-group-item list-group-item-action"
+                                            className="list-group-item list-group-item-action icon-link"
                                             to={`/perfil/${userId}/misClases`}
                                         >
                                             {isUser ? 'Mis clases' : `Clases de ${professorData.name}`}
@@ -119,12 +119,12 @@ function Profile() {
                                         {isUser ? (
                                             <>
                                                 <Link
-                                                    className="list-group-item list-group-item-action"
+                                                    className="list-group-item list-group-item-action icon-link"
                                                     to={`/perfil/${userId}/solicitudes-clases`}
                                                 >
                                                     Gestionar solicitudes
                                                 </Link>
-                                                <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">
+                                                <a className="list-group-item list-group-item-action icon-link" data-toggle="list" href="#account-change-password">
                                                     Cambiar contraseña
                                                 </a>
                                                 <Link
@@ -160,29 +160,33 @@ function Profile() {
                                 <div className="col-md-9">
                                     <div className="tab-content">
                                         <div className="tab-pane fade active show" id="account-general">
-                                            <div className="card-body media align-items-center">
-                                                <img src={professorData.image_profile || process.env.PUBLIC_URL + '/images/notperfil.png'} alt="imagen" className="d-block ui-w-80" />
+                                            <div className="card-body media align-items-center d-flex">
+                                                <img
+                                                    src={professorData.image_profile || process.env.PUBLIC_URL + '/images/notperfil.png'}
+                                                    alt="Imagen de perfil"
+                                                    className="ui-w-80 rounded" />
                                                 <div className="media-body ml-4">
                                                     {isUser ? (
                                                         <>
-                                                            <label className="btn btn-secondary">
+                                                            <label className="btn btn-secondary ms-2">
                                                                 <i class="fa-solid fa-cloud-arrow-up"></i>
+
                                                                 <input type="file" className="account-settings-fileinput"
                                                                     name='image_profile'
                                                                     onChange={(e) => setImage(e.target.files[0])}
                                                                 />
                                                             </label>{" "}
-                                                            <div className="text-light small mt-1">JPG/PNG</div>
+                                                            <label className="text-light small mt-1">JPG/PNG</label>
                                                         </>
                                                     ) : (
                                                         <></>
                                                     )}
                                                 </div>
                                             </div>
-                                            <hr className="border-light m-0" />
+
                                             <div className="card-body">
                                                 <div className="form-group">
-                                                    <label className="form-label">Nombre</label>
+                                                    <h4 className="font-weight-bold">Nombre</h4>
                                                     {isUser ? (
                                                         <input type="text" className="form-control" name='name' value={professorData.name}
                                                             onChange={handleInputChange} />
@@ -254,7 +258,7 @@ function Profile() {
                                         <div className="tab-pane fade" id="account-info">
                                             <div className="card-body pb-2">
                                                 <div className="form-group">
-                                                    <label className="form-label">Titulo</label>
+                                                    <h5 className="font-weight-bold">Titulo</h5>
                                                     {isUser ? (
                                                         <input type="text" className="form-control"
                                                             name='degree'
@@ -265,7 +269,7 @@ function Profile() {
                                                     )}
                                                 </div>
                                                 <div className="form-group mt-3">
-                                                    <label className="form-label">Experiencia</label>
+                                                    <h5 className="font-weight-bold">Experiencia</h5>
                                                     {isUser ? (
                                                         <textarea className="form-control" rows="5" value={professorData.description}
                                                             name='description'
@@ -297,7 +301,7 @@ function Profile() {
                             )}
                         </div>
                     </div>
-                </div>)
+                </div >)
             }</>
     );
 }

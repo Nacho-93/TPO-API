@@ -6,9 +6,6 @@ import { Link } from "react-router-dom"
 
 
 export default function Card({ tutor, course, ...props }) {
-    // const { tutors } = useTutorContext()
-    // console.log(tutor)
-    // console.log(course)
 
 
     const rating_amount = course.reviews.length > 0 ? [(course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length).toFixed(1), course.reviews.length] : false

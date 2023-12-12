@@ -1,5 +1,10 @@
 
 
+.containerAboutUs {
+  background-color: rgba(95, 95, 95, 0.9);
+  background-size: cover;
+}
+
 .about .content h3 {
     font-weight: 600;
     font-size: 26px;
