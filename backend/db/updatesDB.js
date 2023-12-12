@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const {User} = require('./db/models/User.model');
-const {Course} = require('./db/models/Course.model'); 
+const {User} = require('./models/User.model');
+const {Course} = require('./models/Course.model'); 
 const { ObjectId } = require('mongodb');
 
 const updateProfessorsWithPassword = async () => {
