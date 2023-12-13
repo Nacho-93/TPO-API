@@ -1,7 +1,4 @@
 import React from 'react'
-import { useTutorContext } from '../../../Context/TutorContext'
-import { useUserContext } from '../../../Context/UserContext'
-import Card from '../../Card/Card';
 import ModalPut from '../../Modal/ModalPut';
 import { ManageRequests } from './ManageRequests';
 import './styleViews.css'
@@ -11,7 +8,7 @@ import Loading from '../../Loading';
 
 function ManageClasses() {
 
-    const { allCoursesContext, setAllCoursesContext, fetchCourses } = useCoursesContext();
+    const { allCoursesContext } = useCoursesContext();
     const states = ["Solicitada", "Aceptada", "Finalizada", "Cancelada"];
     const actions = ["aceptar", "finalizar", "cancelar"];
     const color_actions = ["success", "primary", "danger"];
@@ -26,6 +23,12 @@ function ManageClasses() {
     //     "status": [false, true, false, false]
     //   },
 
+    useEffect(() => {
+        if (localStorage.getItem('firstLoad') === 'true') {
+            localStorage.setItem('firstLoad', false);
+            window.location.reload(); // Realiza el reload para que no falle algo que no pude solucionar ;(
+        }
+    }, []);
 
     const [coursesArray, setCoursesArray] = useState([]);
 
@@ -53,6 +56,11 @@ function ManageClasses() {
         return end_date;
     }
 
+    if (coursesArray.length === 0 || Object.keys(allCoursesContext).length === 0) {
+        return (
+            <div className='bg-change-color pb-5'> <Loading /> </div>
+        )
+    }
 
     const classes_list = coursesArray.map((course) => {
 
@@ -127,7 +135,7 @@ function ManageClasses() {
 
     return (
         <>
-            {coursesArray.length === 0 ?
+            {classes_list.length === 0 ?
                 <div className='bg-change-color pb-5'> <Loading /> </div>
                 :
                 (<div className='bg-change-color-profile pb-5'>

@@ -11,10 +11,11 @@ function ModalAceptar({ course_id, review_id, ...props }) {
   const handleAccept = async () => {
     const id = modalIdRef.current;
     try {
-      const res = await acceptReview(course_id, id)
 
+      const res = await acceptReview(course_id, id)
       console.log("El comentario fue aceptado con exito!")
       setAllCoursesContext({ ...allCoursesContext, [course_id]: res.updatedCourse });
+      window.location.reload();
 
     } catch (error) {
       console.log(error)

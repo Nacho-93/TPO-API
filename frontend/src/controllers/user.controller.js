@@ -35,6 +35,7 @@ export const login_exe = async (user) => {
                 localStorage.setItem("nombre",user.name);
                 localStorage.setItem("email",user.email);
                 localStorage.setItem("image_url", user.image_profile ?  btoa(user.image_profile) : "");
+                localStorage.setItem("firstLoad", true);
                 return ({rdo:0,mensaje:"Ok", user: user});
                 }
             case 202:

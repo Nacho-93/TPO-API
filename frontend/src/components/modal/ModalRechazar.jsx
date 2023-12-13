@@ -16,6 +16,7 @@ function ModalRechazar({ course_id, review_id, ...props }) {
       const res = await rejectReview(course_id, id)
       console.log("El comentario fue rechazado con exito!")
       setAllCoursesContext({ ...allCoursesContext, [course_id]: res.updatedCourse });
+      window.location.reload();
 
     } catch (error) {
       console.log(error)

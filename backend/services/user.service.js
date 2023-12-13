@@ -36,7 +36,11 @@ exports.createUser = async function (user) {
         phone: user.phone,
         email: user.email,
         date: new Date(),
-        password: hashedPassword
+        password: hashedPassword,
+        degree: "",
+        description: "",
+        image_profile: "",
+        hours_experience: 0
     })
 
     try {

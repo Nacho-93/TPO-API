@@ -26,12 +26,14 @@ function Results() {
 
     let filteredCourses = []
 
-    coursesArray.sort((a, b) => {
-        const titleA = a.title.toLowerCase();
-        const titleB = b.title.toLowerCase();
+    if (coursesArray.length > 0 && coursesArray[0].title) {
+        coursesArray.sort((a, b) => {
+            const titleA = a.title.toLowerCase();
+            const titleB = b.title.toLowerCase();
 
-        return titleA.localeCompare(titleB, 'es', { sensitivity: 'base' });
-    });
+            return titleA.localeCompare(titleB, 'es', { sensitivity: 'base' });
+        });
+    }
 
     if (allCoursesContext && coursesArray) {
 

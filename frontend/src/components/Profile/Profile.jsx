@@ -1,10 +1,9 @@
 import React from 'react'
 import "./Profile.css"
-import { Link, useRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useUserContext } from '../../Context/UserContext'
 import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getProfile } from '../../controllers/professor.controller'
 import { updateProfile } from '../../controllers/professor.controller'
 import Loading from '../Loading'
 import ModalContact from '../Modal/ModalContact'
@@ -18,6 +17,7 @@ function Profile() {
     const [updatedData, setUpdatedData] = useState({});
     const [image, setImage] = useState(null);
 
+
     const userId = useLocation().pathname.split('/')[2];
     const isUser = localStorage.getItem('userId') === userId;
 
@@ -25,7 +25,12 @@ function Profile() {
     const [allTitles, setAllTitles] = useState({});
     let noContactAvailable = false;
 
-
+    useEffect(() => {
+        if (localStorage.getItem('firstLoad') === 'true') {
+            localStorage.setItem('firstLoad', false);
+            window.location.reload(); // Realiza el reload para que no falle algo que no pude solucionar ;(
+        }
+    }, []);
 
     useEffect(() => {
         const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
@@ -78,7 +83,10 @@ function Profile() {
             const updatedProfile = await updateProfile({
                 ...updatedData,
             }, userId);
-            localStorage.setItem('image_url', btoa(updatedProfile.image_profile))
+
+            if (image) {
+                localStorage.setItem('image_url', btoa(updatedProfile.image_profile))
+            }
             setProfessorData(updatedProfile);
             setUpdatedData({});
             setImage(null);
@@ -188,7 +196,8 @@ function Profile() {
                                                 <div className="form-group">
                                                     <h4 className="font-weight-bold">Nombre</h4>
                                                     {isUser ? (
-                                                        <input type="text" className="form-control" name='name' value={professorData.name}
+                                                        <input type="text" className="form-control" name='name'
+                                                            value={professorData.name}
                                                             onChange={handleInputChange} />
                                                     ) : (
                                                         <label className="form-control">{professorData.name}</label>
@@ -271,11 +280,23 @@ function Profile() {
                                                 <div className="form-group mt-3">
                                                     <h5 className="font-weight-bold">Experiencia</h5>
                                                     {isUser ? (
-                                                        <textarea className="form-control" rows="5" value={professorData.description}
+                                                        <textarea className="form-control" rows="5"
+                                                            value={professorData.description}
                                                             name='description'
                                                             onChange={handleInputChange}></textarea>
                                                     ) : (
                                                         <label className="form-control">{professorData.description}</label>
+                                                    )}
+                                                </div>
+                                                <div className="form-group mt-3">
+                                                    <h5 className="font-weight-bold">Horas de experiencia</h5>
+                                                    {isUser ? (
+                                                        <input type='text' className="form-control"
+                                                            value={professorData.hours_experience}
+                                                            name='hours_experience'
+                                                            onChange={handleInputChange}></input>
+                                                    ) : (
+                                                        <label className="form-control">{professorData.hours_experience}</label>
                                                     )}
                                                 </div>
                                             </div>

@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react'
-import { useTutorContext } from '../../../Context/TutorContext'
-import { useLocation } from 'react-router-dom'
-import { useUserContext } from '../../../Context/UserContext';
 import Opinion from "../../Opinions/Opinion"
 import './styleViews.css'
 import { ManageRequests } from './ManageRequests';
 import { useCoursesContext } from '../../../Context/CoursesContext';
-import Loading from '../../Loading';
 
 
 function Comments() {
-    const { tutorsContext } = useTutorContext();
-    const { allCoursesContext, fetchCourses } = useCoursesContext();
+
+    const { allCoursesContext } = useCoursesContext();
     const userId = localStorage.getItem('userId');
     const [coursesArray, setCoursesArray] = React.useState([]);
     let requests_list = [];

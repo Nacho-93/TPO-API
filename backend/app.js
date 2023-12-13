@@ -47,7 +47,6 @@ let opts = {
 
 mongoose.connect(url,opts)
   .then(() => {
-    console.log(url)
     console.log(`Succesfully Connected to theMongodb Database..`)
   })
   .catch((e) => {

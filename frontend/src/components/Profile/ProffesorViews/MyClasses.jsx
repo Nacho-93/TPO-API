@@ -1,14 +1,12 @@
 import React from 'react'
-import { useUserContext } from '../../../Context/UserContext'
 import { useTutorContext } from '../../../Context/TutorContext'
 import ModalAgregar from '../../Modal/ModalAgregar'
-import Card from '../../Card/Card';
 import ModalEliminar from '../../Modal/ModalEliminar';
-import ModalEsconder from '../../Modal/ModalEsconder';
 import { useLocation } from 'react-router-dom';
 import './styleViews.css'
 import ModalUpdate from '../../Modal/ModalUpdate';
 import { useCoursesContext } from '../../../Context/CoursesContext';
+import { useEffect } from 'react';
 
 function Classes() {
     const { tutorsContext } = useTutorContext();
@@ -17,7 +15,14 @@ function Classes() {
     const userId = useLocation().pathname.split("/")[2];
     const isActual_user = userId && (localStorage.getItem('userId') === userId);
     const professor = tutorsContext[userId];
+    const firstLoad = localStorage.getItem('firstLoad') === 'true'
 
+    useEffect(() => {
+        if (firstLoad) {
+            localStorage.setItem('firstLoad', false);
+            window.location.reload(); // Realiza el reload para que no falle algo que no pude solucionar ;(
+        }
+    }, [firstLoad]);
 
     // /perfil-profesor/3/clases
     const coursesArray = Object.values(allCoursesContext); // Convertir el objeto de cursos en un arreglo
